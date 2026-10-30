@@ -51,3 +51,21 @@ Keep restartable files with explicit unverified state rather than invent evidenc
 user inputs. No commit of an unverified harness; requested logical commits must wait for checks.
 Rejected: network exception without authorization, pretending cached source equals installation,
 committing with an invented green check. Constraints: readiness review must report this block.
+
+## D007 — T1a core extraction (2026-10-30)
+Reason: user authorized T1a only after verified baseline 346f7de (local setup/check/smoke rerun
+passed). Retire initialization-only session restriction; keep MOCK and secrecy invariants.
+Keep reference function bodies/prompts/data wherever possible; adjust imports and the UI boundary.
+Session turn yields `(session, audio)` and choose returns session; later T1b will map this into
+Gradio outputs. No Gradio import, view renderer, UI or app startup is introduced in T1a.
+Caller regex patterns live in screener (also used by session); prompt memory formatting lives
+in dadi. JSON parsing lives in report, reused by screener; this avoids new modules/import cycles.
+Stage hints alone are extracted into strategy; demand tactics remain the T4 stub.
+Keep initialized deterministic mock adapters unchanged; inject identical fakes into reference
+and extracted logic for characterization. This verifies core behavior independently of mock
+transport samples; mocked JSON marker is not a calibrated verdict/report.
+Retain the reference scenario loader and path order; do not migrate fixtures or run evaluation
+(T6). Preserve reference report labels, history and failure limitations for later scoped tasks.
+Rejected: UI tuple/Gradio imports in logic, new state framework, adapter changes, calibration,
+new tactics/summary, broad failure-handling changes and silently fixing unrelated reference gaps.
+Constraints: no network/keys/audio; no claims about real speech, latency, UI or classifier quality.

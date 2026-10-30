@@ -1,39 +1,36 @@
 # Progress
 
-## Current state — 2026-10-30 (Asia/Kolkata)
-- System: Dadi vs Digital Arrest, teammate-only call-screening/grandmother-decoy simulation.
-- Latest commit: none; main is unborn. User-provided docs/reference were initially untracked.
-- Initialization files created; no business features implemented and T1 has not started.
-- Runtime: Python 3.13.7; `.venv` exists but dependencies are NOT installed.
-- Startup path: `make setup` (offline; optional WHEELHOUSE), then `make smoke`.
-  No application startup exists yet. `src.app.build_ui` is a raising stub;
-  `python -m src.app` currently only imports the module and does NOT launch anything.
-- Verification path: `make check` -> scripts/check.sh -> ruff then pytest.
-- Test status: NOT verified by pytest. make check and make smoke fail on missing tools.
-- Partial evidence: real cached ruff 0.14.4 checks source/tests/scripts; direct stdlib
-  architecture and adapter checks run without a network; these are not pytest results.
-- All feature statuses remain not_started or blocked, never passing.
-- Top unfinished feature: T1a (core behavior-preserving refactor), followed by T1b (Gradio UI).
-- Next action: provide a local compatible wheelhouse, run make setup, make check and make smoke,
-  then rerun readiness and create verified logical commits before starting T1a.
+## Current state — T1a session
+- Baseline commit: `346f7de` (`init: harness scaffold; make check: 21 passed`).
+- User-verified Mac baseline: Python 3.13.7, `make check` = 21 passed.
+- Earlier missing-package/readiness failures below are historical, superseded by that baseline.
+- Current checkout started clean. Local make setup succeeded offline; make check: 21 passed
+  (0.11s); make smoke: 8 passed (0.01s), Python 3.13.7.
+- Scope: T1a only; core behavior-preserving refactor in MOCK, no Gradio UI wiring (T1b).
+- Product state before implementation: source stubs and mock adapters; no app startup yet.
+- Completed feature: T1a, passing only via scripts/verify_feature.py T1a. Recorded successful
+  verification: make check 51 passed (0.20s), feature flow 30 passed (0.07s); smoke 8 passed.
+- Latest implementation unit: T1a commit containing this record; resolve its hash with
+  `git log -1 --oneline`. Verified base commit is 346f7de; verification evidence includes its SHA.
+- Fresh-context final review ACCEPT, all six rubric scores 2/2 within T1a MOCK scope.
+- Stop after committing this verified unit. Next authorized feature would be T1b; it remains
+  not_started and src/app.py is unchanged. No startup or UI-readiness claim.
 
-## Blockers
-- No network permitted this session; no suitable pip cache/wheelhouse supplied.
-- Offline pip cannot install Gradio 5.49.1; pytest 9.0.2 and ruff 0.14.4 are also absent in venv.
-- Full transitive resolution/locking is unverified; direct pins alone do not ensure reproducibility.
-- T2/T3/T6/T8 need user-run real key/audio/API evidence. T6b additionally needs access/permission.
-- T9b/T11b need real audio generation/listening/devices; no credits were spent here.
-- Requested commits deferred: explicit instruction prohibits committing failing/unverified work.
-  There is no previous consistent commit to roll back to. Preserve files for restart and user inputs.
+## Remaining blockers and Untested
+- Local baseline rerun confirmed the user-provided 21-passing-test result.
+- T1b UI startup and real user-visible UI path are excluded from T1a.
+- Real integrations, keys, audio/devices, latency, classifier calibration and speech quality remain
+  blocked or untested as listed in feature_list.json. No real calls are authorized here.
+- Transitive locking/clean-install reproducibility remains unverified; do not change tools in T1a.
 
-## Initialization contract
+## Historical initialization contract
 Scope: environment specification, layout stubs, offline mock adapter boundary, executable harness,
 architecture rules, feature plan and durable documentation. Excludes reference port, UI startup,
 keys, .env creation, external requests and all T1+ implementation.
 Acceptance: setup + make check + mock smoke + fresh-context readiness, with honest failure output.
 Outcome: files prepared; full acceptance blocked by missing offline packages.
 
-## Session record
+## Historical initialization session record
 1. Confirmed root; read all CODEX_BRIEF, notes and supplied harness request. No baseline existed.
 2. Created exact requested module layout and explicit ERROR/WHY/FIX stubs; preserved all inputs.
 3. Added offline setup/check, network-denying pytest configuration, architecture regression guards,
@@ -76,12 +73,12 @@ Outcome: files prepared; full acceptance blocked by missing offline packages.
 - Persona quality, native-speaker Kanglish, tags/voices, classification calibration and report quality.
 - Filler overlap, background work races, failure recovery, replay and demo recording.
 
-## Restart checklist
+## Historical initialization restart checklist
 Read AGENTS, this file, DECISIONS, feature list and TEST_LOG. Obtain local packages, run setup,
 check and smoke. Update this file with actual evidence; rerun readiness before verified commits.
 Do not treat any placeholder test or silent module import as a business-feature pass.
 
-## Fresh-context readiness review
+## Historical initialization readiness review
 A separate read-only agent used AGENTS.md, README.md, ARCHITECTURE.md, PROGRESS.md,
 DECISIONS.md, HARNESS.md, feature_list.json, requirements.txt, scripts and tests.
 From those files alone it answered:
@@ -102,3 +99,41 @@ commands; dependencies and make check still gate passing. No records were suppli
 
 Final readiness outcome: BLOCK on environment acceptance/reproducibility. No application or
 feature completion claimed; no commits created. Stop here, do not start T1.
+
+## T1a sprint contract
+Scope: extract reference persona data, stage hints, screening/classification, session state/regex
+caller memory, routed turn generator, human actions, Dadi prompt and report into existing modules.
+Use current MOCK adapter boundary unchanged. Preserve reference prompts, budgets, histories,
+background classification, garbled behavior, timings and report formatting.
+Gradio-neutral turn output will carry state/audio for later UI adaptation; no UI rendering/wiring.
+Verification: L1 then L2 via make check; flow tests cover two answers, verdict, DECIDE no-op,
+all human outcomes, Dadi/claims/context, report, garbled input and reset. Characterization tests
+compare core transitions/prompts against read-only reference with identical fake adapters.
+Exclusions: T1b UI/startup, real calls, T4 tactics, T5 summary, T6 calibration/fixture migration,
+T7 report improvements, T9 cache changes and T11 general error recovery.
+Status may become passing only through scripts/verify_feature.py T1a.
+
+## T1a implementation and review record
+- Extracted reference logic to session, personas, screener, dadi, strategy (stage hints only),
+  and report. Preserved adapters/app/reference/notes and all original test files except
+  replacing the T1a flow-test placeholder. Decision D007 records boundaries and exclusions.
+- make check: ruff passed, 51 pytest tests passed in 0.22s. make smoke: 8 passed in 0.01s.
+- Separate fresh-context reviewer reran both: 51 passed and 8 passed. No introduced fidelity
+  defects found. Requested current-state architecture/quality doc corrections are now made.
+- Partial/core integration is exercised in pytest, including real ThreadPoolExecutor overlap;
+  no Gradio is imported by core. L3 UI/user-visible startup remains deferred to T1b.
+- Refactor lint findings were fixed without changing prompt bytes or policy. Failure layer:
+  verification; regression: reference prompt/data/output characterization in test_flow.py.
+
+## T1a final verification and handoff
+- `.venv/bin/python scripts/verify_feature.py T1a` exited 0 and was the only writer of passing
+  status/evidence. It ran make check (ruff passed; 51 passed in 0.20s), then the exact feature
+  command (30 passed in 0.07s). Feature specifications and all other feature statuses unchanged.
+- Final fresh-context review ACCEPT after current-state docs corrections; six rubric scores 2/2
+  for T1a scope. No unresolved introduced correctness findings.
+- Source, tests and this progress record form one verified logical commit referencing D007.
+- Untested: T1b app startup/browser/microphone/speaker path, every real API/audio/latency/credit
+  claim, actual language/persona quality, and clean-machine transitive reproducibility. No
+  requested T1a check was skipped or blocked; local dependencies were available offline.
+- End-state target: working tree clean after commit, all tests passing, mock adapter smoke
+  unchanged. Stop; do not start T1b.

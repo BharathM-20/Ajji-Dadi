@@ -3,11 +3,10 @@
 ## Critical rules
 - Keep every Gnani call in `src/adapters.py`; default `MOCK = True`.
   Why: protect credits and isolate vendor changes. Delete only if adapter boundary is replaced.
-- Never print, log, commit or request keys during initialization; do not create `.env`.
-  Why: private credentials and initialization scope. Remove initialization restriction after this session;
-  keep credential secrecy permanently. `.env.example` must remain empty of real values.
-- Initialization is stubs plus harness only. Do not port reference behavior or start T1 here.
-  Why: explicit session scope. Delete this restriction only when the user starts the next session.
+- Never print, log or commit keys; keep `.env.example` empty of real values.
+  Why: private credentials. Keep permanently. Current T1a scope requires no keys or `.env`.
+- This session implements T1a core behavior in MOCK only. Do not start T1b or wire Gradio.
+  Why: explicit one-feature scope. Replace this scope line only when the next session is authorized.
 - Preserve `reference/`, `docs/CODEX_BRIEF.md` and `docs/GNANI_NOTES.md` during initialization.
   Why: user-owned inputs. Change notes later only with verified integration evidence.
 
@@ -61,7 +60,8 @@ Why: agreed product behavior and truthful simulation. Retain unless the user rev
 ## Definition of done
 L1: ruff static checks pass. L2: pytest unit/integration tests pass in MOCK, no network.
 L3: run the actual user-visible path when components interact, including app startup and UI.
-Initialization has no UI; its smoke covers only adapter boundaries. Do not claim app readiness.
+T1a has no UI; smoke covers adapter boundaries and flow tests cover core logic.
+Gradio startup and actual UI path verification belong to T1b; do not claim app readiness.
 Real audio, device and paid calls require user-run evidence; keep them blocked until supplied.
 For features: record exact commands/results, invoke verifier, update PROGRESS and decisions,
 then commit one verified unit with what, why, evidence and decision-entry references.
