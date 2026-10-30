@@ -1,27 +1,43 @@
 # Progress
 
-## Current state — T1a session
-- Baseline commit: `346f7de` (`init: harness scaffold; make check: 21 passed`).
-- User-verified Mac baseline: Python 3.13.7, `make check` = 21 passed.
-- Earlier missing-package/readiness failures below are historical, superseded by that baseline.
-- Current checkout started clean. Local make setup succeeded offline; make check: 21 passed
-  (0.11s); make smoke: 8 passed (0.01s), Python 3.13.7.
-- Scope: T1a only; core behavior-preserving refactor in MOCK, no Gradio UI wiring (T1b).
-- Product state before implementation: source stubs and mock adapters; no app startup yet.
-- Completed feature: T1a, passing only via scripts/verify_feature.py T1a. Recorded successful
-  verification: make check 51 passed (0.20s), feature flow 30 passed (0.07s); smoke 8 passed.
-- Latest implementation unit: T1a commit containing this record; resolve its hash with
-  `git log -1 --oneline`. Verified base commit is 346f7de; verification evidence includes its SHA.
-- Fresh-context final review ACCEPT, all six rubric scores 2/2 within T1a MOCK scope.
-- Stop after committing this verified unit. Next authorized feature would be T1b; it remains
-  not_started and src/app.py is unchanged. No startup or UI-readiness claim.
+## Current state — T1b session
+- Baseline/latest implementation commit: 2772b4c (T1a core extraction, passing).
+- Checkout started clean; Python 3.13.7 and pinned Gradio 5.49.1 are installed.
+- This session baseline: make setup succeeded offline; make check 51 passed in 0.19s;
+  make smoke 8 passed in 0.01s.
+- Completed feature: T1b only, passing via scripts/verify_feature.py T1b after actual launch.
+- Latest implementation unit: the T1b commit containing this record; resolve with git log -1.
+  Its verified baseline is 2772b4c. T1a remains passing; all later feature states are unchanged.
+- T1a remains passing; no T2 or later task is authorized.
+- Implemented reference UI and wrappers. make check passed59 (12.17s), including actual CLI
+  launch and full MOCK HTTP/SSE path, with loopback permission. Seven additional UI checks
+  cover components, callbacks, state, banner permanence and real-mode refusal.
+- Fresh-context review accepted functionality and found two test-cleanup gaps, now fixed.
+- Final verifier exited 0: make check59 (7.16s), exact feature command38 (6.64s), no skips.
+  Both commands launched the actual module and completed real HTTP/SSE flows.
+- Final fresh-context review ACCEPT: all six scores 2/2 for T1b MOCK scope; no unresolved findings.
+- Temporary manual server and browser tab stopped after verification; port7860 no longer listening.
+- Next action: commit this verified T1b unit and stop.
+  T2 remains blocked; do not start real integration.
 
-## Remaining blockers and Untested
-- Local baseline rerun confirmed the user-provided 21-passing-test result.
-- T1b UI startup and real user-visible UI path are excluded from T1a.
-- Real integrations, keys, audio/devices, latency, classifier calibration and speech quality remain
-  blocked or untested as listed in feature_list.json. No real calls are authorized here.
-- Transitive locking/clean-install reproducibility remains unverified; do not change tools in T1a.
+## T1b sprint contract
+Scope: reference view/decision card, permanent simulation banner, language dropdown, transcript,
+recording/playback, human action buttons, end-call report and New Call reset in src/app.py.
+Adapt T1a `(session, audio)` generator and plain-state choose result to reference UI outputs.
+Pin unchanged Gradio 5.49.1, default MOCK=True; disable telemetry/public sharing for local runs.
+Verification: ruff+pytest via make check; real Gradio construction/event dispatch tests, then
+actual python -m src.app subprocess launch and localhost UI/API interaction with mock adapters.
+No pass on import-only evidence or skipped launch. If sandbox prevents binding, report actual
+error and exact user command; keep T1b unpassed.
+Exclusions: real APIs/keys, tactics/summary/calibration, UI polish/strategy panel, audio caching,
+report improvements and general demo hardening. Browser microphone/playback quality needs
+human verification; synthesized audio is still None in mocks.
+
+## Untested / remaining blockers
+- Actual localhost launch and HTTP/SSE paths exercised. Initial sandbox bind failed; rerun
+  with permission succeeded. Browser displayed banner/controls and no microphone found.
+- All real APIs, speech/recording/playback quality, latency, credit costs and Kanglish quality.
+- Clean-machine transitive dependency reproducibility; no tool/version changes in this feature.
 
 ## Historical initialization contract
 Scope: environment specification, layout stubs, offline mock adapter boundary, executable harness,
@@ -137,3 +153,27 @@ Status may become passing only through scripts/verify_feature.py T1a.
   requested T1a check was skipped or blocked; local dependencies were available offline.
 - End-state target: working tree clean after commit, all tests passing, mock adapter smoke
   unchanged. Stop; do not start T1b.
+
+## T1b final evidence and handoff
+- `.venv/bin/python scripts/verify_feature.py T1b` with localhost permission: exit0.
+  L1 ruff All checks passed; L2/L3 make check59 passed (7.16s); exact feature command38
+  passed (6.64s). Only verifier wrote passing/evidence. No skipped or import-only launch gate.
+- Actual module launch observed listening at 127.0.0.1:7860; browser displayed permanent
+  simulation banner and reference controls. Tests independently launch on an ephemeral port.
+- Cleanup fixes were included in both final passing launch runs: timeout process groups and
+  server termination even if client.close raises. Initial sandbox bind and test-assertion/lint
+  failures are recorded with layers/fixes in TEST_LOG.
+- Read-only reference/brief/notes, T1a core, adapters and pinned dependencies unchanged.
+- Run from repository root: `.venv/bin/python -m src.app` (or activate .venv then
+  `python -m src.app`). Binds localhost only, MOCK=True, analytics off, no public sharing.
+- Untested: browser microphone/speaker interaction (browser reported no microphone), actual
+  ASR/LLM/TTS, voice/language quality, latency/credits, real classifier evaluation, and
+  clean-machine/cross-platform transitive setup. No real key/.env needed or vendor calls made.
+- Commit includes code/tests/current-state documentation with decision D008 and verifier
+  evidence. Stop after T1b; T2 stays blocked pending its own authorized user-run evidence.
+
+- Final review recheck: ACCEPT, correctness/verification/scope/reliability/maintainability/
+  handoff all2/2. No code changes requested after final passing verifier run.
+- Temporary manual server terminated deliberately (SIGTERM; exit143), listening port absent;
+  browser verification tab closed. This was cleanup after successful launch, not startup failure.
+- Working tree should be clean after the single D008 T1b commit; use git log -1 for its hash.

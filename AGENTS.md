@@ -4,8 +4,8 @@
 - Keep every Gnani call in `src/adapters.py`; default `MOCK = True`.
   Why: protect credits and isolate vendor changes. Delete only if adapter boundary is replaced.
 - Never print, log or commit keys; keep `.env.example` empty of real values.
-  Why: private credentials. Keep permanently. Current T1a scope requires no keys or `.env`.
-- This session implements T1a core behavior in MOCK only. Do not start T1b or wire Gradio.
+  Why: private credentials. Keep permanently. Current T1b scope requires no keys or `.env`.
+- This session implements T1b Gradio UI/startup in MOCK only. Do not start T2 or later work.
   Why: explicit one-feature scope. Replace this scope line only when the next session is authorized.
 - Preserve `reference/`, `docs/CODEX_BRIEF.md` and `docs/GNANI_NOTES.md` during initialization.
   Why: user-owned inputs. Change notes later only with verified integration evidence.
@@ -34,7 +34,7 @@ Why: restartable work without chat memory. Retain while agents work in this repo
 - `make setup`: offline virtualenv installation from pip cache or a local `WHEELHOUSE`.
 - `make check`: L1 ruff followed by L2 pytest; missing dependencies are failures.
 - `make smoke`: exercise all mock adapters with network blocked by test collection hooks.
-- `.venv/bin/python scripts/verify_feature.py T1a`: feature-specific gate plus make check.
+- `.venv/bin/python scripts/verify_feature.py T1b`: feature-specific gate plus make check.
 - Only that verifier may write status=passing and recorded successful-run evidence.
 - Feature definitions are immutable after initialization; change only status/evidence.
 Why: evidence beats confidence. Revisit commands only with a decision and runnable replacement.
@@ -60,8 +60,9 @@ Why: agreed product behavior and truthful simulation. Retain unless the user rev
 ## Definition of done
 L1: ruff static checks pass. L2: pytest unit/integration tests pass in MOCK, no network.
 L3: run the actual user-visible path when components interact, including app startup and UI.
-T1a has no UI; smoke covers adapter boundaries and flow tests cover core logic.
-Gradio startup and actual UI path verification belong to T1b; do not claim app readiness.
+T1b requires actual pinned Gradio startup and a real UI event path; import alone is insufficient.
+Launch tests use an isolated loopback-only child; pytest itself still denies all network.
+MOCK UI evidence does not establish actual microphone/playback or real-service readiness.
 Real audio, device and paid calls require user-run evidence; keep them blocked until supplied.
 For features: record exact commands/results, invoke verifier, update PROGRESS and decisions,
 then commit one verified unit with what, why, evidence and decision-entry references.

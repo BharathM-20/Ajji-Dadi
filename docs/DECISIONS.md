@@ -69,3 +69,22 @@ Retain the reference scenario loader and path order; do not migrate fixtures or 
 Rejected: UI tuple/Gradio imports in logic, new state framework, adapter changes, calibration,
 new tactics/summary, broad failure-handling changes and silently fixing unrelated reference gaps.
 Constraints: no network/keys/audio; no claims about real speech, latency, UI or classifier quality.
+
+## D008 — T1b reference UI and local launch (2026-10-30)
+Reason: user authorized T1b only from verified 2772b4c. Port view/build_ui to app and wrap
+T1a turn/choose at the UI boundary. Keep Gradio 5.49.1, reference widgets/layout/banner,
+stateful conversation, events and New Call report reset. Core and adapters stay unchanged.
+Use named event endpoints for reliable Gradio dispatch verification, not substitute UI mocks.
+Blocks disables telemetry; module launcher binds 127.0.0.1 with share=False and no browser
+launch. Reject non-MOCK UI during this scope. No .env/key/network-vendor paths introduced.
+Rejected: Gradio in logic, changing adapter samples, UI polish/strategy panel, real-service
+integration, and declaring success from construction/import without actual launch evidence.
+Constraints: pytest retains its in-process no-network guard. Any real launch test must use
+an isolated subprocess restricted to localhost; no external/vendor traffic or paid APIs.
+If sandbox denies local binding, leave T1b unpassed and provide exact local launch command.
+
+T1b review refinement: launch probe starts in a dedicated process group, supervised by parent
+timeout cleanup, and server termination is protected by nested finally around client close.
+Reason: prevent stale localhost servers when a test stalls or client cleanup raises. Rejected:
+subprocess.run timeout alone (kills only probe, can orphan its server). Verified by rerunning
+both full and feature launch suites after the fix.

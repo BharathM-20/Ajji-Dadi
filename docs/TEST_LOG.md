@@ -45,3 +45,33 @@ Initialization history is in PROGRESS.md. MOCK core evidence follows.
 - Final `.venv/bin/python scripts/verify_feature.py T1a`: exit 0, make check 51 passed
   (0.20s), exact feature command 30 passed (0.07s); evidence recorded in feature_list.json.
 - Final reviewer accepted corrected handoff; all six scores 2/2 for T1a MOCK scope.
+
+## 2026-10-30 — T1b Gradio UI and launch
+- Baseline 2772b4c: offline setup succeeded; make check 51 passed (0.19s); smoke8 (0.01s).
+- Ported reference view/build_ui; no core, adapter, read-only reference or dependency changes.
+- Initial `GRADIO_ANALYTICS_ENABLED=False .venv/bin/python -m src.app` inside sandbox failed:
+  OSError: Cannot find empty port in range: 7860-7959. Layer: environment (socket binding).
+- Retried with localhost sandbox permission; server listened on 127.0.0.1:7860. Browser showed
+  title, banner, Hinglish default, transcript, recording/playback and end/reset controls.
+  Browser reported no microphone found; no real recording or synthesized playback claim.
+- Real Gradio construction/dispatch tests: 7 passed; launch test was initially run separately.
+- First HTTP probe assertion incorrectly expected a layout visibility update in gradio_client
+  return values. Layer: verification. Client omits layout components; status is checked through
+  real HTTP, visibility separately through actual Gradio view/dispatch/config tests.
+- First make check rerun caught overlong diagnostic; wrapped before rerunning L1/L2.
+- `make check` with localhost permission: ruff passed; 59 passed in 12.17s. No skips.
+- Real launch test starts exact python -m src.app and exercises generated WAV upload, two-answer
+  screening, DECIDE gating, Dadi, report and reset plus pickup/decline in Kanglish via HTTP/SSE.
+  An inherited sitecustomize audit guard rejects every non-loopback socket/DNS request.
+- Fresh-context review found test-process cleanup gaps (timeout descendants and client-close
+  exceptions). Layer: verification/reliability. Process-group supervision and nested finally
+  now ensure server cleanup; rerun verification required after this fix.
+- Untested: actual microphone/speaker path, real speech/services, quality/latency/credit cost,
+  cross-platform setup. Default MOCK ASR/model strings are placeholders, not calibrated output.
+
+- Final T1b verifier after cleanup fix: exit0; make check59 passed in7.16s, exact feature
+  tests (test_flow.py + test_ui_launch.py)38 passed in6.64s. Both include actual CLI launch
+  and real HTTP/SSE route checks; no skips. Status/evidence written only by verifier.
+
+- Final fresh-context recheck ACCEPT, six scores2/2. Temporary manual localhost7860 server
+  deliberately stopped with SIGTERM (exit143); no listener remained, verification tab closed.
