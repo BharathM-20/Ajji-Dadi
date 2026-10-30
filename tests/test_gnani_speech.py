@@ -41,6 +41,8 @@ def audio_path(tmp_path):
 
 @pytest.fixture
 def real(monkeypatch, tmp_path):
+    for name in ("GNANI_TTS_MODEL", "GNANI_TTS_VOICE", "GNANI_TTS_LANGUAGE", "GNANI_TTS_SPEED"):
+        monkeypatch.delenv(name, raising=False)
     monkeypatch.setenv("GNANI_API_KEY", KEY)
     monkeypatch.setenv("GNANI_REAL_ASR", "1")
     monkeypatch.setenv("GNANI_REAL_TTS", "1")
@@ -107,10 +109,10 @@ def test_exact_tts_raw_wav_and_absolute_gradio_filepath(real):
         assert request.headers["Content-Type"] == "application/json"
         assert json.loads(request.content) == {
             "text": "हाँ बेटा",
-            "model": "timbre-v2.5",
-            "voice": "Nalini",
+            "model": "timbre-v3.0",
+            "voice": "Kalpana",
             "language": "hi-IN",
-            "speed": 1.0,
+            "speed": 0.92,
             "audio_config": {
                 "sample_rate": 48000,
                 "num_channels": 1,
@@ -406,3 +408,95 @@ def test_tts_rejects_data_before_format(real):
     real(lambda request: httpx.Response(200, content=invalid))
     with pytest.raises(adapters.SpeechUnavailable, match="invalid WAV"):
         adapters.say("हाँ", "hi-IN")
+
+
+@pytest.mark.parametrize("speed", ["0.84", "1.16", "NaN", "inf", "-inf", "fast", ""])
+def test_tts_invalid_speed_fails_before_http(real, monkeypatch, speed):
+    monkeypatch.setenv("GNANI_TTS_SPEED", speed)
+    real(lambda request: pytest.fail("invalid speed must not send HTTP"))
+    with pytest.raises(adapters.SpeechUnavailable, match="ERROR:.*speed.*WHY:.*FIX:"):
+        adapters.say("हाँ बेटा", "hi-IN")
+    assert adapters.speech_diagnostics("say")["attempts"] == 0
+
+
+@pytest.mark.parametrize("speed", ["0.85", "1.15"])
+def test_tts_speed_boundaries_are_inclusive(real, monkeypatch, speed):
+    monkeypatch.setenv("GNANI_TTS_SPEED", speed)
+
+    def handle(request):
+        assert json.loads(request.content)["speed"] == float(speed)
+        return success(request)
+
+    real(handle)
+    assert Path(adapters.say("हाँ बेटा", "hi-IN")).exists()
+
+
+@pytest.mark.parametrize("model,voice", [("timbre-v3.0", "Kalpana"), ("timbre-v2.5", "Nalini")])
+def test_tts_env_overrides_and_model_specific_tags(real, monkeypatch, model, voice):
+    monkeypatch.setenv("GNANI_TTS_MODEL", model)
+    monkeypatch.setenv("GNANI_TTS_VOICE", voice)
+    monkeypatch.setenv("GNANI_TTS_LANGUAGE", "hi-en")
+    monkeypatch.setenv("GNANI_TTS_SPEED", "1.05")
+    text = "हाँ <pauses> बेटा <sigh> धीरे <slow> बोलो <clears throat>"
+
+    def handle(request):
+        payload = json.loads(request.content)
+        assert payload["model"] == model and payload["voice"] == voice
+        assert payload["language"] == "hi-en" and payload["speed"] == 1.05
+        assert payload["text"] == (text if model == "timbre-v3.0" else "हाँ बेटा धीरे बोलो")
+        assert payload["audio_config"] == {
+            "sample_rate": 48000,
+            "num_channels": 1,
+            "sample_width": 2,
+            "encoding": "linear_pcm",
+            "container": "wav",
+        }
+        return success(request)
+
+    real(handle)
+    assert Path(adapters.say(text, "legacy-code")).exists()
+
+
+@pytest.mark.parametrize("model", ["timbre-v2.5", "timbre-v3.0"])
+@pytest.mark.parametrize("text", ["<pauses>", " <sigh><slow> <clears throat> "])
+def test_tts_tag_only_text_is_rejected(real, monkeypatch, model, text):
+    monkeypatch.setenv("GNANI_TTS_MODEL", model)
+    real(lambda request: pytest.fail("tag-only text must not send HTTP"))
+    with pytest.raises(adapters.SpeechUnavailable, match="only tags"):
+        adapters.say(text, "hi-IN")
+
+
+def test_tts_400_surfaces_only_message_with_active_key_redacted(real, capsys):
+    calls = []
+
+    def handle(request):
+        calls.append(request)
+        return httpx.Response(
+            400,
+            json={
+                "success": False,
+                "message": f"Voice Kalpana is invalid for this model. Key: {KEY}",
+                "status_code": 400,
+                "extra": "not for display",
+            },
+        )
+
+    real(handle)
+    with pytest.raises(adapters.SpeechUnavailable, match="Voice Kalpana is invalid") as error:
+        adapters.say("हाँ बेटा", "hi-IN")
+    assert len(calls) == 1
+    assert KEY not in str(error.value) and "[REDACTED]" in str(error.value)
+    assert "not for display" not in str(error.value) and KEY not in capsys.readouterr().out
+
+
+def test_tts_400_redacts_request_key_even_if_environment_changes(real, monkeypatch, capsys):
+    def handle(request):
+        assert request.headers["X-API-Key-ID"] == KEY
+        monkeypatch.setenv("GNANI_API_KEY", "replacement")
+        return httpx.Response(400, json={"message": f"Invalid voice, request key was {KEY}"})
+
+    real(handle)
+    with pytest.raises(adapters.SpeechUnavailable, match="Invalid voice") as error:
+        adapters.say("हाँ बेटा", "hi-IN")
+    assert KEY not in str(error.value) and "[REDACTED]" in str(error.value)
+    assert KEY not in capsys.readouterr().out

@@ -4,6 +4,7 @@ import contextlib
 import contextvars
 import math
 import os
+import re
 import subprocess
 import tempfile
 import threading
@@ -350,17 +351,32 @@ def _safe_response_keys(response):
     return sorted(set(body) & allowed) + (["[unrecognized fields]"] if set(body) - allowed else [])
 
 
-def _speech_http_error(status):
+def _speech_http_error(status, message=None):
     reason, fix = {
         401: ("authentication rejected", "check the environment key privately"),
         402: ("service reported a payment or credit problem", "check the account credit status"),
         403: ("API scope denied", "check the account's speech API access"),
         429: ("rate or active-request limit reached", "wait and stop other account requests"),
     }.get(status, ("service rejected the request", "check GNANI_NOTES and service availability"))
+    if message:
+        reason += f" ({message})"
     return SpeechUnavailable(f"ERROR: Gnani HTTP {status}. WHY: {reason}. FIX: {fix}.")
 
 
-def _gnani_post(send, event, retry_429):
+def _tts_error_message(response, key):
+    """Expose only the documented flat400 message, never headers or an active key."""
+    try:
+        body = response.json()
+    except ValueError:
+        return None
+    message = body.get("message") if isinstance(body, dict) else None
+    if not isinstance(message, str) or not key:
+        return None
+    message = message.replace(key, "[REDACTED]")
+    return " ".join(message.split())[:500]
+
+
+def _gnani_post(send, event, retry_429, *, redact_key=None):
     # Hold through response consumption and the single optional retry/backoff.
     with _GNANI_LOCK:
         try:
@@ -376,7 +392,12 @@ def _gnani_post(send, event, retry_429):
                         response.close()
                         time.sleep(1.0)
                         continue
-                    raise _speech_http_error(response.status_code)
+                    message = (
+                        _tts_error_message(response, redact_key)
+                        if response.status_code == 400 and event["stage"] == "say"
+                        else None
+                    )
+                    raise _speech_http_error(response.status_code, message)
         except (httpx.HTTPError, OSError, ValueError, UnicodeError):
             # Never chain a transport exception: malformed header errors can include keys.
             raise SpeechUnavailable(
@@ -510,6 +531,39 @@ def _normalize_tts_wav(body):
     return bytes(audio)
 
 
+def _tts_config(text):
+    model = os.environ.get("GNANI_TTS_MODEL", "timbre-v3.0").strip()
+    voice = os.environ.get("GNANI_TTS_VOICE", "Kalpana").strip()
+    language = os.environ.get("GNANI_TTS_LANGUAGE", "hi-IN").strip()
+    try:
+        speed = float(os.environ.get("GNANI_TTS_SPEED", "0.92"))
+    except ValueError:
+        speed = float("nan")
+    if not math.isfinite(speed) or not 0.85 <= speed <= 1.15:
+        raise SpeechUnavailable(
+            "ERROR: invalid TTS speed. WHY: speed must be finite and within0.85–1.15. "
+            "FIX: set GNANI_TTS_SPEED to a number in that range, such as0.92."
+        )
+    if not model or not voice or not language:
+        raise SpeechUnavailable(
+            "ERROR: empty TTS configuration. WHY: model, voice and language are required. "
+            "FIX: set GNANI_TTS_MODEL, GNANI_TTS_VOICE and GNANI_TTS_LANGUAGE."
+        )
+    spoken = " ".join(re.sub(r"<[^<>]*>", " ", text).split())
+    if not spoken:
+        raise SpeechUnavailable(
+            "ERROR: TTS text contains only tags. WHY: spoken words are required. "
+            "FIX: include a short spoken reply alongside any audio tags."
+        )
+    return {
+        "text": text if model == "timbre-v3.0" else spoken,
+        "voice": voice,
+        "model": model,
+        "language": language,
+        "speed": speed,
+    }
+
+
 def _real_say(text, event, retry_429):
     key = _speech_key()
     if not isinstance(text, str) or not text.strip():
@@ -517,11 +571,7 @@ def _real_say(text, event, retry_429):
             "ERROR: speech text empty. WHY: TTS needs spoken text. FIX: supply a short reply."
         )
     payload = {
-        "text": text,
-        "voice": "Nalini",
-        "model": "timbre-v2.5",
-        "language": "hi-IN",
-        "speed": 1.0,
+        **_tts_config(text),
         "audio_config": {
             "sample_rate": 48000,
             "num_channels": 1,
@@ -534,6 +584,7 @@ def _real_say(text, event, retry_429):
         lambda client: client.post(_TTS_URL, headers={"X-API-Key-ID": key}, json=payload),
         event,
         retry_429,
+        redact_key=key,
     )
     result = None
     try:

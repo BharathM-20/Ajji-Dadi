@@ -1,5 +1,50 @@
 # Progress
 
+## Current T2 follow-up — configurable TTS and UI investigation, 2026-10-31
+Scope only: GNANI_TTS_MODEL/VOICE/LANGUAGE/SPEED defaults timbre-v3.0/Kalpana/hi-IN/0.92;
+finite speed within0.85–1.15, model-sensitive tags, safe TTS400message, notes/decision/tests.
+Keep audio_config and sharedGnani serialization unchanged. No actual API/key-file access.
+UI investigation is REPORT ONLY: trace startup/microphone/session/playback vs localtextmode;
+no app/session/brain wiring edits, no local model runs. T2 acceptance remains blocked.
+No think/local/experimental brain/training changes. Baseline8ef0a2b startedclean; setupoffline
+succeeded, baselinecheck196passed9.60s, smoke8passed0.10s. Verification: mockedHTTP/newcases,
+fullmakecheck and source review, plus static UI trace with exactfunction references.
+
+
+Completed: TTS config/tag/error changes and the read-only UI report below. Finalmakecheck
+L1clean,213passed13.98s; finalmocksmoke8passed0.10s. Source review ACCEPT after captured-key
+redaction fix; finalgreencheck satisfies its conditional acceptance. No realservice/voiceclaim.
+17newcases cover env overrides, speed range/nonfinite inputs, v3/v2.5 tags, tag-only rejection
+and safe400messages including a mid-request environment-key change. Audio_config/WAVrepair
+and sharedrequestlock preserved; all prior STT/think/localhelper function bodies unchanged.
+Only the authorized GNANI_NOTES checksum updated; other inputdigests unchanged. UIreport
+is static-only and no app/session/local/experimental/training files changed. T2 remainsblocked,
+no verifierpromotion, no realcalls/keyfiles/modelruns. Stop after this singleverifiedcommit.
+
+## UI audio-path investigation — REPORT ONLY, no wiring edits
+Static source trace, not real microphone/playback/API proof:
+- Startup src/app.py:188–193 calls adapters.configure_from_env(), then app.build_ui().
+  Default DADI_MODE is mock: MOCK=True, no local model. Speech flags do not alter this mode.
+- app.build_ui():48 creates microphone gr.Audio(type=filepath), speaker gr.Audio(autoplay=True),
+  and mic.stop_recording(app.turn,...) at108. app.turn():34 iterates session.turn():41.
+- session.turn() sends audio_path to adapters.asr() at47. After human app.choose()->
+  session.choose("dadi") selects DADI, a normal reply is generated with
+  adapters.think(dadi.dadi_messages(...)) at81; garbled input uses a canned response.
+  Default think remains MOCK; real ASR/TTS flags do not enable the local LLM.
+- session.turn() calls adapters.say(reply,...) at87 and yields(state,wavpath) at95;
+  app.turn() passes it to app.view():11. view's second return slot is the audio filepath;
+  build_ui's outs[1] is the autoplay speaker. Thus default microphoneUI is already wired
+  to realASR/realTTS when explicitly enabled and the process key is present. Its labels
+  still describe MOCK even though independent speech flags permit real speech requests.
+- DADI_MODE=local instead calls configure_local()/warm_local(), then build_ui() selects
+  build_local_ui():147. Its textbox/send invokes app.local_turn():130 ->
+  local_brain.respond(), rendered by local_view(). No asr()/say() call; Audio is hidden
+  at172 and receivesNone. Setting speech flags does NOT add microphone/voice to this path.
+Missing: voice connection to the actual localbrain, graceful session-level SpeechUnavailable
+handling (exceptions currently propagate), and user-run mic/autoplay/voice/latency evidence.
+ffprobe is absent for compressed/non-PCM input validation. No UI/session/braincode was edited,
+no realHTTP/model/device test run, and no readiness inferred from this static investigation.
+
 ## T2 WAV placeholder-size bug fix — 2026-10-31
 User reported real HTTP200 audio/wav, playable48kHz mono16bitPCM with RIFF size0xFFFFFFFF
 (first16bytes52494646ffffffff57415645666d7420); data-size placeholder is also supported.

@@ -255,3 +255,23 @@ mocksmoke8passed0.20s,49speechchecks included. PCM WAV output passed actualGradi
 postprocessing. Read-only review accepted code scope; no real-call evidence or status promotion.
 Baseline speech language is fixedhi-IN despite legacycodearg; numbers must be provided as
 words per notes. Compressedmedia decoding remains untested here because ffprobe is absent.
+
+## D013 — Configurable speech voice and read-only UI trace (2026-10-31)
+User explicitly chooses default timbre-v3.0/Kalpana/hi-IN/speed0.92. This supersedes D012's
+fixedv2.5/Nalini baseline; Kalpana/slower delivery are user-selected grandmother-demo settings,
+not a verified voice-quality or API-compatibility claim. Read config only from process env.
+Finite0.85–1.15 speed validated before HTTP; audio_config stays unchanged. Preserve inline
+angle-bracket audio tags only with timbre-v3.0; strip forv2.5/othermodels. Reject tag-only text.
+Voices are not interchangeable; do not invent a model/voice whitelist. Let service400message
+explain unsupported combination, exposing only its message field, bounded and with activekey
+redacted/controlwhitespace collapsed. Keep otherHTTPerrors/STTgeneric and allGnani calls
+under existing sharedlock/retryrules. No realcalls, credentialfilereads or UIwiringchanges.
+Report static defaultUI audio path versus DADI_MODE=local's separate text-only path; no
+claim of real mic/playback/LLM speech integration. T2 stillblocked on real user evidence.
+
+D013 review correction: redact using the exact captured request key, not a later process-env
+read, since an env change during HTTP could otherwise reveal the old key in a400message.
+Regression changes env inside MockTransport before returning an echoed key. Alltests remain
+offline; neither a key nor a body is stored in diagnostics. Initialfullcheck212passed11.63s;
+finalcheck213passed13.98s and mocksmoke8passed0.10s after the race fix. Source review
+accepted after finalgreen; no STT behavior, locking/retry or UI wiring changes.

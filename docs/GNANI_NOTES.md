@@ -1,6 +1,6 @@
 GNANI_NOTES
 
-Last updated: 2026-10-30. Written by the user; never put keys in this file.
+Last updated: 2026-10-31. Written by the user; never put keys in this file.
 
 STATUS (overrides rule 6 of docs/CODEX_BRIEF.md)
 Prisma STT and Timbre TTS: endpoints and request shapes are documented below. Build against them.
@@ -17,14 +17,24 @@ TTS (Timbre), source: https://docs.gnani.ai/api/TTS/tts-inference
 POST https://api.vachana.ai/api/v1/tts/inference
 Headers: Content-Type: application/json, X-API-Key-ID: <GNANI_API_KEY>
 Request JSON (required: text, model, audio_config; also send voice and language):
-{"text": "...", "voice": "Nalini", "model": "timbre-v2.5", "language": "hi-IN",
- "speed": 1.0,
+{"text": "...", "voice": "Kalpana", "model": "timbre-v3.0", "language": "hi-IN",
+ "speed": 0.92,
  "audio_config": {"sample_rate": 48000, "num_channels": 1, "sample_width": 2,
                   "encoding": "linear_pcm", "container": "wav"}}
-Baseline: timbre-v2.5 + Nalini + hi-IN. Hinglish language value: hi-en. auto = detect from script.
+Current defaults (explicit user choice, 2026-10-31): GNANI_TTS_MODEL=timbre-v3.0,
+GNANI_TTS_VOICE=Kalpana, GNANI_TTS_LANGUAGE=hi-IN, GNANI_TTS_SPEED=0.92.
+Chosen for the grandmother demo: the user selected Kalpana, with slower delivery at0.92.
+Actual voice suitability/model compatibility remain unverified here; no real call was made.
+The former baseline was timbre-v2.5/Nalini/hi-IN/speed1.0; set all desired env overrides explicitly.
+Hinglish language value: hi-en. auto = detect from script.
 Other language values: en-IN, ta-IN, te-IN, kn-IN, ml-IN, mr-IN, pa-IN, bn-IN, gu-IN.
-speed range 0.85 to 1.15. Compare timbre-v3.0 (voices Shivani, Lakshmi, Avinash) only after baseline works.
-v3.0 supports inline audio tags in text; v2.5 strips them. Tag support is unverified.
+Speed must be a finite number from0.85 to1.15 inclusive; invalid values fail before HTTP.
+Voices are model-specific: do not assume a v2.5 voice works on v3.0 or vice versa. The adapter
+surfaces the documented flat400 message (active key redacted) for invalid model/voice choices.
+Previously documented v3.0 examples include Shivani, Lakshmi, Avinash; this is not a full whitelist.
+Audio tags such as <pauses>, <sigh>, <slow>, <clears throat> pass through only for timbre-v3.0.
+For timbre-v2.5 the adapter strips tags before sending; tag-only text is rejected. Actual tag
+synthesis is unverified. audio_config remains48000Hz/mono/16-bit linear_pcm/wav.
 Success: 200 with RAW BINARY WAV in the response body (not JSON, not base64). Write response.content to a file.
 User-observed real TTS response (2026-10-31): playable 48000 Hz mono 16-bit PCM WAV may use
 streaming placeholder sizes (0xFFFFFFFF in the RIFF size, and potentially the data size).
@@ -52,7 +62,8 @@ Still unknown (fill in after the user runs scripts/smoke_real.py)
 Whether the key has API access and credits (402/403 would show it).
 Real latency per STT call and per TTS call.
 Script Prisma returns for Hinglish (Latin or Devanagari); Kannada STT language code.
-Voice quality of Nalini for the Dadi persona; other v2.5 voices worth testing.
+Voice quality and model compatibility of the user-chosen Kalpana/v3.0 combination;
+Nalini/v2.5 remains the historical comparison. Neither is validated by this code-only change.
 Whether Evon access will ever be available. Check the contest rules on which Gnani products are mandatory.
 Real STT response field names in practice.
 T2 plan (STT + TTS only)
