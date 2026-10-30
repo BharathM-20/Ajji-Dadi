@@ -48,6 +48,11 @@ def test_frozen_source_handlers_signatures_and_existing_tests():
                 addition = f'    monkeypatch.delenv("{switch}", raising=False)\n'.encode()
                 assert source.count(addition) == 1
                 source = source.replace(addition, b"")
+        if name == "tests/test_adapters.py":
+            selected = b'[("think", ([],))]'
+            original = b'[("asr", ("x", "x")), ("think", ([],)), ("say", ("x", "x"))]'
+            assert source.count(selected) == 1
+            source = source.replace(selected, original)
         if name == "requirements.txt":
             addition = b"httpx==0.28.1\n"
             assert source.count(addition) == 1
@@ -67,7 +72,10 @@ def test_frozen_source_handlers_signatures_and_existing_tests():
     )
     # D010 adds explicit runtime configuration before the unchanged launch call.
     main = next(n for n in tree.body if isinstance(n, ast.If))
-    assert ast.dump(main.body[-1]) in BASELINE["main"][0]
+    launch = main.body[-1]
+    assert launch.value.func.value.func.id == "configured_ui"
+    launch.value.func.value.func.id = "build_ui"
+    assert ast.dump(launch) in BASELINE["main"][0]
     handlers = [
         n
         for n in ast.walk(functions["build_ui"])

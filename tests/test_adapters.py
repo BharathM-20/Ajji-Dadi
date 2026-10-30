@@ -17,7 +17,7 @@ def test_mock_adapters():
 
 
 @pytest.mark.parametrize(
-    "operation,args", [("asr", ("x", "x")), ("think", ([],)), ("say", ("x", "x"))]
+    "operation,args", [("think", ([],))]
 )
 def test_real_paths_fail_closed(monkeypatch, operation, args):
     monkeypatch.setattr(adapters, "MOCK", False)

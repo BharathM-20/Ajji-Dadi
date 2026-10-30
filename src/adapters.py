@@ -21,11 +21,6 @@ def asr(path: str, code: str, *, retry_429: bool = True) -> str:
     if _speech_enabled("GNANI_REAL_ASR"):
         with _speech_timing("asr") as event:
             return _real_asr(path, event, retry_429)
-    if not MOCK:
-        raise NotImplementedError(
-            "ERROR: real ASR unavailable. WHY: initialization is MOCK-only. "
-            "FIX: real Gnani calls arrive in T2 from docs/GNANI_NOTES.md"
-        )
     return "Hello, this is a mock caller."
 
 
@@ -44,11 +39,6 @@ def say(text: str, code: str, *, retry_429: bool = True) -> str | None:
     if _speech_enabled("GNANI_REAL_TTS"):
         with _speech_timing("say") as event:
             return _real_say(text, event, retry_429)
-    if not MOCK:
-        raise NotImplementedError(
-            "ERROR: real speech unavailable. WHY: initialization is MOCK-only. "
-            "FIX: real Gnani calls arrive in T2 from docs/GNANI_NOTES.md"
-        )
     return None
 
 

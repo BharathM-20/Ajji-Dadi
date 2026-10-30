@@ -231,3 +231,22 @@ missingprobe. RealPCMduration30/30.01/zero testedlocally. RealAPIaccess/credit/s
 latency/devices and all paidcalls remain unverified. User mustrun the smoke with their own
 shortteammateaudio and paste sanitizedoutput; script limits to exactlyoneSTTattempt and
 oneTTSattempt sequentially, retriesoff. No vendor/model/body/header/key logs from tests.
+
+## F-SPEECH-BRAIN — 2026-10-31 (D014)
+Baseline df95920: offline setup succeeded; makecheck213passed13.11s. NewUI/coretests use
+fakeadapters.think + httpx.MockTransport only; no real model/Gnani/keyfile/device calls.
+Targeted first24passed/2fixturefails: invalidsuffix in test setup and fakebrain incorrectly
+requiring realASR transcript when ASRdisabled. Fixedtestfixtures; subsequent28passed7.24s,
+newloopbackUI29passed10.42s. OldCLIthemeassertion required exactoldselector; permittedonly
+configured_ui->build_ui AST normalization while keeping launchflags/defaultfunctionASTsfrozen.
+Review found rollbacklostbrain15spause; preservePAUSED withoutconsuminghistory/tactic/counters,
+addfakebrainregression. Fullspeech>10sstop coveredusingfakeclock. InputbadWAV testedthrough
+actualGradioeventdispatch withoutmedia conversion; typed service errors tested atASR/TTS
+401/402/403/429/500/503/timeout/invalid200, withtransactionrollbackandnocrash.
+Finalverifier F-SPEECH-BRAIN exited0: makecheck249passed28.47s, feature38passed12.31s, L1clean;
+onlyverifierpromotedthatcode/mockfeature. make smoke6passed0.55s. TwoobsoleteMOCKFalse speech
+negativeparams replacedbynewindependent-mode/switchcases, not lostcoverage. SharedHTTP lock,
+allrealflags, WAVrepair, TTSconfig, defaultCLI, localbrain tests and oldnetworkguards pass.
+Newloopbackprobe launched actualGradio5.49.1 server with fakebrain/mockedvendorHTTP and ran
+upload/screen/humangate/Dadi/audiofile/TTSfailure rollback/report/reset viaHTTP/SSE. Ownserver
+closed incleanup. Realphysicalplayback andAPIvoicequality remainunverified. T2stillblocked.

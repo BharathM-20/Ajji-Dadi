@@ -1,5 +1,51 @@
 # Progress
 
+## F-SPEECH-BRAIN final handoff — code/mock integration passing, T2 real still blocked
+Opt-in DADI_SPEECH=1 path now runs PCM WAV validation -> asr -> existing brain -> say in
+one queued UI callback. Uses existing Hindi/Devanagari persona and existing human gate/reset;
+no localbrain/persona/think/experimental/training source edits. Default MOCK and localtextUI
+behaviors remain; adapters' realflags now independently choose realHTTP versus existing mocks.
+Failures roll back transcript/history/stalls/turn/screening/verdict and show friendlystatus,
+safeERROR/WHY/FIX and failuretime. Existing brainPAUSED stop retained; >10sfullturn blocks
+further service calls until userreview/newcall. Allsuccessfulstage timings shown/logged.
+Micformatwav, stdlibwave completeframe/duration validation, and Gradiopreprocess=False avoid
+ffprobe/ffmpeg entirely in this path. CachedFileData validation and per-sessionstate preserved.
+Only this codefeature was promoted by scripts/verify_feature.py: L1clean, makecheck249passed
+28.47s (both defaultCLI and newloopbackUI route included); feature suite38passed12.31s.
+Finalmake smoke6passed0.55s: twoobsolete speechnegativeparams removed, replacedby independent
+switch/mode tests among38newchecks; all socket/DNS protection unchanged. DecisionsD014
+records these exact existing-test changes and narrow historical-themeguard normalization.
+Source review ACCEPT after restoring latency stop, conditional verification fulfilled; code
+scope sixscores2/2. Newloopbackprobe uses fakebrain and MockTransport, not realGnani/Ollama.
+Earlier targeted24passed/2testfixturefails (suffixmissingdot, fakebrain expectedrealtranscript
+whenASRmocked) corrected. HistoricalCLIlaunchassertion normalized onlyconfigured_uiselector.
+No realHTTP/model/device/latency/voicequality test, credentialfileread, keyrequest or paidcall.
+T2remainsblocked; F-DIALOGUE-QUALITY blocked with rejectedpilot intact, not falselycompleted.
+Exact launch, click path and actualuser-outputJSON/verifier commands: docs/SPEECH_UI.md.
+Launch after user privatelysetsprocesskey/Ollamarunning:
+`DADI_MODE=local DADI_SPEECH=1 GNANI_REAL_ASR=1 GNANI_REAL_TTS=1 .venv/bin/python -m src.app`
+Record/stop twice -> Let Dadi handle it -> record/stop again -> listen/Play. New call resets.
+T2usercapture: `.venv/bin/python scripts/smoke_real.py --audio clips/hinglish.wav` (USER ONLY);
+then reviewedactualJSON: `.venv/bin/python scripts/verify_feature.py T2 --user-evidence /tmp/dadi-t2-evidence.json`.
+See linkedinstructions for exit-code capture/review/schema; verifier never executes paidcalls.
+Stop after thissinglefeaturecommit. Untested: realvoicecompatibility, realHinglishquality,
+physicalmic/autoplay, realASRscript/latency/credits, and longcall/concurrentdeployment behavior.
+
+## F-SPEECH-BRAIN sprint contract — in progress
+Baseline df95920 clean on t2-gnani-speech; offline setup succeeded; baselinecheck213passed13.11s,
+mocksmoke8passed0.38s (sessionstart; see finalchangedparametercount below).
+One feature: opt-in DADI_SPEECH=1 UI using existing localbrain through think, sequential
+asr->brain->say with atomic state commit after successful speech. Independent real flags
+unchanged. PCM WAV <=30s validation with stdlibwave only. Hindi/Devanagari speech mapping
+uses existing persona/prompt unchanged. Friendlyerrors+safeERROR/WHY/FIX, perstagetiming.
+Keep default/mock and existing localtextUI, human gate/reset/banner. No adapterHTTP, think,
+persona/localbrain/experimental/training changes. Test fakebrain+MockTransport, actualGradio
+event dispatch, default launchregression; no real endpoints/models/keyfile reads.
+Prior failed F-DIALOGUE-QUALITY is now blocked rather than active, because its pilot was
+rejected and needs reviewed native data; its specification/evidence remains unchanged.
+Add only F-SPEECH-BRAIN spec/hash; T2 remains blocked on actual reviewed user-run smoke.
+
+
 ## Current T2 follow-up — configurable TTS and UI investigation, 2026-10-31
 Scope only: GNANI_TTS_MODEL/VOICE/LANGUAGE/SPEED defaults timbre-v3.0/Kalpana/hi-IN/0.92;
 finite speed within0.85–1.15, model-sensitive tags, safe TTS400message, notes/decision/tests.

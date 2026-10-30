@@ -349,9 +349,42 @@
     "dependencies": [
       "F-LOCAL-BRAIN"
     ],
-    "status": "in_progress",
+    "status": "blocked",
     "verification": ".venv/bin/python -m pytest -q tests/test_dialogue_quality.py tests/test_local_brain.py",
     "evidence": [],
     "notes": "Latest user language expansion overrides attached Hinglish-only exclusion. Preserve safety/default MOCK/reset. No speech integration or silent large downloads. Distinguish prompting from weight training, record failed experiments and native-review limits."
+  },
+  {
+    "id": "F-SPEECH-BRAIN",
+    "priority": 3,
+    "title": "Sequential speech and existing brain UI",
+    "user_visible_behavior": "Opt-in microphone path validates short PCM WAV, runs asr then existing brain then say, renders Devanagari replies/audio with timings, preserves human gate/reset/banner and rolls back speech failures. Default MOCK/text paths remain intact. Real endpoints and hardware need user evidence.",
+    "dependencies": [
+      "F-LOCAL-BRAIN"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_speech_session.py",
+    "evidence": [
+      {
+        "at_utc": "2026-10-30T20:26:11.209380+00:00",
+        "base_commit": "df95920fd00cf0570bb486f0796e8ff3aaa8de30",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 249 items\n\ntests/test_adapters.py ......                                            [  2%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_dialogue_quality.py ......................                    [ 13%]\ntests/test_flow.py ..............................                        [ 25%]\ntests/test_gnani_speech.py ............................................. [ 43%]\n...................................                                      [ 57%]\ntests/test_harness.py ........                                           [ 60%]\ntests/test_local_brain.py .............................................. [ 79%]\n.                                                                        [ 79%]\ntests/test_speech_session.py ......................................      [ 94%]\ntests/test_ui_launch.py ........                                         [ 97%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 249 passed in 28.47s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_speech_session.py",
+            "exit_code": 0,
+            "stdout": "......................................                                   [100%]\n38 passed in 12.31s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ],
+    "notes": "Code integration verified with mocked HTTP and fake brain only; T2 real-service acceptance remains blocked. No persona changes or extra model calls."
   }
 ]

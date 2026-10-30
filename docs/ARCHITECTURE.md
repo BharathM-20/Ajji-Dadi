@@ -142,3 +142,20 @@ explicitly disabled. No model call or credential-file access; prints safe status
 names and TTS path. It is NOT run by the agent. Default UI/local brain remain unchanged;
 real audio, credentials/access, credits, latency, devices and language quality remain blocked
 pending user-supplied smoke output. No real readiness follows from mocked success tests.
+
+## F-SPEECH-BRAIN opt-in integration (D014)
+Module startup calls configured_ui(): DADI_SPEECH=1 chooses build_speech_ui, otherwise the
+old build_ui/default/localtext behavior is unchanged. Backend selection stays behind think.
+The new speech_session module validates complete <=30sPCM WAV and runs asr -> existing
+local_brain.respond(language=Hindi) -> say sequentially on a deep copy. Only successful TTS
+(or explicitly disabled mockNone) commits conversation. Failure keeps histories/tactics/counts
+and shows safe diagnostic metadata. Native-script validation occurs before HindiTTS. Existing
+Hindi persona/rules unchanged; canned screening text is localized only in this wrapper.
+Mic format=wav with preprocess=False retains GradioFileData validation/state resolution but
+avoids its optional external media conversion; our stdlibwave validation is authoritative.
+All speech callbacks share a concurrency group. Adapter account-request lock stays unchanged.
+Speech flags alone control asr/say; disabledspeech uses existing mocks regardless of MOCK.
+Existing brainPAUSED stop is preserved on rollback; >10sfullturn diagnostic gate blocks the
+next attempt until userreview/newcall. Perturnmetrics includeasr/brain/say/total plusllm/tts
+aliases for existingview. Physicalaudio, providerlanguagequality and actual latency unverified.
+See SPEECH_UI.md for exact launch/click path and user-owned T2evidence recording commands.

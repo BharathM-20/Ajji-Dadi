@@ -275,3 +275,48 @@ Regression changes env inside MockTransport before returning an echoed key. Allt
 offline; neither a key nor a body is stored in diagnostics. Initialfullcheck212passed11.63s;
 finalcheck213passed13.98s and mocksmoke8passed0.10s after the race fix. Source review
 accepted after finalgreen; no STT behavior, locking/retry or UI wiring changes.
+
+## D014 — One transactional speech-to-brain UI (2026-10-31)
+DADI_SPEECH=1 opts into a microphone UI at module startup; defaultmockUI and localtextUI
+remain unchanged. Existing configure_from_env selects think backend independently. Existing
+local_brain.respond handles state/persona/tactics/human gate. Select existing Hindi persona
+language for Hindi/Hinglish speech to require Devanagari; no persona dictionary/prompt edits.
+Translate only existing canned screener/limit messages for this speech path. Reject nonnative
+brain output instead of sending unsuitable text to HindiTTS. No extra LLMcalls.
+New speech_session stages WAV validation/asr/brain/say sequentially on a deep copy. Only
+successful synthesis (or intentionally mockNone) commits state; ASR/TTSfailure preserves all
+conversation/history/tactics/counters, changing only UI diagnostic metadata. Safeconstant
+ERROR/WHY/FIX logging excludes backendexception values and headers. Brainfailures/invalid
+output also roll back. Shared Gradio concurrency group serializes newUI callbacks/reset.
+NewUI requires PCM WAV (format=wav + stdlibwave check) <=30seconds and complete frames;
+no ffprobe or external converter. Existing adapter request lock unchanged. Timings include
+asr,brain,say,total and existingllm/tts aliases for viewcompatibility. Real speech latency
+still needs user evidence; no T3go/no-go claim from mocked runs.
+F-SPEECH-BRAIN is a code/mock integration feature depending on F-LOCAL-BRAIN, not a claim
+that blockedT2real acceptance passed. The rejected dialoguequalityresearch is blocked to
+leave only this requested feature active and allow later reviewed T2recording. New spec
+is additive; all old definitions/evidence immutable. No trained/experimental source touched.
+
+D014 existing-test change: speech switches must work independently even when local brain sets
+MOCK=False. Remove asr/say's obsolete MOСK=False NotImplemented guards; flag-disabled speech
+always returns its existing mocks, with think unchanged. tests/test_adapters.py keeps the
+unavailable-model failclosed case but removes the two obsolete speech-negative parameters;
+new tests cover disabled speech in both brain modes and independent real flags. Historical
+UItheme freeze normalizes only this exactparameter-list edit before verifying originalhash,
+so all other oldtests/assertions remain frozen. No oldfixture hashes rewritten for this change.
+
+D014 existing-launch assertion change: CLI now explicitly selects configured_ui() so speech
+can be opted in. Historical themeguard asserts this selector and normalizes ONLY its name
+tobuild_ui before comparing the oldlaunch AST; localhost/share/inbrowser and all oldhandler
+ASTs remain frozen. NewUI-selection tests separately verify default/speech routes.
+Gradio5.49.1 preprocess=False still resolves gr.State and validates uploaded FileData but
+passes serialized file metadata without Audio's optional format conversion. Use this on
+newmic event only, extract its cached path, and validate PCM WAV ourselves. Thus malformed
+or non-WAV uploads reach friendly transactional handling without ffprobe/ffmpeg invocation.
+Mic format remainswav; no external media decoder/converter is required or attempted here.
+
+D014 review correction: transactional rollback must preserve existing brainPAUSED stop at15s;
+rollback history/tactics/counters but keep modePAUSED + explicitreviewmessage. Fullspeech
+turns over10s also set a diagnostic speech_paused gate (without advancing failed callstate)
+and block further service calls until newcall after userreview. No measuredreal latency or
+T3decision claimed. Speechview reuses existing local_view's unclassified human-review status.

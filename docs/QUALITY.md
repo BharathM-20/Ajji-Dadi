@@ -102,3 +102,13 @@ and truncatedWAV/partialsave handling. Finalmakecheck182passed10.90s and mocksmo
 satisfy conditional verification/reliability acceptance; sixcode-scoperubric scores2/2.
 This is not realservice/device/latency/credit/nativevoice acceptance. ffprobe is absent here;
 compressedformatduration tests use mocks. T2 staysblocked pending user-run smoke evidence.
+
+## F-SPEECH-BRAIN — code/mock integration ACCEPT
+Separate source review required preserving the oldbrainPAUSED latency gate during rollback;
+fixed and regression-tested with fakebrain. Fullspeechstop covered by fakeclock. Finalreview
+conditionalACCEPT had verification/reliabilitypending; verifier makecheck249passed28.47s plus
+feature38passed12.31s and smoke6passed0.55s satisfy it. Sixscores2/2 incode/mockscopeonly.
+DefaultUI/localtextUI/persona/localbrain unchanged; newqueuedmicrophonepath testedthrough
+actualGradiodispatch and loopbackupload/playbackgate/errorrollback/reset with fakeproviders.
+Existingtestchanges explicitlyD014; historicalguard onlynormalizes exactauthorized edits.
+No realservice/device/nativequality/readiness grade. T2stillblocked on actualuserevidence.

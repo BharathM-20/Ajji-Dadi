@@ -1,8 +1,10 @@
 """Reference Gradio UI for the MOCK call-screening simulation."""
 
+import os
+
 import gradio as gr
 
-from . import adapters, local_brain, session, ui_theme
+from . import adapters, local_brain, session, speech_session, ui_theme
 from .personas import LANGS
 from .report import end_call
 from .session import new_session
@@ -185,9 +187,107 @@ def build_local_ui():
     return demo
 
 
+def speech_view(state, audio=None):
+    result = list(local_view(state))
+    result[1] = audio
+    timing = state.get("speech_timing")
+    if timing:
+        result[3] += f"\n\nSpeech turn total: {timing['total']:.2f}s"
+    if state.get("speech_error"):
+        result[3] += "\n\n" + state["speech_error"]
+    return tuple(result)
+
+
+def speech_turn(audio_path, state):
+    if isinstance(audio_path, dict):
+        audio_path = audio_path.get("path")
+    state, audio = speech_session.respond(audio_path, state)
+    return speech_view(state, audio)
+
+
+def speech_choose(action, state):
+    return speech_view(local_brain.choose(action, state))
+
+
+def speech_reset():
+    return (*speech_view(local_brain.new_state()), "")
+
+
+def speech_end(state):
+    report = local_brain.end_call(state).replace(
+        "Model: local Ollama · Speech: not enabled", "Brain: configured think() · Speech UI enabled"
+    )
+    return (*speech_view(state), report)
+
+
+def build_speech_ui():
+    with gr.Blocks(
+        title="Dadi · Speech prototype", analytics_enabled=False, css=ui_theme.CSS
+    ) as demo:
+        gr.HTML(ui_theme.NAV)
+        gr.Markdown(
+            "# Dadi · Speech prototype\n"
+            "⚠️ **SIMULATION:** the caller is a teammate role-playing. "
+            "No real calls, no real people.",
+            elem_id="simulation-banner",
+        )
+        gr.Markdown(
+            "**Hindi / Hinglish speech · Devanagari replies.** Record twice for screening, "
+            "then choose **Let Dadi handle it**. "
+            "Speech adapters and brain are independently configured."
+        )
+        state = gr.State(local_brain.new_state())
+        chat = gr.Chatbot(type="messages", label="Role-play transcript")
+        status = gr.Markdown("Mode: SCREEN")
+        with gr.Row(visible=False) as decide:
+            pickup = gr.Button("Pick up")
+            decline = gr.Button("Decline")
+            dadi = gr.Button("Let Dadi handle it", variant="primary")
+        mic = gr.Audio(
+            sources=["microphone"],
+            type="filepath",
+            format="wav",
+            label="Caller speaks — record, then stop (maximum 30 seconds)",
+        )
+        audio = gr.Audio(autoplay=True, label="Dadi’s reply")
+        with gr.Row():
+            end = gr.Button("End call + report")
+            reset = gr.Button("New call")
+        report = gr.Markdown(label="Case file")
+        outputs = [chat, audio, state, status, decide, mic]
+        queue = {"concurrency_id": "speech-call", "concurrency_limit": 1}
+        mic.stop_recording(
+            speech_turn, [mic, state], outputs, api_name="speech_turn", preprocess=False, **queue
+        )
+        pickup.click(
+            lambda s: speech_choose("pickup", s),
+            [state],
+            outputs,
+            api_name="speech_pickup",
+            **queue,
+        )
+        decline.click(
+            lambda s: speech_choose("decline", s),
+            [state],
+            outputs,
+            api_name="speech_decline",
+            **queue,
+        )
+        dadi.click(
+            lambda s: speech_choose("dadi", s), [state], outputs, api_name="speech_dadi", **queue
+        )
+        end.click(speech_end, [state], outputs + [report], api_name="speech_report", **queue)
+        reset.click(speech_reset, None, outputs + [report], api_name="speech_reset", **queue)
+    return demo
+
+
+def configured_ui():
+    return build_speech_ui() if os.environ.get("DADI_SPEECH") == "1" else build_ui()
+
+
 if __name__ == "__main__":
     adapters.configure_from_env()
     if adapters.local_enabled():
         print("[startup] loading local model before accepting calls", flush=True)
         adapters.warm_local()
-    build_ui().launch(server_name="127.0.0.1", share=False, inbrowser=False)
+    configured_ui().launch(server_name="127.0.0.1", share=False, inbrowser=False)
