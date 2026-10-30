@@ -4,9 +4,9 @@
 - Keep every Gnani call in `src/adapters.py`; default `MOCK = True`.
   Why: protect credits and isolate vendor changes. Delete only if adapter boundary is replaced.
 - Never print, log or commit keys; keep `.env.example` empty of real values.
-  Why: private credentials. Keep permanently. Current T1b scope requires no keys or `.env`.
-- This session implements T1b Gradio UI/startup in MOCK only. Do not start T2 or later work.
-  Why: explicit one-feature scope. Replace this scope line only when the next session is authorized.
+  Why: private credentials. Keep permanently.
+- This session implements F-LOCAL-BRAIN: opt-in local Ollama text prototype.
+  Why: user selected local Ollama; speech integration remains excluded. Default MOCK stays safe.
 - Preserve `reference/`, `docs/CODEX_BRIEF.md` and `docs/GNANI_NOTES.md` during initialization.
   Why: user-owned inputs. Change notes later only with verified integration evidence.
 
@@ -53,7 +53,10 @@ Why: evidence beats confidence. Revisit commands only with a decision and runnab
 - Screener lines never enter Dadi history; screening result enters prompt context only.
 - Canned screener close saves a model call; classifier failure defaults to suspicious.
 - Plain Python; no agent framework. No drive-by refactors or multiple active features.
-- Real latency over 8–10 seconds triggers STOP and user decision; do not continue features.
+- Real speech latency over 8–10 seconds triggers STOP and user decision.
+  Local text prototype uses a user-approved 15-second ceiling (D010); pause calls above it.
+  User authorized bounded local tuning/retests with80tokens and a hard request deadline;
+  no repeated approval needed within F-LOCAL-BRAIN. Do not start another feature.
 - Do not claim Daisy-level duration, unverified statistics, or fixture accuracy percentages.
 Why: agreed product behavior and truthful simulation. Retain unless the user revises the brief.
 

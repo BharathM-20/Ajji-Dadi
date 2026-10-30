@@ -120,3 +120,58 @@ precision), plus SVG title and visible score text. Keep sanitization enabled; ne
 for decoration. Color the stroke via the verdict CSS variable rather than inherited currentColor.
 Reason: observed browser compatibility, not classification/policy changes. New additive tests
 cover score geometry and escaping; all pre-existing tests remain byte-identical.
+
+## D010 — Opt-in local prototype brain (2026-10-30)
+User authorized building the brain and explicitly chose Ollama rather than Gemini. Add one
+F-LOCAL-BRAIN feature; retain existing feature definitions and update the additive spec hash.
+Use installed Ollama and official Qwen3 4B Instruct for an 8GB M3 trial; measure before any
+latency claim. HTTP stays solely in adapters; stdlib client, fixed loopback destination,
+no dependencies or keys. Default MOCK behavior remains the reference path.
+Use code-selected unused tactics, fixed fictional facts, bounded recent history and persistent
+caller memory with one LLM call per Dadi turn. Five language prompts are experimental until
+native review. Add explicit text UI so missing speech credentials cannot block the prototype.
+Reuse existing themed app and human decision gate. Reports derive from stored transcript;
+no fabricated extracted facts. Separate Gnani speech work remains blocked.
+Historical presentation-only source freeze must allow the newly authorized adapter/app changes;
+retain baseline fixture and keep default UI event/signature/output assertions wherever possible.
+Rejected: hosting 30B on 8GB, hosted Gemini against user preference, pretending text is ASR,
+claiming production interception or multilingual fluency, and unverified paid speech integration.
+Sources: https://docs.ollama.com/api/chat and
+https://docs.ollama.com/capabilities/structured-outputs .
+
+D010 trial refinement: 4B first turn timed out at32.8s; stopped under latency rule.
+User explicitly chose a smaller model. Unload only our trial model (leave Ollama server),
+trial qwen3:1.7b with think=false and same bounded prompts. New default is1.7b.
+Official references: https://ollama.com/library/qwen3:1.7b and
+https://docs.ollama.com/capabilities/thinking .
+
+D010 second refinement: user authorized warming/short prompts, then installed Llama3.2
+trial after1.7b echoes. Llama produced original Hinglish stall but10.2s exceeded ceiling.
+Stop rule invoked again; asked whether to allow15s prototype ceiling. No further model calls
+until that decision. Trial default is now installed llama3.2:latest; target20-word replies,
+maximum40 validator. Preload model at startup/probe separately from conversation timing.
+Reject exact echoes against actual byte-clipped user message, not only original input.
+Structured one-call response diagnostic failed incomplete and was not added to product.
+Official preload API reference: https://docs.ollama.com/api/generate .
+
+D010 concurrent input update: user-authored commit12919b6 replaced GNANI_NOTES during this
+session, explicitly authorizing documented STT/TTS shapes and retaining local think().
+Preserve that committed input; update only its input-hash fixture to match12919b6. This
+repairs the now-stale immutable-input guard without changing reference/brief hashes or
+starting T2. Final check before this repair:90passed1failed7.66s (notes hash), smoke8passed.
+
+D010 user-approved local latency revision (2026-10-30): user explicitly selected
+"Allow15-second prototype limit" and authorized20-word targets plus longer conversation
+verification. Local text ceiling is15s; original real-speech stop8–10s remains. Update only
+F-LOCAL-BRAIN's stop-rule note/spec digest to match this explicit requirement revision.
+Resume the same feature; no T2+ work. Keep startup warmup separate from turn latency.
+
+D010 bounded tuning authorization: first15s longer rerun exceeded16.4s on verbose output.
+User explicitly authorized80-token cap, hard request deadline, labelled fallback and iterative
+local retests without asking after each failed trial, solely within F-LOCAL-BRAIN.
+Use native streaming via direct loopback HTTPConnection, update socket timeout to remaining
+12s total budget before each request/header/chunk read, close on first complete spoken
+sentence or deadline. No proxy/redirect handling; no off-host address. Incomplete token-limit
+responses still reject; stage directions reject. JSON callers retain complete-object streaming.
+Obvious role-change requests get tagged code deflections without LLM work; pattern is
+heuristic, not universal injection resistance. Original speech go/no-go remains unchanged.

@@ -2,7 +2,7 @@
 
 import gradio as gr
 
-from . import adapters, session, ui_theme
+from . import adapters, local_brain, session, ui_theme
 from .personas import LANGS
 from .report import end_call
 from .session import new_session
@@ -46,6 +46,8 @@ def new_call():
 
 
 def build_ui():
+    if adapters.local_enabled():
+        return build_local_ui()
     if not adapters.MOCK:
         raise RuntimeError(
             "ERROR: real mode unavailable in this UI. WHY: T1b is MOCK-only. "
@@ -112,5 +114,80 @@ def build_ui():
     return demo
 
 
+def local_view(state):
+    result = list(view(state))
+    if state["mode"] == "DECIDE":
+        result[3] = ("**Screening complete — human review required.** "
+                     "Classification is not enabled in this local prototype. "
+                     "Review the caller messages and choose how to handle the call.")
+    if state.get("reply_source") == "code_deflection":
+        result[3] += "\n\nCode deflection: obvious role-change request."
+    if state.get("error"):
+        result[3] += "\n\n" + state["error"]
+    return tuple(result)
+
+
+def local_turn(text, state, language):
+    return local_view(local_brain.respond(text, state, language))
+
+
+def local_choose(action, state):
+    return local_view(local_brain.choose(action, state))
+
+
+def local_end(state):
+    report = local_brain.end_call(state)
+    return (*local_view(state), report)
+
+
+def local_reset():
+    return (*local_view(local_brain.new_state()), "")
+
+
+def build_local_ui():
+    with gr.Blocks(title="Dadi · Local prototype", analytics_enabled=False,
+                   css=ui_theme.CSS) as demo:
+        gr.HTML(ui_theme.NAV)
+        gr.Markdown(
+            "# Dadi · Local Ollama prototype\n"
+            "⚠️ **SIMULATION:** the caller is a teammate role-playing. "
+            "No real calls, no real people.",
+            elem_id="simulation-banner",
+        )
+        gr.Markdown(
+            "**Local LLM · text only.** Speech is not enabled. Language quality is experimental; "
+            "Kannada/Kanglish need native review. Send two screening messages, choose "
+            "**Let Dadi handle it**, then continue as the caller. Language locks for each call."
+        )
+        state = gr.State(local_brain.new_state())
+        language = gr.Dropdown(list(local_brain.LANGUAGES), value="Hinglish", label="Language")
+        chat = gr.Chatbot(type="messages", height=360, label="Role-play transcript")
+        status = gr.Markdown("Mode: SCREEN")
+        with gr.Row(visible=False) as decide:
+            pickup = gr.Button("Pick up")
+            decline = gr.Button("Decline")
+            dadi = gr.Button("Let Dadi handle it", variant="primary")
+        text = gr.Textbox(label="Caller message", max_lines=3)
+        send = gr.Button("Send caller message")
+        audio = gr.Audio(visible=False)  # Shared view output; local mode generates no audio.
+        with gr.Row():
+            end = gr.Button("End call + report")
+            reset = gr.Button("New call")
+        report = gr.Markdown(label="Case file", elem_id="case-file")
+        outputs = [chat, audio, state, status, decide, text]
+        send.click(local_turn, [text, state, language], outputs, api_name="local_turn")
+        pickup.click(lambda s: local_choose("pickup", s), [state], outputs, api_name="local_pickup")
+        decline.click(lambda s: local_choose("decline", s), [state], outputs,
+                      api_name="local_decline")
+        dadi.click(lambda s: local_choose("dadi", s), [state], outputs, api_name="local_dadi")
+        end.click(local_end, [state], outputs + [report], api_name="local_report")
+        reset.click(local_reset, None, outputs + [report], api_name="local_reset")
+    return demo
+
+
 if __name__ == "__main__":
+    adapters.configure_from_env()
+    if adapters.local_enabled():
+        print("[startup] loading local model before accepting calls", flush=True)
+        adapters.warm_local()
     build_ui().launch(server_name="127.0.0.1", share=False, inbrowser=False)

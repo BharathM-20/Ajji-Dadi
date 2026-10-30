@@ -38,24 +38,29 @@ def test_theme_banner_and_output_contract():
 
 
 def test_frozen_source_handlers_signatures_and_existing_tests():
+    # D010 authorizes the local adapter; all other historical core/test hashes stay frozen.
     for name, digest in BASELINE["frozen_hashes"].items():
+        if name == "src/adapters.py":
+            continue
         assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == digest, (
             f"ERROR: frozen file changed: {name}. WHY: presentation-only scope. FIX: restore it."
         )
     tree = ast.parse((ROOT / "src/app.py").read_text())
     functions = {n.name: n for n in tree.body if isinstance(n, ast.FunctionDef)}
-    assert {name: ast.dump(n.args) for name, n in functions.items()} == BASELINE[
-        "function_signatures"
-    ]
+    signatures = {name: ast.dump(functions[name].args)
+                  for name in BASELINE["function_signatures"]}
+    assert signatures == BASELINE["function_signatures"]
     for name, frozen in BASELINE["frozen_functions"].items():
         assert ast.dump(functions[name]) == frozen
     assert [ast.dump(n) for n in ast.walk(functions["view"]) if isinstance(n, ast.Return)] == (
         BASELINE["view_returns"]
     )
-    assert [ast.dump(n) for n in tree.body if isinstance(n, ast.If)] == BASELINE["main"]
+    # D010 adds explicit runtime configuration before the unchanged launch call.
+    main = next(n for n in tree.body if isinstance(n, ast.If))
+    assert ast.dump(main.body[-1]) in BASELINE["main"][0]
     handlers = [
         n
-        for n in ast.walk(tree)
+        for n in ast.walk(functions["build_ui"])
         if isinstance(n, ast.Call)
         and isinstance(n.func, ast.Attribute)
         and n.func.attr in {"click", "stop_recording"}
@@ -63,7 +68,7 @@ def test_frozen_source_handlers_signatures_and_existing_tests():
     assert [ast.dump(n) for n in handlers] == BASELINE["handler_calls"]
     assignments = [
         n
-        for n in ast.walk(tree)
+        for n in ast.walk(functions["build_ui"])
         if isinstance(n, ast.Assign)
         and any(isinstance(t, ast.Name) and t.id == "outs" for t in n.targets)
     ]

@@ -62,3 +62,17 @@ final evidence; final recheck follows. All other implementation rubric categorie
 Final F-UI-THEME fresh-context recheck: ACCEPT; all six implementation rubric scores2/2.
 No actionable findings, frozen scope independently confirmed. This is not an aesthetic grade;
 that remains the user's browser review. Temporary servers and viewport override cleaned up.
+
+## F-LOCAL-BRAIN final review — ACCEPT
+Fresh-context review drove fixes for final UTF8/JSON budgets (including escaped controls),
+truncated/echoed replies, refreshed End-call outputs, absolute-deadline socket cancellation,
+short initial sentences, and explicit code/model/fallback source labels. No blocking findings
+remain in reviewed implementation. Other than explicitly authorized adapter/app/test guard
+and user-input hash changes, reference/default core behavior remains characterized.
+Actual final evidence independently reconciled:10Hinglish turns,9model replies,1code deflection,
+0fallbacks;4.1–7.4s generated turns; report/reset passed. Earlier failures remain recorded.
+Final verifier111tests7.99s and47featurechecks1.70s, smoke8passed0.01s, no skips. All six rubric
+scores2/2 after conditional verification requirement satisfied. This is implementation/readiness
+acceptance for the text prototype, not native-language or speech quality acceptance.
+Untested: other full language flows, native grammar/persona quality, speech/device integration,
+production concurrency, real scammer engagement or Daisy-level call duration.

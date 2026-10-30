@@ -1,5 +1,33 @@
 # Progress
 
+## Current session — F-LOCAL-BRAIN passing
+User selected local Ollama, approved15s local text ceiling and bounded iterative tuning.
+Baseline e56b34464tests; concurrent user-authored12919b6 updated Gnani notes. Preserve that
+committed input; its single hash fixture was synchronized. Resume baseline91tests passed.
+One feature only: opt-in local text brain/UI, five language choices, persistent fictional
+persona/caller memory, fresh tactics, human gate, transcript report and reset. No T2+ work.
+Default MOCK remains deterministic. Local default is installed llama3.2:latest.
+Startup preloads model. Think streams with80-token cap,14s cancellation timer and first
+complete spoken sentence; local turn ceiling15s. Recent history is two exchanges; persistent
+caller statements, fixed facts and used tactics survive history trimming. Final JSON quoting
+and total prompt bytes bounded. Obvious role attacks use explicitly labelled code deflection.
+Final actual HTTP/SSE trial:10 Hinglish turns,9 model replies,1code deflection,0fallbacks;
+model turns4.1–7.4s (rounded mean5.79s), warmup0.09s. Report and reset passed. Family names
+SavitriDevi/Rohan recalled. Exact output saved in docs/evidence/local_brain_trial.json.
+Earlier failures and7-model/2-fallback run are recorded honestly in TEST_LOG; final language
+remains rough and is not native-reviewed. No sustained real-voice or real-call claim.
+Exact DADI_MODE=local python -m src.app launched at temporary7862; HTTP config confirmed
+permanent simulation banner/local endpoint/analytics off. Own server stopped, trial model
+unloaded; user's Ollama server left running. Final verifier succeeded:111tests7.99s,47feature checks1.70s;
+smoke8passed0.01s. Status promoted only by scripts/verify_feature.py. Independent final
+review ACCEPT, all six rubric scores2/2.
+Untested: Hindi/English/Kannada/Kanglish full flows, native quality, actual STT/TTS, devices,
+concurrent sessions/performance at scale, real scammers, contest Evon eligibility.
+This session ends with one verified implementation commit (git log -1). Stop here.
+Next separately authorized work: integrate documented STT/TTS, then obtain user-run real
+audio/latency/native-language evidence. No other feature started.
+
+
 ## Current state — F-UI-THEME session
 - Baseline commit c5db62f; checkout started clean. T1a/T1b remain passing.
 - Feature F-UI-THEME added in_progress before implementation by explicit user request;

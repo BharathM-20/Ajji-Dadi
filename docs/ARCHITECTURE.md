@@ -92,3 +92,32 @@ regression checks freeze existing tests/core hashes, function/handler/return AST
 output types/counts and banner permanence. Additional static/layout components have no handlers.
 Renderer SVG uses native dimensions compatible with Markdown sanitization; report/transcript
 logic and content are unchanged. Visual styling is not real-service or aesthetic acceptance.
+
+## F-LOCAL-BRAIN opt-in path (D010)
+
+`DADI_MODE=local` selects a separate text prototype through app.py; importing adapters still
+starts with MOCK=True. `configure_from_env` explicitly resets MOCK mode or enables the local
+model. Installed Llama3.2 is the current trial default, thinking disabled. Only adapters performs
+HTTP, fixed at loopback with proxy use disabled, finite timeout and bounded response reads.
+No API keys or speech endpoints are used. Other legacy MOCK behavior remains characterized.
+
+local_brain owns SCREEN -> DECIDE -> DADI/PICKED/DECLINED, PAUSED on >15s, and ENDED.
+It reuses the state/view shape but has strict human action gating. Local screening is canned
+and explicitly unclassified; it does not reuse the mock classifier marker as model evidence.
+An unused tactic is selected by demand hints then a deterministic 15-beat progression.
+Persona facts, bounded caller statements and two recent exchanges feed one model request.
+Caller memory stays in an untrusted user message. Total prompt-content UTF-8 budget3500,
+model context4096, output80 tokens; language script cannot silently inflate a character-only
+budget. Tactics are consumed only after a usable reply. An absolute14s timer shuts down
+socket I/O; first complete spoken sentence can finish earlier. Obvious role-change requests get labelled code deflection without model work.
+Error/fallback and latency status are surfaced; the same fallback can repeat on persistent failure and is not demo readiness.
+Reports quote stored caller statements without invented extraction or saved-time claims.
+End and reset refresh the UI state/controls/report. Local UI has text entry and no live audio.
+
+Historical theme fixture remains unchanged. Its source guard permits the explicitly authorized
+adapter modification and app startup/local functions; default handlers, output contracts,
+core tests and logic hashes remain frozen. New local contracts have independent regressions.
+`DADI_MODE=local .venv/bin/python -m scripts.probe_local` runs an explicitly invoked actual
+HTTP/SSE local-model path; it is separate from offline pytest and never calls paid speech.
+Final ten-turn Hinglish trial passed:9model replies,1code deflection,0fallbacks, report/reset.
+Other languages/voice remain unverified; see LOCAL_BRAIN and PROGRESS.

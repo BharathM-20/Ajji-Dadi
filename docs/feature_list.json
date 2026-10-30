@@ -307,5 +307,38 @@
       }
     ],
     "notes": "User-authorized additive feature; make check plus frozen source/signatures/events/outputs/component behavior checks, unchanged existing tests, banner permanence, URL-free CSS/theme, real launch/full MOCK flow. User judges appearance; no claim of visual quality."
+  },
+  {
+    "id": "F-LOCAL-BRAIN",
+    "priority": 4,
+    "title": "Opt-in local Ollama text prototype brain",
+    "user_visible_behavior": "An explicit local text mode screens two messages, requires human handoff, remembers caller context and varies short grandmother stalls in five selectable languages; reports and resets work without paid speech APIs.",
+    "dependencies": [
+      "T1b"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_local_brain.py",
+    "evidence": [
+      {
+        "at_utc": "2026-10-30T15:28:18.249606+00:00",
+        "base_commit": "12919b60308194f7abc4f79c10d6d2e0be946751",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 111 items\n\ntests/test_adapters.py ........                                          [  7%]\ntests/test_architecture.py .....                                         [ 11%]\ntests/test_flow.py ..............................                        [ 38%]\ntests/test_harness.py ........                                           [ 45%]\ntests/test_local_brain.py .............................................. [ 87%]\n.                                                                        [ 88%]\ntests/test_ui_launch.py ........                                         [ 95%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 111 passed in 7.99s ==============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_local_brain.py",
+            "exit_code": 0,
+            "stdout": "...............................................                          [100%]\n47 passed in 1.70s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ],
+    "notes": "Actual Ollama/UI trial recorded separately; native language review and speech integration remain unverified. Stop for user decision if model latency exceeds 15 seconds (explicit user-approved local prototype revision)."
   }
 ]

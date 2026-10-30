@@ -110,3 +110,69 @@ Initialization history is in PROGRESS.md. MOCK core evidence follows.
 
 - Final independent review ACCEPT, all six implementation rubric scores2/2. Temporary
   localhost7860/7861 servers stopped; browser viewport reset and preview tab closed.
+
+## F-LOCAL-BRAIN work in progress — 2026-10-30
+Baseline e56b344: make setup succeeded; check64 passed7.86s; smoke8 passed0.01s.
+Intermediate full check84 passed17.46s; smoke8 passed0.03s. Following reviewer fixes,
+local/theme suites28 passed16.33s. Final full check follows below.
+Real loopback Gradio/Ollama probe: actual first Qwen3 4B turn32.8s, transport failed,
+marked canned fallback, no used stall, modePAUSED. No successful generated answer.
+UI HTTP/SSE screening/handoff/report executed; report and ENDED status observed.
+Probe exited1 because its visibility assertion expected a layout update that Gradio Client
+omits; reset did not execute. This is partial evidence, not an accepted end-to-end run.
+Model trials stopped under the >10s rule. Feature blocked, no verifier promotion.
+Review required changes: conservative multilingual prompt-byte bound, reject token-limit
+truncation, refresh end-state outputs. All implemented with regressions. Review recheck pending.
+Untested: usable model reply, multilingual quality, full 15-turn model conversation, reset
+through live local route, physical audio, real speech APIs and production scale.
+
+Final-after-initial-trial check:86 passed,1 failed83.81s; failure was existing CLI app startup
+timeout while4B model occupied memory (environment/resource contention). Smoke8 passed.
+After unloading only our4B model, make check88 passed14.02s, no skips. Added regression
+covers repr-escaped control bytes; total content cap now includes final rendered memory.
+User authorized smaller model trial; downloading qwen3:1.7b, think=false. No further4B calls.
+
+Smaller-model actual trials: qwen3:1.7b cold firstturn10.2s echoed caller, PAUSED, exit1.
+User authorized shorter prompt and warmup. Warmup0.08s; turn4.8s rejected (echo), flagged
+fallback with no consumed stall. Short direct synthetic diagnostics: math0.30s answered4;
+English persona1.49s responded, Hinglish2.55s echoed caller; style-example3.25s copied the
+example. Structured JSON trial produced incomplete output (no successful dialogue; elapsed
+not captured on exception). Structured response approach was not added to the product.
+User authorized installed llama3.2:latest trial. Unloaded only ourQwen model. Llama warmup3.94s,
+first actual UI Hinglish turn10.2s produced an original37-word passbook/grocery-ledger stall;
+PAUSED and exit1 because above10s. No later turns/report/reset in this trial. Stopped calls;
+asked user whether to allow15s prototype limit or keep10s with shorter replies.
+Echo rejection and pre-call warmup added with offline regressions; local/theme31passed2.25s.
+
+Final check after warmup/echo changes:90passed1failed7.66s, smoke8passed0.01s.
+Failure was protected GNANI_NOTES hash after concurrent user-authored commit12919b6.
+Preserved that new committed input and synchronized its single fixture hash perD010;
+reference/brief hashes remain unchanged. No STT/TTS integration started.
+
+Final offline rerun after concurrent-input fixture repair:make check91passed7.39s;
+make smoke8passed0.01s; git diff --check clean. No skips. No further model calls.
+Feature remains blocked on explicit latency decision and successful longer UI/model path;
+no verifier promotion or implementation commit. User-owned12919b6 remains HEAD.
+
+## F-LOCAL-BRAIN authorized15s/bounded-tuning continuation
+Resume baseline:setup succeeded offline; check91passed7.77s; smoke8passed0.01s.
+User approved15s local ceiling, then bounded80token/deadline tuning without repeated approval.
+First10turntrial stopped at6 on invalid injection output after5 generated replies. Added
+explicit code deflection with no model call/source label. Nexttrial exceeded15s atturn5
+(16.4s verbose/stage-direction output). The initial12s-deadline run stopped atturn8 with a labelled12.0s fallback. No pass claimed.
+Absolute cancellation timer14s added after reviewer identified inactivity-timeout weakness;
+post-read expiry checks and blocked-header/body tests verify cancellation. Stage directions
+reject; sentence prefix finishes naturally. Full14s run passed10turns:7model,1code,2fallbacks.
+Reduced history/memory and nearer short-reply instruction; final actual trial exit0:
+9model,1code,0fallbacks, report/reset passed, min4.1/max7.4/roundedmean5.79s, warmup0.09s.
+Family-name answer included SavitriDevi/Rohan; grammar remains rough/unreviewed. Raw exact
+output/command in docs/evidence/local_brain_trial.json. Quoting-budget edge fixed afterward
+for control-heavy input; ordinary trial payloads unchanged, protected by a regression.
+Local/theme52passed2.83s. Exact local CLI startup at7862 andHTTPconfig confirmed banner,
+local_turn endpoint and analyticsFalse. Temporary PID63140 stopped; trial model unloaded,
+user's Ollama server untouched. No further model calls needed. Final verifier follows.
+
+Final F-LOCAL-BRAIN verifier exit0:make check111passed7.99s; exact feature command47passed1.70s;
+make smoke8passed0.01s. No skips. Only verifier promoted feature status. Independent final
+source/evidence review ACCEPT, conditional verification requirement now fulfilled; all six
+rubric scores2/2. Temporary CLI/server and trial model cleaned; no paid speech/model calls.
