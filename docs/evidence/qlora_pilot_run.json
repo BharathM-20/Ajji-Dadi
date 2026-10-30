@@ -1,0 +1,42 @@
+{
+  "training_completed": true,
+  "steps": 20,
+  "model": "installed qwen3:1.7b -> mixed GGUF -> MLX affine4",
+  "train_examples": 60,
+  "validation_examples": 9,
+  "languages": [
+    "Hinglish",
+    "Hindi",
+    "Kannada"
+  ],
+  "validation_loss_before": 2.732,
+  "validation_loss_after": 1.195,
+  "peak_mlx_bytes": 1843898688,
+  "total_system_ram_peak": "not measured",
+  "trainable_parameters": 229376,
+  "quality_improvement": "not established; pilot rejected for deployment, see qlora_pilot_comparison.json",
+  "native_review": "not performed",
+  "adapter_files": {
+    "adapters.safetensors": "c22b270deab82de13bd9b0a35b19b8a7507207f986371f377c1ec754ed3ecac2",
+    "0000020_adapters.safetensors": "c22b270deab82de13bd9b0a35b19b8a7507207f986371f377c1ec754ed3ecac2"
+  },
+  "base_source": {
+    "source": "/Users/bharathmuthyala/.ollama/models/blobs/sha256-3d0b790534fe4b79525fc3692950408dca41171676ed7e21db57af5c65ef6ab6",
+    "source_bytes": 1359279776,
+    "parameters": 2031739904,
+    "tensor_count": 311,
+    "weights_complete": true,
+    "converted_model_validated": false,
+    "vocabulary_token_ids": "passed all entries",
+    "tokenization_equivalence": "pending base inference comparison",
+    "native_review": "not performed",
+    "quantization_warning": "GGUF mixed K-quants requantized to MLX affine4; numerics differ.",
+    "estimated_mlx_weight_bytes": 1143031808,
+    "tokenizer_roundtrip": "passed three languages",
+    "memory_budget_gb": 4,
+    "peak_mlx_bytes": 797376512,
+    "converted_model_load_and_generation": "passed eight offline cases; docs/evidence/qlora_converted_base.json",
+    "fidelity_note": "Coherent generation only, not exact GGUF logit/tokenization equivalence"
+  },
+  "config": "# Experimental only. No weights trained; approval and corpus review required first.\nmodel: training/artifacts/qwen17_mlx\ndata: training/dadi_draft\ntrain: true\nfine_tune_type: lora\nnum_layers: 4\nbatch_size: 1\niters: 20\nlearning_rate: 0.0001\nsteps_per_report: 5\nsteps_per_eval: 20\nval_batches: 9\nadapter_path: training/artifacts/dadi_qwen17_pilot\nsave_every: 20\nmax_seq_length: 512\ngrad_checkpoint: true\ngrad_accumulation_steps: 1\nmask_prompt: true\nseed: 42\nreport_to: null\ntrust_remote_code: false\nlora_parameters:\n  rank: 8\n  scale: 16.0\n  dropout: 0.05\n  keys:\n    - self_attn.q_proj\n    - self_attn.v_proj\n"
+}

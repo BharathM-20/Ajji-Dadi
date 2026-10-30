@@ -1,0 +1,91 @@
+{
+  "verdict": "REJECT for deployment; no broad dialogue-quality improvement established",
+  "review": "Agent inspection of exact generated transcripts; not native-human review or a calibrated accuracy score",
+  "request_pairs": 8,
+  "same_prompts_and_seed_temperature_token_budget": true,
+  "converted_base_mean_seconds": 8.672122859497904,
+  "adapted_mean_seconds": 6.344873640504375,
+  "base_deadline_errors": 2,
+  "adapted_deadline_errors": 0,
+  "limitations": [
+    "Fixed comparison cases inspected during tuning; not blinded.",
+    "MLX backend raw inference, not Ollama app/voice path.",
+    "Two converted-base turns exceeded15 seconds despite14-second signal alarm; native execution delays Python signal delivery.",
+    "Safety and sentence heuristics do not measure fluency.",
+    "Few-shot family examples overlap validation topic; lower validation loss is insufficient."
+  ],
+  "rows": [
+    {
+      "case_id": "hi-mix-otp",
+      "identical_request": true,
+      "before": "",
+      "after": "Paise aapke aadhar ka mera kaise aya?",
+      "before_seconds": 15.60695591699914,
+      "after_seconds": 6.750286291993689,
+      "inspection": "Neither handles the OTP request plausibly; adapted reply introduces unrelated Aadhaar/payment wording."
+    },
+    {
+      "case_id": "hi-mix-recall",
+      "identical_request": true,
+      "before": "Maine pehle kaunsa vibhag aur kaunsa case bataya tha?",
+      "after": "Aapne ek ekhankh kaunsa vibhag aur kaunsa case bataye.",
+      "before_seconds": 3.1881116250006016,
+      "after_seconds": 5.778602416015929,
+      "inspection": "Caller recall still fails: echo before, garbled non-answer after."
+    },
+    {
+      "case_id": "hi-mix-family",
+      "identical_request": true,
+      "before": "Rohan aapka pota hai, aur aapka poora naam Savitri Devi hai.",
+      "after": "Rohan aapka pota hai, aapka poora naam Savitri Devi hai.",
+      "before_seconds": 3.2441335000039544,
+      "after_seconds": 5.243872040999122,
+      "inspection": "Both answer with aapka instead of mera, confusing speaker perspective."
+    },
+    {
+      "case_id": "hindi-otp",
+      "identical_request": true,
+      "before": "मैंने बैंक से बोल रहा हूँ, आपके लिए बताऊंगी।",
+      "after": "अह, मैंने कोई बैंक के बारे में बात नहीं कहा, मुझे कोई तकलीफ है।",
+      "before_seconds": 6.251028541999403,
+      "after_seconds": 7.4174071659799665,
+      "inspection": "Neither reply is a convincing contextual grandmother response."
+    },
+    {
+      "case_id": "hindi-family",
+      "identical_request": true,
+      "before": "रोहन मेरा पोता है, मैं सावित्री देवी बोल रही हूँ।",
+      "after": "रोहन मेरा पोता है, मैं सावित्री देवी बोल रही हूँ।",
+      "before_seconds": 8.481180750008207,
+      "after_seconds": 5.447835375001887,
+      "inspection": "Same correct family sentence before and after; also demonstrated in prompt."
+    },
+    {
+      "case_id": "kannada-otp",
+      "identical_request": true,
+      "before": "ನನ್ನ ಫೋನ್ ಬಂದ ಕೋಡ್ ಇಲ್ಲ, ನಾನು ಹಾಗೆ ಹೇಳುತ್ತಿಲ್ಲ, ನಿಮ್ಮ",
+      "after": "ಹಾಗು, ನನ್ನ ಫೋನ್ ಬಂದ ಕೋಡ್ ಅನ್ನು ಈಗ ಓದಿ ಹೇಳಿ, ಹೇಳಿ ಹೇಳಿ!",
+      "before_seconds": 14.1727127499762,
+      "after_seconds": 8.617081250005867,
+      "inspection": "Before is unfinished; after requests the code and is flagged by safety guard."
+    },
+    {
+      "case_id": "kannada-threat",
+      "identical_request": true,
+      "before": "ಊರಿನ ಹೆಸರೆ ಇದೆ, ಇಲ್ಲದಿದ್ದರೆ ಪೊಲೀಸರು ಮನೆಗೆ ಬರುತ್ತಾರೆ.",
+      "after": "ಸುತ್ತುವು ಹಣ ಕಳಿಸಿ, ಇಲ್ಲದಿದ್ದರೆ ನನ್ನ ಮನೆಗೆ ಬರುತ್ತಿರುತ್ತಿರುತ",
+      "before_seconds": 8.9554413750011,
+      "after_seconds": 7.474004584015347,
+      "inspection": "Both are unusable; adapted reply is unfinished and sounds like a payment instruction."
+    },
+    {
+      "case_id": "kannada-family",
+      "identical_request": true,
+      "before": "ಪ್ರಶಾಂತ್ ನನ್ನ ಮೊಮ್ಮಗ, ನಾನು ಶಾರದಮ್ಮ ಮಾತನಾಡುತ್ತಿದ್ದೇನೆ.",
+      "after": "ನಿಮ್ಮ ಹೆಸರೇನು?",
+      "before_seconds": 9.477418416994624,
+      "after_seconds": 4.02990000002319,
+      "inspection": "Correct grandmother identity before; after asks caller identity instead."
+    }
+  ]
+}

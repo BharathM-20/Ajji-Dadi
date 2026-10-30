@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "description": "Development probes for prompt/model selection, not the paired evaluation set.",
+  "cases": [
+    {
+      "id": "dev-hi-message",
+      "split": "development",
+      "language": "Hinglish",
+      "turns": [
+        "Chashma toh pehen liya, ab 'session expired' samajh aa raha hai?"
+      ],
+      "expectation": "Natural context-aware short grandmother response, no invented secrets.",
+      "screen": [
+        "Support se bol raha hoon.",
+        "Phone ki screen dekhni hai."
+      ],
+      "history": [],
+      "used_stalls": []
+    },
+    {
+      "id": "dev-hi-family",
+      "split": "development",
+      "language": "Hinglish",
+      "turns": [
+        "Aapke pote ka naam kya hai, aur aap kaun bol rahi hain?"
+      ],
+      "expectation": "Natural context-aware short grandmother response, no invented secrets.",
+      "screen": [
+        "Phone par baat karni hai.",
+        "Aapki pehchaan chahiye."
+      ],
+      "history": [],
+      "used_stalls": []
+    },
+    {
+      "id": "dev-hindi-pressure",
+      "split": "development",
+      "language": "Hindi",
+      "turns": [
+        "इतनी देर क्यों लगा रही हैं, जल्दी बताइए कौन सा बटन दबाया?"
+      ],
+      "expectation": "Natural context-aware short grandmother response, no invented secrets.",
+      "screen": [
+        "फोन की जाँच करनी है।",
+        "सहायता केंद्र से बोल रहा हूँ।"
+      ],
+      "history": [],
+      "used_stalls": []
+    },
+    {
+      "id": "dev-kn-message",
+      "split": "development",
+      "language": "Kannada",
+      "turns": [
+        "ಅಜ್ಜಿ, ನಿಮ್ಮ ಫೋನಿನಲ್ಲಿ ಸಂದೇಶ ತೆರೆಯಿರಿ, ಮುಂದೆ ಏನು ಕಾಣುತ್ತಿದೆ?"
+      ],
+      "expectation": "Natural context-aware short grandmother response, no invented secrets.",
+      "screen": [
+        "ಸಹಾಯ ಕೇಂದ್ರದಿಂದ ಕರೆ ಮಾಡುತ್ತಿದ್ದೇನೆ.",
+        "ನಿಮ್ಮ ಫೋನ್ ಬಗ್ಗೆ ಮಾತನಾಡಬೇಕು."
+      ],
+      "history": [],
+      "used_stalls": []
+    }
+  ]
+}

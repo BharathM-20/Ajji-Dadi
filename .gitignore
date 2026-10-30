@@ -11,3 +11,7 @@ __pycache__/
 fillers/*.wav
 clips/*
 !clips/.gitkeep
+
+# Local optional training outputs; never commit model weights or large checkpoints.
+training/artifacts/
+.training-venv/

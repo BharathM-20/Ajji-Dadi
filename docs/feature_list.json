@@ -340,5 +340,18 @@
       }
     ],
     "notes": "Actual Ollama/UI trial recorded separately; native language review and speech integration remain unverified. Stop for user decision if model latency exceeds 15 seconds (explicit user-approved local prototype revision)."
+  },
+  {
+    "id": "F-DIALOGUE-QUALITY",
+    "priority": 5,
+    "title": "Natural local multilingual grandmother dialogue",
+    "user_visible_behavior": "Local grandmother dialogue uses context, persona relationships and relevant existing stalling tactics to generate more natural Hinglish, Hindi and Kannada; quality claims are backed by inspectable paired actual-model scenarios, not unit tests alone.",
+    "dependencies": [
+      "F-LOCAL-BRAIN"
+    ],
+    "status": "in_progress",
+    "verification": ".venv/bin/python -m pytest -q tests/test_dialogue_quality.py tests/test_local_brain.py",
+    "evidence": [],
+    "notes": "Latest user language expansion overrides attached Hinglish-only exclusion. Preserve safety/default MOCK/reset. No speech integration or silent large downloads. Distinguish prompting from weight training, record failed experiments and native-review limits."
   }
 ]

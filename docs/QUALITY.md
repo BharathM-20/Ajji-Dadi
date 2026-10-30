@@ -76,3 +76,18 @@ scores2/2 after conditional verification requirement satisfied. This is implemen
 acceptance for the text prototype, not native-language or speech quality acceptance.
 Untested: other full language flows, native grammar/persona quality, speech/device integration,
 production concurrency, real scammer engagement or Daisy-level call duration.
+
+## F-DIALOGUE-QUALITY preparation review (feature still in progress)
+Fresh-context reviewer found and drove fixes for partial evaluation completion, persistent
+completed-action state, GGUF shard loader naming, recall-vs-persona routing, missing training
+context, contradictory prompt/target examples and completion-mask verification. Final
+preparation-only recheck ACCEPT, all six scores2/2. This does not grade model conversion
+fidelity, training success, native fluency or app language quality. Training corpus60/9 is
+synthetic and not native-human-reviewed. Small translated validation split is a sanity check;
+fixed comparison callers were inspected during tuning, not blinded generalization evidence.
+
+Final research checkpoint review ACCEPT: source provenance now hashes the actually selected
+baseline/candidate module, both modes regression-tested. Finalmakecheck133passed19.91s and
+smoke8passed0.02s satisfy review condition; six research-scope scores2/2. Actual pilot rejection
+is justified by identical-message before/after output. Production files remain identical36db770,
+failed candidate isolated; feature unfinished, no product/native-language acceptance claimed.

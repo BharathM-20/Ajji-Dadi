@@ -1,0 +1,99 @@
+{
+  "variant": "candidate-style-v3-temp06-dev",
+  "model": "phi3:latest",
+  "seed": 42,
+  "source": "actual local inference; synthetic caller; agent/native review distinct",
+  "suite_sha256": "827ff30a4cb4dc3cc4223c5b980e6d1a6e05e50e25bf6e6e53be230584555066",
+  "source_sha256": {
+    "src/local_brain.py": "2cc58fa74edf10ad867aee9fea5017366826615e9617d08665d3ad19623a09d1",
+    "src/adapters.py": "e53eb7a24ade5a6075b48e61517d6895fefe1a64fb43209b2296b112741e4122",
+    "src/dialogue_style.py": "2d9d43723f847e73480c948a3aea4e60c6a5a93d61b09b564a4ca517c495aa91"
+  },
+  "warmup_seconds": 3.2230585000070278,
+  "rows": [
+    {
+      "case_id": "dev-hi-message",
+      "language": "Hinglish",
+      "turn": 1,
+      "caller": "Chashma toh pehen liya, ab 'session expired' samajh aa raha hai?",
+      "seeded_history": [],
+      "expectation": "Natural context-aware short grandmother response, no invented secrets.",
+      "reply": "Beta, zara dheere bolo, main tumhari baat apni purani diary mein likh rahi hoon.",
+      "source": "canned_fallback",
+      "tactic": null,
+      "attempted_tactic": "spell",
+      "seconds": 4.443722041993169,
+      "error": "Model reply unavailable or invalid; canned fallback shown. Stall not consumed.",
+      "word_count": 14,
+      "repeats_previous_reply": false
+    },
+    {
+      "case_id": "dev-hi-family",
+      "language": "Hinglish",
+      "turn": 1,
+      "caller": "Aapke pote ka naam kya hai, aur aap kaun bol rahi hain?",
+      "seeded_history": [],
+      "expectation": "Natural context-aware short grandmother response, no invented secrets.",
+      "reply": "Rohan, Savitri Devi hai. Kya?",
+      "source": "local_model",
+      "tactic": "answer_question",
+      "attempted_tactic": "answer_question",
+      "seconds": 3.0931401250127237,
+      "error": null,
+      "word_count": 5,
+      "repeats_previous_reply": false
+    },
+    {
+      "case_id": "dev-hindi-pressure",
+      "language": "Hindi",
+      "turn": 1,
+      "caller": "इतनी देर क्यों लगा रही हैं, जल्दी बताइए कौन सा बटन दबाया?",
+      "seeded_history": [],
+      "expectation": "Natural context-aware short grandmother response, no invented secrets.",
+      "reply": "मैं समझते हुना, क्या आपको महसूस करना है कि वह सही बटन है।",
+      "source": "local_model",
+      "tactic": "repeat",
+      "attempted_tactic": "repeat",
+      "seconds": 9.493514125002548,
+      "error": null,
+      "word_count": 13,
+      "repeats_previous_reply": false
+    },
+    {
+      "case_id": "dev-kn-message",
+      "language": "Kannada",
+      "turn": 1,
+      "caller": "ಅಜ್ಜಿ, ನಿಮ್ಮ ಫೋನಿನಲ್ಲಿ ಸಂದೇಶ ತೆರೆಯಿರಿ, ಮುಂದೆ ಏನು ಕಾಣುತ್ತಿದೆ?",
+      "seeded_history": [],
+      "expectation": "Natural context-aware short grandmother response, no invented secrets.",
+      "reply": "ಮಗು, ಸ್ವಲ್ಪ ನಿಧಾನವಾಗಿ ಹೇಳು, ನಾನು ಹಳೆಯ ಪುಸ್ತಕದಲ್ಲಿ ಬರೆಯುತ್ತಿದ್ದೇನೆ.",
+      "source": "canned_fallback",
+      "tactic": null,
+      "attempted_tactic": "glasses",
+      "seconds": 14.01065779099008,
+      "error": "Model reply unavailable or invalid; canned fallback shown. Stall not consumed.",
+      "word_count": 8,
+      "repeats_previous_reply": false
+    }
+  ],
+  "complete": true,
+  "native_review": "not performed",
+  "quality_scores": "not automatically inferred",
+  "runtime_options": {
+    "temperature": 0.6,
+    "num_ctx": 4096,
+    "num_predict": 120,
+    "seed": 42
+  },
+  "expected_turns": 4,
+  "executed_turns": 4,
+  "skipped_turns": [],
+  "summary": {
+    "cases": 4,
+    "turns": 4,
+    "model_replies": 2,
+    "fallbacks": 2,
+    "code_deflections": 0,
+    "model_mean_seconds": 6.293327125007636
+  }
+}

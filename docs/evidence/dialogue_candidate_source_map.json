@@ -1,0 +1,6 @@
+{
+  "candidate_source_sha256": "e28bc959ddbe82b13a23016d7fe3e542c82139e586fc0de0e36850f0e9875571",
+  "preserved_as": "src/experimental_local_brain.py",
+  "historical_evidence_name": "src/local_brain.py",
+  "note": "At evaluation time candidate occupied src/local_brain.py. It is now isolated; production files restored byte-for-byte to36db770. Training/evaluation code is opt-in only; final runtime quality is not claimed improved."
+}

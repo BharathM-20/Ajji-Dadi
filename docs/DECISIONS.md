@@ -175,3 +175,50 @@ sentence or deadline. No proxy/redirect handling; no off-host address. Incomplet
 responses still reject; stage directions reject. JSON callers retain complete-object streaming.
 Obvious role-change requests get tagged code deflections without LLM work; pattern is
 heuristic, not universal injection resistance. Original speech go/no-go remains unchanged.
+
+## D011 — Evidence-led local dialogue quality (2026-10-30)
+User authorizes autonomous local experiments, model selection, prompting/examples, context,
+tactic linkage and optional LoRA/QLoRA if justified. Latest message overrides brief's
+Hinglish-only exclusion to include Hindi and Kannada generation. No speech API work now.
+Add F-DIALOGUE-QUALITY and additive spec digest; preserve old feature definitions/statuses.
+Baseline36db770 and its trial remain immutable evidence. Evaluate same held-out caller
+scenarios before/after; include all failures and genuine-vs-code/fallback labels. Inspect
+language and relevance, not just nonempty output. No additional model judge in call path.
+Models already installed: llama3.2 latest(a80c4f17acd5), qwen3:4b-instruct(0edcdef34593),
+qwen3:1.7b(8f68893c685c),phi3 latest(4f2222927938); Qwen3.5 absent. No new model download.
+Training libs MLX/MLX-LM/PyTorch/Transformers/PEFT absent; no native-reviewed corpus.
+MLX-LM supports Apple-silicon low-rank/quantized adaptation, so8GB is not categorically
+impossible, but training utility/fit is not established here. Start with actual inference,
+then decide. Never label prompt examples or Modelfile settings as weight fine-tuning.
+Official references: https://github.com/ml-explore/mlx-lm ;
+https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507 ; https://docs.ollama.com/modelfile .
+
+D011 experiment findings: baseline fixed comparison set17cases19turns: Llama16model replies,
+2Kannada fallbacks,1code deflection; Qwen4B15model replies,3Kannada fallbacks,1code deflection.
+Early style-v1/v2 dev prompts fixed some family answers but added irrelevant questions and
+latency. Retain all output. User declined Qwen3.5 download: installed models only.
+Native diagnostic on1.7B could emit a short Kannada name sentence;60tokens also cut another
+Kannada output mid-word. Test compact native prompts and120token Kannada allowance while
+keeping14s deadline/15s local ceiling. No weight training or new model/framework downloads.
+Fixed comparison scenarios have been inspected; they are not blinded generalization evidence.
+Examples and a separate development suite remain distinct. Reviewer found and fixed partial
+suite completion reporting and nonpersistent completed-action exclusions. Expose attempted
+tactic independently of last successful tactic. No native human review supplied.
+
+D011 resource revision: user explicitly approved installed-Qwen local conversion and20-step
+QLoRA pilot (4GiB MLX allocation limit,2–4GB disk budget,15min training alarm). Optional
+training packages installed only in temporary separate environment; no new model download.
+Prepare source from existing GGUF, preserve original bytes, deny network, expose conversion
+numerical changes; validate converted base before training.60synthetictrain/9valid drafts
+have no native-human approval; reviewed for context/persona/safety, not claimed fluent.
+Corpus audit checks actual completion mask prefix and sequence length. Record actual run,
+loss/memory and held-out dialogue before any deployment. Full feature remains in_progress.
+
+D011 pilot outcome and rollback: actual20-step QLoRA completed, validation2.732→1.195,
+peakMLX1.844GB, but identical eight-case comparison shows no broad useful dialogue gain.
+Kannada family identity regressed; OTP reply requested code and was rejected by experimental
+guard. Reject checkpoint for deployment. Preserve weights locally/ignored and exact evidence;
+isolate candidate in src/experimental_local_brain.py, restore production local_brain/adapters
+and original tests byte-for-byte to36db770. Commit only verified evaluation/research tooling,
+fixtures, draft corpus and honest evidence. Feature stays in_progress; do not invoke passing
+verifier on unit-test success alone. No additional training, API work or model download.

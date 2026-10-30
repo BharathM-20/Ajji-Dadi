@@ -176,3 +176,38 @@ Final F-LOCAL-BRAIN verifier exit0:make check111passed7.99s; exact feature comma
 make smoke8passed0.01s. No skips. Only verifier promoted feature status. Independent final
 source/evidence review ACCEPT, conditional verification requirement now fulfilled; all six
 rubric scores2/2. Temporary CLI/server and trial model cleaned; no paid speech/model calls.
+
+## F-DIALOGUE-QUALITY ongoing evidence
+Baseline36db770: setup offline succeeded; make check111passed7.52s; smoke8passed0.01s.
+Fixed actual comparison17cases19turns: Llama16model/2Kannadafallback/1code; Qwen4B15/3/1.
+Rejected broadstyle candidate14model/4fallback/1code with2paused; transcripts preserved.
+No generalized quality or Kannada fluency gain claimed. Development diagnostics and targeted
+candidate are under docs/evidence/dialogue_*.json. No model-download, paid or speech calls.
+Restricted make check after preparation:127passed/1failed due localhost bind denial.
+Same suite with localhost permission128passed8.27s; later routing version132passed8.22s.
+Smoke8passed0.02s. These verify software paths, not native quality. Final rerun still required.
+Optional data audit (real Transformers tokenizer, offline)60train/9valid: exact vocabulary IDs,
+completion-only prefix masking, nonempty targets, <=512tokens and no exact duplicate callers
+passed. Details/hashes docs/evidence/qlora_corpus_preflight.json. No native-human approval.
+User approved20-step pilot. Installed GGUF offline conversion311tensors completed, peakMLX
+797376512bytes; original preserved. Converted-base in-process MLX eight-case inference
+completed, peakMLX1613926698bytes. Raw replies docs/evidence/qlora_converted_base.json.
+Initial eval API mismatch load(local_files_only=...) raisedTypeError before model generation;
+fixed signature, offline env/socket audit retained. Coherent output is not logit equivalence.
+Training now running20steps/last4q-v/rank8/batch1/max512/learningrate1e-4/seed42; results pending.
+
+QLoRA actual result:20steps completed,229376trainable parameters, validation2.732→1.195,
+peakMLX1843898688bytes. Eight paired requests identical; raw before/after and inspection in
+qlora_pilot_comparison.json. No useful overall quality gain; rejected for deployment. MLX
+signal alarm could only interrupt after native kernels; converted-base OTP turns15.61s and
+14.17s, so native in-process backend does not prove the15s product ceiling. No app switch.
+Concurrent fullcheck during training:132passed/1startup-timeout73.85s. Failure layer environment
+resource contention; repeat after training/inference ended, without loosening checks.
+Final restored-app/candidate-isolated make check: ruff clean,132passed12.60s; smoke8passed0.02s.
+Production source/original local tests match36db770; no successful status verifier was run
+because multilingual product acceptance remains unfulfilled. No tests skipped or fake results.
+
+Final provenance review fix: evaluator hashes selected production brain with--baseline,
+experimental brain otherwise. Regression covers both paths and skipped-turn reporting.
+Finalmakecheck133passed19.91s, L1clean, actualGradio/MOCK path included; no skips.
+Smoke remains8passed0.02s. No model or app changes after this final test, only handoff records.

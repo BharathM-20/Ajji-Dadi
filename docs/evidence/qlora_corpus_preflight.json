@@ -1,0 +1,18 @@
+{
+  "native_review": "not performed",
+  "training_performed": false,
+  "splits": {
+    "train": {
+      "examples": 60,
+      "max_tokens": 391,
+      "sha256": "1a14c0512f086955fd59715cc0777e0af111984a26c725df7fccd35cd82c318f",
+      "completion_prefix_and_nonempty_target": "passed every row"
+    },
+    "valid": {
+      "examples": 9,
+      "max_tokens": 355,
+      "sha256": "4b7b1dc116f542a0a15a8f015c6d1edf5212858db83592f9d78f671a3a7fd070",
+      "completion_prefix_and_nonempty_target": "passed every row"
+    }
+  }
+}

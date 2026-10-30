@@ -1,5 +1,78 @@
 # Progress
 
+## F-DIALOGUE-QUALITY checkpoint — quality goal NOT achieved
+Actual user-approved offline QLoRA pilot completed20steps on installed Qwen3:1.7b weights.
+60synthetictrain/9valid examples, last4q/v layers, rank8, batch1, max512tokens, maskprompt,
+checkpointing, seed42.229376trainable parameters; val loss2.732→1.195; peakMLX1,843,898,688B.
+Total process/system peakRAM was not measured. Original GGUF untouched; no checkpoint
+model download, paid API, STT/TTS integration, external dataset upload or Ollama model switch.
+Paired eight-case MLX inference used identical messages,seed42,temp0.4,max80tokens. Kannada
+family answer regressed; Kannada OTP requested the code (experimental guard flagged it);
+recall remained unreliable. Lower validation loss is not deployment evidence. Checkpoint
+REJECTED for app use. No natural Hindi/Hinglish/Kannada quality or2–3minute call claim.
+Exact replies/latencies/inspection: docs/evidence/qlora_pilot_comparison.json; training log and
+adapter hashes: qlora_pilot_training.log/qlora_pilot_run.json. Native-human review absent.
+App local_brain.py/adapters.py and pre-existing local-brain tests restored byte-for-byte to
+36db770. All unsuccessful prompt/context changes isolated in experimental_local_brain.py
+and dialogue_style.py, referenced only by opt-in evaluation tooling/new experimental tests.
+Historical evidence path mapping recorded in dialogue_candidate_source_map.json. Main .venv
+and dependency pins untouched. Optional tools in temporary /private/tmp/dadi-mlx-training-01a18c24;
+converted base/adapters under ignored training/artifacts; no weights staged or committed.
+Final make check: L1 clean,133passed19.91s including actual Gradio launch/MOCK flow; smoke
+8passed0.02s. A concurrent-training check had132passed/1startup-timeout73.85s; rerunning after
+all model processes exited passed. Do not relax startup limits to hide resource contention.
+Status remains in_progress; verifier NOT invoked to promote an unachieved quality feature.
+Commit is a verified research/evaluation checkpoint only, not completed product behavior.
+Next: native-speaker review/rewrite and expand the corpus; use a fresh unseen scenario set
+before another separately approved training/resource run. No additional training authorized.
+Untested: useful adapted Ollama export/import, actual speech/devices/APIs, native fluency,
+whole-system memory peak, exact GGUF/MLX numerical parity, long-call quality and scaling.
+Prisma/Timbre key can be prepared locally in gitignored.env for the separately authorized
+speech milestone; never paste it in chat. No credentials were used here.
+
+## Current session — original F-DIALOGUE-QUALITY contract (historical)
+User supplied local-model improvement brief and explicitly expanded language scope to
+Hinglish, Hindi and Kannada in the accompanying message. Work directly in existing repo.
+Baseline36db770 clean: setup offline succeeded; make check111passed7.52s; smoke8passed0.01s.
+One feature: reproducible paired dialogue evaluation, model/prompt/context/tactic integration,
+short natural generation and persona consistency. Preserve default MOCK/human gate/reset/UI.
+Assess installed Llama3.2 and Qwen3:4b-instruct with actual output; Qwen3.5 is NOT installed.
+No new large downloads, training or external services without checking resource/data needs.
+At baseline MLX,mlx_lm,torch,transformers,peft were absent. Optional training environment
+was subsequently prepared below. No human-reviewed training corpus supplied.
+LoRA/QLoRA investigation authorized; do not claim weight fine-tuning unless actually trained.
+Use language examples to teach style, not hardcoded normal replies. Held-out evaluation
+scenarios must remain separate; no model-judge-only or native-fluency claims. One model call
+per normal turn, transparent fallbacks/code deflections;15s local cap with bounded tuning.
+Verification: existing tests, added behavior/quality-contract checks, identical-scenario
+before/after actual model transcripts and timings, actual UI flow. Status only via verifier.
+Exclusions: Prisma/Timbre API integration, paid calls, telephony, broad UI changes and model
+training on unreviewed generated replies. Keys belong in gitignored local.env at later speech
+milestone; never paste keys in chat. Native review and actual voice remain separate evidence.
+
+
+## Historical pre-training checkpoint — pilot authorized, not yet trained
+User chose installed models only, then explicitly approved a bounded local conversion and
+20-step QLoRA pilot on the8GB M3. No new checkpoint download, paid API or external data.
+Optional MLX0.32.4/MLX-LM0.32.2/Transformers5.22.1/gguf0.19 installed in isolated temporary
+env `/private/tmp/dadi-mlx-training-01a18c24`; app .venv/dependency pins untouched.
+60 synthetic draft training pairs and9 validation pairs (three languages) are inspectable
+under training/dadi_draft. They are not native-human-reviewed. Validation is a sanity check,
+not independent generalization evidence. Reviewer caught recall/context and identity-routing
+mismatches; fixed routing/regenerated data. Final corpus audit verifies completion-only mask
+prefix, nonempty target, <=512 tokens and no exact duplicate callers. Reaudit after changes.
+Read-only preflight reuses installed Qwen3:1.7b GGUF (2.032B parameters), all vocabulary IDs
+and three-language roundtrip passed. No weights converted at this checkpoint. Shard naming
+matches installed MLX loader. Estimated MLX base weights1.14GB; MLX cap4GiB does not cap
+NumPy/OS or total RAM. Training20steps/batch1/last4q-v/rank8/512tokens/checkpointing,15min
+alarm. Before training: convert offline, validate actual model load and baseline inference;
+requantization changes numerics, so compare adapted model against that converted base.
+Prompt experiments: baselineLlama16model/2fallback/1code; Qwen4B15/3/1; broadstylecandidate
+14/4/1with2paused. No general quality win or Kannada fluency established. F-DIALOGUE-QUALITY
+stays in_progress, no verifier promotion. Current app remains localLlama and defaultMOCK.
+Latest full check128passed8.27s with localhost permission; restricted run127passed/1failed
+because sandbox denied bind. Smoke8passed0.02s. Later routing tests require finalrerun.
+
 ## Current session — F-LOCAL-BRAIN passing
 User selected local Ollama, approved15s local text ceiling and bounded iterative tuning.
 Baseline e56b34464tests; concurrent user-authored12919b6 updated Gnani notes. Preserve that
@@ -250,3 +323,12 @@ Status may become passing only through scripts/verify_feature.py T1a.
 - Temporary local servers7860/7861 terminated after verification; browser viewport override
   reset and verification tab closed. No temporary preview code is part of the repository.
 - Commit records D009 with59 ->64 tests,6/7/32 frozen counts and43 exact feature tests.
+
+## Research checkpoint final handoff
+Final review ACCEPT after selected-brain provenance fix and regression for both evaluator
+modes. All six scores2/2 within research scope only; finalcheck133passed19.91s satisfies
+conditional review. Smoke8passed0.02s. Existing production source/tests identical36db770.
+Research checkpoint committed separately; feature remains in_progress with no passing
+verifier evidence, no adapted-model deployment, and no extra feature started. Training and
+inference processes exited; no app/model server created by this pilot remains running.
+Optional artifacts remain ignored locally, original Ollama installation/server untouched.

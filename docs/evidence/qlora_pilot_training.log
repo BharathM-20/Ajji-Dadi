@@ -1,0 +1,23 @@
+Loading configuration file training/dadi_draft/pilot.yaml
+Loading pretrained model
+Loading datasets
+Training
+╭─ mlx_lm.lora ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│    model           training/artifacts/qwen17_mlx                                                                     │
+│    type            lora · 4 layers · rank 8                                                                          │
+│    dataset         training/dadi_draft                                                                               │
+│    optimizer       adam · lr 1.0e-04                                                                                 │
+│    batch · iters   1 · 20                                                                                            │
+│    max seq         512                                                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Trainable parameters: 0.011% (0.229M/2031.740M)
+  iter   train_loss     tok/s     tokens
+     1    val 2.732    23.14s
+     5    4.001 ▼        4      0.2k
+    10    1.870 ▼       10      0.4k
+    15    1.123 ▼       10      0.6k
+    20    val 1.195    29.10s
+    20    2.574 ▲        7      0.8k
+  save  0000020_adapters.safetensors
+train ██████████████████████████████ 100% ·    20/20
+{"peak_mlx_bytes": 1843898688, "training_success": "not inferred; inspect exit, loss and held-out dialogue"}
