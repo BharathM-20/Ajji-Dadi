@@ -37,6 +37,8 @@ def main(argv=None):
             error = str(exc)  # Adapter errors are sanitized; never raw HTTP exceptions.
         summary = adapters.speech_diagnostics(stage)
         summary["api_key"] = "[REDACTED]"
+        if stage == "asr" and result is not None:
+            summary["transcript"] = result
         if stage == "say" and result:
             summary["saved_audio_path"] = result
         if error:

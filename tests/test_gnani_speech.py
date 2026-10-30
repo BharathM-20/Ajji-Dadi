@@ -327,6 +327,7 @@ def test_smoke_with_fake_http_makes_exactly_one_attempt_each(real, audio_path, c
     assert KEY not in output and "[REDACTED]" in output
     assert '"latency_seconds"' in output and '"response_keys"' in output
     assert ('"saved_audio_path"' in output) is (status == 200)
+    assert ('"transcript": "नमस्ते"' in output) is (status == 200)
 
 
 def test_think_and_local_functions_unchanged_since_baseline():
@@ -340,3 +341,68 @@ def test_think_and_local_functions_unchanged_since_baseline():
     }
     for name in old.keys() - {"asr", "say"}:
         assert inspect.getsource(getattr(adapters, name)).strip() == old[name].strip()
+
+
+@pytest.mark.parametrize(
+    "riff_placeholder,data_placeholder",
+    [(True, True), (True, False), (False, True), (False, False)],
+)
+def test_tts_repairs_streaming_sizes_and_preserves_pcm(real, riff_placeholder, data_placeholder):
+    original = wav_bytes()
+    response = bytearray(original)
+    if riff_placeholder:
+        response[4:8] = b"\xff" * 4
+    if data_placeholder:
+        response[40:44] = b"\xff" * 4
+    if riff_placeholder and data_placeholder:
+        assert response[:16].hex() == "52494646ffffffff57415645666d7420"
+    real(
+        lambda request: httpx.Response(
+            200, content=bytes(response), headers={"Content-Type": "audio/wav"}
+        )
+    )
+    result = Path(adapters.say("हाँ बेटा", "hi-IN"))
+    repaired = result.read_bytes()
+    assert repaired == original
+    assert int.from_bytes(repaired[4:8], "little") == len(repaired) - 8
+    assert int.from_bytes(repaired[40:44], "little") == len(repaired) - 44
+    with wave.open(str(result), "rb") as audio:
+        assert (audio.getframerate(), audio.getnchannels(), audio.getsampwidth()) == (48000, 1, 2)
+        assert audio.readframes(audio.getnframes()) == original[44:]
+    assert Path(gr.Audio(type="filepath").postprocess(str(result)).path).is_file()
+
+
+@pytest.mark.parametrize(
+    "body",
+    [
+        b"",
+        b'{"error":"service failed"}',
+        b"<html>Error</html>",
+        b"not RIFF",
+        bytes.fromhex("52494646ffffffff57415645666d7420"),
+    ],
+)
+def test_tts_rejects_non_audio_and_truncated_streaming_header(real, tmp_path, body):
+    real(lambda request: httpx.Response(200, content=body))
+    with pytest.raises(adapters.SpeechUnavailable, match="invalid WAV"):
+        adapters.say("हाँ", "hi-IN")
+    assert not list(tmp_path.glob("dadi-tts-*"))
+
+
+@pytest.mark.parametrize("offset,value", [(20, 3), (22, 2), (24, 24000), (34, 8)])
+def test_tts_rejects_pcm_format_mismatches(real, offset, value):
+    response = bytearray(wav_bytes())
+    response[offset : offset + (4 if offset == 24 else 2)] = value.to_bytes(
+        4 if offset == 24 else 2, "little"
+    )
+    real(lambda request: httpx.Response(200, content=bytes(response)))
+    with pytest.raises(adapters.SpeechUnavailable, match="invalid WAV"):
+        adapters.say("हाँ", "hi-IN")
+
+
+def test_tts_rejects_data_before_format(real):
+    original = wav_bytes()
+    invalid = original[:12] + original[36:] + original[12:36]
+    real(lambda request: httpx.Response(200, content=invalid))
+    with pytest.raises(adapters.SpeechUnavailable, match="invalid WAV"):
+        adapters.say("हाँ", "hi-IN")

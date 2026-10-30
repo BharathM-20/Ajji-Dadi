@@ -2,7 +2,6 @@
 
 import contextlib
 import contextvars
-import io
 import math
 import os
 import subprocess
@@ -467,6 +466,50 @@ def _real_asr(path, event, retry_429):
         ) from None
 
 
+def _normalize_tts_wav(body):
+    """Validate PCM chunks and replace streaming RIFF/data sizes with actual sizes."""
+    if len(body) < 12 or body[:4] != b"RIFF" or body[8:12] != b"WAVE":
+        raise ValueError("not a RIFF WAVE")
+    audio = bytearray(body)
+    offset = 12
+    found_fmt = False
+    data = None
+    while offset < len(audio):
+        if offset + 8 > len(audio):
+            raise ValueError("truncated chunk header")
+        kind = audio[offset : offset + 4]
+        size = int.from_bytes(audio[offset + 4 : offset + 8], "little")
+        start = offset + 8
+        if kind == b"data" and size == 0xFFFFFFFF:
+            size = len(audio) - start
+        end = start + size
+        if end > len(audio):
+            raise ValueError("truncated chunk")
+        if kind == b"fmt ":
+            if found_fmt or size < 16:
+                raise ValueError("invalid format chunk")
+            fields = [
+                int.from_bytes(audio[start + a : start + b], "little")
+                for a, b in ((0, 2), (2, 4), (4, 8), (8, 12), (12, 14), (14, 16))
+            ]
+            if fields != [1, 1, 48000, 96000, 2, 16]:
+                raise ValueError("expected mono 48kHz 16-bit PCM")
+            found_fmt = True
+        elif kind == b"data":
+            if not found_fmt or data is not None or size < 2 or size % 2:
+                raise ValueError("empty or incomplete PCM samples")
+            data = (offset + 4, size)
+        offset = end + (size % 2)  # RIFF chunks are word-aligned, including unknown chunks.
+        if offset > len(audio):
+            raise ValueError("missing chunk padding")
+    if not found_fmt or data is None:
+        raise ValueError("missing PCM format or data")
+    audio[4:8] = (len(audio) - 8).to_bytes(4, "little")
+    size_offset, size = data
+    audio[size_offset : size_offset + 4] = size.to_bytes(4, "little")
+    return bytes(audio)
+
+
 def _real_say(text, event, retry_429):
     key = _speech_key()
     if not isinstance(text, str) or not text.strip():
@@ -494,13 +537,10 @@ def _real_say(text, event, retry_429):
     )
     result = None
     try:
-        with wave.open(io.BytesIO(response.content), "rb") as audio:
-            expected = audio.getnframes() * audio.getnchannels() * audio.getsampwidth()
-            if expected <= 0 or len(audio.readframes(audio.getnframes())) != expected:
-                raise ValueError("empty or truncated WAV")
+        content = _normalize_tts_wav(response.content)
         with tempfile.NamedTemporaryFile(prefix="dadi-tts-", suffix=".wav", delete=False) as audio:
             result = Path(audio.name).resolve()
-            audio.write(response.content)
+            audio.write(content)
     except (OSError, EOFError, wave.Error, ValueError):
         if result is not None:
             with contextlib.suppress(OSError):

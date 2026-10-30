@@ -26,6 +26,9 @@ Other language values: en-IN, ta-IN, te-IN, kn-IN, ml-IN, mr-IN, pa-IN, bn-IN, g
 speed range 0.85 to 1.15. Compare timbre-v3.0 (voices Shivani, Lakshmi, Avinash) only after baseline works.
 v3.0 supports inline audio tags in text; v2.5 strips them. Tag support is unverified.
 Success: 200 with RAW BINARY WAV in the response body (not JSON, not base64). Write response.content to a file.
+User-observed real TTS response (2026-10-31): playable 48000 Hz mono 16-bit PCM WAV may use
+streaming placeholder sizes (0xFFFFFFFF in the RIFF size, and potentially the data size).
+Validate PCM/chunk structure against actual received bytes and rewrite RIFF/data sizes before saving.
 Numbers, OTPs, dates, currency: pass as spoken words, not raw digits (mispronounced otherwise).
 Errors:
 400 flat JSON: {"success": false, "message": "...", "status_code": 400}

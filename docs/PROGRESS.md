@@ -1,5 +1,28 @@
 # Progress
 
+## T2 WAV placeholder-size bug fix — 2026-10-31
+User reported real HTTP200 audio/wav, playable48kHz mono16bitPCM with RIFF size0xFFFFFFFF
+(first16bytes52494646ffffffff57415645666d7420); data-size placeholder is also supported.
+Scope only: structure-based TTSWAV validation/normalization, mocked regressions, authorized
+GNANI_NOTES observation and smoke transcript display. No ASR/think/localbrain/training or
+HTTP/request/retry behavior changes. No credential-file access, real call or real smoke run.
+Parser walks word-aligned chunks, validates PCMfmt against requested audio_config, requires
+nonempty complete16-bit samples, bounds normal chunks by actual bytes, interprets data
+0xFFFFFFFF as actual remaining payload, and rewrites RIFF/data size fields before save.
+Tests cover normal and allRIFF/data placeholder combinations (including exactuserprefix),
+Gradio playback filepath processing, wrongformats, JSON/HTML/empty/truncatedheaders. Existing
+normal truncated-data regression still rejects. Smoke prints successful STT transcript text
+in addition to prior safe diagnostics, revealing Latin/Devanagari without printing headers/key.
+Only GNANI_NOTES digest refreshed for explicitly authorized note; all other inputhashes frozen.
+Targeted speech+architecture67passed3.04s; first fullcheck195passed16.42s. Review caught
+data-before-fmt ordering (unplayable by Python/Gradio); reject it and add regression. Final
+makecheck L1clean,196passed12.87s including GradioMOCKlaunch. Finalfocusedreview ACCEPT,
+conditional green-check requirement satisfied. No additional real/device/latency claim.
+Static comparison confirms every pre-existing adapter function except_real_say source-identical
+tofa566cf. Working tree checkpoint is this focusedfix commit; no later work started.
+T2 stays blocked; the observed header alone is not a complete user-run smoke acceptance.
+
+
 ## T2 code handoff — implemented; real-service acceptance BLOCKED
 Branch t2-gnani-speech. Implemented documented Prisma STT and Timbre TTS only, opt-in with
 GNANI_REAL_ASR=1 / GNANI_REAL_TTS=1. Default MOCK=True; think/all pre-existing local adapter
