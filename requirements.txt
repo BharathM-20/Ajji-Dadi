@@ -1,0 +1,4 @@
+# Direct dependencies; requirements.lock will pin transitives after an authorized resolve.
+gradio==5.49.1
+pytest==9.0.2
+ruff==0.14.4

@@ -1,0 +1,45 @@
+"""Block network before collection, including imports and direct socket calls."""
+
+import socket
+import sys
+
+import pytest
+
+MESSAGE = (
+    "ERROR: network access blocked in tests. WHY: tests must never spend credits. "
+    "FIX: use src.adapters with MOCK=True and fake responses."
+)
+
+
+def deny_network(*args, **kwargs):
+    raise RuntimeError(MESSAGE)
+
+
+def audit_network(event, args):
+    if event in {
+        "socket.connect",
+        "socket.sendto",
+        "socket.sendmsg",
+        "socket.getaddrinfo",
+        "socket.gethostbyname",
+        "socket.gethostbyaddr",
+        "socket.getnameinfo",
+        "socket.bind",
+    }:
+        raise RuntimeError(MESSAGE)
+
+
+# Installed at collection time, not only after a test fixture begins.
+sys.addaudithook(audit_network)
+socket.create_connection = deny_network
+socket.getaddrinfo = deny_network
+socket.socket.connect = deny_network
+socket.socket.connect_ex = deny_network
+socket.socket.sendto = deny_network
+
+
+@pytest.fixture(autouse=True)
+def mock_only(monkeypatch):
+    from src import adapters
+
+    monkeypatch.setattr(adapters, "MOCK", True)

@@ -1,0 +1,527 @@
+{
+ "note": "Unknown-call scenarios for the screening classifier. Kanglish entries are unverified drafts. Hinglish in Latin script. caller_turns are the two caller answers.",
+ "scenarios": [
+  {
+   "id": "L01_swiggy_otp",
+   "label": "legit",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Sir Swiggy delivery se bol raha hoon, main gate pe hoon.",
+    "Order ka OTP bata dijiye."
+   ],
+   "trap": "OTP request, but from a delivery person at your door",
+   "expected": {
+    "reason_for_call": "Food delivery at the gate, needs handover OTP",
+    "scam_score": 1,
+    "signals": [],
+    "verdict": "legit"
+   }
+  },
+  {
+   "id": "L02_amazon_otp",
+   "label": "legit",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Amazon ka parcel hai aapke naam pe, address confirm kar dijiye.",
+    "Delivery OTP aaya hoga, wo bata do."
+   ],
+   "trap": "Parcel + OTP, but no threat, no money, order is real",
+   "expected": {
+    "reason_for_call": "Amazon delivery, address and handover OTP",
+    "scam_score": 1,
+    "signals": [],
+    "verdict": "legit"
+   }
+  },
+  {
+   "id": "L03_cab_driver",
+   "label": "legit",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Sir Ola driver bol raha hoon, pickup point pe pahunch gaya.",
+    "Gate number bata dijiye aur ride OTP de dijiye."
+   ],
+   "trap": "OTP request, but ride you booked",
+   "expected": {
+    "reason_for_call": "Cab driver at pickup, ride OTP",
+    "scam_score": 1,
+    "signals": [],
+    "verdict": "legit"
+   }
+  },
+  {
+   "id": "L04_clinic",
+   "label": "legit",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Hello, Dr. Rao ke clinic se bol rahi hoon, kal subah 10 baje ka appointment hai.",
+    "Aap aa rahe hain na? Reschedule karna ho to bata dijiye."
+   ],
+   "trap": "Official-sounding caller, but just an appointment",
+   "expected": {
+    "reason_for_call": "Clinic appointment confirmation",
+    "scam_score": 1,
+    "signals": [],
+    "verdict": "legit"
+   }
+  },
+  {
+   "id": "L05_bank_branch",
+   "label": "legit",
+   "lang": "hinglish",
+   "caller_turns": [
+    "SBI branch se bol raha hoon, aapka cheque book ready hai.",
+    "Branch aakar le jaiye, koi OTP ya password nahi chahiye."
+   ],
+   "trap": "Bank call that explicitly asks for nothing",
+   "expected": {
+    "reason_for_call": "Bank branch: cheque book ready for pickup",
+    "scam_score": 1,
+    "signals": [],
+    "verdict": "legit"
+   }
+  },
+  {
+   "id": "L06_school",
+   "label": "legit",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Main school office se bol rahi hoon, kal PTM hai 11 baje.",
+    "Report card ke liye parents aa jaiye."
+   ],
+   "trap": "Calm, no demand",
+   "expected": {
+    "reason_for_call": "School PTM reminder",
+    "scam_score": 0,
+    "signals": [],
+    "verdict": "legit"
+   }
+  },
+  {
+   "id": "L07_friend_new_number",
+   "label": "legit",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Arre main Rohit bol raha hoon, phone kharab ho gaya, ye naya number hai.",
+    "Shaam ko milte hain kya, cricket khelne?"
+   ],
+   "trap": "New number, but no money ask (money ask would change it)",
+   "expected": {
+    "reason_for_call": "Friend on new number, casual plan",
+    "scam_score": 2,
+    "signals": [],
+    "verdict": "legit"
+   }
+  },
+  {
+   "id": "L08_wrong_number",
+   "label": "legit",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Hello, Suresh ji hain kya?",
+    "Oh sorry, galat number lag gaya."
+   ],
+   "trap": "Harmless wrong number",
+   "expected": {
+    "reason_for_call": "Wrong number",
+    "scam_score": 0,
+    "signals": [],
+    "verdict": "legit"
+   }
+  },
+  {
+   "id": "L09_society",
+   "label": "legit",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Main society office se bol raha hoon, kal paani ka supply band rahega.",
+    "Bas information ke liye call kiya tha."
+   ],
+   "trap": "'band rahega' sounds like disconnection threat, but it is a notice",
+   "expected": {
+    "reason_for_call": "Society water supply notice",
+    "scam_score": 1,
+    "signals": [],
+    "verdict": "legit"
+   }
+  },
+  {
+   "id": "L10_gas_agency",
+   "label": "legit",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Gas agency se bol raha hoon, cylinder kal subah deliver hoga.",
+    "Delivery boy aayega, wo OTP poochhega."
+   ],
+   "trap": "OTP mentioned in advance, for delivery",
+   "expected": {
+    "reason_for_call": "Gas cylinder delivery notice",
+    "scam_score": 1,
+    "signals": [],
+    "verdict": "legit"
+   }
+  },
+  {
+   "id": "L11_recruiter",
+   "label": "legit",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Hello, main Infosys HR se bol rahi hoon, aapka resume dekha tha.",
+    "Kya aap Thursday ko interview ke liye available hain?"
+   ],
+   "trap": "Unknown caller, no fee or sensitive ask",
+   "expected": {
+    "reason_for_call": "Recruiter scheduling an interview",
+    "scam_score": 1,
+    "signals": [],
+    "verdict": "legit"
+   }
+  },
+  {
+   "id": "L12_bescom_visit",
+   "label": "legit",
+   "lang": "hinglish",
+   "caller_turns": [
+    "BESCOM se bol raha hoon, meter reading ke liye kal visit hoga.",
+    "Phone par koi payment nahi leni, bas visit batana tha."
+   ],
+   "trap": "Electricity company, but no payment or threat",
+   "expected": {
+    "reason_for_call": "Meter reading visit",
+    "scam_score": 1,
+    "signals": [],
+    "verdict": "legit"
+   }
+  },
+  {
+   "id": "B01_loan_telemarketer",
+   "label": "suspicious",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Sir aapke liye pre-approved personal loan hai, 5 lakh tak.",
+    "Ek link bheja hai, interest rate bahut kam hai."
+   ],
+   "trap": "Likely telemarketing spam, not a threat",
+   "expected": {
+    "reason_for_call": "Unsolicited loan offer with a link",
+    "scam_score": 5,
+    "signals": [
+     "link bheja hai",
+     "pre-approved personal loan"
+    ],
+    "verdict": "suspicious"
+   }
+  },
+  {
+   "id": "B02_kyc_vague",
+   "label": "suspicious",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Hello, aapka bank KYC pending hai, link bheja hai.",
+    "Jaldi update kijiye warna dikkat ho sakti hai."
+   ],
+   "trap": "Classic phishing shape but no explicit threat or money ask yet",
+   "expected": {
+    "reason_for_call": "KYC update push via link",
+    "scam_score": 6,
+    "signals": [
+     "KYC pending",
+     "link bheja hai",
+     "jaldi update kijiye"
+    ],
+    "verdict": "suspicious"
+   }
+  },
+  {
+   "id": "B03_insurance_sales",
+   "label": "suspicious",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Sir LIC policy lapse ho gayi hai, revive karwa lijiye.",
+    "Aaj hi renew karenge to bonus milega."
+   ],
+   "trap": "Sales pressure, probably not criminal",
+   "expected": {
+    "reason_for_call": "Insurance sales call",
+    "scam_score": 5,
+    "signals": [
+     "aaj hi renew",
+     "bonus milega"
+    ],
+    "verdict": "suspicious"
+   }
+  },
+  {
+   "id": "B04_survey_prize",
+   "label": "suspicious",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Congratulations, aapne survey jeeta hai, gift mil sakta hai.",
+    "Bas apna address aur ID bata dijiye."
+   ],
+   "trap": "Prize bait asking for ID, but no payment yet",
+   "expected": {
+    "reason_for_call": "Prize survey asking for ID details",
+    "scam_score": 6,
+    "signals": [
+     "survey jeeta",
+     "ID bata dijiye"
+    ],
+    "verdict": "suspicious"
+   }
+  },
+  {
+   "id": "B05_parcel_link",
+   "label": "suspicious",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Parcel aaya hai, address galat tha.",
+    "Link par click karke address update kijiye."
+   ],
+   "trap": "Delivery wording but pushes a link instead of arriving",
+   "expected": {
+    "reason_for_call": "Parcel address update via link",
+    "scam_score": 6,
+    "signals": [
+     "link par click karke"
+    ],
+    "verdict": "suspicious"
+   }
+  },
+  {
+   "id": "S01_digital_arrest",
+   "label": "scam",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Main CBI officer Vikram Singh bol raha hoon, aapke Aadhaar se ek parcel pakda gaya hai, usme drugs mile hain.",
+    "Aap abhi video call par rahiye, kisi ko mat batana, warna arrest ho jayega."
+   ],
+   "trap": "Fake authority + arrest threat + secrecy + stay on video",
+   "expected": {
+    "reason_for_call": "Digital arrest: fake CBI officer",
+    "scam_score": 10,
+    "signals": [
+     "CBI officer",
+     "drugs mile hain",
+     "video call par rahiye",
+     "kisi ko mat batana",
+     "arrest ho jayega"
+    ],
+    "verdict": "scam"
+   }
+  },
+  {
+   "id": "S02_trai_sim",
+   "label": "scam",
+   "lang": "hinglish",
+   "caller_turns": [
+    "TRAI se bol raha hoon, aapke number se illegal calls ho rahi hain, 2 ghante me SIM band hoga.",
+    "Police case se bachna hai to abhi mere officer se baat kijiye."
+   ],
+   "trap": "Fake regulator + deadline + police threat",
+   "expected": {
+    "reason_for_call": "Fake TRAI SIM-block threat",
+    "scam_score": 9,
+    "signals": [
+     "TRAI se bol raha hoon",
+     "SIM band hoga",
+     "Police case"
+    ],
+    "verdict": "scam"
+   }
+  },
+  {
+   "id": "S03_electricity_cut",
+   "label": "scam",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Bijli board se bol raha hoon, bill pending hai, aaj raat 9:30 baje connection kat jayega.",
+    "Is number par abhi UPI se 4,500 rupees bhej dijiye."
+   ],
+   "trap": "Deadline threat + payment to a personal number",
+   "expected": {
+    "reason_for_call": "Fake electricity disconnection demanding UPI",
+    "scam_score": 9,
+    "signals": [
+     "connection kat jayega",
+     "UPI se 4,500 rupees"
+    ],
+    "verdict": "scam"
+   }
+  },
+  {
+   "id": "S04_fake_fedex",
+   "label": "scam",
+   "lang": "hinglish",
+   "caller_turns": [
+    "FedEx se bol raha hoon, aapke naam ka parcel customs me pakda gaya hai.",
+    "Customs fine ke liye 25,000 rupees abhi transfer karo, warna case hoga."
+   ],
+   "trap": "Parcel + customs + fine payment (contrast with L02)",
+   "expected": {
+    "reason_for_call": "Fake customs courier fine",
+    "scam_score": 9,
+    "signals": [
+     "customs me pakda gaya",
+     "25,000 rupees abhi transfer karo",
+     "warna case hoga"
+    ],
+    "verdict": "scam"
+   }
+  },
+  {
+   "id": "S05_lottery",
+   "label": "scam",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Aapne KBC lottery jeeti hai 25 lakh, bas processing fee bhejni hogi.",
+    "Abhi 5,000 UPI karo aur kisi ko mat batana."
+   ],
+   "trap": "Prize + advance fee + secrecy",
+   "expected": {
+    "reason_for_call": "Lottery advance-fee scam",
+    "scam_score": 10,
+    "signals": [
+     "KBC lottery",
+     "processing fee",
+     "5,000 UPI",
+     "kisi ko mat batana"
+    ],
+    "verdict": "scam"
+   }
+  },
+  {
+   "id": "S06_family_emergency",
+   "label": "scam",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Papa, main hospital me hoon, accident ho gaya, jaldi paise bhejo.",
+    "Kisi ko mat batana, abhi UPI se 50,000 bhejo."
+   ],
+   "trap": "Emotional urgency + money + secrecy",
+   "expected": {
+    "reason_for_call": "Family emergency money scam",
+    "scam_score": 9,
+    "signals": [
+     "accident ho gaya",
+     "kisi ko mat batana",
+     "UPI se 50,000"
+    ],
+    "verdict": "scam"
+   }
+  },
+  {
+   "id": "S07_remote_access",
+   "label": "scam",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Main aapke bank ka officer hoon, account me suspicious activity hai.",
+    "AnyDesk download kijiye aur OTP bataiye, main account secure kar dunga."
+   ],
+   "trap": "Remote-access app + OTP",
+   "expected": {
+    "reason_for_call": "Bank impersonation asking for remote access and OTP",
+    "scam_score": 10,
+    "signals": [
+     "AnyDesk download kijiye",
+     "OTP bataiye"
+    ],
+    "verdict": "scam"
+   }
+  },
+  {
+   "id": "S08_fake_fraud_team",
+   "label": "scam",
+   "lang": "hinglish",
+   "caller_turns": [
+    "SBI fraud team se bol raha hoon, aapke card se abhi 40,000 nikalne ki koshish hui.",
+    "Card block karna hai to abhi OTP bataiye jo aapko aaya hai."
+   ],
+   "trap": "OTP request that looks like L01 but comes with 'your account is at risk' (contrast with L01)",
+   "expected": {
+    "reason_for_call": "Fake bank fraud team asking for OTP",
+    "scam_score": 9,
+    "signals": [
+     "fraud team",
+     "card block karna hai",
+     "OTP bataiye"
+    ],
+    "verdict": "scam"
+   }
+  },
+  {
+   "id": "S09_investment",
+   "label": "scam",
+   "lang": "hinglish",
+   "caller_turns": [
+    "Sir hamari company me 2 hafte me paisa double hota hai, guaranteed.",
+    "Aaj hi 20,000 transfer kijiye, kal slot khatam ho jayega."
+   ],
+   "trap": "Guaranteed returns + urgency",
+   "expected": {
+    "reason_for_call": "Investment doubling scam",
+    "scam_score": 8,
+    "signals": [
+     "paisa double",
+     "guaranteed",
+     "aaj hi 20,000 transfer"
+    ],
+    "verdict": "scam"
+   }
+  },
+  {
+   "id": "K01_swiggy_otp",
+   "label": "legit",
+   "lang": "kanglish",
+   "caller_turns": [
+    "Sir Swiggy delivery, gate hattira iddini.",
+    "OTP heli sir."
+   ],
+   "trap": "Kanglish version of L01 (draft)",
+   "expected": {
+    "reason_for_call": "Food delivery at the gate, OTP",
+    "scam_score": 1,
+    "signals": [],
+    "verdict": "legit"
+   }
+  },
+  {
+   "id": "K02_clinic",
+   "label": "legit",
+   "lang": "kanglish",
+   "caller_turns": [
+    "Doctor Rao clinic inda matadtha idini, naale 10 gantege appointment ide.",
+    "Barthira alva? Reschedule beku andre heli."
+   ],
+   "trap": "Kanglish clinic (draft)",
+   "expected": {
+    "reason_for_call": "Clinic appointment confirmation",
+    "scam_score": 1,
+    "signals": [],
+    "verdict": "legit"
+   }
+  },
+  {
+   "id": "K03_cbi",
+   "label": "scam",
+   "lang": "kanglish",
+   "caller_turns": [
+    "Nanu CBI officer matadtha idini, nimma Aadhaar mele drugs parcel sikkide.",
+    "Video call alli iri, yarigu helbedi, illandre arrest aagtira."
+   ],
+   "trap": "Kanglish digital arrest (draft)",
+   "expected": {
+    "reason_for_call": "Digital arrest: fake CBI officer",
+    "scam_score": 10,
+    "signals": [
+     "CBI officer",
+     "drugs parcel",
+     "video call alli iri",
+     "yarigu helbedi",
+     "arrest aagtira"
+    ],
+    "verdict": "scam"
+   }
+  }
+ ]
+}

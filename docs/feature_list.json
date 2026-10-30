@@ -1,0 +1,238 @@
+[
+  {
+    "id": "T1a",
+    "priority": 1,
+    "title": "T1: refactor core in MOCK",
+    "user_visible_behavior": "Reference screening, decision gating, persona memory and report work in MOCK without UI.",
+    "dependencies": [],
+    "status": "not_started",
+    "verification": ".venv/bin/python -m pytest -q tests/test_flow.py",
+    "evidence": [],
+    "notes": "Require tests for two screening answers, verdict, all decisions, garbled audio and reset. Existing files are placeholders, not evidence."
+  },
+  {
+    "id": "T1b",
+    "priority": 2,
+    "title": "T1: wire and launch Gradio",
+    "user_visible_behavior": "User can run python -m src.app and exercise the reference MOCK call path.",
+    "dependencies": [
+      "T1a"
+    ],
+    "status": "not_started",
+    "verification": ".venv/bin/python -m pytest -q tests/test_flow.py tests/test_ui_launch.py",
+    "evidence": [],
+    "notes": "L3 must launch a subprocess and exercise the UI; a mere import is insufficient."
+  },
+  {
+    "id": "T2",
+    "priority": 3,
+    "title": "Real adapters",
+    "user_visible_behavior": "User supplies audio and receives transcription, model reply and synthesized speech with timings and usage counters.",
+    "dependencies": [
+      "T1b"
+    ],
+    "status": "blocked",
+    "verification": "user runs .venv/bin/python scripts/smoke_real.py --audio clips/hinglish.wav and pastes output",
+    "evidence": [],
+    "notes": "BLOCKED: real key, verified integration details and user-owned audio/run required; notes contain hints only."
+  },
+  {
+    "id": "T3",
+    "priority": 4,
+    "title": "Latency go/no-go",
+    "user_visible_behavior": "User measures a complete real Hinglish turn; under ~6s go, over 8\u201310s stop and discuss the specified fallback.",
+    "dependencies": [
+      "T2"
+    ],
+    "status": "blocked",
+    "verification": "user runs .venv/bin/python scripts/smoke_real.py --audio clips/hinglish.wav --full-turn and pastes output",
+    "evidence": [],
+    "notes": "BLOCKED: working real adapters, key, audio and measured user-run output; do not continue past a no-go."
+  },
+  {
+    "id": "T4",
+    "priority": 5,
+    "title": "Dadi strategy",
+    "user_visible_behavior": "Dadi selects fresh demand-specific stalls, remains scared but hopeful under threats and handles prompt injection.",
+    "dependencies": [
+      "T3"
+    ],
+    "status": "not_started",
+    "verification": ".venv/bin/python -m pytest -q tests/test_strategy.py tests/test_strategy_flow.py",
+    "evidence": [],
+    "notes": "Cover no-repeat and observed STT scripts; no new model calls."
+  },
+  {
+    "id": "T5",
+    "priority": 6,
+    "title": "Background rolling summary",
+    "user_visible_behavior": "Long conversations preserve older caller and Dadi facts without blocking the main reply.",
+    "dependencies": [
+      "T4"
+    ],
+    "status": "not_started",
+    "verification": ".venv/bin/python -m pytest -q tests/test_summary.py",
+    "evidence": [],
+    "notes": "Fake-model tests cover scheduling, stale results, reset and failure."
+  },
+  {
+    "id": "T6a",
+    "priority": 7,
+    "title": "Classifier offline evaluation preparation",
+    "user_visible_behavior": "Fixture and evaluation plumbing preserves classify interface and separates at least ten new held-out scenarios.",
+    "dependencies": [
+      "T5"
+    ],
+    "status": "not_started",
+    "verification": ".venv/bin/python -m pytest -q tests/test_classifier.py tests/test_eval_classifier.py",
+    "evidence": [],
+    "notes": "Copy inputs from reference; never move or edit read-only originals. No claims based on MOCK accuracy."
+  },
+  {
+    "id": "T6",
+    "priority": 8,
+    "title": "Real classifier calibration",
+    "user_visible_behavior": "Confusion counts and every wrong verdict are recorded separately for original and new scenarios, prioritizing legitimate-call false alarms.",
+    "dependencies": [
+      "T6a",
+      "T2"
+    ],
+    "status": "blocked",
+    "verification": "user runs .venv/bin/python scripts/eval_classifier.py and pastes output",
+    "evidence": [],
+    "notes": "BLOCKED: real Evon key and user-run paid evaluation. No accuracy percentage. Tune prompt/rules without overfitting."
+  },
+  {
+    "id": "T6b",
+    "priority": 9,
+    "title": "Optional Jev comparison",
+    "user_visible_behavior": "Compare typed classification behind the same interface only if access and contest permission are immediate.",
+    "dependencies": [
+      "T6"
+    ],
+    "status": "blocked",
+    "verification": "user runs .venv/bin/python scripts/eval_classifier.py --compare-jev and pastes output",
+    "evidence": [],
+    "notes": "OPTIONAL; BLOCKED: access, key, contest permission, real evaluation. One-hour timebox; Evon default."
+  },
+  {
+    "id": "T7",
+    "priority": 10,
+    "title": "Report quality",
+    "user_visible_behavior": "Readable report, robust JSON fallback and demo call duration label.",
+    "dependencies": [
+      "T6"
+    ],
+    "status": "not_started",
+    "verification": ".venv/bin/python -m pytest -q tests/test_report.py tests/test_report_ui.py",
+    "evidence": [],
+    "notes": ""
+  },
+  {
+    "id": "T8",
+    "priority": 11,
+    "title": "Kanglish verification",
+    "user_visible_behavior": "Native speaker reviews Kannada transcription and synthesized speech; weak output is labeled experimental.",
+    "dependencies": [
+      "T7",
+      "T2"
+    ],
+    "status": "blocked",
+    "verification": "user runs .venv/bin/python scripts/smoke_real.py --audio clips/kanglish.wav --language kanglish and pastes output",
+    "evidence": [],
+    "notes": "BLOCKED: key, Kannada audio, native speaker review and user-run listening comparison of Latin/native-script TTS."
+  },
+  {
+    "id": "T9a",
+    "priority": 12,
+    "title": "Audio caching mechanics",
+    "user_visible_behavior": "Repeated canned lines and filler paths are cached; FILLER toggle prevents overlap in MOCK UI.",
+    "dependencies": [
+      "T8"
+    ],
+    "status": "not_started",
+    "verification": ".venv/bin/python -m pytest -q tests/test_audio_cache.py tests/test_audio_ui.py",
+    "evidence": [],
+    "notes": "Use fake audio locally; actual listening is T9b."
+  },
+  {
+    "id": "T9b",
+    "priority": 13,
+    "title": "Generate and listen to fillers",
+    "user_visible_behavior": "User hears cached fillers and canned lines without cutting off replies.",
+    "dependencies": [
+      "T9a",
+      "T2"
+    ],
+    "status": "blocked",
+    "verification": "user runs .venv/bin/python scripts/make_fillers.py and pastes output",
+    "evidence": [],
+    "notes": "BLOCKED: real key, verified voices and user listening/overlap check."
+  },
+  {
+    "id": "T10",
+    "priority": 14,
+    "title": "UI and strategy panel",
+    "user_visible_behavior": "Permanent simulation banner, verdict card, transcript, timer and live strategy panel are visible.",
+    "dependencies": [
+      "T9b"
+    ],
+    "status": "not_started",
+    "verification": ".venv/bin/python -m pytest -q tests/test_ui.py tests/test_ui_e2e.py",
+    "evidence": [],
+    "notes": ""
+  },
+  {
+    "id": "T11a",
+    "priority": 15,
+    "title": "Demo hardening in MOCK",
+    "user_visible_behavior": "API failures produce canned replies with status; startup diagnostics and prerecorded replay routing work with fake adapters.",
+    "dependencies": [
+      "T10"
+    ],
+    "status": "not_started",
+    "verification": ".venv/bin/python -m pytest -q tests/test_failures.py tests/test_replay.py tests/test_startup.py",
+    "evidence": [],
+    "notes": ""
+  },
+  {
+    "id": "T11b",
+    "priority": 16,
+    "title": "Real replay and audio check",
+    "user_visible_behavior": "User verifies local devices, real replay and headphone/echo behavior before recording.",
+    "dependencies": [
+      "T11a",
+      "T2"
+    ],
+    "status": "blocked",
+    "verification": "user runs .venv/bin/python -m src.app --replay clips/ and pastes output",
+    "evidence": [],
+    "notes": "BLOCKED: user devices, key, recorded teammate audio and playback observation."
+  },
+  {
+    "id": "T12a",
+    "priority": 17,
+    "title": "Run and recording documentation",
+    "user_visible_behavior": "README explains exact MOCK and real startup, environment, headphones and known limitations.",
+    "dependencies": [
+      "T11b"
+    ],
+    "status": "not_started",
+    "verification": ".venv/bin/python -m pytest -q tests/test_documented_commands.py",
+    "evidence": [],
+    "notes": "Verification must execute documented MOCK commands; real commands retain user-run evidence."
+  },
+  {
+    "id": "T12b",
+    "priority": 18,
+    "title": "Demo script and final handoff",
+    "user_visible_behavior": "60-second legit/scam/report outline states teammate simulation and final progress lists all limitations.",
+    "dependencies": [
+      "T12a"
+    ],
+    "status": "not_started",
+    "verification": ".venv/bin/python -m pytest -q tests/test_demo_handoff.py",
+    "evidence": [],
+    "notes": "10s legit, 35s scam/Dadi, 15s report; credit O2 Daisy; no unsupported statistics."
+  }
+]
