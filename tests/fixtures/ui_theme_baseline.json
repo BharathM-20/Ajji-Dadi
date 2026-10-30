@@ -1,0 +1,104 @@
+{
+  "commit": "c5db62f",
+  "tests": 59,
+  "handlers": 6,
+  "output_components": 7,
+  "output_slots": 32,
+  "total_components": 16,
+  "function_signatures": {
+    "view": "arguments(args=[arg(arg='s'), arg(arg='audio')], defaults=[Constant(value=None)])",
+    "turn": "arguments(args=[arg(arg='audio_path'), arg(arg='state'), arg(arg='language')])",
+    "choose": "arguments(args=[arg(arg='action'), arg(arg='state')])",
+    "new_call": "arguments()",
+    "build_ui": "arguments()"
+  },
+  "frozen_functions": {
+    "turn": "FunctionDef(name='turn', args=arguments(args=[arg(arg='audio_path'), arg(arg='state'), arg(arg='language')]), body=[Expr(value=Constant(value='Render each core yield immediately, including optional cached filler audio.')), For(target=Tuple(elts=[Name(id='state', ctx=Store()), Name(id='audio', ctx=Store())], ctx=Store()), iter=Call(func=Attribute(value=Name(id='session', ctx=Load()), attr='turn', ctx=Load()), args=[Name(id='audio_path', ctx=Load()), Name(id='state', ctx=Load()), Name(id='language', ctx=Load())]), body=[Expr(value=Yield(value=Call(func=Name(id='view', ctx=Load()), args=[Name(id='state', ctx=Load()), Name(id='audio', ctx=Load())])))])])",
+    "choose": "FunctionDef(name='choose', args=arguments(args=[arg(arg='action'), arg(arg='state')]), body=[Return(value=Call(func=Name(id='view', ctx=Load()), args=[Call(func=Attribute(value=Name(id='session', ctx=Load()), attr='choose', ctx=Load()), args=[Name(id='action', ctx=Load()), Name(id='state', ctx=Load())])]))])",
+    "new_call": "FunctionDef(name='new_call', args=arguments(), body=[Return(value=Tuple(elts=[Starred(value=Call(func=Name(id='view', ctx=Load()), args=[Call(func=Name(id='new_session', ctx=Load()))]), ctx=Load()), Constant(value='')], ctx=Load()))])"
+  },
+  "handler_calls": [
+    "Call(func=Attribute(value=Name(id='mic', ctx=Load()), attr='stop_recording', ctx=Load()), args=[Name(id='turn', ctx=Load()), List(elts=[Name(id='mic', ctx=Load()), Name(id='s', ctx=Load()), Name(id='lang', ctx=Load())], ctx=Load()), Name(id='outs', ctx=Load())], keywords=[keyword(arg='api_name', value=Constant(value='caller_turn'))])",
+    "Call(func=Attribute(value=Name(id='b_pick', ctx=Load()), attr='click', ctx=Load()), args=[Lambda(args=arguments(args=[arg(arg='s')]), body=Call(func=Name(id='choose', ctx=Load()), args=[Constant(value='pickup'), Name(id='s', ctx=Load())])), List(elts=[Name(id='s', ctx=Load())], ctx=Load()), Name(id='outs', ctx=Load())], keywords=[keyword(arg='api_name', value=Constant(value='pick_up'))])",
+    "Call(func=Attribute(value=Name(id='b_dec', ctx=Load()), attr='click', ctx=Load()), args=[Lambda(args=arguments(args=[arg(arg='s')]), body=Call(func=Name(id='choose', ctx=Load()), args=[Constant(value='decline'), Name(id='s', ctx=Load())])), List(elts=[Name(id='s', ctx=Load())], ctx=Load()), Name(id='outs', ctx=Load())], keywords=[keyword(arg='api_name', value=Constant(value='decline'))])",
+    "Call(func=Attribute(value=Name(id='b_dadi', ctx=Load()), attr='click', ctx=Load()), args=[Lambda(args=arguments(args=[arg(arg='s')]), body=Call(func=Name(id='choose', ctx=Load()), args=[Constant(value='dadi'), Name(id='s', ctx=Load())])), List(elts=[Name(id='s', ctx=Load())], ctx=Load()), Name(id='outs', ctx=Load())], keywords=[keyword(arg='api_name', value=Constant(value='let_dadi_handle'))])",
+    "Call(func=Attribute(value=Name(id='b_end', ctx=Load()), attr='click', ctx=Load()), args=[Name(id='end_call', ctx=Load()), List(elts=[Name(id='s', ctx=Load())], ctx=Load()), List(elts=[Name(id='report', ctx=Load())], ctx=Load())], keywords=[keyword(arg='api_name', value=Constant(value='end_call'))])",
+    "Call(func=Attribute(value=Name(id='b_new', ctx=Load()), attr='click', ctx=Load()), args=[Name(id='new_call', ctx=Load()), Constant(value=None), BinOp(left=Name(id='outs', ctx=Load()), op=Add(), right=List(elts=[Name(id='report', ctx=Load())], ctx=Load()))], keywords=[keyword(arg='api_name', value=Constant(value='new_call'))])"
+  ],
+  "outs_assignment": [
+    "Assign(targets=[Name(id='outs', ctx=Store())], value=List(elts=[Name(id='chat', ctx=Load()), Name(id='out', ctx=Load()), Name(id='s', ctx=Load()), Name(id='status', ctx=Load()), Name(id='decide', ctx=Load()), Name(id='mic', ctx=Load())], ctx=Load()))"
+  ],
+  "frozen_hashes": {
+    ".python-version": "3ce16e94590543a327d3e5ae412e663206e0ed1b46628ed3dd5ad29caa1ff5ac",
+    "requirements.txt": "76e53299618e7a55475004916e4fa65b9f3f1b0a49c3862689031bca8f605d8c",
+    "src/__init__.py": "9a00c5dee95e32623bad6b4ad9ad477ab1d3996d6ce76c937f8b8dfd51aaea53",
+    "src/adapters.py": "74f6f768f4c1529a350bfefdc7f71e4c4367dbd17c85179713dbef68d0206776",
+    "src/dadi.py": "0c3da7a5177e793ea43738bd96f83e6811800de464f4d873f8b99be16f688132",
+    "src/personas.py": "09538469468900a197e2afb67ff8bd28d540843f1d336e8373217ae56d998c27",
+    "src/report.py": "e8efe7a7e1a79c688f21d232fe2fe65c0d72b8cca7f1138adabfba564a7c276a",
+    "src/screener.py": "869ff41ac0a62563000aa772181798f99afcd30e5c35bfa8f4319f3f18405c44",
+    "src/session.py": "097afef55fc92422f03b0b9b8601bfd2e267cc75904ea04748b928e3aab9619c",
+    "src/strategy.py": "488fe2c3b3186e05dab4c817dd2a0e25bdf92cd720cea52eb1d549a71f11e74f",
+    "tests/conftest.py": "0acad6aa3b2927c4c08e64e77aa7e65693032ff24d8f27671d54dcc982cc5f46",
+    "tests/fixtures/loopback_only/sitecustomize.py": "5e6515b94049e154a0a323fc3b85450f2464397485904c18332c98b60b39a485",
+    "tests/test_adapters.py": "292dbbc9209ce10327f76ab47a6f63fa19d890de9e4702a1e988d9e4fd1470b1",
+    "tests/test_architecture.py": "6ff7c787db31028415c2425879acb10fd09727a3bd48e379cb1e1b86dbfad095",
+    "tests/test_flow.py": "f844a28365423f05f4f217e34f9db17282edba140e1d6aff4bfde2b41a193896",
+    "tests/test_harness.py": "97922bd964fe7343b437d4bb4febc95d02df84658cbad02c21c0ccc2f8ba5474",
+    "tests/test_strategy.py": "9a00c5dee95e32623bad6b4ad9ad477ab1d3996d6ce76c937f8b8dfd51aaea53",
+    "tests/test_ui_launch.py": "b7c33a8b5bb042d5ebba3b7662648e22a82a1b1352b26eb972221aa45cf652aa",
+    "tests/ui_launch_probe.py": "3a7092a3a4b5fe31fbc201a3175f31babd1ec13c05dd765eb1fc9dd2fd8f3afb"
+  },
+  "output_types": [
+    [
+      "chatbot",
+      "audio",
+      "state",
+      "markdown",
+      "row",
+      "audio"
+    ],
+    [
+      "chatbot",
+      "audio",
+      "state",
+      "markdown",
+      "row",
+      "audio"
+    ],
+    [
+      "chatbot",
+      "audio",
+      "state",
+      "markdown",
+      "row",
+      "audio"
+    ],
+    [
+      "chatbot",
+      "audio",
+      "state",
+      "markdown",
+      "row",
+      "audio"
+    ],
+    [
+      "markdown"
+    ],
+    [
+      "chatbot",
+      "audio",
+      "state",
+      "markdown",
+      "row",
+      "audio",
+      "markdown"
+    ]
+  ],
+  "view_returns": [
+    "Return(value=Tuple(elts=[Name(id='chat', ctx=Load()), Name(id='audio', ctx=Load()), Name(id='s', ctx=Load()), Name(id='status', ctx=Load()), Call(func=Attribute(value=Name(id='gr', ctx=Load()), attr='update', ctx=Load()), keywords=[keyword(arg='visible', value=Compare(left=Subscript(value=Name(id='s', ctx=Load()), slice=Constant(value='mode'), ctx=Load()), ops=[Eq()], comparators=[Constant(value='DECIDE')]))]), Constant(value=None)], ctx=Load()))"
+  ],
+  "main": [
+    "If(test=Compare(left=Name(id='__name__', ctx=Load()), ops=[Eq()], comparators=[Constant(value='__main__')]), body=[Expr(value=Call(func=Attribute(value=Call(func=Name(id='build_ui', ctx=Load())), attr='launch', ctx=Load()), keywords=[keyword(arg='server_name', value=Constant(value='127.0.0.1')), keyword(arg='share', value=Constant(value=False)), keyword(arg='inbrowser', value=Constant(value=False))]))])"
+  ]
+}

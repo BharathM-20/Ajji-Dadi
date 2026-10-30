@@ -83,3 +83,12 @@ are blocked in the probe and server, implicit tokens/telemetry disabled, key/pro
 Sandboxed port binding may fail; localhost permission is needed for the launch test. This is
 never evidence for paid endpoints or actual speech/device quality. Browser showed the permanent
 banner and controls, but reported no microphone found; human recording/playback remains untested.
+
+## F-UI-THEME presentation boundary
+app.py still owns Gradio and the frozen handler/tuple/IO contract. Pure ui_theme.py owns
+system-font tokens, URL-free CSS and escaped cosmetic status/verdict markup; it imports no
+Gradio or network library. Theme construction uses Gradio5 Base.set in app.py. Five additive
+regression checks freeze existing tests/core hashes, function/handler/return ASTs, ordered
+output types/counts and banner permanence. Additional static/layout components have no handlers.
+Renderer SVG uses native dimensions compatible with Markdown sanitization; report/transcript
+logic and content are unchanged. Visual styling is not real-service or aesthetic acceptance.

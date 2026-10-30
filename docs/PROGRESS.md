@@ -1,24 +1,40 @@
 # Progress
 
-## Current state — T1b session
-- Baseline/latest implementation commit: 2772b4c (T1a core extraction, passing).
-- Checkout started clean; Python 3.13.7 and pinned Gradio 5.49.1 are installed.
-- This session baseline: make setup succeeded offline; make check 51 passed in 0.19s;
-  make smoke 8 passed in 0.01s.
-- Completed feature: T1b only, passing via scripts/verify_feature.py T1b after actual launch.
-- Latest implementation unit: the T1b commit containing this record; resolve with git log -1.
-  Its verified baseline is 2772b4c. T1a remains passing; all later feature states are unchanged.
-- T1a remains passing; no T2 or later task is authorized.
-- Implemented reference UI and wrappers. make check passed59 (12.17s), including actual CLI
-  launch and full MOCK HTTP/SSE path, with loopback permission. Seven additional UI checks
-  cover components, callbacks, state, banner permanence and real-mode refusal.
-- Fresh-context review accepted functionality and found two test-cleanup gaps, now fixed.
-- Final verifier exited 0: make check59 (7.16s), exact feature command38 (6.64s), no skips.
-  Both commands launched the actual module and completed real HTTP/SSE flows.
-- Final fresh-context review ACCEPT: all six scores 2/2 for T1b MOCK scope; no unresolved findings.
-- Temporary manual server and browser tab stopped after verification; port7860 no longer listening.
-- Next action: commit this verified T1b unit and stop.
-  T2 remains blocked; do not start real integration.
+## Current state — F-UI-THEME session
+- Baseline commit c5db62f; checkout started clean. T1a/T1b remain passing.
+- Feature F-UI-THEME added in_progress before implementation by explicit user request;
+  now passing only via scripts/verify_feature.py after final static/runtime/launch checks.
+- Baseline before code edits: setup offline succeeded, make check59 passed7.47s, smoke8;
+  Blocks6 handlers,7 unique output components,32 output slots,16 total components.
+- Scope: visual presentation only in app.py and a new pure presentation module; existing
+  tests, handler AST/wiring, function signatures/tuples, core/adapters/personas remain frozen.
+- Implemented theme/layout/render markup. Pre-final make check64 passed; all59 existing
+  tests/core files byte-identical. Counts remain6/7/32; total components24 (presentation wrappers).
+- Actual app served localhost; inspected laptop/phone and separately labeled fixture-rendered
+  SVG/report. Browser scoping/sanitizer findings fixed without changing behavior/sanitization.
+- Final verifier exited0: make check64 passed7.03s; feature suite43 passed6.67s, no skips.
+  Existing59 tests unchanged;6 handlers/7 output components/32 output slots unchanged.
+- Final browser structural check:1920x1080 and390x844 no horizontal overflow; fixture SVG
+  stroke matches amber and6/10 has0.6 arc ratio, SVG title survives; phone buttons within width.
+- Final independent recheck ACCEPT, all six rubric scores2/2; no actionable findings.
+- Temporary actual/fixture servers stopped; browser viewport reset and temporary tab closed.
+- Latest implementation unit: F-UI-THEME commit containing this record (git log -1).
+  Stop after this single verified commit; no other feature started.
+
+## F-UI-THEME sprint contract
+Scope: light system-font page, quiet header and permanent prominent simulation strip; dark
+live-call hero with readable distinct transcript bubbles; floating phone-style controls;
+semantic mint/amber/red verdict with inline SVG score ring; marigold Dadi action; pills for
+mode/timing; bank-fraud case-file report styling; responsive and reduced-motion CSS.
+Preserve all existing function signatures, non-render returns, core/yield/state behavior,
+event calls and ordered inputs/outputs. Render changes are cosmetic markup only.
+No external assets/URLs/fonts/scripts, new dependencies, keys, .env, vendor/network calls,
+classification/report logic changes, or later features. Localhost-only launch is verification.
+Acceptance: baseline test/handler/output counts recorded; existing tests byte-identical and
+passing; added guard checks source contracts, counts, banner and URL-free presentation;
+real module launch, full MOCK Gradio flow and clean shutdown; status only via verifier.
+Reference screenshots were not present among attachments; written art direction governs.
+User judges appearance. Record inspected viewport states and unverified human/device aspects.
 
 ## T1b sprint contract
 Scope: reference view/decision card, permanent simulation banner, language dropdown, transcript,
@@ -177,3 +193,32 @@ Status may become passing only through scripts/verify_feature.py T1a.
 - Temporary manual server terminated deliberately (SIGTERM; exit143), listening port absent;
   browser verification tab closed. This was cleanup after successful launch, not startup failure.
 - Working tree should be clean after the single D008 T1b commit; use git log -1 for its hash.
+
+## F-UI-THEME final evidence and handoff
+- Verification command `.venv/bin/python scripts/verify_feature.py F-UI-THEME` exited0.
+  make check: ruff clean,64 passed7.03s; exact feature suite43 passed6.67s. Existing tests are
+  byte-identical to c5db62f and all59 continue passing. Only script wrote passing/evidence.
+- Baseline/final contract:6 handlers,7 unique output components,32 output slots unchanged.
+  Total components16 ->24 from static HTML/layout wrappers. Function args, wrapper/generator
+  AST, view return tuple, event calls and ordered outs unchanged; all core/dependency files frozen.
+- Presentation changes: system-font light page/header/banner, dark call hero, separate caller/
+  decoy bubbles, phone card, semantic verdict chips/SVG ring, status pills, marigold Dadi action,
+  pill buttons, case-file report styling, fluid layout, focus/hover and reduced-motion CSS.
+- Actual module launched on localhost7860; independent live-route regression ran full MOCK
+  screen/verdict/Dadi/end/reset and all human choices. Fixture-only preview on7861 inspected
+  nonempty UI rendering, not classifier accuracy or real speech. Browser bounds/markup were
+  checked at1920x1080 and390x844; final SVG60% ratio/title/color confirmed, no horizontal overflow.
+- Design choices/observed Gradio5 constraints are D009; frozen baseline fixture is
+  tests/fixtures/ui_theme_baseline.json. Existing feature specs unchanged; adding F-UI-THEME
+  and refreshing feature digest was explicitly authorized by this request.
+- Untested: user's aesthetic acceptance; reference screenshots (none attached); exhaustive
+  browsers/sizes; actual OS reduced-motion switch (emitted CSS checked); physical microphone/
+  playback (browser had no mic); every real API, quality/latency/credit and language claim.
+- Run from repo root: `.venv/bin/python -m src.app`. No .env/key required; MOCK stays True.
+- Stop after this single feature; do not start any other feature.
+
+- Final fresh-context review ACCEPT with correctness/verification/scope/reliability/
+  maintainability/handoff all2/2. User aesthetic acceptance remains explicitly pending.
+- Temporary local servers7860/7861 terminated after verification; browser viewport override
+  reset and verification tab closed. No temporary preview code is part of the repository.
+- Commit records D009 with59 ->64 tests,6/7/32 frozen counts and43 exact feature tests.

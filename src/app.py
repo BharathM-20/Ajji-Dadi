@@ -2,7 +2,7 @@
 
 import gradio as gr
 
-from . import adapters, session
+from . import adapters, session, ui_theme
 from .personas import LANGS
 from .report import end_call
 from .session import new_session
@@ -18,11 +18,7 @@ def view(s, audio=None):
         badge = {"scam": "🔴 SCAM", "suspicious": "🟠 SUSPICIOUS", "legit": "🟢 LOOKS LEGIT"}.get(
             v.get("verdict"), "🟠 SUSPICIOUS"
         )
-        status = (
-            f"### {badge}  (score {v.get('scam_score', '?')}/10)\n"
-            f"**Reason:** {v.get('reason_for_call')}\n\n"
-            f"**Signals:** {', '.join(v.get('signals') or [])}"
-        )
+        status = ui_theme.verdict_markup(v, badge)
     else:
         t = s["timings"][-1] if s["timings"] else None
         status = f"Mode: **{s['mode']}** | turn {s['turn']}" + (
@@ -31,6 +27,7 @@ def view(s, audio=None):
             if t
             else ""
         )
+        status = ui_theme.status_markup(status)
     return chat, audio, s, status, gr.update(visible=s["mode"] == "DECIDE"), None
 
 
@@ -54,27 +51,56 @@ def build_ui():
             "ERROR: real mode unavailable in this UI. WHY: T1b is MOCK-only. "
             "FIX: keep src/adapters.py MOCK=True until T2 is implemented and verified."
         )
-    with gr.Blocks(title="Dadi vs Digital Arrest", analytics_enabled=False) as demo:
+    with gr.Blocks(
+        title="Dadi vs Digital Arrest",
+        analytics_enabled=False,
+        theme=gr.themes.Base(
+            primary_hue="green",
+            secondary_hue="amber",
+            neutral_hue="slate",
+            font=ui_theme.FONT,
+            font_mono=ui_theme.MONO,
+        ).set(**ui_theme.THEME_SETTINGS),
+        css=ui_theme.CSS,
+    ) as demo:
+        gr.HTML(ui_theme.NAV, elem_id="app-nav")
         gr.Markdown(
             "# 👵 Dadi vs Digital Arrest\n⚠️ **SIMULATION:** the caller is a teammate "
-            "role-playing. No real calls, no real people."
+            "role-playing. No real calls, no real people.",
+            elem_id="simulation-banner",
         )
         s = gr.State(new_session())
-        lang = gr.Dropdown(list(LANGS), value=list(LANGS)[0], label="Language")
-        chat = gr.Chatbot(type="messages", height=360, label="Live transcript")
-        status = gr.Markdown()
-        with gr.Row(visible=False) as decide:
-            b_pick = gr.Button("✅ Pick up")
-            b_dec = gr.Button("❌ Decline")
-            b_dadi = gr.Button("👵 Let Dadi handle it", variant="primary")
-        mic = gr.Audio(
-            sources=["microphone"], type="filepath", label="🎤 Caller speaks (record, then stop)"
-        )
-        out = gr.Audio(autoplay=True, label="🔊 Phone speaker")
-        with gr.Row():
-            b_end = gr.Button("End call + report")
-            b_new = gr.Button("New call")
-        report = gr.Markdown()
+        with gr.Row(elem_id="call-hero"):
+            with gr.Column(scale=6, min_width=0, elem_id="conversation-column"):
+                gr.HTML(ui_theme.HERO, elem_id="hero-copy")
+                chat = gr.Chatbot(
+                    type="messages", height=360, label="Live transcript", elem_id="live-transcript"
+                )
+            with gr.Column(scale=4, min_width=0, elem_id="phone-panel"):
+                gr.HTML(ui_theme.PHONE_HEADING, elem_id="phone-heading")
+                lang = gr.Dropdown(
+                    list(LANGS), value=list(LANGS)[0], label="Language", elem_id="call-language"
+                )
+                status = gr.Markdown(elem_id="call-status")
+                with gr.Row(visible=False, elem_id="decision-actions") as decide:
+                    b_pick = gr.Button("✅ Pick up", elem_id="pick-up")
+                    b_dec = gr.Button("❌ Decline", elem_id="decline-call")
+                    b_dadi = gr.Button(
+                        "👵 Let Dadi handle it", variant="primary", elem_id="dadi-handoff"
+                    )
+                mic = gr.Audio(
+                    sources=["microphone"],
+                    type="filepath",
+                    label="🎤 Caller speaks (record, then stop)",
+                    elem_id="caller-mic",
+                )
+                out = gr.Audio(autoplay=True, label="🔊 Phone speaker", elem_id="phone-speaker")
+                with gr.Row(elem_id="end-actions"):
+                    b_end = gr.Button("End call + report", elem_id="end-call")
+                    b_new = gr.Button("New call", elem_id="new-call")
+        with gr.Group(elem_id="case-panel"):
+            gr.HTML(ui_theme.CASE_HEADING, elem_id="case-heading")
+            report = gr.Markdown(elem_id="case-file")
 
         outs = [chat, out, s, status, decide, mic]
         mic.stop_recording(turn, [mic, s, lang], outs, api_name="caller_turn")

@@ -274,5 +274,38 @@
     "verification": ".venv/bin/python -m pytest -q tests/test_demo_handoff.py",
     "evidence": [],
     "notes": "10s legit, 35s scam/Dadi, 15s report; credit O2 Daisy; no unsupported statistics."
+  },
+  {
+    "id": "F-UI-THEME",
+    "priority": 19,
+    "title": "Visual redesign of the Gradio UI",
+    "user_visible_behavior": "Existing MOCK call UI receives a responsive light/system-font theme, dark live-call hero, semantic verdict gauge and styled case file with behavior frozen.",
+    "dependencies": [
+      "T1b"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_ui_theme.py tests/test_flow.py tests/test_ui_launch.py",
+    "evidence": [
+      {
+        "at_utc": "2026-10-30T12:58:59.820184+00:00",
+        "base_commit": "c5db62f5aabe62b85bd9117cc54811843b14bf58",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 64 items\n\ntests/test_adapters.py ........                                          [ 12%]\ntests/test_architecture.py .....                                         [ 20%]\ntests/test_flow.py ..............................                        [ 67%]\ntests/test_harness.py ........                                           [ 79%]\ntests/test_ui_launch.py ........                                         [ 92%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================== 64 passed in 7.03s ==============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_ui_theme.py tests/test_flow.py tests/test_ui_launch.py",
+            "exit_code": 0,
+            "stdout": "...........................................                              [100%]\n43 passed in 6.67s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ],
+    "notes": "User-authorized additive feature; make check plus frozen source/signatures/events/outputs/component behavior checks, unchanged existing tests, banner permanence, URL-free CSS/theme, real launch/full MOCK flow. User judges appearance; no claim of visual quality."
   }
 ]

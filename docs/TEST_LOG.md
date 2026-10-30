@@ -75,3 +75,38 @@ Initialization history is in PROGRESS.md. MOCK core evidence follows.
 
 - Final fresh-context recheck ACCEPT, six scores2/2. Temporary manual localhost7860 server
   deliberately stopped with SIGTERM (exit143); no listener remained, verification tab closed.
+
+## 2026-10-30 — F-UI-THEME visual-only redesign
+- Baseline c5db62f: offline setup succeeded; make check59 passed7.47s; smoke8 passed0.01s.
+- Baseline Blocks:6 event handlers,7 unique output components,32 output slots,16 total components.
+  Final structural read:6/7/32 unchanged;24 total after static/layout additions only.
+- Added test_ui_theme.py (5 tests), baseline source/hash/AST/config fixture and explicitly
+  user-authorized feature/digest entry. No existing test or core/adapter module changed.
+- Pre-final full make check64 passed6.97s (all59 previous tests unchanged); real Gradio launch
+  test exercised screening/verdict/choices/Dadi/report/reset via HTTP/SSE.
+- Browser: actual module served localhost7860. Separate temporary localhost7861 fixture preview
+  seeded existing components through build_ui/view only to inspect nonempty transcript, verdict,
+  controls and report. Preview content is labeled sample data; it is not classifier evidence.
+- Inspected1920x1080 and390x844 DOM/layout/screenshots: no horizontal document overflow; phone
+  columns stack, decision controls remain within viewport, banner visible. Gradio reports no mic.
+- Actual sanitized DOM retains SVG circles/title and score6/10;6 score uses60% of circumference.
+  Caller/decoy colors/padding differ; case-file fixture content remains readable/structured.
+- Failures/fixes: unsupported Base token and long CSS lines (environment/API/static verification);
+  raw namespace URL in default local theme icons (context/verification, percent-encoded);
+  root media scoping/double bubble padding and stripped SVG viewBox/pathLength (runtime
+  presentation/verification, fixed from DOM evidence); g-format rounding (verification,
+  increased rendered geometric precision). New tests only were adapted; existing tests untouched.
+- System fonts, empty external theme stylesheet list, CSS/theme no http(s) references, HTML
+  sanitization still on. Reduced-motion rule verified in emitted scoped CSS; OS preference
+  was not toggled. Final verifier/review evidence follows after final CSS rerun.
+- Untested: human aesthetic acceptance, every viewport/browser/OS, physical mic/playback,
+  real APIs/audio/languages/latency/credit use. No screenshots were attached as visual references.
+
+- Final verifier after all CSS/SVG fixes: make check64 passed7.03s; exact feature suite43
+  passed6.67s, no skips. Real server launch and full MOCK routes rerun in both commands.
+- Final DOM:1920x1080 no horizontal overflow, hero1184px;390x844 no horizontal overflow,
+  root padding14px16px28px, decisions withinx52..338; ring title score6/10, ratio0.6 and
+  stroke rgb134,84,5 (amber). Sanitizer remains enabled. Human aesthetic judgment pending.
+
+- Final independent review ACCEPT, all six implementation rubric scores2/2. Temporary
+  localhost7860/7861 servers stopped; browser viewport reset and preview tab closed.

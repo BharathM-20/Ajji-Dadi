@@ -88,3 +88,35 @@ timeout cleanup, and server termination is protected by nested finally around cl
 Reason: prevent stale localhost servers when a test stalls or client cleanup raises. Rejected:
 subprocess.run timeout alone (kills only probe, can orphan its server). Verified by rerunning
 both full and feature launch suites after the fix.
+
+## D009 — F-UI-THEME presentation only (2026-10-30)
+User explicitly added one feature and authorized its feature-spec digest update; all existing
+feature specifications are preserved. Baseline c5db62f: make setup offline succeeded; make
+check59 passed (7.47s), smoke8 (0.01s), 6 handlers, 7 unique output components, 32 output
+slots, 16 total original components. Extra static/layout components may increase total only.
+Record hashes/AST/config contracts in a new fixture, without modifying any existing test.
+Palette: off-white #f5f6f2, ink #151a18, charcoal #151d1a; mint legit, amber suspicious,
+restrained red scam, warm marigold for Dadi. System sans/mono only; no downloaded fonts/assets.
+Use Gradio5 Base(...).set() in app.py and pure CSS/escaped render helpers in ui_theme.py.
+Reason: current architecture forbids Gradio imports outside app.py; a data-only presentation
+module preserves that guard unchanged. Mirror light values for page defaults, retain dark
+live-call hero. Inline SVG gauge only displays existing score, never changes classification.
+Unknown scores remain '?'; gauge is unfilled. Escape caller-derived text within cosmetic HTML.
+Use elem_id/classes and permitted Rows/Columns/Groups. Freeze all event ASTs, function args,
+core wrappers, outs list and view return tuple. Only status-render markup may differ.
+Rejected: new dependencies, remote assets/fonts, rewriting handlers, changing tests/core,
+changing report content, fake outcomes, heavy animation or claiming browser aesthetic quality.
+Constraints: no reference screenshots attached; follow textual direction. User judges design.
+
+D009 verification refinements: Base.set uses only supported pinned Gradio5 tokens; system
+fonts yield zero external stylesheets. Default checkbox/radio SVG data URIs used a raw namespace
+URL; supply equivalent percent-encoded local SVGs so theme/CSS contain no literal http(s) URLs.
+Gradio's CSS scoper duplicates root selectors outside media rules but prefixes them within
+media rules; use fluid clamp() root padding and descendant reduced-motion rules. Nested
+Chatbot wrappers share the message class, so only the outer bubble gets padding/background.
+Markdown sanitizer retains circles/strokes/title but strips viewBox/pathLength/ARIA attributes.
+Use a native78px SVG with center39/radius30 and circumference-derived dash lengths (12-digit
+precision), plus SVG title and visible score text. Keep sanitization enabled; never disable it
+for decoration. Color the stroke via the verdict CSS variable rather than inherited currentColor.
+Reason: observed browser compatibility, not classification/policy changes. New additive tests
+cover score geometry and escaping; all pre-existing tests remain byte-identical.
