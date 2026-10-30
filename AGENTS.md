@@ -5,9 +5,9 @@
   Why: protect credits and isolate vendor changes. Delete only if adapter boundary is replaced.
 - Never print, log or commit keys; keep `.env.example` empty of real values.
   Why: private credentials. Keep permanently.
-- This session implements F-DIALOGUE-QUALITY: local Hinglish, Hindi and Kannada dialogue.
-  Why: user authorized model/prompt/context improvement and training investigation;
-  latest message includes Hindi/Kannada. Speech integration stays excluded; MOCK remains safe.
+- This session implements T2 code only: opt-in serialized Gnani STT/TTS from GNANI_NOTES.
+  Why: latest user scope supersedes prior dialogue work. Keep think/local brain unchanged;
+  do not touch experimental_local_brain.py or training/. No real calls or credential-file reads.
 - Preserve `reference/`, `docs/CODEX_BRIEF.md` and `docs/GNANI_NOTES.md` during initialization.
   Why: user-owned inputs. Change notes later only with verified integration evidence.
 
@@ -43,8 +43,9 @@ Why: evidence beats confidence. Revisit commands only with a decision and runnab
 ## Project invariants
 - Everything outside adapters works in MOCK with zero vendor calls; tests never spend credits.
 - Never invent endpoints, parameters, voice names or model IDs. Read GNANI_NOTES at T2;
-  notes currently authorize official-doc discovery then a user-run smoke, not guesses.
-- Load future real keys from `.env` via the adapter; never log secrets or raw secret-bearing responses.
+  GNANI_NOTES is authoritative for T2; use only its contracts, then user-run smoke.
+- Read speech keys only from the process environment in adapters; never read .env or ~/.gnani_env.
+  Why: explicit T2 instruction. Never log secrets, headers or raw secret-bearing responses.
 - Dadi replies stay around 40 words maximum, one or two short sentences.
 - No extra LLM calls per turn: regex caller memory; only background summary, once-per-call
   classifier and report are additional allowed model work.

@@ -38,11 +38,21 @@ def test_theme_banner_and_output_contract():
 
 
 def test_frozen_source_handlers_signatures_and_existing_tests():
-    # D010 authorizes the local adapter; all other historical core/test hashes stay frozen.
+    # D010/D012 authorize adapters, additive env guards, and the direct HTTP dependency.
     for name, digest in BASELINE["frozen_hashes"].items():
         if name == "src/adapters.py":
             continue
-        assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == digest, (
+        source = (ROOT / name).read_bytes()
+        if name == "tests/conftest.py":
+            for switch in ("GNANI_REAL_ASR", "GNANI_REAL_TTS", "GNANI_API_KEY"):
+                addition = f'    monkeypatch.delenv("{switch}", raising=False)\n'.encode()
+                assert source.count(addition) == 1
+                source = source.replace(addition, b"")
+        if name == "requirements.txt":
+            addition = b"httpx==0.28.1\n"
+            assert source.count(addition) == 1
+            source = source.replace(addition, b"")
+        assert hashlib.sha256(source).hexdigest() == digest, (
             f"ERROR: frozen file changed: {name}. WHY: presentation-only scope. FIX: restore it."
         )
     tree = ast.parse((ROOT / "src/app.py").read_text())

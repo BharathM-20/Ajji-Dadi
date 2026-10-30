@@ -1,5 +1,60 @@
 # Progress
 
+## T2 code handoff — implemented; real-service acceptance BLOCKED
+Branch t2-gnani-speech. Implemented documented Prisma STT and Timbre TTS only, opt-in with
+GNANI_REAL_ASR=1 / GNANI_REAL_TTS=1. Default MOCK=True; think/all pre-existing local adapter
+helpers are source-identical to08e5e65 (regression-tested). Local/experimental brain, training,
+app/session/personas, read-only brief/reference/GNANI_NOTES and feature specs unchanged.
+Shared request lock,60s HTTP timeout, maxone429retry (one-second backoff); no other retries.
+STT accepts documented file types, verifies <=30s, posts automatic multipart without model,
+returns transcript. TTS posts exact Nalini/timbre-v2.5/hi-IN JSON, validates complete raw PCM
+WAV frames, saves private temp file and returns absolute filepath. Partial save cleaned up.
+Legacy code argument retained for compatibility; speech baseline always uses hi-IN, not a
+claim of Kannada or automatic language detection. Supply numbers as words per GNANI_NOTES.
+Per-stage timing and context-local safe diagnostics; SpeechUnavailable(RuntimeError) uses
+sanitized ERROR/WHY/FIX with no headers, key, response values or transport exception chain.
+No session recovery/UI speech-wiring changes or credit/call counters added in this scope.
+49new offline speech checks cover requests, all specified errors, boundedretry, serialization,
+missingkey, duration/formats/probeabsence, malformed/truncatedWAV/JSON, independent switches,
+actual Gradio filepath postprocess and mock-only smoke invocation with exactlyoneattempt each.
+Tests clear inherited real switches/key; original socket/DNS/audit guards preserved. Historical
+theme freeze permits only the exact3guard additions and directhttpxpin, then original hashes.
+Verification: make setup offline succeeded with installedhttpx0.28.1; finalmakecheck L1clean,
+182passed10.90s (including actualGradioMOCKstartup/flow), make smoke8passed0.20s. Independent
+fresh-context source review ACCEPT; conditional verification/reliability requirements met,
+all six2/2 within code-only scope. No skipped tests or real-service success claim.
+T2 status remains blocked, evidence unchanged; no passing verifier invoked or status edited.
+Not run: scripts/smoke_real.py against real endpoints, any Gnani HTTP/device/voice/credit or
+real latency checks. No .env/~/.gnani_env access/creation, key request, paid call or model call.
+Missing here: ffprobe/ffmpeg; real compressed-media duration probing could not be run. Mocked
+format/probe paths passed; PCM WAV duration was tested with generated real files, no probe.
+Next action (USER ONLY, process key already set privately, teammate PCM WAV <=30seconds):
+`.venv/bin/python scripts/smoke_real.py --audio /absolute/path/to/short.wav`
+It explicitly enables speech only and makes oneSTTattempt then oneTTSattempt, no retry even
+on429. Prints sanitized status/latency/response-field names/key-redaction marker/savedWAVpath.
+Paste output before any T2 verification promotion. No later feature started. Stop after commit.
+
+## Original T2 sprint contract (historical)
+Branch t2-gnani-speech already exists at08e5e65 and is current. Started clean.
+Read user-owned GNANI_NOTES first; only its endpoint/field/response contracts are authorized.
+Baseline make setup succeeded offline; make check133passed12.94s; smoke8passed0.03s.
+Scope: asr/say opt-in process env switches independent of think, one shared Gnani request
+lock,60s HTTP timeout, <=30s audio validation, exact Hindi baseline requests, typed sanitized
+errors and at most one429retry. Raw WAV temp filepath for Gradio. Mocked HTTP tests only.
+WAV duration uses stdlib; compressed formats require local ffprobe. ffprobe/ffmpeg are absent
+here, so compressed-duration support will be mocked and missing-probe behavior fail-closed.
+Rewrite user-run smoke for exactly one STT attempt and one TTS attempt, retries disabled,
+status/latency/response-field names/path only, no transcript/header/credential output.
+No .env or ~/.gnani_env reads/creation, no key request, no real endpoint calls or smoke run.
+Preserve think and every local helper/brain, experimental_local_brain.py, training/, app/core.
+T2 remains blocked pending user-owned real smoke output; no verifier promotion this session.
+Prior F-DIALOGUE-QUALITY research remains unfinished and is not active work in this session.
+Verification: make check (including localhost-only Gradio MOCK launch), adapter smoke,
+mock HTTP concurrency/retry/auth/schema/duration/file tests and independent source review.
+Exclusions: Evon, UI speech wiring, session error-recovery/counters, real devices/latency,
+new languages/voice/model comparisons, training, paid calls and any later feature.
+
+
 ## F-DIALOGUE-QUALITY checkpoint — quality goal NOT achieved
 Actual user-approved offline QLoRA pilot completed20steps on installed Qwen3:1.7b weights.
 60synthetictrain/9valid examples, last4q/v layers, rank8, batch1, max512tokens, maskprompt,

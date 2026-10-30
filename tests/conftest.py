@@ -43,3 +43,6 @@ def mock_only(monkeypatch):
     from src import adapters
 
     monkeypatch.setattr(adapters, "MOCK", True)
+    monkeypatch.delenv("GNANI_REAL_ASR", raising=False)
+    monkeypatch.delenv("GNANI_REAL_TTS", raising=False)
+    monkeypatch.delenv("GNANI_API_KEY", raising=False)

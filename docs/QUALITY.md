@@ -91,3 +91,14 @@ baseline/candidate module, both modes regression-tested. Finalmakecheck133passed
 smoke8passed0.02s satisfy review condition; six research-scope scores2/2. Actual pilot rejection
 is justified by identical-message before/after output. Production files remain identical36db770,
 failed candidate isolated; feature unfinished, no product/native-language acceptance claimed.
+
+## T2 speech code review — ACCEPT code only, real acceptance BLOCKED
+Separate fresh-context source review found no actionable correctness defects against user
+GNANI_NOTES. It verified endpoint/field/rawWAV contracts, sharedserialization, bounded429
+retry, independentopt-ins/env-onlykey,60stimeout, finite<=30sduration and sanitizederrors.
+Think/localhelpersegments match08e5e65; local/experimentalbrain/training untouched. Handoff
+architecture corrected. Additional recheck accepted narrowly normalized historicalhashguards
+and truncatedWAV/partialsave handling. Finalmakecheck182passed10.90s and mocksmoke8passed0.20s
+satisfy conditional verification/reliability acceptance; sixcode-scoperubric scores2/2.
+This is not realservice/device/latency/credit/nativevoice acceptance. ffprobe is absent here;
+compressedformatduration tests use mocks. T2 staysblocked pending user-run smoke evidence.

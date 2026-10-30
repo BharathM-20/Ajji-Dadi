@@ -121,3 +121,24 @@ core tests and logic hashes remain frozen. New local contracts have independent 
 HTTP/SSE local-model path; it is separate from offline pytest and never calls paid speech.
 Final ten-turn Hinglish trial passed:9model replies,1code deflection,0fallbacks, report/reset.
 Other languages/voice remain unverified; see LOCAL_BRAIN and PROGRESS.
+
+## T2 speech code boundary (D012; real verification still blocked)
+Adapters retain literal MOCK=True and unchanged think/local-Ollama helpers. Independent
+GNANI_REAL_ASR=1 / GNANI_REAL_TTS=1 switches opt only the selected speech function into
+fixed Gnani endpoints from GNANI_NOTES, regardless of the LLM mode. Neither reads credential
+files: only adapters reads GNANI_API_KEY from the process environment. No Evon integration.
+A shared process-wide lock serializes STT/TTS HTTP, response consumption and at most one
+429 backoff/retry. Other errors never retry. Separate processes/accounts need user coordination.
+SpeechUnavailable(RuntimeError) contains sanitized ERROR/WHY/FIX; session error recovery is
+not added. Per-stage timing and context-local diagnostic summaries omit headers/body values.
+PCM WAV duration uses stdlib wave; other documented formats/non-PCM WAV need local ffprobe,
+file-only protocols and10s probe timeout. Unknown/nonfinite/>30s duration fails before upload.
+The probe is absent here; compressed-format paths have mocked tests only, not real decode
+proof. HTTP uses httpx0.28.1 with60s operation timeout, proxies/redirects disabled, automatic
+multipart boundary. STT returns transcript; TTS validates raw WAV and returns an absolute
+private temp filepath for Gradio playback. Temp files persist until user cleanup.
+The user-run smoke script performs one STT and one TTS attempt sequentially, with retries
+explicitly disabled. No model call or credential-file access; prints safe status/timing/field
+names and TTS path. It is NOT run by the agent. Default UI/local brain remain unchanged;
+real audio, credentials/access, credits, latency, devices and language quality remain blocked
+pending user-supplied smoke output. No real readiness follows from mocked success tests.

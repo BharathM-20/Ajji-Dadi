@@ -211,3 +211,23 @@ Final provenance review fix: evaluator hashes selected production brain with--ba
 experimental brain otherwise. Regression covers both paths and skipped-turn reporting.
 Finalmakecheck133passed19.91s, L1clean, actualGradio/MOCK path included; no skips.
 Smoke remains8passed0.02s. No model or app changes after this final test, only handoff records.
+
+## T2 speech code only — 2026-10-31 (D012)
+Baseline08e5e65: make setupoffline succeeded, makecheck133passed12.94s, smoke8passed0.03s.
+New speech tests only use httpx.MockTransport; no real smoke, endpoint, credential-file or
+model calls. Initial47failures/14passed were isolated testContextVar missingdefault; fixed
+fixture to match productiondefaultNone, then61targetedchecks passed0.72s. A fullcheck had
+180passed/1failed on historical conftestfreeze; subsequent181passed/1failed on requirement
+freeze. Both were additiveT2test-isolation/directdependency changes. Originalhashes retained,
+normalize only3exactenvdeletionlines and1exacthttpxpin; require eachonce. Networkguard unchanged.
+TTS now validates declaredfullPCMframe data, cleans failedsave, and passes actualGradioAudio
+filepath postprocess. Speech-only49passed2.51s. Finalmakecheck L1clean,182passed10.90s including
+architecture and actual pinnedGradioMOCKlaunch/flow; make smoke8passed0.20s. No skips.
+Static source regression confirms think/alloldlocaladapterfunctions byte-identical08e5e65;
+local/experimentalbrain and trainingdiffempty. Reviewer accepted code scope afterfinalgreen.
+T2 remainsblocked with unchangedreal evidence; verifier notinvoked. Missingffprobe/ffmpeg:
+actualcompressed-durationprobing NOT run; formats tested with mockedprobe and fail-closed
+missingprobe. RealPCMduration30/30.01/zero testedlocally. RealAPIaccess/credit/schema/voice,
+latency/devices and all paidcalls remain unverified. User mustrun the smoke with their own
+shortteammateaudio and paste sanitizedoutput; script limits to exactlyoneSTTattempt and
+oneTTSattempt sequentially, retriesoff. No vendor/model/body/header/key logs from tests.

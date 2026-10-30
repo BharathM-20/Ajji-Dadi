@@ -222,3 +222,36 @@ isolate candidate in src/experimental_local_brain.py, restore production local_b
 and original tests byte-for-byte to36db770. Commit only verified evaluation/research tooling,
 fixtures, draft corpus and honest evidence. Feature stays in_progress; do not invoke passing
 verifier on unit-test success alone. No additional training, API work or model download.
+
+## D012 — T2 speech adapters, code only (2026-10-31)
+Explicit user scope supersedes older T2 brief: implement documented Prisma/Timbre only;
+think()/local brain unchanged, no Evon, no session counters or later-feature work.
+GNANI_REAL_ASR=1 and GNANI_REAL_TTS=1 independently opt their operation into real HTTP,
+even with MOCK=True; otherwise preserve legacy MOCK/local fail-closed behavior. Read key
+only from process env in adapters; no dotenv, credential-file access, key logging or headers.
+Use httpx (already installed via Gradio), fixed endpoints/fields from GNANI_NOTES,60s timeout,
+no redirects/proxy environment, one process-wide lock across both endpoints and bounded429
+backoff/retry. No retries on transport errors or any other status. Independent processes
+sharing the account still require user coordination. User-run smoke disables all retries.
+WAV duration uses stdlib wave; remaining documented formats use local ffprobe via stdlib
+subprocess with file-only protocol access. No probe installed here; fail closed with a concrete
+fix rather than upload audio of unknown duration. No media tool install/download in this task.
+Sanitized SpeechUnavailable(RuntimeError) is catchable by session consumers; core recovery
+remains separate. Per-stage monotonic timing and safe diagnostics omit bodies, text, headers
+and credentials. Save validated raw WAV in private temporary file, return absolute filepath;
+files persist for playback, user owns cleanup. Main/mock/local behavior is unchanged.
+T2 keeps blocked and empty real evidence until user supplies actual smoke output.
+
+D012 verification adjustment: all HTTP tests must be immune to inherited real speech switches
+and keys. Add three unconditional env deletions to the existing autouse MOCK fixture. Keep
+its socket/DNS/audit guard byte-identical. Historical theme freeze normalizes ONLY those
+three exact added lines (requires each once), then verifies the original conftest hash; no
+old guard/assertion is removed. Initial fullcheck180passed/1failed on this historical freeze,
+not runtime behavior. Pin already-installed httpx0.28.1 as a direct dependency of adapters.
+
+D012 final verification: historicalfreeze also normalizes only the exacthttpx0.28.1 additive
+pin (requires once) before checking original dependency hash. Fullcheck182passed10.90s,
+mocksmoke8passed0.20s,49speechchecks included. PCM WAV output passed actualGradioAudio
+postprocessing. Read-only review accepted code scope; no real-call evidence or status promotion.
+Baseline speech language is fixedhi-IN despite legacycodearg; numbers must be provided as
+words per notes. Compressedmedia decoding remains untested here because ffprobe is absent.
