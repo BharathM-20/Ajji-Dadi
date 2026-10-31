@@ -180,7 +180,15 @@ def test_language_lock_and_reset_prevent_midcall_mismatch(route_rig):
 def test_unrelated_functions_and_persona_unchanged():
     baseline = json.loads((ROOT / "tests/fixtures/speech_routing_baseline.json").read_text())
     allowed = {
-        "adapters": {"asr", "say", "_real_asr", "_real_say", "_tts_config"},
+        "adapters": {
+            "asr",
+            "say",
+            "_real_asr",
+            "_real_say",
+            "_tts_config",
+            "think",
+            "configure_from_env",
+        },
         "speech_session": {"respond"},
         "local_brain": set(),
     }

@@ -5,9 +5,9 @@
   Why: protect credits and isolate vendor changes. Delete only if adapter boundary is replaced.
 - Never print, log or commit keys; keep `.env.example` empty of real values.
   Why: private credentials. Keep permanently.
-- This session implements F-SPEECH-LANGUAGE: explicit UI language routing through speech.
-  Why: user authorizes routing only; preserve persona/gates/reset/banner and prior frontend.
-  Do not touch experimental_local_brain.py or training/. No real calls or key-file reads.
+- This session implements F-SARVAM-BRAIN: opt-in Sarvam speech brain and mocked verification.
+  Why: user requests provider/prompt/guard integration, with existing local/persona/frontend intact.
+  Do not touch experimental_local_brain.py or training/. No real calls or credential-file reads.
 - Preserve `reference/`, `docs/CODEX_BRIEF.md` and `docs/GNANI_NOTES.md` during initialization.
   Why: user-owned inputs. Change notes later only with verified integration evidence.
 
@@ -47,6 +47,7 @@ Why: evidence beats confidence. Revisit commands only with a decision and runnab
 - Read speech keys only from the process environment in adapters; never read .env or ~/.gnani_env.
   Why: explicit T2 instruction. Never log secrets, headers or raw secret-bearing responses.
 - Dadi replies stay around 40 words maximum, one or two short sentences.
+- Sarvam may retry a rejected output once (explicit user scope); never retry HTTP failures.
 - No extra LLM calls per turn: regex caller memory; only background summary, once-per-call
   classifier and report are additional allowed model work.
 - Record per-stage asr/llm/tts timing every turn without credentials.

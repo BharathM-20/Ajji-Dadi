@@ -61,3 +61,13 @@ Facts below come from Sarvam's public docs and pages as read on 2026-10-31. Anyt
 - Whether credits are enough for the eval set and demo.
 - Name of the reasoning setting and whether `stop` or `top_p` are accepted.
 - Quality of Kannada and Kanglish replies in the app.
+
+## Implemented code-only behavior (D017; not real-service evidence)
+DADI_MODE=sarvam selects the documented endpoint behind think. Defaults: sarvam-105b,
+bearer, temperature0.5, max_tokens150, timeout20seconds. One active Sarvam request, no HTTP
+retry. DADI_SARVAM_MOCK=1 selects a labelled HTTPX test fixture, never a real model result.
+User clarification: no reasoning field is ever sent; if SARVAM_REASONING_EFFORT exists,
+fail with a clear field-name-unverified configuration error until the real smoke run.
+The reasoning field name/values and auth style remain Unknown above. No real calls made.
+Explicit local fallback only via SARVAM_FALLBACK_LOCAL=1; labels disclose that source.
+New Sarvam-only prompt/guard is documented in PROMPTS.md; old local/persona source unchanged.

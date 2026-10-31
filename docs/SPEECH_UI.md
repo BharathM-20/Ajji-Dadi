@@ -1,11 +1,28 @@
 # Speech UI: one microphone → brain → voice path
 
-Run from `/Users/bharathmuthyala/dadi`, with Ollama already running, its installed
-`llama3.2:latest` available, and the speech key already set privately in the process environment:
+Run from `/Users/bharathmuthyala/dadi`. The new speech brain is Sarvam; no local model needs
+to be running. Default app mode remains MOCK unless explicitly selected.
+
+For a key-free UI test (canned TEST FIXTURE, no provider/model calls, no synthesized audio):
 
 ```sh
-DADI_MODE=local DADI_SPEECH=1 GNANI_REAL_ASR=1 GNANI_REAL_TTS=1 .venv/bin/python -m src.app
+DADI_MODE=sarvam DADI_SPEECH=1 DADI_SARVAM_MOCK=1 SARVAM_FALLBACK_LOCAL=0 GNANI_REAL_ASR=0 GNANI_REAL_TTS=0 .venv/bin/python -m src.app
 ```
+
+For real speech later, after the user privately sets SARVAM_API_KEY and GNANI_API_KEY in the
+process environment (this app never reads key files):
+
+```sh
+DADI_MODE=sarvam DADI_SPEECH=1 DADI_SARVAM_MOCK=0 SARVAM_FALLBACK_LOCAL=0 GNANI_REAL_ASR=1 GNANI_REAL_TTS=1 .venv/bin/python -m src.app
+```
+
+Unset SARVAM_REASONING_EFFORT: the field name is unverified until the real smoke run, so even
+an empty set value is a configuration error. No reasoning field is sent. SARVAM_MODEL defaults
+sarvam-105b; AUTH_HEADER bearer (alternative api-subscription-key), TEMPERATURE0.5,
+MAX_TOKENS150, TIMEOUT20seconds (all settings prefixed SARVAM_). Actual auth/latency unverified.
+No transport retries. A rejected output may get one corrective request; failed turns roll back.
+A missing Sarvam key shows "Sarvam key not set" and FIX in the UI when a brain reply is needed.
+SARVAM_FALLBACK_LOCAL=1 alone explicitly permits a labelled local fallback; it is never silent.
 
 Open the printed localhost URL. Choose Hindi, Hinglish, Kannada, Kanglish or English before
 the first recording; the selection locks for the call. Allow the microphone, record a short
@@ -17,12 +34,18 @@ pressing Play. **New call** resets conversation, report, errors and timing/pause
 Pick up/Decline end further processing.
 The permanent simulation banner and human decision gate remain visible/required.
 
-`DADI_SPEECH=1` selects this UI independently of the brain backend. `DADI_MODE=local`
-selects the existing Ollama implementation behind `think()`; future providers keep that
-boundary. Each real speech flag is independent: setting it to0 uses that adapter's existing
-mock, even with the local brain. With TTS off there is no generated audio. The old default
-MOCK UI and old local text UI are unchanged when DADI_SPEECH is unset. The existing mock
-brain returns Roman Hindi; the speech UI rejects replies with the wrong selected script. Use the command above for the actual local brain.
+`DADI_SPEECH=1` selects this UI independently of speech adapter flags. `DADI_MODE=sarvam`
+selects the new prompt/brain behind `think()`. The old local implementation remains available
+only if explicitly selected; it is not the default brain for these instructions. Each speech
+flag is independent:0 retains that adapter's mock,1opts into the real speech service. Default
+MOCK UI is unchanged when both Sarvam and speech mode are not selected.
+
+The test fixture is labelled in the UI, status, report and logs. Canned replies pass through
+the same HTTP serialization/parser but do not contact a service. The mock ASR uses its old
+fixed caller text; with mock TTS there is no generated audio. Use Record/stop twice, human
+choice, then Record/stop to inspect the full state path. This is not a voice/quality trial.
+Reports include turns, committed caller recording seconds (simulation proxy, not measured
+scammer time wasted), distinct assigned tactics, guard rejections and tracked repeat notes.
 
 Hindi/Hinglish route STT/TTS to hi-IN and use Devanagari brain replies. Kannada/Kanglish
 route both to kn-IN and use Kannada-script replies; English routes both to en-IN. This is
@@ -93,3 +116,18 @@ PY
 The verifier checks reviewed evidence and dependencies, runs `make check`, then records
 status/evidence. It does not authenticate a claimed review; use only a run you actually made
 and inspected. T2 remains blocked in this agent's commit because no user smoke was run here.
+
+# User-owned Sarvam smoke and eval
+
+```sh
+.venv/bin/python scripts/smoke_sarvam.py
+.venv/bin/python scripts/eval_brain.py
+.venv/bin/python scripts/eval_brain.py --real
+```
+
+Smoke makes ONE real chat request using the real prompt builder, no guard retry or local
+fallback, and prints status, latency, auth style, prompt version and reply (key redacted).
+The agent does not run real smoke/eval. Eval defaults to canned TEST FIXTURE; --real is the
+explicit paid-call opt-in. A failed name-recall fixture check is reported honestly. See PROMPTS.md.
+Real latency/quality, auth style, reasoning field name, Kannada/Kanglish quality, Kannada style
+examples and Kalpana Kannada pronunciation remain unverified. Native-speaker review required.

@@ -342,7 +342,30 @@ def test_think_and_local_functions_unchanged_since_baseline():
         if isinstance(n, ast.FunctionDef)
     }
     for name in old.keys() - {"asr", "say"}:
-        assert inspect.getsource(getattr(adapters, name)).strip() == old[name].strip()
+        current = inspect.getsource(getattr(adapters, name)).strip()
+        if name == "think":
+            addition = (
+                "    if sarvam_enabled():\n"
+                "        return _sarvam_think(msgs, json_mode, max_tokens)\n"
+            )
+            assert current.count(addition) == 1
+            current = current.replace(addition, "")
+        elif name == "configure_from_env":
+            addition = (
+                '    elif mode == "sarvam":\n        MOCK = False\n        _LOCAL_MODEL = None\n'
+                '        if os.environ.get("SARVAM_FALLBACK_LOCAL") == "1":\n'
+                '            configure_local(os.environ.get("DADI_OLLAMA_MODEL", '
+                '"llama3.2:latest"))\n'
+            )
+            assert current.count(addition) == 1
+            current = current.replace(addition, "").replace(
+                "DADI_MODE=mock, sarvam or explicitly local.", "DADI_MODE=mock or local."
+            )
+        if name in {"think", "configure_from_env"}:
+            # D017 authorizes only provider dispatch/config; old logic remains AST-identical.
+            assert ast.dump(ast.parse(current)) == ast.dump(ast.parse(old[name].strip()))
+        else:
+            assert current == old[name].strip()
 
 
 @pytest.mark.parametrize(

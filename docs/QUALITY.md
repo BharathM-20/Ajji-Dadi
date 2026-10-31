@@ -132,3 +132,14 @@ Final verifier275full+60feature and smoke6 passes satisfy conditional code verif
 No native language, real model, speech provider or device readiness grade. Kannada/Kanglish
 STT, Kalpana Kannada pronunciation and code-switch candidate require actual user trials;
 Kannada text needs native-speaker review. No quality claim from synthetic fixtures.
+
+## F-SARVAM-BRAIN — code/mock scope ACCEPT after guard corrections
+Fresh read-only source review required checking repeated text AFTER truncation and normalizing
+pause cues in both replies. Both fixed and regression-tested; final recheck found no blocking
+findings. Historical test allowances preserve original local helpers and prior mode logic.
+Initial scores1/1/2/1/2/1 reflected those defects/pending evidence; corrected code received
+conditional ACCEPT, fulfilled by verifier319full+104feature and smoke6 passes, no later source
+changes. Actual CLI fixture English flow passed. No real auth/latency/safety/quality grade.
+Fixture eval exposes name-recall failure (29PASS/1FAIL), correctly avoiding a quality claim.
+Semantic safety, memory coherence, assigned-tactic execution and native language require real
+review; Kannada examples absent pending native-speaker review. Unknown reasoning field remains.

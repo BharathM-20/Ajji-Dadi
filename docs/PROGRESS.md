@@ -1,5 +1,73 @@
 # Progress
 
+## F-SARVAM-BRAIN final handoff — code/mock passing; real service unverified
+Branch t2-gnani-speech. DADI_MODE=sarvam selects the documented chat endpoint behind think;
+DADI_SPEECH=1 runs existing mic -> asr -> Sarvam-only orchestration -> say sequentially.
+Default remains mock. Existing local implementation, persona dictionaries, frontend styles,
+human gate/reset/banner, WAV validation, shared Gnani lock and transactional rollback intact.
+No automatic Ollama warm-up in Sarvam mode; local fallback requires explicit flag and is labelled.
+New PROMPT_VERSION sarvam-dadi-v1 follows requested Sarvam-only Savitri/Anil/Meena/Rahul facts,
+native scripts, quoted context/memory, last8turns, Hindi style examples, assigned tactic/avoidlist/
+stage. Caller names/statements supplement existing claim memory; no extra summarizer/modelcall.
+Guard strips think/quotes/Markdown, checks script/format/repeats/obvious prohibited/sensitive
+text, may shorten slightly long replies at sentence end, then compares final spoken text.
+One corrective generation after guard rejection only; HTTP failures never retry. Diagnostics
+count rejected outputs even after rollback, without consuming history/tactics/turn counters.
+Report includes successful caller recording duration (simulation proxy, not real scammer time
+wasted), turns, distinct assigned tactics, rejection count and repeat note. Model compliance
+with assigned tactics is unverified. Exhausted tactic list cycles with repeat disclosure.
+Missing key shows Sarvam key not set + FIX through existing UI rollback, no crash. Config
+validates documented models/auth/numeric options. SARVAM_REASONING_EFFORT presence even empty
+fails before HTTP; no reasoning field ever sent, field name/values remain Unknown until real smoke.
+DADI_SARVAM_MOCK=1 uses HTTPX MockTransport in the same serialization/lock/parser path, labelled
+TEST FIXTURE in UI/status/report/logs. No key read in fixture, no model quality claim. Mock
+speech flags off preserve fixed ASR and None audio; fixture is a state-path test, not voice demo.
+Baseline2a2481b: offline setup succeeded, make check275passed13.10s, smoke6passed0.08s.
+Targeted72passed2.91s. First full316passed/1historicalthinkfreeze failed13.27s; narrowed guard
+normalizes only authorized dispatch/config additions, all local helper source unchanged. Later
+focused123passed2.29s. Reviewer caught post-truncation and pause-cue repeat bypasses; fixed both
+and added regressions. Native-name regex also preserves combining marks (रवि).
+Final verifier F-SARVAM-BRAIN exited0: L1clean, make check319passed17.49s; exact feature104passed
+10.55s. Only verifier wrote passing/evidence. Smoke6passed0.12s. No skipped checks. Actual CLI
+Gradio5.49.1 fixture English upload/screen/human gate/Dadi/report/reset ran with loopback-only
+network guard; mocked dispatch also exercised Sarvam transaction. Own child servers cleaned up;
+user's running apps untouched. No real Sarvam/Gnani/Ollama/model/device or credential-file calls.
+44 new tests cover transport/config/auth/errors/guard retry/cleaning/fallback/labels/prompt/
+history/context/serialization/timing/UI/eval/smoke instrumentation and frozen unrelated functions.
+Existing-test changes documented D017; old input and baseline fixtures retained. New feature
+spec additive only; T2 real evidence/status unchanged, still blocked. No prior work undone.
+Default eval CLI ran fixture only:29PASS/1FAIL, exit1; canned text cannot recall caller name.
+Raw output docs/evidence/sarvam_fixture_eval.txt explicitly labels source. This verifies the
+failure check works, not real model quality. Real smoke/eval were NOT run.
+Independent review conditional ACCEPT after repeat fixes; final green verifier satisfies its
+condition. See QUALITY for rubric; acceptance covers code/mock scope, not real services.
+Exact UI mock/real and smoke/eval commands are in SPEECH_UI.md; prompt versioning in PROMPTS.md.
+Untested: real Sarvam latency and quality; auth header style; reasoning field name/values;
+Kannada and Kanglish quality; Kannada style examples need native-speaker review; Kalpana Kannada
+pronunciation; real ASR/voice/mic/autoplay, semantic safety, actual memory/tactic execution,
+long-call engagement, credits and deployment concurrency. Mocked tests cannot establish these.
+Next: user privately supplies process keys, runs ONE smoke and reviews reply/auth/latency, then
+explicit real eval and native review. Stop after this one verified commit; no extra feature.
+
+## F-SARVAM-BRAIN sprint contract — completed (original scope)
+Baseline2a2481b clean; setup offline succeeded; make check275passed13.10s, smoke6passed0.08s.
+Read PROGRESS/DECISIONS/SPEECH_UI/SARVAM_NOTES first. One feature: opt-in Sarvam behind think,
+new versioned provider-specific prompt/guard/session wrapper, fixture transport, smoke/eval and
+report metrics. Preserve local implementation/persona dictionaries, default MOCK/UI, frontend
+styles, speech transaction/human gate/reset/banner and10s pause. No real provider/model calls,
+key-file reads, experimental/training changes or actual service-quality claim.
+User clarification: omit reasoning field entirely; presence of SARVAM_REASONING_EFFORT fails
+before HTTP, since name/values unverified. Unknown remains in notes and final Untested.
+New Sarvam-only prompt uses user-requested Savitri/Anil/Meena/Rahul facts; old persona rules
+and local facts untouched. Reuse existing tactic selection, claims memory and stage hint.
+One HTTP request at a time, no transport retry; at most one guard-correction generation.
+Explicit local fallback only, labelled. Mock fixture uses same HTTP serialization/parsing path,
+never network; labels in UI/status/report/logs. Caller recorded duration is a simulation proxy,
+not verified scammer time wasted. Mock-only tests plus Gradio dispatch/loopback launch.
+Untested: real Sarvam latency/quality, auth style, reasoning field name/values, Kannada and
+Kanglish quality, Kannada style examples need native-speaker review, Kalpana Kannada voice.
+Only verifier may mark code feature passing. T2 real acceptance remains blocked. Stop after commit.
+
 ## F-SPEECH-LANGUAGE final handoff — routing code passing, real quality unverified
 Branch t2-gnani-speech. UI dropdown now reaches asr -> existing native-language brain -> say,
 strictly sequential. Single adapter table: Hindi/Hinglish hi-IN + Hindi/Devanagari prompt;

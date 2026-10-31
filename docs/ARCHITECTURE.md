@@ -171,3 +171,19 @@ Explicit TTS language env override wins; optional Kanglish code candidate is unv
 isolated to ASR. Invalid/unmapped routes fail without Hindi fallback. Independent switches,
 shared request lock, default MOCK, frontend styles, human decisions and reset stay intact.
 Routing tests use MockTransport and fake think; language quality needs user/native evidence.
+
+## F-SARVAM-BRAIN (D017; code/mock only)
+DADI_MODE=sarvam dispatches think to Sarvam HTTPX code in adapters, fixed endpoint/documented
+schema, explicit env key/auth/config, independent lock, no transport retries. Defaultmock and
+explicitlocal implementations remain. Sarvam mode never warms local models automatically.
+sarvam_prompt owns versioned provider-only persona/examples/history/directive and output guard.
+sarvam_brain reuses existing tactic selector/claims update/memory_line/stage_hint and adds
+bounded caller context, guard correction (maxone), source/rejection/tactic metrics. Local brain
+and persona modules untouched. speech_session branches only brain orchestration within its
+existing transactional copy, preserving ASR/brain/TTS sequence, rollback and10spause. Rejection
+counts survive failed attempts as diagnostic metadata; conversation state does not advance.
+App adds fixture/fallback labels and report metrics; handler/state/output/style contracts remain.
+Fixture transport has no real key/network, uses HTTPX request/parser, explicitly labelled at all
+user-visible sources. Scripts smoke_sarvam/eval_brain are user-only real entry points; eval defaults
+to fixture, --real required. Reasoning env is rejected until field verified. Real voice/brain
+latency, safety and language quality require actual user evidence; no service acceptance here.

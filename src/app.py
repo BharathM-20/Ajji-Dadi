@@ -4,7 +4,7 @@ import os
 
 import gradio as gr
 
-from . import adapters, local_brain, session, speech_session, ui_theme
+from . import adapters, local_brain, sarvam_brain, session, speech_session, ui_theme
 from .personas import LANGS
 from .report import end_call
 from .session import new_session
@@ -221,6 +221,10 @@ def build_local_ui():
 
 def speech_view(state, audio=None):
     result = list(local_view(state))
+    if adapters.sarvam_fixture():
+        result[3] += "\n\nTEST FIXTURE — canned Sarvam transport; not model output."
+    elif state.get("reply_source") == "explicit_local_fallback":
+        result[3] += "\n\nExplicit local fallback; this reply is not from Sarvam."
     result[1] = audio
     timing = state.get("speech_timing")
     if timing:
@@ -249,6 +253,8 @@ def speech_end(state):
     report = local_brain.end_call(state).replace(
         "Model: local Ollama · Speech: not enabled", "Brain: configured think() · Speech UI enabled"
     )
+    if adapters.sarvam_enabled() or state.get("sarvam_source"):
+        report += sarvam_brain.report_metrics(state)
     return (*speech_view(state), report)
 
 
@@ -276,6 +282,11 @@ def build_speech_ui():
             "independently configured.",
             elem_id="workspace-note",
         )
+        if adapters.sarvam_fixture():
+            gr.Markdown(
+                "**TEST FIXTURE — canned replies, not Sarvam model output. "
+                "No quality claim. Speech flags remain independent.**"
+            )
         state = gr.State(local_brain.new_state())
         with gr.Row(elem_id="call-hero"):
             with gr.Column(scale=6, min_width=0, elem_id="conversation-column"):
@@ -354,7 +365,7 @@ def configured_ui():
 
 if __name__ == "__main__":
     adapters.configure_from_env()
-    if adapters.local_enabled():
+    if adapters.local_enabled() and not adapters.sarvam_enabled():
         print("[startup] loading local model before accepting calls", flush=True)
         adapters.warm_local()
     configured_ui().launch(server_name="127.0.0.1", share=False, inbrowser=False)

@@ -377,3 +377,45 @@ GNANI_NOTES input digest refreshed only for user-authorized mapping update. Exis
 specs/evidence unchanged; add only F-SPEECH-LANGUAGE and refresh aggregate spec digest.
 No real endpoint/model/device/keyfile call. Kannada/Kanglish accuracy, Kalpana Kannada voice,
 code-switch candidate and Kannada text naturalness require user/native-speaker review.
+
+## D017 — Sarvam-only speech brain and bounded spoken guard (2026-10-31)
+User explicitly requests a new Sarvam provider/prompt, while retaining local implementation
+and old persona data unchanged. New Sarvam-only Savitri/Anil/Meena/Rahul facts follow the
+attached request, not the old local Rohan facts. DADI_MODE=sarvam selects think's provider;
+default remains mock, local requires explicit selection. No automatic warm/load of Ollama in
+Sarvam mode. Local fallback requires SARVAM_FALLBACK_LOCAL=1 and is labelled separately.
+Sarvam uses only SARVAM_NOTES endpoint/JSON/response/header styles. HTTPX with20s default,
+proxy/redirects off, process-wide lock and zero HTTP retries. Missing key/config errors are
+safe ModelUnavailable messages, shown through transactional speech rollback. Only adapters
+reads SARVAM_API_KEY from process env; fixtures do not read it. No credential files accessed.
+Clarified by user: SARVAM_REASONING_EFFORT presence (even empty) fails with field-name-unverified
+configuration error. Never send a reasoning field. Unknown preserved until user-run real smoke.
+Versioned sarvam_prompt builds one system, user-provided Hindi-only examples, last8alternating
+caller/Dadi exchanges, final untrusted caller/screening text plus tactic/avoid/stage directive.
+Use existing local tactic selector, claims update/memory_line and stage_hint without modifying
+those modules. Sarvam-only bounded caller-statements/name memory supplements English-only
+legacy claim regexes. Format limits override style-example lengths. Kannada examples omitted.
+Guard strips think blocks/quotes/Markdown, validates native-script/length/no-digit/no prohibited
+phrases/obvious unsafe agreements/repeats/markup. It can make ONE correction generation after
+rejection, never retry transport errors. Sentence-end shortening for26–40words; over40 rejects.
+All final invariants, including repeat detection, apply after truncation. Heuristics are not a
+proof of semantic safety or naturalness. No uncensored rejected replies in logs. Count rejected
+outputs even on rolled-back turns as diagnostic metadata, without consuming state/tactics.
+Speech transactional copy/rollback, human gate, reset, permanent banner, styles and10spause
+remain. Caller-recording seconds count successfully committed clips (including screening),
+labelled simulation proxy, never asserted real scammer time wasted. Report turns, distinct
+tracked tactics, repeats and guard rejections. Exhausted tactic list cycles with disclosure
+rather than ending call. No claim that model actually followed its assigned tactic.
+DADI_SARVAM_MOCK=1 uses HTTPX MockTransport through same serialization/parser/lock path,
+clearly labelled TEST FIXTURE in UI/status/report/logs/source. It generates no audio when
+speech adapters are off and is not a model-quality claim. Offline eval default is fixture;
+--real explicitly permits user-run service calls. Smoke makes exactly one request, retry and
+fallback disabled; output may fail guard, since smoke inspects transport rather than quality.
+Existing-test changes: conftest clears new provider opt-ins; historical guard removes ONLY the
+five exact isolation additions before checking originalhash. Frontend guard permits speech
+status/report changes only; separate sarvam_baseline freezes all other existing functions.
+Routing guard authorizes think/configure_from_env for provider choice; old adapter ASR/TTS,
+local helper functions and local_brain stay frozen. Existing UI events/outputs stay unchanged.
+New feature spec/digest additive only; no old status/spec/evidence reworded. SARVAM_NOTES
+Unknown retained. Test/eval fixtures are synthetic; failed mock memory recall is reported,
+not hidden or turned into a quality pass. No real Sarvam/Gnani/Ollama or key-file access here.

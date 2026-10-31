@@ -277,3 +277,20 @@ Coverage is request/prompt/script routing, not speech accuracy/pronunciation/nat
 Separate review accepted; immutable unrelated function guard passes, protected source diffempty.
 Failure layer environment (bind) and verification (fixture shape/error wording), fixed without
 weakening network/launch guards. T2 remainsblocked; no real smoke or credential files accessed.
+
+## F-SARVAM-BRAIN — 2026-10-31 (D017)
+Baseline2a2481b offline setup succeeded; make check275passed13.10s; smoke6passed0.08s.
+First targeted72passed2.91s. Full316passed/1historicalthinkfreeze failed13.27s; normalize only
+new authorized Sarvam dispatch/config, retaining old AST and exact local-helper source guards.
+Ruff initially flagged unused test imports/long lines, fixed before final gate. Separate review
+found repeated-reply bypass after truncation and with previous pause cues; fixed and both
+regression-tested. Focused123passed2.29s. Final verifier exited0: L1clean, full319passed17.49s,
+exact Sarvam/routing/speech104passed10.55s; finalsmoke6passed0.12s. No skipped checks.
+MockTransport covers all HTTP statuses/auth/config/timeouts/malformed JSON; fixture adapter uses
+same serialization/parser without provider access. Actual CLI Gradio English fixture flow and
+mocked dispatch verify screen/human gate/Dadi/report/reset. All child servers cleaned up.
+Default eval CLI (fixture only, key unset)29PASS/1FAIL, exit1 from deliberate canned-name-recall
+failure; raw output docs/evidence/sarvam_fixture_eval.txt. Not a model-quality pass. Smoke main
+was exercised ONLY with injected MockTransport to assert one request; no real smoke executed.
+No real provider/model/device calls, key-file reads or downloads. T2 remainsblocked. Failure
+layers verification (historical guard/lint) and implementation (repeat guard), fixed with tests.

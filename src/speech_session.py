@@ -5,7 +5,7 @@ import time
 import wave
 from pathlib import Path
 
-from . import adapters, local_brain
+from . import adapters, local_brain, sarvam_brain
 
 SCREEN = {
     "Hindi": (
@@ -60,6 +60,8 @@ def respond(path, state, language="Hindi"):
     if state.get("speech_paused") or state["mode"] not in {"SCREEN", "DADI"}:
         return state, None
     trial = copy.deepcopy(state)
+    if adapters.sarvam_enabled():
+        trial["guard_rejections_turn"] = 0
     started = time.perf_counter()
     timing = dict(asr=0.0, brain=0.0, say=0.0, total=0.0)
     stage = "language"
@@ -73,6 +75,12 @@ def respond(path, state, language="Hindi"):
         trial["speech_language"] = language
         stage = "recording"
         validate_recording(path)
+        if adapters.sarvam_enabled():
+            with wave.open(str(path), "rb") as recording:
+                trial["caller_talk_seconds"] = (
+                    state.get("caller_talk_seconds", 0)
+                    + recording.getnframes() / recording.getframerate()
+                )
         stage = "asr"
         mark = time.perf_counter()
         try:
@@ -84,7 +92,10 @@ def respond(path, state, language="Hindi"):
         stage = "brain"
         mark = time.perf_counter()
         try:
-            local_brain.respond(transcript, trial, brain_language)
+            if adapters.sarvam_enabled():
+                sarvam_brain.respond(transcript, trial, language)
+            else:
+                local_brain.respond(transcript, trial, brain_language)
         finally:
             timing["brain"] = time.perf_counter() - mark
         if trial.get("error"):
@@ -95,7 +106,7 @@ def respond(path, state, language="Hindi"):
         elif trial["mode"] == "ENDED":
             trial["log"][-1]["text"] = LIMIT[brain_language]
         reply = trial["log"][-1]["text"]
-        if not valid_script(reply, brain_language):
+        if not valid_script(reply.replace("<pauses>", ""), brain_language):
             raise ValueError("The brain did not return the selected native script.")
         stage = "say"
         mark = time.perf_counter()
@@ -103,7 +114,7 @@ def respond(path, state, language="Hindi"):
             audio = adapters.say(reply, language)
         finally:
             timing["say"] = time.perf_counter() - mark
-    except (adapters.SpeechUnavailable, adapters.ModelUnavailable, OSError, ValueError):
+    except (adapters.SpeechUnavailable, adapters.ModelUnavailable, OSError, ValueError) as exc:
         script = {"Hindi": "Devanagari", "Kannada": "Kannada-script", "English": "English"}.get(
             brain_language, "selected-script"
         )
@@ -121,7 +132,12 @@ def respond(path, state, language="Hindi"):
             f"ERROR: speech turn failed at {stage}. WHY: recording or service unavailable. "
             f"FIX: {fix}; conversation state preserved."
         )
+        rejected = trial.get("guard_rejections_turn", 0)
         trial = copy.deepcopy(state)
+        if adapters.sarvam_enabled():
+            trial["guard_rejections_turn"] = rejected
+            if isinstance(exc, adapters.ModelUnavailable):
+                friendly = str(exc)
         if paused:
             trial["mode"] = "PAUSED"
             friendly = "Brain exceeded 15 seconds. Stop and review latency before continuing."
@@ -129,6 +145,10 @@ def respond(path, state, language="Hindi"):
         audio = None
     else:
         trial["speech_error"] = None
+    if adapters.sarvam_enabled():
+        trial["guard_rejections"] = state.get("guard_rejections", 0) + trial.get(
+            "guard_rejections_turn", 0
+        )
     timing["total"] = time.perf_counter() - started
     timing.update(llm=timing["brain"], tts=timing["say"])
     trial["speech_timing"] = timing

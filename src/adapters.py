@@ -2,6 +2,7 @@
 
 import contextlib
 import contextvars
+import json
 import math
 import os
 import re
@@ -78,6 +79,8 @@ def asr(path: str, code: str, *, retry_429: bool = True) -> str:
 
 
 def think(msgs: list[dict[str, str]], json_mode: bool = False, max_tokens: int = 120) -> str:
+    if sarvam_enabled():
+        return _sarvam_think(msgs, json_mode, max_tokens)
     if local_enabled():
         return _local_think(msgs, json_mode, max_tokens)
     if not MOCK:
@@ -124,12 +127,18 @@ def configure_from_env():
     mode = os.environ.get("DADI_MODE", "mock")
     if mode == "local":
         configure_local(os.environ.get("DADI_OLLAMA_MODEL", "llama3.2:latest"))
+    elif mode == "sarvam":
+        MOCK = False
+        _LOCAL_MODEL = None
+        if os.environ.get("SARVAM_FALLBACK_LOCAL") == "1":
+            configure_local(os.environ.get("DADI_OLLAMA_MODEL", "llama3.2:latest"))
     elif mode == "mock":
         MOCK = True
         _LOCAL_MODEL = None
     else:
         raise ValueError(
-            "ERROR: unknown mode. WHY: unsupported config. FIX: DADI_MODE=mock or local."
+            "ERROR: unknown mode. WHY: unsupported config. "
+            "FIX: DADI_MODE=mock, sarvam or explicitly local."
         )
 
 
@@ -649,3 +658,173 @@ def _real_say(text, event, retry_429, route):
             "FIX: check service output and writable temporary storage."
         ) from None
     return str(result)
+
+
+# Sarvam uses an independent process-wide lock. All provider HTTP remains in this module.
+_SARVAM_LOCK = threading.Lock()
+_SARVAM_RESULT = contextvars.ContextVar("sarvam_result", default=None)
+_SARVAM_URL = "https://api.sarvam.ai/v1/chat/completions"
+
+
+def sarvam_enabled():
+    return os.environ.get("DADI_MODE", "mock") == "sarvam"
+
+
+def sarvam_fixture():
+    return sarvam_enabled() and os.environ.get("DADI_SARVAM_MOCK") == "1"
+
+
+def sarvam_diagnostics():
+    return dict(_SARVAM_RESULT.get() or {})
+
+
+def _sarvam_error(why, fix):
+    return ModelUnavailable(f"ERROR: {why}. WHY: Sarvam brain unavailable. FIX: {fix}.")
+
+
+def _sarvam_config():
+    if "SARVAM_REASONING_EFFORT" in os.environ:
+        raise _sarvam_error(
+            "Sarvam reasoning field name is unverified until the real smoke run",
+            "unset SARVAM_REASONING_EFFORT; no reasoning field is sent",
+        )
+    model = os.environ.get("SARVAM_MODEL", "sarvam-105b").strip()
+    auth = os.environ.get("SARVAM_AUTH_HEADER", "bearer").strip()
+    try:
+        temperature = float(os.environ.get("SARVAM_TEMPERATURE", "0.5"))
+        tokens = int(os.environ.get("SARVAM_MAX_TOKENS", "150"))
+        timeout = float(os.environ.get("SARVAM_TIMEOUT", "20"))
+        if (
+            not math.isfinite(temperature)
+            or not 0 <= temperature <= 2
+            or tokens <= 0
+            or not math.isfinite(timeout)
+            or timeout <= 0
+        ):
+            raise ValueError
+    except ValueError:
+        raise _sarvam_error(
+            "invalid Sarvam numeric configuration",
+            "set temperature from0 to2, positive integer tokens and timeout",
+        ) from None
+    if model not in {"sarvam-105b", "sarvam-30b"} or auth not in {"bearer", "api-subscription-key"}:
+        raise _sarvam_error(
+            "invalid Sarvam model or auth style",
+            "use sarvam-105b/sarvam-30b and bearer/api-subscription-key",
+        )
+    return dict(model=model, auth=auth, temperature=temperature, max_tokens=tokens, timeout=timeout)
+
+
+def _sarvam_fixture_response(request):
+    """TEST FIXTURE, never a model-quality result; uses HTTPX request/response machinery."""
+    body = json.loads(request.content)
+    system = body["messages"][0]["content"]
+    final = body["messages"][-1]["content"]
+    match = re.search(r"fixture_index=(\d+)", final)
+    index = int(match.group(1)) % 3 if match else 0
+    if "CALL_LANGUAGE=English" in system:
+        replies = [
+            "Dear, which branch did you say? My glasses are missing.",
+            "Dear, please explain that slowly while I find my notebook.",
+            "Dear, what colour is that button? This phone is confusing.",
+        ]
+    elif "CALL_LANGUAGE=Kannada" in system or "CALL_LANGUAGE=Kanglish" in system:
+        replies = [
+            "ಮಗು, ಯಾವ ಶಾಖೆ ಎಂದು ಮತ್ತೆ ಹೇಳು, ನನ್ನ ಕನ್ನಡಕ ಸಿಗುತ್ತಿಲ್ಲ.",
+            "ಮಗು, ಸ್ವಲ್ಪ ನಿಧಾನವಾಗಿ ಹೇಳು, ನಾನು ಪುಸ್ತಕ ಹುಡುಕುತ್ತಿದ್ದೇನೆ.",
+            "ಮಗು, ಆ ಗುಂಡಿ ಯಾವ ಬಣ್ಣದ್ದು, ನನಗೆ ಸರಿಯಾಗಿ ಕಾಣುತ್ತಿಲ್ಲ.",
+        ]
+    else:
+        replies = [
+            "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।",
+            "बेटा, ज़रा धीरे समझाओ, मैं अपनी पुरानी कॉपी ढूँढ रही हूँ।",
+            "बेटा, उस बटन का रंग क्या है, यह फ़ोन समझ नहीं आता।",
+        ]
+    return httpx.Response(200, json={"choices": [{"message": {"content": replies[index]}}]})
+
+
+def _sarvam_client(timeout, fixture):
+    return httpx.Client(
+        timeout=timeout,
+        trust_env=False,
+        follow_redirects=False,
+        transport=httpx.MockTransport(_sarvam_fixture_response) if fixture else None,
+    )
+
+
+def _sarvam_think(msgs, json_mode, max_tokens):
+    _SARVAM_RESULT.set(None)
+    config = _sarvam_config()
+    fixture = sarvam_fixture()
+    event = dict(
+        status=None,
+        seconds=0.0,
+        model=config["model"],
+        auth_style=config["auth"],
+        fixture=fixture,
+        fallback_local=False,
+    )
+    _SARVAM_RESULT.set(event)
+    key = None if fixture else os.environ.get("SARVAM_API_KEY", "").strip()
+    if not fixture and not key:
+        raise _sarvam_error("Sarvam key not set", "set SARVAM_API_KEY in the process environment")
+    # A fixture never transmits or even reads a real credential.
+    headers = (
+        {}
+        if fixture
+        else (
+            {"Authorization": "Bearer " + key}
+            if config["auth"] == "bearer"
+            else {"api-subscription-key": key}
+        )
+    )
+    payload = {
+        "model": config["model"],
+        "messages": msgs,
+        "temperature": config["temperature"],
+        "max_tokens": config["max_tokens"],
+    }
+    started = time.perf_counter()
+    try:
+        with _SARVAM_LOCK:
+            with _sarvam_client(config["timeout"], fixture) as client:
+                response = client.post(_SARVAM_URL, headers=headers, json=payload)
+                event["status"] = response.status_code
+                if not response.is_success:
+                    reasons = {
+                        401: "Sarvam authentication failed",
+                        402: "Sarvam credits unavailable",
+                        403: "Sarvam access denied",
+                        422: "Sarvam request rejected",
+                        429: "Sarvam rate limit reached",
+                    }
+                    raise _sarvam_error(
+                        reasons.get(response.status_code, "Sarvam service failed"),
+                        "check access/configuration and retry manually; no auto retry",
+                    )
+                content = response.json()["choices"][0]["message"]["content"]
+                if not isinstance(content, str) or not content.strip():
+                    raise ValueError
+                return content.replace(key, "[REDACTED]") if key else content
+    except (httpx.HTTPError, ValueError, KeyError, IndexError, TypeError, ModelUnavailable) as exc:
+        if os.environ.get("SARVAM_FALLBACK_LOCAL") == "1":
+            if _LOCAL_MODEL is None:
+                raise _sarvam_error(
+                    "explicit local fallback is not configured",
+                    "configure the mode at startup before opting into fallback",
+                ) from None
+            event["fallback_local"] = True
+            print("[Sarvam] explicit local fallback selected; not a Sarvam reply")
+            return _local_think(msgs, json_mode, max_tokens)
+        if isinstance(exc, ModelUnavailable):
+            raise exc from None
+        raise _sarvam_error(
+            "Sarvam timed out or returned an invalid response",
+            "check the service and run the manual smoke; turn was not committed",
+        ) from None
+    finally:
+        event["seconds"] = time.perf_counter() - started
+        print(
+            f"[brain transport] model={config['model']} seconds={event['seconds']:.3f} "
+            f"status={event['status']} fixture={fixture} fallback_local={event['fallback_local']}"
+        )

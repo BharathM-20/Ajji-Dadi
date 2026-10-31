@@ -46,3 +46,8 @@ def mock_only(monkeypatch):
     monkeypatch.delenv("GNANI_REAL_ASR", raising=False)
     monkeypatch.delenv("GNANI_REAL_TTS", raising=False)
     monkeypatch.delenv("GNANI_API_KEY", raising=False)
+    monkeypatch.setenv("DADI_MODE", "mock")
+    monkeypatch.delenv("DADI_SARVAM_MOCK", raising=False)
+    monkeypatch.delenv("SARVAM_API_KEY", raising=False)
+    monkeypatch.delenv("SARVAM_REASONING_EFFORT", raising=False)
+    monkeypatch.delenv("SARVAM_FALLBACK_LOCAL", raising=False)

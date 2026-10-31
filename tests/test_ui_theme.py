@@ -48,6 +48,15 @@ def test_frozen_source_handlers_signatures_and_existing_tests():
                 addition = f'    monkeypatch.delenv("{switch}", raising=False)\n'.encode()
                 assert source.count(addition) == 1
                 source = source.replace(addition, b"")
+            # D017 clears new provider opt-ins without weakening the network guard.
+            for addition in (
+                '    monkeypatch.setenv("DADI_MODE", "mock")\n',
+                *[f'    monkeypatch.delenv("{switch}", raising=False)\n' for switch in
+                  ("DADI_SARVAM_MOCK", "SARVAM_API_KEY", "SARVAM_REASONING_EFFORT",
+                   "SARVAM_FALLBACK_LOCAL")],
+            ):
+                assert source.count(addition.encode()) == 1
+                source = source.replace(addition.encode(), b"")
         if name == "tests/test_adapters.py":
             selected = b'[("think", ([],))]'
             original = b'[("asr", ("x", "x")), ("think", ([],)), ("say", ("x", "x"))]'

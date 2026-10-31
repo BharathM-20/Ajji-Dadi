@@ -1,0 +1,123 @@
+[brain transport] model=sarvam-105b seconds=0.001 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.002 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.001 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.001 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.001 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.000 guard_rejections=0 fixture=True
+[brain transport] model=sarvam-105b seconds=0.000 status=200 fixture=True fallback_local=False
+[brain timing] prompt=sarvam-dadi-v1 model=sarvam-105b seconds=0.001 guard_rejections=0 fixture=True
+TEST FIXTURE — canned replies; no model-quality evidence
+ID | RESULT | SOURCE | RAW REPLY
+hi-0 | PASS | sarvam_test_fixture | बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।
+{"id": "hi-0", "passed": true, "reply": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-1 | PASS | sarvam_test_fixture | बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।
+{"id": "hi-1", "passed": true, "reply": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-2 | PASS | sarvam_test_fixture | बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।
+{"id": "hi-2", "passed": true, "reply": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-3 | PASS | sarvam_test_fixture | बेटा, ज़रा धीरे समझाओ, मैं अपनी पुरानी कॉपी ढूँढ रही हूँ।
+{"id": "hi-3", "passed": true, "reply": "बेटा, ज़रा धीरे समझाओ, मैं अपनी पुरानी कॉपी ढूँढ रही हूँ।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-4 | PASS | sarvam_test_fixture | बेटा, ज़रा धीरे समझाओ, मैं अपनी पुरानी कॉपी ढूँढ रही हूँ।
+{"id": "hi-4", "passed": true, "reply": "बेटा, ज़रा धीरे समझाओ, मैं अपनी पुरानी कॉपी ढूँढ रही हूँ।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-5 | PASS | sarvam_test_fixture | बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।
+{"id": "hi-5", "passed": true, "reply": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-6 | PASS | sarvam_test_fixture | बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।
+{"id": "hi-6", "passed": true, "reply": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-7 | PASS | sarvam_test_fixture | बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।
+{"id": "hi-7", "passed": true, "reply": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-8 | PASS | sarvam_test_fixture | बेटा, उस बटन का रंग क्या है, यह फ़ोन समझ नहीं आता।
+{"id": "hi-8", "passed": true, "reply": "बेटा, उस बटन का रंग क्या है, यह फ़ोन समझ नहीं आता।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-9 | PASS | sarvam_test_fixture | बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।
+{"id": "hi-9", "passed": true, "reply": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-10 | PASS | sarvam_test_fixture | बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।
+{"id": "hi-10", "passed": true, "reply": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-11 | PASS | sarvam_test_fixture | बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।
+{"id": "hi-11", "passed": true, "reply": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-12 | PASS | sarvam_test_fixture | बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।
+{"id": "hi-12", "passed": true, "reply": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-13 | PASS | sarvam_test_fixture | बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।
+{"id": "hi-13", "passed": true, "reply": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-14 | PASS | sarvam_test_fixture | बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।
+{"id": "hi-14", "passed": true, "reply": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+hi-15 | PASS | sarvam_test_fixture | बेटा, उस बटन का रंग क्या है, यह फ़ोन समझ नहीं आता।
+{"id": "hi-15", "passed": true, "reply": "बेटा, उस बटन का रंग क्या है, यह फ़ोन समझ नहीं आता।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+kn-0 | PASS | sarvam_test_fixture | ಮಗು, ಯಾವ ಶಾಖೆ ಎಂದು ಮತ್ತೆ ಹೇಳು, ನನ್ನ ಕನ್ನಡಕ ಸಿಗುತ್ತಿಲ್ಲ.
+{"id": "kn-0", "passed": true, "reply": "ಮಗು, ಯಾವ ಶಾಖೆ ಎಂದು ಮತ್ತೆ ಹೇಳು, ನನ್ನ ಕನ್ನಡಕ ಸಿಗುತ್ತಿಲ್ಲ.", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": true}
+kn-1 | PASS | sarvam_test_fixture | ಮಗು, ಸ್ವಲ್ಪ ನಿಧಾನವಾಗಿ ಹೇಳು, ನಾನು ಪುಸ್ತಕ ಹುಡುಕುತ್ತಿದ್ದೇನೆ.
+{"id": "kn-1", "passed": true, "reply": "ಮಗು, ಸ್ವಲ್ಪ ನಿಧಾನವಾಗಿ ಹೇಳು, ನಾನು ಪುಸ್ತಕ ಹುಡುಕುತ್ತಿದ್ದೇನೆ.", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": true}
+kn-2 | PASS | sarvam_test_fixture | ಮಗು, ಯಾವ ಶಾಖೆ ಎಂದು ಮತ್ತೆ ಹೇಳು, ನನ್ನ ಕನ್ನಡಕ ಸಿಗುತ್ತಿಲ್ಲ.
+{"id": "kn-2", "passed": true, "reply": "ಮಗು, ಯಾವ ಶಾಖೆ ಎಂದು ಮತ್ತೆ ಹೇಳು, ನನ್ನ ಕನ್ನಡಕ ಸಿಗುತ್ತಿಲ್ಲ.", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": true}
+kn-3 | PASS | sarvam_test_fixture | ಮಗು, ಯಾವ ಶಾಖೆ ಎಂದು ಮತ್ತೆ ಹೇಳು, ನನ್ನ ಕನ್ನಡಕ ಸಿಗುತ್ತಿಲ್ಲ.
+{"id": "kn-3", "passed": true, "reply": "ಮಗು, ಯಾವ ಶಾಖೆ ಎಂದು ಮತ್ತೆ ಹೇಳು, ನನ್ನ ಕನ್ನಡಕ ಸಿಗುತ್ತಿಲ್ಲ.", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": true}
+kn-4 | PASS | sarvam_test_fixture | ಮಗು, ಆ ಗುಂಡಿ ಯಾವ ಬಣ್ಣದ್ದು, ನನಗೆ ಸರಿಯಾಗಿ ಕಾಣುತ್ತಿಲ್ಲ.
+{"id": "kn-4", "passed": true, "reply": "ಮಗು, ಆ ಗುಂಡಿ ಯಾವ ಬಣ್ಣದ್ದು, ನನಗೆ ಸರಿಯಾಗಿ ಕಾಣುತ್ತಿಲ್ಲ.", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": true}
+kn-5 | PASS | sarvam_test_fixture | ಮಗು, ಯಾವ ಶಾಖೆ ಎಂದು ಮತ್ತೆ ಹೇಳು, ನನ್ನ ಕನ್ನಡಕ ಸಿಗುತ್ತಿಲ್ಲ.
+{"id": "kn-5", "passed": true, "reply": "ಮಗು, ಯಾವ ಶಾಖೆ ಎಂದು ಮತ್ತೆ ಹೇಳು, ನನ್ನ ಕನ್ನಡಕ ಸಿಗುತ್ತಿಲ್ಲ.", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": true}
+en-0 | PASS | sarvam_test_fixture | Dear, which branch did you say? My glasses are missing.
+{"id": "en-0", "passed": true, "reply": "Dear, which branch did you say? My glasses are missing.", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+en-1 | PASS | sarvam_test_fixture | Dear, which branch did you say? My glasses are missing.
+{"id": "en-1", "passed": true, "reply": "Dear, which branch did you say? My glasses are missing.", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+en-2 | PASS | sarvam_test_fixture | Dear, which branch did you say? My glasses are missing.
+{"id": "en-2", "passed": true, "reply": "Dear, which branch did you say? My glasses are missing.", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+en-3 | PASS | sarvam_test_fixture | Dear, which branch did you say? My glasses are missing.
+{"id": "en-3", "passed": true, "reply": "Dear, which branch did you say? My glasses are missing.", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+en-4 | PASS | sarvam_test_fixture | Dear, which branch did you say? My glasses are missing.
+{"id": "en-4", "passed": true, "reply": "Dear, which branch did you say? My glasses are missing.", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+en-5 | PASS | sarvam_test_fixture | Dear, which branch did you say? My glasses are missing.
+{"id": "en-5", "passed": true, "reply": "Dear, which branch did you say? My glasses are missing.", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+memory-1 | PASS | sarvam_test_fixture | बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।
+{"id": "memory-1", "passed": true, "reply": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।", "guard": [], "otp_like": false, "memory_recall": true, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+memory-2 | FAIL | sarvam_test_fixture | बेटा, ज़रा धीरे समझाओ, मैं अपनी पुरानी कॉपी ढूँढ रही हूँ।
+{"id": "memory-2", "passed": false, "reply": "बेटा, ज़रा धीरे समझाओ, मैं अपनी पुरानी कॉपी ढूँढ रही हूँ।", "guard": [], "otp_like": false, "memory_recall": false, "repeated_tactic": false, "source": "sarvam_test_fixture", "native_review": false}
+Automated heuristics only. Kannada style examples need native-speaker review.
