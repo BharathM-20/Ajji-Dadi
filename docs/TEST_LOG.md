@@ -250,3 +250,15 @@ allrealflags, WAVrepair, TTSconfig, defaultCLI, localbrain tests and oldnetworkg
 Newloopbackprobe launched actualGradio5.49.1 server with fakebrain/mockedvendorHTTP and ran
 upload/screen/humangate/Dadi/audiofile/TTSfailure rollback/report/reset viaHTTP/SSE. Ownserver
 closed incleanup. Realphysicalplayback andAPIvoicequality remainunverified. T2stillblocked.
+
+## F-FRONTEND-POLISH — 2026-10-31 (D015)
+Offline setup succeeded. Baseline make check249passed19.86s, smoke6passed0.09s. Initial new
+contract test expected7 speech dependencies incorrectly (actual baseline6):8passed/1failed;
+corrected expectation, no production behavior change. Targeted9passed2.61s. Final verifier
+exited0: L1clean, full253passed112.79s; exact feature47passed47.82s; no skips. Smoke6passed0.17s.
+Actual isolated MOCK speech module launched on8975 for desktop1280x720/mobile390x844 browser
+review, overflow0. Synthetic decision/report preview explicitly labelled and invokes no events.
+Initial preview bind approval timed out; simpler isolated launch succeeded. No real APIs/models,
+keyfile reads or user app interaction. Browser lacked mic; real recording/playback untested.
+Screenshots docs/evidence/frontend-*.jpg; own server closed and viewport reset. Existing tests,
+core hashes and handlers retained. Only verifier set the new feature passing; T2 stays blocked.

@@ -106,6 +106,7 @@ def build_ui():
             gr.HTML(ui_theme.CASE_HEADING, elem_id="case-heading")
             report = gr.Markdown(elem_id="case-file")
 
+        gr.HTML(ui_theme.FOOTER, elem_id="workspace-footer")
         outs = [chat, out, s, status, decide, mic]
         mic.stop_recording(turn, [mic, s, lang], outs, api_name="caller_turn")
         b_pick.click(lambda s: choose("pickup", s), [s], outs, api_name="pick_up")
@@ -119,9 +120,11 @@ def build_ui():
 def local_view(state):
     result = list(view(state))
     if state["mode"] == "DECIDE":
-        result[3] = ("**Screening complete — human review required.** "
-                     "Classification is not enabled in this local prototype. "
-                     "Review the caller messages and choose how to handle the call.")
+        result[3] = (
+            "**Screening complete — human review required.** "
+            "Classification is not enabled in this local prototype. "
+            "Review the caller messages and choose how to handle the call."
+        )
     if state.get("reply_source") == "code_deflection":
         result[3] += "\n\nCode deflection: obvious role-change request."
     if state.get("error"):
@@ -147,9 +150,15 @@ def local_reset():
 
 
 def build_local_ui():
-    with gr.Blocks(title="Dadi · Local prototype", analytics_enabled=False,
-                   css=ui_theme.CSS) as demo:
-        gr.HTML(ui_theme.NAV)
+    with gr.Blocks(
+        title="Dadi · Local prototype",
+        analytics_enabled=False,
+        css=ui_theme.CSS,
+        theme=gr.themes.Base(font=ui_theme.FONT, font_mono=ui_theme.MONO).set(
+            **ui_theme.THEME_SETTINGS
+        ),
+    ) as demo:
+        gr.HTML(ui_theme.NAV, elem_id="app-nav")
         gr.Markdown(
             "# Dadi · Local Ollama prototype\n"
             "⚠️ **SIMULATION:** the caller is a teammate role-playing. "
@@ -157,30 +166,53 @@ def build_local_ui():
             elem_id="simulation-banner",
         )
         gr.Markdown(
-            "**Local LLM · text only.** Speech is not enabled. Language quality is experimental; "
-            "Kannada/Kanglish need native review. Send two screening messages, choose "
-            "**Let Dadi handle it**, then continue as the caller. Language locks for each call."
+            "**Local LLM · text only.** Speech is not enabled. Language quality is "
+            "experimental; Kannada/Kanglish need native review. Send two screening "
+            "messages, choose **Let Dadi handle it**, then continue as the caller. "
+            "Language locks for each call.",
+            elem_id="workspace-note",
         )
         state = gr.State(local_brain.new_state())
-        language = gr.Dropdown(list(local_brain.LANGUAGES), value="Hinglish", label="Language")
-        chat = gr.Chatbot(type="messages", height=360, label="Role-play transcript")
-        status = gr.Markdown("Mode: SCREEN")
-        with gr.Row(visible=False) as decide:
-            pickup = gr.Button("Pick up")
-            decline = gr.Button("Decline")
-            dadi = gr.Button("Let Dadi handle it", variant="primary")
-        text = gr.Textbox(label="Caller message", max_lines=3)
-        send = gr.Button("Send caller message")
-        audio = gr.Audio(visible=False)  # Shared view output; local mode generates no audio.
-        with gr.Row():
-            end = gr.Button("End call + report")
-            reset = gr.Button("New call")
-        report = gr.Markdown(label="Case file", elem_id="case-file")
+        with gr.Row(elem_id="call-hero"):
+            with gr.Column(scale=6, min_width=0, elem_id="conversation-column"):
+                gr.HTML(ui_theme.HERO, elem_id="hero-copy")
+                chat = gr.Chatbot(
+                    type="messages",
+                    height=360,
+                    label="Role-play transcript",
+                    elem_id="live-transcript",
+                )
+            with gr.Column(scale=4, min_width=0, elem_id="phone-panel"):
+                gr.HTML(ui_theme.PHONE_HEADING, elem_id="phone-heading")
+                language = gr.Dropdown(
+                    list(local_brain.LANGUAGES),
+                    value="Hinglish",
+                    label="Language",
+                    elem_id="call-language",
+                )
+                status = gr.Markdown("Mode: SCREEN", elem_id="call-status")
+                with gr.Row(visible=False, elem_id="decision-actions") as decide:
+                    pickup = gr.Button("Pick up", elem_id="pick-up")
+                    decline = gr.Button("Decline", elem_id="decline-call")
+                    dadi = gr.Button(
+                        "Let Dadi handle it", variant="primary", elem_id="dadi-handoff"
+                    )
+                text = gr.Textbox(label="Caller message", max_lines=3, elem_id="caller-text")
+                send = gr.Button("Send caller message", elem_id="send-message")
+                audio = gr.Audio(visible=False)
+                with gr.Row(elem_id="end-actions"):
+                    end = gr.Button("End call + report", elem_id="end-call")
+                    reset = gr.Button("New call", elem_id="new-call")
+        with gr.Group(elem_id="case-panel"):
+            gr.HTML(ui_theme.CASE_HEADING, elem_id="case-heading")
+            report = gr.Markdown(label="Case file", elem_id="case-file")
+        gr.HTML(ui_theme.FOOTER, elem_id="workspace-footer")
         outputs = [chat, audio, state, status, decide, text]
         send.click(local_turn, [text, state, language], outputs, api_name="local_turn")
         pickup.click(lambda s: local_choose("pickup", s), [state], outputs, api_name="local_pickup")
-        decline.click(lambda s: local_choose("decline", s), [state], outputs,
-                      api_name="local_decline")
+        decline.click(
+            lambda s: local_choose("decline", s), [state], outputs, api_name="local_decline"
+        )
         dadi.click(lambda s: local_choose("dadi", s), [state], outputs, api_name="local_dadi")
         end.click(local_end, [state], outputs + [report], api_name="local_report")
         reset.click(local_reset, None, outputs + [report], api_name="local_reset")
@@ -222,9 +254,14 @@ def speech_end(state):
 
 def build_speech_ui():
     with gr.Blocks(
-        title="Dadi · Speech prototype", analytics_enabled=False, css=ui_theme.CSS
+        title="Dadi · Speech prototype",
+        analytics_enabled=False,
+        css=ui_theme.CSS,
+        theme=gr.themes.Base(font=ui_theme.FONT, font_mono=ui_theme.MONO).set(
+            **ui_theme.THEME_SETTINGS
+        ),
     ) as demo:
-        gr.HTML(ui_theme.NAV)
+        gr.HTML(ui_theme.NAV, elem_id="app-nav")
         gr.Markdown(
             "# Dadi · Speech prototype\n"
             "⚠️ **SIMULATION:** the caller is a teammate role-playing. "
@@ -233,27 +270,44 @@ def build_speech_ui():
         )
         gr.Markdown(
             "**Hindi / Hinglish speech · Devanagari replies.** Record twice for screening, "
-            "then choose **Let Dadi handle it**. "
-            "Speech adapters and brain are independently configured."
+            "then choose **Let Dadi handle it**. Speech adapters and brain are "
+            "independently configured.",
+            elem_id="workspace-note",
         )
         state = gr.State(local_brain.new_state())
-        chat = gr.Chatbot(type="messages", label="Role-play transcript")
-        status = gr.Markdown("Mode: SCREEN")
-        with gr.Row(visible=False) as decide:
-            pickup = gr.Button("Pick up")
-            decline = gr.Button("Decline")
-            dadi = gr.Button("Let Dadi handle it", variant="primary")
-        mic = gr.Audio(
-            sources=["microphone"],
-            type="filepath",
-            format="wav",
-            label="Caller speaks — record, then stop (maximum 30 seconds)",
-        )
-        audio = gr.Audio(autoplay=True, label="Dadi’s reply")
-        with gr.Row():
-            end = gr.Button("End call + report")
-            reset = gr.Button("New call")
-        report = gr.Markdown(label="Case file")
+        with gr.Row(elem_id="call-hero"):
+            with gr.Column(scale=6, min_width=0, elem_id="conversation-column"):
+                gr.HTML(ui_theme.HERO, elem_id="hero-copy")
+                chat = gr.Chatbot(
+                    type="messages",
+                    height=360,
+                    label="Role-play transcript",
+                    elem_id="live-transcript",
+                )
+            with gr.Column(scale=4, min_width=0, elem_id="phone-panel"):
+                gr.HTML(ui_theme.PHONE_HEADING, elem_id="phone-heading")
+                status = gr.Markdown("Mode: SCREEN", elem_id="call-status")
+                with gr.Row(visible=False, elem_id="decision-actions") as decide:
+                    pickup = gr.Button("Pick up", elem_id="pick-up")
+                    decline = gr.Button("Decline", elem_id="decline-call")
+                    dadi = gr.Button(
+                        "Let Dadi handle it", variant="primary", elem_id="dadi-handoff"
+                    )
+                mic = gr.Audio(
+                    sources=["microphone"],
+                    type="filepath",
+                    format="wav",
+                    label="Caller speaks — record, then stop (maximum 30 seconds)",
+                    elem_id="caller-mic",
+                )
+                audio = gr.Audio(autoplay=True, label="Dadi’s reply", elem_id="phone-speaker")
+                with gr.Row(elem_id="end-actions"):
+                    end = gr.Button("End call + report", elem_id="end-call")
+                    reset = gr.Button("New call", elem_id="new-call")
+        with gr.Group(elem_id="case-panel"):
+            gr.HTML(ui_theme.CASE_HEADING, elem_id="case-heading")
+            report = gr.Markdown(label="Case file", elem_id="case-file")
+        gr.HTML(ui_theme.FOOTER, elem_id="workspace-footer")
         outputs = [chat, audio, state, status, decide, mic]
         queue = {"concurrency_id": "speech-call", "concurrency_limit": 1}
         mic.stop_recording(

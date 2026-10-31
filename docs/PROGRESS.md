@@ -1,5 +1,46 @@
 # Progress
 
+## F-FRONTEND-POLISH final handoff — presentation only, passing
+On t2-gnani-speech, redesigned all three existing UI builders with warm ivory/teal/amber,
+local editorial fonts, original inline grandmother SVG, cohesive call desk/transcript/case file.
+Mobile controls appear first via CSS; 390x844 has zero horizontal overflow, 16px gutters,
+44px Record and 57px decision targets. Simulation banner, human choices/reset and all event,
+state/output/queue contracts preserved. Core/speech/brain/persona/training files unchanged.
+Baseline ed342d1: offline setup succeeded; make check249passed19.86s; smoke6passed0.09s.
+Final verifier `.venv/bin/python scripts/verify_feature.py F-FRONTEND-POLISH` exited0:
+L1clean, make check253passed112.79s, exact feature47passed47.82s. Only verifier wrote passing.
+Final make smoke6passed0.17s. Four additive regression tests freeze core hashes, nonbuilder/
+handler/state/output ASTs and static presentation; all existing tests unchanged.
+Independent source/screenshot review ACCEPT after mobile control ordering, mic label wrapping
+and report surface fixes. Scores correctness2/verification1/scope2/reliability1/maintainability2/
+handoff2; final successful verifier fulfills conditional code verification. Real devices remain
+unverified. Actual isolated MOCK module preview launched on8975; no real provider/model calls.
+Final normal desktop/mobile JPEGs and explicitly labelled synthetic decision/report fixture
+JPEGs saved under docs/evidence/frontend-*.jpg. Fixtures are preview-only, never shipped values.
+User's running app/call untouched; own preview stopped and viewport override reset.
+Restart the user's existing launch command after their current call, then refresh to load changes.
+Untested: user aesthetic acceptance, physical mic/autoplay, real Gnani/Ollama latency/quality,
+exhaustive browsers/assistive devices. Browser had no microphone. T2 remains blocked; no real
+readiness claim. No credential-file reads, downloads or new runtime external assets.
+Stop after this one verified commit; no additional feature selected. Design decision D015.
+
+## F-FRONTEND-POLISH sprint contract — completed (original scope)
+User authorizes visual redesign only, including static placeholders. Preserve all behavior,
+handlers, input/output ordering, brain/speech/session logic, human gate/reset/simulationbanner.
+Scope: ui_theme presentation and Gradio layout/IDs/classes in three builders, no handler or
+nonbuilderfunction edits. No model/speech/keyfile calls; no external runtime fonts/assets.
+Current user app may remain running: do not stop/restart or interact with its callsession.
+Use own separate MOCK preview server for visual validation at desktop/mobile widths.
+References: public Pinterest editorialdashboard thumbnails; fullpins gated by login. Public
+Dribbble voiceassistant/dashboard reference also reviewed. No downloaded/copiedthirdpartyassets.
+Direction: warmivory/ink/saffron, editorialtype, generousspacing, clear transcript/controlcards,
+static grandmotherillustration and truthfulprototypecopy. No fakeanalytics/connectedbadges or
+newworkingcontrols. Snapshot frontend_polish_baseline freezesallnonbuilderASTs, handler/state/
+outputASTs and allcorefilehashes. Existing tests retained. Addonlythiscodefeature/specdigest.
+Verification: setup/check/smoke baseline, fullchecks, freshfrontend/source review, ownmockUI
+screenshots/responsive/focus review, script-onlypassing, commit and handoff.
+
+
 ## F-SPEECH-BRAIN final handoff — code/mock integration passing, T2 real still blocked
 Opt-in DADI_SPEECH=1 path now runs PCM WAV validation -> asr -> existing brain -> say in
 one queued UI callback. Uses existing Hindi/Devanagari persona and existing human gate/reset;

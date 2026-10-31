@@ -386,5 +386,38 @@
       }
     ],
     "notes": "Code integration verified with mocked HTTP and fake brain only; T2 real-service acceptance remains blocked. No persona changes or extra model calls."
+  },
+  {
+    "id": "F-FRONTEND-POLISH",
+    "priority": 3,
+    "title": "Presentation-only call workspace redesign",
+    "user_visible_behavior": "A coherent responsive editorial interface across default, text and speech workspaces, preserving every existing interaction and call behavior. Static decorative content does not imply working new features.",
+    "dependencies": [
+      "F-SPEECH-BRAIN"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_frontend_polish.py tests/test_ui_theme.py tests/test_speech_session.py",
+    "evidence": [
+      {
+        "at_utc": "2026-10-31T10:05:56.179453+00:00",
+        "base_commit": "ed342d1aab2f89e2893e869e96d8b56c2fc9e496",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 253 items\n\ntests/test_adapters.py ......                                            [  2%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_dialogue_quality.py ......................                    [ 13%]\ntests/test_flow.py ..............................                        [ 24%]\ntests/test_frontend_polish.py ....                                       [ 26%]\ntests/test_gnani_speech.py ............................................. [ 44%]\n...................................                                      [ 58%]\ntests/test_harness.py ........                                           [ 61%]\ntests/test_local_brain.py .............................................. [ 79%]\n.                                                                        [ 79%]\ntests/test_speech_session.py ......................................      [ 94%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n======================= 253 passed in 112.79s (0:01:52) ========================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_frontend_polish.py tests/test_ui_theme.py tests/test_speech_session.py",
+            "exit_code": 0,
+            "stdout": "...............................................                          [100%]\n47 passed in 47.82s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ],
+    "notes": "Visual changes only. Freeze handler/nonbuilder/state/output contracts and core hashes. No runtime external assets, model/service calls or user-session interruption."
   }
 ]

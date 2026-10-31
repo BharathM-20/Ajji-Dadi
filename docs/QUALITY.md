@@ -112,3 +112,13 @@ DefaultUI/localtextUI/persona/localbrain unchanged; newqueuedmicrophonepath test
 actualGradiodispatch and loopbackupload/playbackgate/errorrollback/reset with fakeproviders.
 Existingtestchanges explicitlyD014; historicalguard onlynormalizes exactauthorized edits.
 No realservice/device/nativequality/readiness grade. T2stillblocked on actualuserevidence.
+
+## F-FRONTEND-POLISH — frontend/code scope ACCEPT
+Fresh separate source/screenshot review found mobile controls too far below decorative content;
+CSS order now puts call desk first. Subsequent fixture review verified57px decision/44px Record
+buttons, mic label wrapping, readable report and clear synthetic labels. No blocking findings.
+Scores correctness2, verification1, scope2, reliability1, maintainability2, handoff2. Final verifier
+253 full +47 feature passes fulfills pending code verification condition; smoke6 also passed.
+All old tests retained; new contract guard freezes nonbuilder/handler/state/output ASTs and
+core files. No functional changes or live provider claims. Physical mic/playback, native voice,
+user aesthetic acceptance and exhaustive browser/accessibility testing remain unverified.

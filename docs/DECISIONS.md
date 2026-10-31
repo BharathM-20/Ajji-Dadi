@@ -320,3 +320,28 @@ rollback history/tactics/counters but keep modePAUSED + explicitreviewmessage. F
 turns over10s also set a diagnostic speech_paused gate (without advancing failed callstate)
 and block further service calls until newcall after userreview. No measuredreal latency or
 T3decision claimed. Speechview reuses existing local_view's unclassified human-review status.
+
+## D015 — Presentation-only redesign across all three UIs (2026-10-31)
+User grants frontend autonomy but forbids functional changes. Freeze currentcore/function/
+handler/state/output contracts ated342d1. Change only visualtokens, CSS, staticHTML and
+Gradio layout/IDs/classes. Keep inputs/outputs/queue/API names/source/format/autoplay/gates
+and callmodel/speechlogic unchanged. No new interactiveplaceholder features or fabricated
+metrics; explanatory static content may preview the idea without suggesting availability.
+Use locally authored vector/markup, systemfonts with Georgiaeditorialheadings, ivory/ink/amber.
+Pinterest search publicthumbnailboard reviewed, deeperpins blocked by signin; broader public
+voice/dashboard patterns observed at https://dribbble.com/search/voice-assistant-dashboard .
+Reference only; no externalfonts/scripts/assets in runtime. Preserve userrunningserver;
+verify own separateMOCKspeechpreview without model/service/key access. No restartwithoutneed.
+
+D015 broader reference pass (user explicitly allows any publicsite): inspected Readwise's
+public page visually (https://readwise.io/), Basecamp publiccontent (https://basecamp.com/),
+and publicDribbble voiceconcept. Adopted warmcanvas/editorialhierarchy/restraint principles,
+not copied layouts/assets. Browserreview caught Gradiooverriding childspan colors and scoping
+rootcontainer media rules inside.contain; fixedsteptextcolor explicitly and use responsive
+clamp gutters onroot. Mobile390px nowhaszero horizontaloverflow and16pxgutters. Recordbutton
+minimum44px; decorativecontentnoninteractive; no false live/connectedanalytics badges.
+
+D015 mobilepeerreview: move call desk before decorativehero/transcript at<=680px using CSS
+order only, so Record/decisioncontrols are reachable first. DOM/component order and every
+handler remain unchanged. Decision/report typography inspected with explicitly labelled
+synthetic preview values on ownMOCKserver; fixture data is never part of shipped UI/runtime.

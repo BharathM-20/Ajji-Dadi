@@ -5,8 +5,8 @@
   Why: protect credits and isolate vendor changes. Delete only if adapter boundary is replaced.
 - Never print, log or commit keys; keep `.env.example` empty of real values.
   Why: private credentials. Keep permanently.
-- This session implements F-SPEECH-BRAIN: sequential microphone -> speech adapters -> existing brain.
-  Why: latest user scope authorizes integration. Preserve persona and default MOCK/text paths;
+- This session implements F-FRONTEND-POLISH: presentation only across the existing UIs.
+  Why: user authorizes design changes only. Preserve all handlers, state, brain and speech behavior;
   do not touch experimental_local_brain.py or training/. No real calls or credential-file reads.
 - Preserve `reference/`, `docs/CODEX_BRIEF.md` and `docs/GNANI_NOTES.md` during initialization.
   Why: user-owned inputs. Change notes later only with verified integration evidence.
