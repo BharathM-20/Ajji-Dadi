@@ -122,3 +122,13 @@ Scores correctness2, verification1, scope2, reliability1, maintainability2, hand
 All old tests retained; new contract guard freezes nonbuilder/handler/state/output ASTs and
 core files. No functional changes or live provider claims. Physical mic/playback, native voice,
 user aesthetic acceptance and exhaustive browser/accessibility testing remain unverified.
+
+## F-SPEECH-LANGUAGE — routing scope ACCEPT
+Separate fresh-context read-only source review found no blocking findings: central mapping,
+strict sequence, fail-closed unknowns, explicit/stage-specific overrides, language lock/reset,
+script rollback, retained persona/frontend/gates/serialization. Narrow historical test allowances
+reviewed. Scores correctness2/verification1/scope2/reliability1/maintainability2/handoff2.
+Final verifier275full+60feature and smoke6 passes satisfy conditional code verification.
+No native language, real model, speech provider or device readiness grade. Kannada/Kanglish
+STT, Kalpana Kannada pronunciation and code-switch candidate require actual user trials;
+Kannada text needs native-speaker review. No quality claim from synthetic fixtures.

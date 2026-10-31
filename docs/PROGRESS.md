@@ -1,5 +1,59 @@
 # Progress
 
+## F-SPEECH-LANGUAGE final handoff — routing code passing, real quality unverified
+Branch t2-gnani-speech. UI dropdown now reaches asr -> existing native-language brain -> say,
+strictly sequential. Single adapter table: Hindi/Hinglish hi-IN + Hindi/Devanagari prompt;
+Kannada/Kanglish kn-IN + Kannada-script prompt; English en-IN + English prompt. No persona,
+think/local_brain/experimental/training or frontend styling changes. Existing human gate,
+reset, simulation banner, WAV validation, shared serialization and latency rollback preserved.
+Unknown languages fail ERROR/WHY/FIX before HTTP, including with speech disabled (old offline
+mock sentinel retained). Successful first turn locks selection; change requires New call.
+Wrong-script model output rolls back before TTS. No model quality improvement claimed.
+GNANI_TTS_LANGUAGE overrides routing only when explicitly present; unset to follow dropdown.
+Existing model/voice/speed overrides retained. GNANI_STT_KANGLISH_CODE defaults kn-IN; explicit
+kn-IN,en-IN sends prisma-v3.0 with transcribe, UNVERIFIED. Invalid/empty overrides fail closed;
+ASR/TTS configuration validation is stage-specific, preserving independent switches.
+Offline setup succeeded. Baseline sandbox run251passed/2localhost binding failures; allowed
+retry253passed12.85s and smoke6passed0.08s. Final verifier F-SPEECH-LANGUAGE exited0: L1clean,
+make check275passed13.74s, exact feature60passed6.52s. Only verifier wrote passing/evidence.
+Final make smoke6passed0.12s. Full suite has no skips; launches use loopback-only guards,
+HTTP MockTransport and fake brain. New22 routing tests cover5payload/prompt routes,5actual
+Gradio dispatch routes, unknowns, overrides/candidate, script rejection and language lock/reset.
+Targeted initial137passed/6failed:5newtests expected lists rather than Gradio tuples, plus old
+Hindi error expected Devanagari. Fixed tuple fixture and retained script-specific error wording;
+subsequent143passed2.91s with launch test deliberately deferred to full allowed verifier.
+Fresh independent source review ACCEPT, conditional verification fulfilled. Scores2/1/2/1/2/2
+(correctness/verification/scope/reliability/maintainability/handoff); real-device readiness not graded.
+Existing tests changed only for added speech event input and formerly ignored opaque language;
+narrow historical guards documented D016, old baseline fixtures retained. Only authorized
+GNANI_NOTES input digest refreshed; other old feature definitions/evidence unchanged.
+Run existing launch command in SPEECH_UI.md after ending/restarting your current app; select
+language before recording. Do not set GNANI_TTS_LANGUAGE=hi-IN if TTS should follow Kannada.
+No user app was stopped/restarted; no real provider/model/device test, key-file read or download.
+Untested: real Kannada and Kanglish STT accuracy; Kannada TTS pronunciation with Kalpana on
+timbre-v3.0; Kanglish code-switch value; Kannada text quality (native speaker review required).
+Physical microphone/autoplay, real latency/credits and other real speech quality also unverified.
+T2 remains blocked pending user-owned smoke evidence; this passing feature proves routing only.
+Stop after this one verified commit. Next action: user-run language trials and native review.
+
+## F-SPEECH-LANGUAGE sprint contract — completed (original scope)
+Branch t2-gnani-speech, baseline5fa5617 clean. Read PROGRESS and SPEECH_UI first.
+One feature: central adapter language mapping; explicit env overrides only, fail unmapped;
+speech UI dropdown -> sequential asr -> existing native-language brain -> say. Hindi/Hinglish
+use existing Hindi prompt; Kannada/Kanglish use existing Kannada prompt; English uses English.
+No persona/local_brain/think changes. Preserve frontend, gate/reset/banner and transactional
+rollback/latency limits. Lock UI language per successful call; reject changes before ASR.
+Kanglish defaults kn-IN; comma-separated candidate kn-IN,en-IN is explicit UNVERIFIED opt-in
+with prisma-v3.0; format stays transcribe, no invented codemix semantics. No auto-detect.
+Verify mapping/payloads/script gate/UI propagation with fake brain and mocked HTTP only;
+full make check, smoke, verifier and separate review. No real network/model/device calls;
+no .env, ~/.gnani_env, ~/.sarvam_env or key-file reads. Experimental/training untouched.
+Existing freeze tests need narrowly scoped authorizations for routing functions/extra dropdown
+input, and legacy-code request tests must use a mapped language (opaque codes now fail).
+Baseline sandbox check251passed/2launch binding failures; retry with localhost permission.
+Untested: real Kannada/Kanglish STT accuracy, Kalpana/timbre-v3.0 Kannada pronunciation,
+Kanglish code-switch value, Kannada text quality (native-speaker review required).
+
 ## F-FRONTEND-POLISH final handoff — presentation only, passing
 On t2-gnani-speech, redesigned all three existing UI builders with warm ivory/teal/amber,
 local editorial fonts, original inline grandmother SVG, cohesive call desk/transcript/case file.

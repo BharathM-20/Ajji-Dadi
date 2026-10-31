@@ -262,3 +262,18 @@ Initial preview bind approval timed out; simpler isolated launch succeeded. No r
 keyfile reads or user app interaction. Browser lacked mic; real recording/playback untested.
 Screenshots docs/evidence/frontend-*.jpg; own server closed and viewport reset. Existing tests,
 core hashes and handlers retained. Only verifier set the new feature passing; T2 stays blocked.
+
+## F-SPEECH-LANGUAGE — 2026-10-31 (D016)
+make setup succeeded offline. Sandbox baseline251passed/2failed5.00s: loopback bind denied,
+not code failure. Retry with localhost permission253passed12.85s; smoke6passed0.08s.
+New targeted initial137passed/6failed3.09s:5tuple/list fixture expectations,1existing Hindi error
+wording; fix fixtures and retain script-specific message. Retry143passed2.91s, launch deferred.
+Final `.venv/bin/python scripts/verify_feature.py F-SPEECH-LANGUAGE` exited0, L1clean;
+make check275passed13.74s, exact routing+speech60passed6.52s. No skipped checks. Smoke6passed0.12s.
+New22 tests use synthetic PCM WAV, MockTransport/fake think and realGradio dispatch across all5
+choices; existing loopback launch/gate/playback-file/rollback/report/reset probe passed with
+explicit Hindi input. Only localhost used by launch tests; zero real provider/model calls.
+Coverage is request/prompt/script routing, not speech accuracy/pronunciation/naturalness.
+Separate review accepted; immutable unrelated function guard passes, protected source diffempty.
+Failure layer environment (bind) and verification (fixture shape/error wording), fixed without
+weakening network/launch guards. T2 remainsblocked; no real smoke or credential files accessed.

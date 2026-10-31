@@ -159,3 +159,15 @@ Existing brainPAUSED stop is preserved on rollback; >10sfullturn diagnostic gate
 next attempt until userreview/newcall. Perturnmetrics includeasr/brain/say/total plusllm/tts
 aliases for existingview. Physicalaudio, providerlanguagequality and actual latency unverified.
 See SPEECH_UI.md for exact launch/click path and user-owned T2evidence recording commands.
+
+## F-SPEECH-LANGUAGE routing (D016; supersedes D014 Hindi-only selection)
+The speech UI adds a Language dropdown to its existing queued microphone callback. Adapters
+owns SPEECH_LANGUAGES (STT/TTS/native brain routes). speech_session locks the successful call's
+UI label separately from local_brain's native prompt language, validates selection before ASR,
+then runs ASR -> existing brain -> native-script validation -> TTS transactionally. Hindi and
+Hinglish use existing Hindi prompt; Kannada/Kanglish existing Kannada prompt; English English.
+No local_brain/persona/think changes. Canned speech screening/limit text lives in wrapper only.
+Explicit TTS language env override wins; optional Kanglish code candidate is unverified and
+isolated to ASR. Invalid/unmapped routes fail without Hindi fallback. Independent switches,
+shared request lock, default MOCK, frontend styles, human decisions and reset stay intact.
+Routing tests use MockTransport and fake think; language quality needs user/native evidence.

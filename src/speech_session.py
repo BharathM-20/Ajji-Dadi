@@ -1,17 +1,42 @@
 """Sequential speech turns: commit conversation state only after synthesis succeeds."""
 
 import copy
-import re
 import time
 import wave
 from pathlib import Path
 
 from . import adapters, local_brain
 
-SCREEN = (
-    "कृपया अपना नाम बताइए, कहाँ से और किस काम से फ़ोन कर रहे हैं?",
-    "धन्यवाद। फ़ोन के मालिक तय करेंगे कि इस कॉल का क्या करना है।",
-)
+SCREEN = {
+    "Hindi": (
+        "कृपया अपना नाम बताइए, कहाँ से और किस काम से फ़ोन कर रहे हैं?",
+        "धन्यवाद। फ़ोन के मालिक तय करेंगे कि इस कॉल का क्या करना है।",
+    ),
+    "Kannada": (
+        "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಹೆಸರು, ಸಂಸ್ಥೆ ಮತ್ತು ಕರೆ ಮಾಡಿದ ಕಾರಣ ಹೇಳಿ.",
+        "ಧನ್ಯವಾದಗಳು. ಈ ಕರೆಯನ್ನು ಏನು ಮಾಡಬೇಕೆಂದು ಫೋನಿನ ಮಾಲೀಕರು ನಿರ್ಧರಿಸುತ್ತಾರೆ.",
+    ),
+    "English": (
+        "Please state your name, organisation and reason for calling.",
+        "Thank you. The owner will decide how to handle this call.",
+    ),
+}
+LIMIT = {
+    "Hindi": "प्रोटोटाइप की सीमा पूरी हो गई। रिपोर्ट के लिए कॉल समाप्त करें।",
+    "Kannada": "ಪ್ರೋಟೋಟೈಪ್ ಮಿತಿ ತಲುಪಿದೆ. ವರದಿಗಾಗಿ ಕರೆಯನ್ನು ಮುಗಿಸಿ.",
+    "English": "Prototype turn limit reached. End call for report.",
+}
+
+
+def valid_script(reply, language):
+    letters = [char for char in reply if char.isalpha()]
+    if not letters:
+        return False
+    if language == "Hindi":
+        return all("\u0900" <= char <= "\u097f" for char in letters)
+    if language == "Kannada":
+        return all("\u0c80" <= char <= "\u0cff" for char in letters)
+    return all(char.isascii() for char in letters)
 
 
 def validate_recording(path):
@@ -31,20 +56,27 @@ def validate_recording(path):
         raise ValueError("Could not read a PCM WAV recording. Please record again.") from None
 
 
-def respond(path, state):
+def respond(path, state, language="Hindi"):
     if state.get("speech_paused") or state["mode"] not in {"SCREEN", "DADI"}:
         return state, None
     trial = copy.deepcopy(state)
     started = time.perf_counter()
     timing = dict(asr=0.0, brain=0.0, say=0.0, total=0.0)
-    stage = "recording"
+    stage = "language"
     paused = False
+    brain_language = None
     try:
+        language = adapters.speech_language(language)
+        brain_language = adapters.SPEECH_LANGUAGES[language]["brain"]
+        if state.get("speech_language") not in {None, language}:
+            raise ValueError("Start a new call to change language.")
+        trial["speech_language"] = language
+        stage = "recording"
         validate_recording(path)
         stage = "asr"
         mark = time.perf_counter()
         try:
-            transcript = adapters.asr(path, "hi-IN")
+            transcript = adapters.asr(path, language)
         finally:
             timing["asr"] = time.perf_counter() - mark
         if not transcript.strip():
@@ -52,32 +84,38 @@ def respond(path, state):
         stage = "brain"
         mark = time.perf_counter()
         try:
-            local_brain.respond(transcript, trial, "Hindi")
+            local_brain.respond(transcript, trial, brain_language)
         finally:
             timing["brain"] = time.perf_counter() - mark
         if trial.get("error"):
             paused = trial["mode"] == "PAUSED"
             raise ValueError("The brain could not answer. Please try again.")
         if state["mode"] == "SCREEN":
-            trial["log"][-1]["text"] = SCREEN[trial["screen_n"] - 1]
+            trial["log"][-1]["text"] = SCREEN[brain_language][trial["screen_n"] - 1]
         elif trial["mode"] == "ENDED":
-            trial["log"][-1]["text"] = "प्रोटोटाइप की सीमा पूरी हो गई। रिपोर्ट के लिए कॉल समाप्त करें।"
+            trial["log"][-1]["text"] = LIMIT[brain_language]
         reply = trial["log"][-1]["text"]
-        if not re.search(r"[\u0900-\u097f]", reply) or re.search(r"[A-Za-z]", reply):
-            raise ValueError("The brain did not return Devanagari speech. Please try again.")
+        if not valid_script(reply, brain_language):
+            raise ValueError("The brain did not return the selected native script.")
         stage = "say"
         mark = time.perf_counter()
         try:
-            audio = adapters.say(reply, "hi-IN")
+            audio = adapters.say(reply, language)
         finally:
             timing["say"] = time.perf_counter() - mark
     except (adapters.SpeechUnavailable, adapters.ModelUnavailable, OSError, ValueError):
+        script = {"Hindi": "Devanagari", "Kannada": "Kannada-script", "English": "English"}.get(
+            brain_language, "selected-script"
+        )
         messages = {
+            "language": "Choose a supported language, or start a new call to change it.",
             "asr": "Could not transcribe that recording. Please try again.",
-            "brain": "Could not prepare a Devanagari reply. Please try again.",
+            "brain": f"Could not prepare a {script} reply. Please try again.",
             "say": "Could not play Dadi’s reply. Please try again; the call has not advanced.",
         }
         friendly = messages.get(stage, "Use a complete PCM WAV recording of 30 seconds or less.")
+        if state.get("speech_language") not in {None, language}:
+            friendly = "Start a new call to change language; this call’s language is locked."
         fix = "stop and review latency" if paused else "check the recording/service and retry"
         print(
             f"ERROR: speech turn failed at {stage}. WHY: recording or service unavailable. "

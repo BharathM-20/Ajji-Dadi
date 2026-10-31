@@ -230,10 +230,10 @@ def speech_view(state, audio=None):
     return tuple(result)
 
 
-def speech_turn(audio_path, state):
+def speech_turn(audio_path, state, language="Hindi"):
     if isinstance(audio_path, dict):
         audio_path = audio_path.get("path")
-    state, audio = speech_session.respond(audio_path, state)
+    state, audio = speech_session.respond(audio_path, state, language)
     return speech_view(state, audio)
 
 
@@ -269,7 +269,9 @@ def build_speech_ui():
             elem_id="simulation-banner",
         )
         gr.Markdown(
-            "**Hindi / Hinglish speech · Devanagari replies.** Record twice for screening, "
+            "**Choose the call language before recording.** Native-script replies; "
+            "Hindi/Hinglish use Devanagari, Kannada/Kanglish use Kannada script. "
+            "Record twice for screening, "
             "then choose **Let Dadi handle it**. Speech adapters and brain are "
             "independently configured.",
             elem_id="workspace-note",
@@ -286,6 +288,12 @@ def build_speech_ui():
                 )
             with gr.Column(scale=4, min_width=0, elem_id="phone-panel"):
                 gr.HTML(ui_theme.PHONE_HEADING, elem_id="phone-heading")
+                language = gr.Dropdown(
+                    list(adapters.SPEECH_LANGUAGES),
+                    value="Hindi",
+                    label="Language",
+                    elem_id="call-language",
+                )
                 status = gr.Markdown("Mode: SCREEN", elem_id="call-status")
                 with gr.Row(visible=False, elem_id="decision-actions") as decide:
                     pickup = gr.Button("Pick up", elem_id="pick-up")
@@ -311,7 +319,12 @@ def build_speech_ui():
         outputs = [chat, audio, state, status, decide, mic]
         queue = {"concurrency_id": "speech-call", "concurrency_limit": 1}
         mic.stop_recording(
-            speech_turn, [mic, state], outputs, api_name="speech_turn", preprocess=False, **queue
+            speech_turn,
+            [mic, state, language],
+            outputs,
+            api_name="speech_turn",
+            preprocess=False,
+            **queue,
         )
         pickup.click(
             lambda s: speech_choose("pickup", s),

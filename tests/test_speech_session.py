@@ -211,19 +211,19 @@ def test_human_gate_and_reset_and_banner_with_real_gradio_dispatch(rig):
         demo.upload_file_set.add(str(bad))
         failed = await demo.process_api(
             fns["speech_turn"],
-            [{"path": str(bad), "meta": {"_type": "gradio.FileData"}}, None],
+            [{"path": str(bad), "meta": {"_type": "gradio.FileData"}}, None, "Hindi"],
             state=state,
         )
         assert failed["data"][1] is None and "PCM WAV" in failed["data"][3]
         assert state[state_id]["screen_n"] == 0 and calls == []
         for _ in range(2):
-            result = await demo.process_api(fns["speech_turn"], [data, None], state=state)
+            result = await demo.process_api(fns["speech_turn"], [data, None, "Hindi"], state=state)
             assert result["data"][1]["path"].endswith(".wav")
         assert state[state_id]["mode"] == "DECIDE" and calls == ["asr", "say"] * 2
-        await demo.process_api(fns["speech_turn"], [data, None], state=state)
+        await demo.process_api(fns["speech_turn"], [data, None, "Hindi"], state=state)
         assert calls == ["asr", "say"] * 2
         await demo.process_api(fns["speech_dadi"], [None], state=state)
-        result = await demo.process_api(fns["speech_turn"], [data, None], state=state)
+        result = await demo.process_api(fns["speech_turn"], [data, None, "Hindi"], state=state)
         assert calls[-3:] == ["asr", "brain", "say"]
         assert "Speech turn total:" in result["data"][3]
         assert state[state_id]["turn"] == 1

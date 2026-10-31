@@ -22,7 +22,8 @@ Request JSON (required: text, model, audio_config; also send voice and language)
  "audio_config": {"sample_rate": 48000, "num_channels": 1, "sample_width": 2,
                   "encoding": "linear_pcm", "container": "wav"}}
 Current defaults (explicit user choice, 2026-10-31): GNANI_TTS_MODEL=timbre-v3.0,
-GNANI_TTS_VOICE=Kalpana, GNANI_TTS_LANGUAGE=hi-IN, GNANI_TTS_SPEED=0.92.
+GNANI_TTS_VOICE=Kalpana, GNANI_TTS_SPEED=0.92; language follows the UI mapping below
+(hi-IN for Hindi/Hinglish), unless GNANI_TTS_LANGUAGE is explicitly set.
 Chosen for the grandmother demo: the user selected Kalpana, with slower delivery at0.92.
 Actual voice suitability/model compatibility remain unverified here; no real call was made.
 The former baseline was timbre-v2.5/Nalini/hi-IN/speed1.0; set all desired env overrides explicitly.
@@ -71,3 +72,20 @@ Implement asr() and say() against the shapes above, behind the adapter, serializ
 scripts/smoke_real.py: ONE STT call on a short WAV and ONE TTS call. Print status, latency, response keys (key redacted) and the saved audio path. The user runs it and pastes the output.
 The user records results in the "Still unknown" section above.
 think() is untouched. Latency go/no-go (T3) is measured with STT + local brain + TTS.
+
+Speech language routing — user-authorized mapping, 2026-10-31 (D016)
+UI Hindi: STT hi-IN, TTS hi-IN, brain Devanagari Hindi.
+UI Hinglish (Hindi + English words): STT hi-IN, TTS hi-IN, brain Devanagari Hindi;
+user reports Prisma returns Devanagari for Hinglish speech. No Roman-script Hindi TTS.
+UI Kannada: STT kn-IN, TTS kn-IN, brain Kannada script.
+UI Kanglish (Kannada + English words): STT kn-IN by default, TTS kn-IN, brain Kannada script.
+UI English: STT en-IN, TTS en-IN, brain English.
+File STT has no auto-detect; selection decides. Unknown routes fail, never default to Hindi.
+GNANI_TTS_LANGUAGE overrides only when explicitly set (including old hi-en/auto vendor values;
+these are overrides, not defaults). Unset it to follow the UI; an empty value fails.
+GNANI_STT_KANGLISH_CODE=kn-IN,en-IN opts into an UNVERIFIED candidate with model=prisma-v3.0.
+It keeps format=transcribe. Do not claim code-switch support/accuracy from mocked HTTP tests.
+Unset that variable (or use kn-IN) for default Kanglish; default STT omits model as before.
+Existing GNANI_TTS_MODEL/VOICE/SPEED remain explicit overrides; audio_config is unchanged.
+Untested: real Kannada and Kanglish STT accuracy, Kannada TTS pronunciation with Kalpana on
+Timbre v3.0, Kanglish code-switch value, Kannada text quality (native speaker review required).

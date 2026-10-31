@@ -345,3 +345,35 @@ D015 mobilepeerreview: move call desk before decorativehero/transcript at<=680px
 order only, so Record/decisioncontrols are reachable first. DOM/component order and every
 handler remain unchanged. Decision/report typography inspected with explicitly labelled
 synthetic preview values on ownMOCKserver; fixture data is never part of shipped UI/runtime.
+
+## D016 — Explicit speech UI language routing (2026-10-31)
+One table in adapters.SPEECH_LANGUAGES maps UI names to STT/TTS and existing brain language:
+Hindi/Hinglish -> hi-IN/hi-IN/Hindi; Kannada/Kanglish -> kn-IN/kn-IN/Kannada;
+English -> en-IN/en-IN/English. Prisma file STT has no auto-detect. Unknown names/codes fail
+ERROR/WHY/FIX before HTTP; documented old hi-IN/kn-IN/en-IN/hi-en/en-hi-IN-latn aliases remain
+explicit for older callers. The old mock-only sentinel "mock" remains offline-only compatibility.
+No opaque legacy-code fallback. TTS language follows the UI unless GNANI_TTS_LANGUAGE is
+explicitly present; empty explicit values fail. Existing model/voice/speed overrides remain.
+GNANI_STT_KANGLISH_CODE defaults kn-IN; explicit kn-IN,en-IN also sends model=prisma-v3.0,
+format=transcribe. This candidate is UNVERIFIED, not advertised as supported codemix. Invalid/
+empty values fail, rather than falling back. Override validation is isolated by adapter stage.
+Speech dropdown is passed through app.speech_turn to sequential asr/brain/say. Lock selected
+speech label on successful turn; reject midcall changes before ASR. New call clears state as
+before. Reuse existing Hindi/Kannada/English local_brain prompts, native fallback/deflection and
+persona facts unchanged. Hindi/Hinglish require Devanagari letters, Kannada/Kanglish Kannada
+letters, English ASCII letters; incompatible replies roll back before TTS (no transliteration
+or extra model call). Canned screening/limit text localized in speech wrapper only, not personas.
+English loanwords in native-script speech must be rendered in that script. Quality is untested.
+Existing frontend/output/gate/reset/banner/latency/serialization behavior preserved. No UI
+redesign in this feature; same styled language dropdown as other builders.
+Existing tests changed only for new language input in speech event/probe and replacing three
+"legacy-code" request arguments with mapped Hindi. Prior tests assumed ignored codes, which
+contradicts requested fail-closed routing; new tests explicitly require unmapped failure. The
+historical frontend freeze permits ONLY added speech_turn language argument/call argument and
+stop_recording language input, retaining its old fixture; adapters/speech_session move to
+function-level freeze in speech_routing_baseline with only five adapter functions and respond
+allowed. All unrelated functions including think, WAV, HTTP lock/retry and local_brain frozen.
+GNANI_NOTES input digest refreshed only for user-authorized mapping update. Existing feature
+specs/evidence unchanged; add only F-SPEECH-LANGUAGE and refresh aggregate spec digest.
+No real endpoint/model/device/keyfile call. Kannada/Kanglish accuracy, Kalpana Kannada voice,
+code-switch candidate and Kannada text naturalness require user/native-speaker review.

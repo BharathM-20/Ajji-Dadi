@@ -17,10 +17,63 @@ import httpx
 MOCK = True
 
 
+# UI choice is authoritative; these are request routes, not speech-quality claims.
+SPEECH_LANGUAGES = {
+    "Hindi": {"stt": "hi-IN", "tts": "hi-IN", "brain": "Hindi"},
+    "Hinglish": {"stt": "hi-IN", "tts": "hi-IN", "brain": "Hindi"},
+    "Kannada": {"stt": "kn-IN", "tts": "kn-IN", "brain": "Kannada"},
+    "Kanglish": {"stt": "kn-IN", "tts": "kn-IN", "brain": "Kannada"},
+    "English": {"stt": "en-IN", "tts": "en-IN", "brain": "English"},
+}
+
+
+def speech_language(language):
+    # Preserve documented codes used by older adapter callers, not arbitrary unknown values.
+    aliases = {
+        "hi-IN": "Hindi",
+        "kn-IN": "Kannada",
+        "en-IN": "English",
+        "hi-en": "Hinglish",
+        "en-hi-IN-latn": "Hinglish",
+    }
+    language = aliases.get(language, language)
+    if language not in SPEECH_LANGUAGES:
+        raise SpeechUnavailable(
+            "ERROR: unsupported speech language. WHY: no explicit speech route exists. "
+            "FIX: choose Hindi, Hinglish, Kannada, Kanglish or English."
+        )
+    return language
+
+
+def speech_route(language, stage=None):
+    language = speech_language(language)
+    route = dict(SPEECH_LANGUAGES[language])
+    if stage != "say" and language == "Kanglish" and "GNANI_STT_KANGLISH_CODE" in os.environ:
+        route["stt"] = os.environ["GNANI_STT_KANGLISH_CODE"].strip()
+        if route["stt"] not in {"kn-IN", "kn-IN,en-IN"}:
+            raise SpeechUnavailable(
+                "ERROR: invalid Kanglish STT code. WHY: unsupported explicit override. "
+                "FIX: unset GNANI_STT_KANGLISH_CODE or use kn-IN; "
+                "kn-IN,en-IN with prisma-v3.0 is UNVERIFIED."
+            )
+        if route["stt"] == "kn-IN,en-IN":
+            route["model"] = "prisma-v3.0"  # Explicit experimental candidate; no quality claim.
+    if stage != "asr" and "GNANI_TTS_LANGUAGE" in os.environ:
+        route["tts"] = os.environ["GNANI_TTS_LANGUAGE"].strip()
+        if not route["tts"]:
+            raise SpeechUnavailable(
+                "ERROR: empty TTS language override. WHY: explicit language is required. "
+                "FIX: unset GNANI_TTS_LANGUAGE to follow the UI or set a documented value."
+            )
+    return route
+
+
 def asr(path: str, code: str, *, retry_429: bool = True) -> str:
     if _speech_enabled("GNANI_REAL_ASR"):
         with _speech_timing("asr") as event:
-            return _real_asr(path, event, retry_429)
+            return _real_asr(path, event, retry_429, speech_route(code, "asr"))
+    if code != "mock":
+        speech_language(code)
     return "Hello, this is a mock caller."
 
 
@@ -38,7 +91,9 @@ def think(msgs: list[dict[str, str]], json_mode: bool = False, max_tokens: int =
 def say(text: str, code: str, *, retry_429: bool = True) -> str | None:
     if _speech_enabled("GNANI_REAL_TTS"):
         with _speech_timing("say") as event:
-            return _real_say(text, event, retry_429)
+            return _real_say(text, event, retry_429, speech_route(code, "say"))
+    if code != "mock":
+        speech_language(code)
     return None
 
 
@@ -438,7 +493,7 @@ def _audio_duration(path):
         ) from None
 
 
-def _real_asr(path, event, retry_429):
+def _real_asr(path, event, retry_429, route):
     key = _speech_key()
     try:
         path = Path(path).resolve()
@@ -461,7 +516,11 @@ def _real_asr(path, event, retry_429):
                 return client.post(
                     _STT_URL,
                     headers={"X-API-Key-ID": key},
-                    data={"language_code": "hi-IN", "format": "transcribe"},
+                    data={
+                        "language_code": route["stt"],
+                        "format": "transcribe",
+                        **({"model": route["model"]} if "model" in route else {}),
+                    },
                     files={"audio_file": (path.name, audio, _AUDIO_TYPES[path.suffix.lower()])},
                 )
 
@@ -521,10 +580,9 @@ def _normalize_tts_wav(body):
     return bytes(audio)
 
 
-def _tts_config(text):
+def _tts_config(text, language):
     model = os.environ.get("GNANI_TTS_MODEL", "timbre-v3.0").strip()
     voice = os.environ.get("GNANI_TTS_VOICE", "Kalpana").strip()
-    language = os.environ.get("GNANI_TTS_LANGUAGE", "hi-IN").strip()
     try:
         speed = float(os.environ.get("GNANI_TTS_SPEED", "0.92"))
     except ValueError:
@@ -554,14 +612,14 @@ def _tts_config(text):
     }
 
 
-def _real_say(text, event, retry_429):
+def _real_say(text, event, retry_429, route):
     key = _speech_key()
     if not isinstance(text, str) or not text.strip():
         raise SpeechUnavailable(
             "ERROR: speech text empty. WHY: TTS needs spoken text. FIX: supply a short reply."
         )
     payload = {
-        **_tts_config(text),
+        **_tts_config(text, route["tts"]),
         "audio_config": {
             "sample_rate": 48000,
             "num_channels": 1,

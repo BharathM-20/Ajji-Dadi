@@ -71,18 +71,18 @@ def main():
             def call(name, *args):
                 return client.submit(*args, api_name="/" + name).result(timeout=15)
 
-            call("speech_turn", handle_file(path))
-            call("speech_turn", handle_file(path))
+            call("speech_turn", handle_file(path), "Hindi")
+            call("speech_turn", handle_file(path), "Hindi")
             assert calls == ["asr", "say"] * 2
             gated = list(calls)
-            call("speech_turn", handle_file(path))
+            call("speech_turn", handle_file(path), "Hindi")
             assert calls == gated
             call("speech_dadi")
-            reply = call("speech_turn", handle_file(path))
+            reply = call("speech_turn", handle_file(path), "Hindi")
             assert calls[-3:] == ["asr", "brain", "say"]
             assert Path(reply[1]).is_file() and "Speech turn total:" in reply[2]
             fail[0] = True
-            failed = call("speech_turn", handle_file(path))
+            failed = call("speech_turn", handle_file(path), "Hindi")
             assert failed[1] is None and "call has not advanced" in failed[2]
             report = call("speech_report")
             assert "Dadi turns: 1" in report[-1]

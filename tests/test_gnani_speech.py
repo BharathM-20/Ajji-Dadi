@@ -96,7 +96,7 @@ def test_exact_stt_multipart_and_transcript(real, audio_path):
         return success(request)
 
     real(handle)
-    assert adapters.asr(str(audio_path), "legacy-code") == "नमस्ते"
+    assert adapters.asr(str(audio_path), "Hindi") == "नमस्ते"
     assert len(calls) == 1
     assert adapters.MOCK is True
     assert adapters.speech_diagnostics("asr")["status"] == 200
@@ -124,7 +124,7 @@ def test_exact_tts_raw_wav_and_absolute_gradio_filepath(real):
         return success(request)
 
     real(handle)
-    result = adapters.say("हाँ बेटा", "legacy-code")
+    result = adapters.say("हाँ बेटा", "Hindi")
     assert Path(result).is_absolute() and Path(result).suffix == ".wav"
     assert Path(result).read_bytes() == wav_bytes()
     output = gr.Audio(type="filepath").postprocess(result)
@@ -454,7 +454,7 @@ def test_tts_env_overrides_and_model_specific_tags(real, monkeypatch, model, voi
         return success(request)
 
     real(handle)
-    assert Path(adapters.say(text, "legacy-code")).exists()
+    assert Path(adapters.say(text, "Hindi")).exists()
 
 
 @pytest.mark.parametrize("model", ["timbre-v2.5", "timbre-v3.0"])
