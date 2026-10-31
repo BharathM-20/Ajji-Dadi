@@ -16,24 +16,24 @@ MONO = ("ui-monospace", "SFMono-Regular", "Consolas", "monospace")
 
 # Passed to Gradio Base.set() by app.py; matching dark values keep the page light by default.
 THEME_SETTINGS = {
-    "body_background_fill": "#f6f3ec",
-    "body_text_color": "#172e30",
+    "body_background_fill": "#faf7ef",
+    "body_text_color": "#17182f",
     "body_text_color_subdued": "#657273",
     "background_fill_primary": "#ffffff",
     "background_fill_secondary": "#f1eee7",
     "block_background_fill": "#ffffff",
     "block_border_color": "#dedfd7",
     "block_label_text_color": "#536566",
-    "block_title_text_color": "#172e30",
+    "block_title_text_color": "#17182f",
     "input_background_fill": "#ffffff",
     "input_border_color": "#d4d9d2",
     "input_placeholder_color": "#707a76",
-    "button_primary_background_fill": "#172e30",
+    "button_primary_background_fill": "#17182f",
     "button_primary_background_fill_hover": "#294447",
     "button_primary_text_color": "#ffffff",
     "button_secondary_background_fill": "#ffffff",
     "button_secondary_background_fill_hover": "#f1eee7",
-    "button_secondary_text_color": "#172e30",
+    "button_secondary_text_color": "#17182f",
     "border_color_primary": "#dedfd7",
     "border_color_accent": "#c4d0c6",
     "color_accent_soft": "#e8eee4",
@@ -85,24 +85,11 @@ NAV = """<div class="masthead"><div class="wordmark"><span class="brand-mark">d.
 <div class="nav-note"><span class="nav-line"></span>A little patience goes a long way.</div>
 <span class="workspace-tag">THE SIMULATION WORKSPACE</span></div>"""
 HERO = """<div class="hero-intro"><div class="hero-heading"><div>
-<span class="eyebrow">A FAMILIAR VOICE. A HUMAN CHOICE.</span>
-<h2>Let a little<br><em>patience</em> take over.</h2></div>
-<div class="dadi-portrait" aria-hidden="true"><svg viewBox="0 0 120 140" fill="none">
-<path d="M14 140c2-36 18-49 46-49s44 13 46 49" fill="#c5d4c0"/>
-<path d="M39 91l21 29 22-29" fill="#f0c898"/><path d="M24 50c-1-30 14-43 36-43s38 13 36 43l-9
-36H33z" fill="#eee8da"/>
-<ellipse cx="60" cy="57" rx="29" ry="37" fill="#e8b58c"/>
-<path d="M30 48c3-28 14-34 30-34 18 0 29 13 30 30-20-3-28-13-30-20-6 14-18 21-30 24z"
-fill="#f8f3e8"/>
-<circle cx="47" cy="57" r="12" stroke="#263e3e" stroke-width="2.5"/>
-<circle cx="74" cy="57" r="12" stroke="#263e3e" stroke-width="2.5"/>
-<path d="M59 56h3M49 79c6 6 16 6 22 0" stroke="#5f4140" stroke-width="2.5" stroke-linecap="round"/>
-<circle cx="60" cy="39" r="2.5" fill="#9d4a38"/>
-<path d="M28 107l27 33H14M91 107l-26 33h41" fill="#91a88f"/>
-</svg></div></div><p>A grandmother persona, a slower conversation.<br>You stay in control of what
-happens next.</p>
-<div class="hero-notes"><span><b>01</b> Begin a conversation</span>
-<span><b>02</b> Make your choice</span><span><b>03</b> Let Dadi respond</span></div></div>"""
+<span class="eyebrow">THE CONVERSATION, UNFOLDED</span>
+<h2>Every word.<br><em>In context.</em></h2></div></div>
+<p>Screen the caller. Make your choice.<br>Then let the conversation unfold.</p>
+<div class="hero-notes"><span><b>01</b> Two caller turns</span><span><b>02</b> You decide</span>
+<span><b>03</b> Dadi responds</span></div></div>"""
 PHONE_HEADING = """<div class="phone-heading"><span class="phone-symbol" aria-hidden="true">↗</span>
 <div><span class="eyebrow">YOU'RE IN CONTROL</span><h3>The call desk</h3></div>
 <span class="mock-tag">ROLE-PLAY</span></div>"""
@@ -163,19 +150,19 @@ def status_markup(status):
 CSS = """
 /* Original local presentation. System fonts, no network assets or behavioral scripts. */
 :root { color-scheme: light; }
-body { background: #f6f3ec !important; }
+body { background: #faf7ef !important; }
 .gradio-container {
   max-width: 1380px !important; width: 100% !important; margin: 0 auto !important;
   padding: clamp(14px, 1.55vw, 20px) clamp(16px, 3.3vw, 42px)
-    clamp(24px, 2.4vw, 30px) !important; background: #f6f3ec;
-  color: #172e30; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --body-text-color: #172e30; --body-text-color-subdued: #657273;
+    clamp(24px, 2.4vw, 30px) !important; background: #faf7ef;
+  color: #17182f; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --body-text-color: #17182f; --body-text-color-subdued: #657273;
   --block-background-fill: #fffdf8; --background-fill-primary: #fffdf8;
   --background-fill-secondary: #f1eee7; --block-border-color: #d9dfd8;
   --input-background-fill: #fffdf8; --input-border-color: #cdd7ce;
-  --button-primary-background-fill: #172e30; --button-primary-text-color: #fffdf8;
-  --button-secondary-background-fill: #f4f1e9; --button-secondary-text-color: #172e30;
-  --block-label-text-color: #526664; --block-title-text-color: #172e30;
+  --button-primary-background-fill: #17182f; --button-primary-text-color: #fffdf8;
+  --button-secondary-background-fill: #f4f1e9; --button-secondary-text-color: #17182f;
+  --block-label-text-color: #526664; --block-title-text-color: #17182f;
   --border-color-primary: #d9dfd8; --color-accent: #9b5c22;
   --block-radius: 16px; --button-large-radius: 12px; --button-small-radius: 10px;
 }
@@ -188,11 +175,11 @@ border-box; }
 #case-heading .html-container, #workspace-footer .html-container { padding: 0 !important; }
 .masthead { display: flex; align-items: center; justify-content: space-between; gap: 24px;
   border-bottom: 1px solid #d8ded5; padding: 2px 0 16px; }
-.wordmark { display: flex; align-items: center; gap: 11px; color: #172e30;
+.wordmark { display: flex; align-items: center; gap: 11px; color: #17182f;
   font-size: 29px; font-weight: 700; letter-spacing: -.07em; line-height: 1; }
 .wordmark small { display: block; font-size: 8px; letter-spacing: .19em; margin-top: 8px; }
 .brand-mark { width: 42px; height: 46px; display: grid; place-items: center;
-  border-radius: 16px 16px 5px 16px; background: #172e30; color: #f4d9a8;
+  border-radius: 16px 16px 5px 16px; background: #17182f; color: #f4d9a8;
   font-family: Georgia, serif; font-size: 38px; font-weight: 400; padding-bottom: 7px; }
 .brand-dot { color: #a76634; }
 .nav-note { display: flex; align-items: center; gap: 12px; font-size: 12px; color: #657273; }
@@ -203,7 +190,7 @@ border-box; }
 #simulation-banner h1 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(30px,
 3.3vw, 46px);
   font-weight: 400; line-height: 1.2; letter-spacing: -.045em; margin: 8px 0 14px; color:
-#172e30; }
+#17182f; }
 #simulation-banner p { font-size: 11px; line-height: 1.65; background: #e9eee3;
   color: #425c4b; border: 1px solid #d1ddc8; padding: 10px 15px; border-radius: 10px; }
 #simulation-banner strong { font-weight: 750; color: #2c5139; }
@@ -212,7 +199,7 @@ border-box; }
 #workspace-note strong { color: #304e44; }
 #call-hero { border: 0; padding: 0; background: transparent; gap: 23px; align-items: stretch; }
 #conversation-column { min-width: 0 !important; padding: 28px; border-radius: 25px;
-  background: #172e30; border: 1px solid #223f40; gap: 23px; }
+  background: #17182f; border: 1px solid #223f40; gap: 23px; }
 #hero-copy { border: 0; background: transparent; padding: 0; }
 .hero-intro { color: #fff9ed; }
 .hero-heading > div:first-child { min-width: 0; flex: 1; }
@@ -300,11 +287,11 @@ background: #f8f7f0; }
   overflow-wrap: anywhere; line-height: 1.5; }
 #caller-mic button, #phone-speaker button { border-radius: 10px; }
 #caller-mic .record-button { min-height: 44px; padding: 9px 15px; }
-#caller-mic .record-button { background: #172e30; color: #fff9ed; }
-#send-message { background: #172e30 !important; color: #fff9ed !important; min-height: 44px; }
+#caller-mic .record-button { background: #17182f; color: #fff9ed; }
+#send-message { background: #17182f !important; color: #fff9ed !important; min-height: 44px; }
 #end-actions { border-top: 1px solid #dce3d3; padding-top: 17px; gap: 8px; }
 #end-actions button { min-height: 44px; border-radius: 11px; font-size: 11px; }
-#end-call { background: #172e30 !important; color: #fff9ed !important; border-color: #172e30; }
+#end-call { background: #17182f !important; color: #fff9ed !important; border-color: #17182f; }
 #new-call { background: #fffdf8 !important; color: #415b48 !important; border: 1px solid #ccd8c3; }
 #case-panel { padding: 23px 28px; border: 1px solid #d8dfd1; border-radius: 22px;
   background: #fffdf8; margin-top: 6px; }

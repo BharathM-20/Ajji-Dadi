@@ -1,5 +1,58 @@
 # Progress
 
+## F-DEMO-SHOWCASE final handoff — presentation only, passing
+Built a judge-facing product story around all three unchanged Gradio call paths: original
+shield/Dadi identity, illustrated oversized hero, coral/ink/lime/cream palette, three-scene
+scripted stalling explorer, native expandable architecture/FAQ sections, impact explanation,
+anchor navigation into the existing call lab, scroll reveals, floating sticker and pointer tilt.
+No fake live counters, invented prevention statistics, automatic calls or backend features.
+Preview dialogue is explicitly scripted; runtime mode/fixture/errors remain in the call lab.
+All nonbuilder app functions, six event/state/output contracts and every core/provider/brain/
+speech/persona file frozen by additive baseline guards. No changes to experimental/training.
+Permanent simulation banner, human gate and reset unchanged. No user app stopped or restarted.
+Baseline e6a6176: offline setup succeeded, make check319passed19.60s. Final verifier invocation
+`.venv/bin/python scripts/verify_feature.py F-DEMO-SHOWCASE` exited0: L1clean, makecheck327passed
+40.25s; exact feature56passed9.28s. Only verifier wrote passing/evidence. Final make smoke
+6passed0.12s. Existing launch/default/Sarvam fixture/routing/speech regressions all pass.
+Targeted15passed2.32s; CSS regression7passed2.95s; later16passed2.24s/4.75s and reviewfix8passed
+6.00s. Browser caught a quoted CSS font string swallowing rules, corrected with local Georgia
+fallback and quote/block regression. Native SVG root fill fixed facial line art. Dark Gradio
+prose contrast and mobile sticker placement refined. Peer review required neutral input wording
+for text mode and intent-qualified duration claim; both fixed with regression. Original tests
+retained except narrowly authorized presentation interactions/builder allowances (D018).
+Final own MOCK module preview on8980 verified fresh source at1280x720 and390x844: zero horizontal
+overflow; mobile Record44px; scripted scene button state/content/count changes, keyboard Tab+
+Space, anchor navigation, native details expansion and actual IntersectionObserver reveal.
+Browser error log empty. Final desktop screenshot refreshed after review copy fixes. Images:
+docs/evidence/showcase-desktop.jpg, showcase-story.jpg, showcase-mobile.jpg,
+showcase-mobile-story.jpg, showcase-mobile-lab.jpg. No physical mic/service/model calls.
+Separate fresh-context review ACCEPT, sixscores2/2 for presentation-only scope. Own server
+terminated after verification and temporary viewport override reset; user's7860/7861 untouched.
+Sites skill used local-only, no hosting/registration/deployment. Public Raycast/Linear references;
+all shipped SVG/fonts/CSS/JS local, no copied assets/external runtime requests.
+Could not run node --check: Node executable absent. Actual browser parsed/executed JS and
+verified interactions. No dependency installation attempted. No requested Python check skipped.
+Untested: actual OS reduced-motion toggle (CSS/media handling verified), exhaustive browsers/
+assistive technologies, user aesthetic acceptance, real mic/audio/services/latency/quality,
+real scammer engagement or prevention/time/money saved. Existing T2 remainsblocked; passing
+showcase status does not change any real-service/model-quality boundary.
+To see changes, end current call then restart your usual app command from this checkout and
+refresh. Existing running Python processes keep their old loaded presentation until restarted.
+Stop after this single verified commit. Design/guard decisions D018.
+
+## F-DEMO-SHOWCASE sprint contract — completed (original scope)
+One feature: a judge-facing interactive product story around existing Gradio call lab. Preserve
+all core/provider/brain/speech/persona/session code and six existing event/state/output contracts.
+New local presentation module for original SVG brand/hero, motion, scripted demo explorer,
+architecture explanation, truthful impact copy, FAQ and navigation. No external runtime assets,
+new paid calls, fake live counters/claims, backend rewrites or publication. Sites skill local-only
+workflow; reference Raycast public homepage and Linear hierarchy, original assets/copy.
+Observe actual own MOCK preview at desktop/mobile; keyboard/reduced-motion/scroll/interaction
+checks. Do not stop user apps or trigger their calls. Record baseline, exact tests, fresh review,
+verifier-only status and one commit. Prior mocked/real-service acceptance boundaries retained.
+No experimental/training or key-file reads. Untested: real services/quality, user aesthetics,
+exhaustive devices, actual scam prevention/time saved. Scripted preview explicitly labelled.
+
 ## F-SARVAM-BRAIN final handoff — code/mock passing; real service unverified
 Branch t2-gnani-speech. DADI_MODE=sarvam selects the documented chat endpoint behind think;
 DADI_SPEECH=1 runs existing mic -> asr -> Sarvam-only orchestration -> say sequentially.

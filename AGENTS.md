@@ -5,9 +5,9 @@
   Why: protect credits and isolate vendor changes. Delete only if adapter boundary is replaced.
 - Never print, log or commit keys; keep `.env.example` empty of real values.
   Why: private credentials. Keep permanently.
-- This session implements F-SARVAM-BRAIN: opt-in Sarvam speech brain and mocked verification.
-  Why: user requests provider/prompt/guard integration, with existing local/persona/frontend intact.
-  Do not touch experimental_local_brain.py or training/. No real calls or credential-file reads.
+- This session implements F-DEMO-SHOWCASE: an interactive presentation around the existing app.
+  Why: user authorizes richer branding/motion/storytelling while preserving core architecture.
+  Keep brain/speech/personas/gates/reset intact. No provider/model calls or credential-file reads.
 - Preserve `reference/`, `docs/CODEX_BRIEF.md` and `docs/GNANI_NOTES.md` during initialization.
   Why: user-owned inputs. Change notes later only with verified integration evidence.
 

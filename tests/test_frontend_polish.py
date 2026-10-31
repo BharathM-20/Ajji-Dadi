@@ -110,7 +110,12 @@ def test_all_modes_have_coherent_accessible_presentation_without_new_controls(bu
     assert "prefers-reduced-motion" in ui_theme.CSS and "focus-visible" in ui_theme.CSS
     # Decorative HTML cannot add fake navigation, input, scripts or analytics.
     for c in components:
-        if c["type"] == "html":
+        if c["type"] == "html" and c["props"].get("elem_id") not in {
+            "app-nav",
+            "showcase-intro",
+            "workspace-footer",
+        }:
+            # D018 permits isolated presentation links/buttons, verified in test_showcase.
             markup = c["props"].get("value", "").lower()
             assert not any(tag in markup for tag in ("<script", "<button", "<input", "<a "))
     assert len(demo.config["dependencies"]) == 6

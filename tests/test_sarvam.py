@@ -347,7 +347,7 @@ def test_unrelated_local_speech_and_app_functions_frozen():
         "adapters": {"think", "configure_from_env"},
         "local_brain": set(),
         "speech_session": {"respond"},
-        "app": {"speech_view", "speech_end", "build_speech_ui"},
+        "app": {"speech_view", "speech_end", "build_ui", "build_local_ui", "build_speech_ui"},
     }
     for module, functions in baseline.items():
         tree = ast.parse((ROOT / f"src/{module}.py").read_text())

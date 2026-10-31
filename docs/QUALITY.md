@@ -143,3 +143,13 @@ changes. Actual CLI fixture English flow passed. No real auth/latency/safety/qua
 Fixture eval exposes name-recall failure (29PASS/1FAIL), correctly avoiding a quality claim.
 Semantic safety, memory coherence, assigned-tactic execution and native language require real
 review; Kannada examples absent pending native-speaker review. Unknown reasoning field remains.
+
+## F-DEMO-SHOWCASE — presentation-only ACCEPT
+Separate fresh source/screenshot review first required input-neutral shared instructions and
+qualifying long-conversation claim as design intent. Both corrected and regression-covered.
+Final review ACCEPT: correctness2/verification2/scope2/reliability2/maintainability2/handoff2.
+Final verifier327full+56feature and smoke6 passes; mobile390px zerooverflow/44px Record and
+actual browser scene/keyboard/details/reveal/anchor checks. Fresh desktop evidence replaces
+stale pre-fix screenshot. All nonbuilder functions/core hashes/handlers/outputs remain frozen.
+Node absent prevents node --check; browser execution verifies this local presentation instead.
+No grade for actual speech/models, native language, prevention impact or aesthetic acceptance.

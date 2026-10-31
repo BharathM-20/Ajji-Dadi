@@ -294,3 +294,20 @@ failure; raw output docs/evidence/sarvam_fixture_eval.txt. Not a model-quality p
 was exercised ONLY with injected MockTransport to assert one request; no real smoke executed.
 No real provider/model/device calls, key-file reads or downloads. T2 remainsblocked. Failure
 layers verification (historical guard/lint) and implementation (repeat guard), fixed with tests.
+
+## F-DEMO-SHOWCASE — 2026-10-31 (D018)
+Baseline e6a6176 offline setup succeeded, make check319passed19.60s. Targeted15passed2.32s;
+CSS-focused7passed2.95s; later16passed2.24s/4.75s and review fixes8passed6.00s. Browser found
+malformed multiline CSS quoted font value (later rules ignored); fixed and added regression.
+Separate review corrected input wording for text mode and unverified long-duration promise.
+Final verifier exited0: L1clean, full327passed40.25s, feature56passed9.28s. Smoke6passed0.12s.
+No skips. Only verifier promoted showcase status. Old service/model acceptance stays unchanged.
+Own MOCK app on8980 verified at1280x720/390x844: overflow0, Record44px, three-scene selection,
+keyboard Tab/Space, anchor links, native details and scroll reveal; no browser console errors.
+Desktop evidence refreshed after copy corrections. All new screenshots under docs/evidence/
+showcase-*.jpg. Reduced-motion CSS/JS handling checked; real OS switch not toggled. Browser
+had no microphone. No provider/model/key-file calls, downloads or user app interaction.
+Node missing: node --check could not run; actual browser parsed/executed presentation JS.
+Failure layers implementation (CSS/contrast/visual) and task wording (mode-neutral/intentcopy),
+fixed with browser/source tests. Independent final review ACCEPT, all six2/2 presentation scope.
+Own preview cleanup and viewport reset complete; user servers untouched. No real impact claim.

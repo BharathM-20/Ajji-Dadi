@@ -187,3 +187,13 @@ Fixture transport has no real key/network, uses HTTPX request/parser, explicitly
 user-visible sources. Scripts smoke_sarvam/eval_brain are user-only real entry points; eval defaults
 to fixture, --real required. Reasoning env is rejected until field verified. Real voice/brain
 latency, safety and language quality require actual user evidence; no service acceptance here.
+
+## F-DEMO-SHOWCASE presentation shell (D018)
+Pure-constant showcase.py supplies original SVG/HTML, scoped CSS and progressive-enhancement
+JS through existing Gradio Blocks. All three builders compose the same narrative around the
+unchanged call lab. No new Gradio events/state/outputs or nonbuilder callback changes. Isolated
+presentation buttons edit only owned scripted nodes; no network/storage/backend access.
+Native anchors/details provide navigation/disclosure, IntersectionObserver reveals sections,
+reduced-motion/no-JS fallback keeps content visible; cursor/scroll defaults remain intact.
+Showcase explains configured architecture and prototype intent, never connection status or
+measured prevention impact. Original banner/human gate/reset and provider boundaries unchanged.

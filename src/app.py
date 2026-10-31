@@ -4,7 +4,7 @@ import os
 
 import gradio as gr
 
-from . import adapters, local_brain, sarvam_brain, session, speech_session, ui_theme
+from . import adapters, local_brain, sarvam_brain, session, showcase, speech_session, ui_theme
 from .personas import LANGS
 from .report import end_call
 from .session import new_session
@@ -65,14 +65,16 @@ def build_ui():
             font=ui_theme.FONT,
             font_mono=ui_theme.MONO,
         ).set(**ui_theme.THEME_SETTINGS),
-        css=ui_theme.CSS,
+        css=ui_theme.CSS + showcase.CSS,
+        js=showcase.JS,
     ) as demo:
-        gr.HTML(ui_theme.NAV, elem_id="app-nav")
+        gr.HTML(showcase.NAV, elem_id="app-nav")
         gr.Markdown(
             "# 👵 Dadi vs Digital Arrest\n⚠️ **SIMULATION:** the caller is a teammate "
             "role-playing. No real calls, no real people.",
             elem_id="simulation-banner",
         )
+        gr.HTML(showcase.INTRO, elem_id="showcase-intro")
         s = gr.State(new_session())
         with gr.Row(elem_id="call-hero"):
             with gr.Column(scale=6, min_width=0, elem_id="conversation-column"):
@@ -106,7 +108,7 @@ def build_ui():
             gr.HTML(ui_theme.CASE_HEADING, elem_id="case-heading")
             report = gr.Markdown(elem_id="case-file")
 
-        gr.HTML(ui_theme.FOOTER, elem_id="workspace-footer")
+        gr.HTML(showcase.OUTRO, elem_id="workspace-footer")
         outs = [chat, out, s, status, decide, mic]
         mic.stop_recording(turn, [mic, s, lang], outs, api_name="caller_turn")
         b_pick.click(lambda s: choose("pickup", s), [s], outs, api_name="pick_up")
@@ -153,18 +155,20 @@ def build_local_ui():
     with gr.Blocks(
         title="Dadi · Local prototype",
         analytics_enabled=False,
-        css=ui_theme.CSS,
+        css=ui_theme.CSS + showcase.CSS,
+        js=showcase.JS,
         theme=gr.themes.Base(font=ui_theme.FONT, font_mono=ui_theme.MONO).set(
             **ui_theme.THEME_SETTINGS
         ),
     ) as demo:
-        gr.HTML(ui_theme.NAV, elem_id="app-nav")
+        gr.HTML(showcase.NAV, elem_id="app-nav")
         gr.Markdown(
             "# Dadi · Local Ollama prototype\n"
             "⚠️ **SIMULATION:** the caller is a teammate role-playing. "
             "No real calls, no real people.",
             elem_id="simulation-banner",
         )
+        gr.HTML(showcase.INTRO, elem_id="showcase-intro")
         gr.Markdown(
             "**Local LLM · text only.** Speech is not enabled. Language quality is "
             "experimental; Kannada/Kanglish need native review. Send two screening "
@@ -206,7 +210,7 @@ def build_local_ui():
         with gr.Group(elem_id="case-panel"):
             gr.HTML(ui_theme.CASE_HEADING, elem_id="case-heading")
             report = gr.Markdown(label="Case file", elem_id="case-file")
-        gr.HTML(ui_theme.FOOTER, elem_id="workspace-footer")
+        gr.HTML(showcase.OUTRO, elem_id="workspace-footer")
         outputs = [chat, audio, state, status, decide, text]
         send.click(local_turn, [text, state, language], outputs, api_name="local_turn")
         pickup.click(lambda s: local_choose("pickup", s), [state], outputs, api_name="local_pickup")
@@ -262,18 +266,20 @@ def build_speech_ui():
     with gr.Blocks(
         title="Dadi · Speech prototype",
         analytics_enabled=False,
-        css=ui_theme.CSS,
+        css=ui_theme.CSS + showcase.CSS,
+        js=showcase.JS,
         theme=gr.themes.Base(font=ui_theme.FONT, font_mono=ui_theme.MONO).set(
             **ui_theme.THEME_SETTINGS
         ),
     ) as demo:
-        gr.HTML(ui_theme.NAV, elem_id="app-nav")
+        gr.HTML(showcase.NAV, elem_id="app-nav")
         gr.Markdown(
             "# Dadi · Speech prototype\n"
             "⚠️ **SIMULATION:** the caller is a teammate role-playing. "
             "No real calls, no real people.",
             elem_id="simulation-banner",
         )
+        gr.HTML(showcase.INTRO, elem_id="showcase-intro")
         gr.Markdown(
             "**Choose the call language before recording.** Native-script replies; "
             "Hindi/Hinglish use Devanagari, Kannada/Kanglish use Kannada script. "
@@ -326,7 +332,7 @@ def build_speech_ui():
         with gr.Group(elem_id="case-panel"):
             gr.HTML(ui_theme.CASE_HEADING, elem_id="case-heading")
             report = gr.Markdown(label="Case file", elem_id="case-file")
-        gr.HTML(ui_theme.FOOTER, elem_id="workspace-footer")
+        gr.HTML(showcase.OUTRO, elem_id="workspace-footer")
         outputs = [chat, audio, state, status, decide, mic]
         queue = {"concurrency_id": "speech-call", "concurrency_limit": 1}
         mic.stop_recording(

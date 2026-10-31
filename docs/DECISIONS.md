@@ -419,3 +419,35 @@ local helper functions and local_brain stay frozen. Existing UI events/outputs s
 New feature spec/digest additive only; no old status/spec/evidence reworded. SARVAM_NOTES
 Unknown retained. Test/eval fixtures are synthetic; failed mock memory recall is reported,
 not hidden or turned into a quality pass. No real Sarvam/Gnani/Ollama or key-file access here.
+
+## D018 — Interactive product story around the unchanged call lab (2026-10-31)
+User authorizes a much richer judge-facing website while retaining core structure. Use Sites
+skill local-only workflow in existing Gradio checkout; no registration, deployment, new frontend
+framework or paid/provider/model calls. Original shield/grandmother logo and phone illustration,
+coral/ink/lime/cream palette, oversized type and narrative sections. Referenced public Raycast
+homepage visually and Linear hierarchy (https://www.raycast.com/, https://linear.app/homepage).
+No copied assets/fonts/scripts or fabricated impact statistics. Runtime remains entirely local.
+New pure-constant showcase.py owns HTML/CSS/JS; app builders add these without modifying any
+nonbuilder function or six existing Gradio handlers/states/outputs. Existing ui_theme render
+functions stay intact; static hero copy/colors change. All brain/speech/providers/personas,
+experimental/training unchanged. No changes to actual call policy, metrics or service config.
+Showcase narrative explains pressure->stalling->human choice, native details disclose architecture,
+three-button scripted preview changes canned story text only, anchor links lead to actual lab,
+FAQ answers service/quality/impact limits. Never label preview as live/model output. Existing
+Sarvam fixture banner remains in lab. No fake timer, connected status or invented saved-money data.
+Motion: one hover tilt and floating sticker, IntersectionObserver reveal, scene transition and
+native smooth anchor scroll. Never hijack wheel/touch scroll or replace cursor, trap focus,
+request mic or auto-play sound. Reduced-motion/no-JS content stays usable; fine-pointer-only tilt.
+JS event delegation writes only owned presentation nodes via textContent/aria, never Gradio
+state/backend/storage/network. Native details and type=button scene controls support keyboards.
+Browser caught a wrapped quoted CSS font string swallowing later rules; use Georgia fallback
+and add CSS quote/block regression. Gradio prose overrides descendant colors, so explicitly set
+dark-section contrast and white CTA arrow. SVG root fill=none keeps glasses/mouth unfilled.
+Existing test changes: presentation-only interactive links/buttons now allowed ONLY in app-nav,
+showcase-intro and workspace-footer; new tests verify local-only anchors/no scripts/forms/inputs
+and narrowly scoped JS. Sarvam baseline permits all three builder layouts, while new showcase
+baseline freezes EVERY nonbuilder app function and core hash. All original handlers, return
+shapes, simulation banner and dependencies remain characterized. Old fixture files retained.
+Add F-DEMO-SHOWCASE only; prior specs/statuses/evidence unchanged. User apps never stopped.
+Node executable absent, so node --check could not run; actual browser parses/executes JS and
+interaction checks verify it. No package installation to work around that environment limit.
