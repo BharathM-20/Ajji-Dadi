@@ -95,3 +95,14 @@ Repository name Ajji/Dadi is represented by GitHub-compatible Ajji-Dadi:
 https://github.com/BharathM-20/Ajji-Dadi . Creation and private ownership were verified before
 upload. The earlier no-commit/approval statements describe the audit snapshot; approval is now
 granted. Public visibility and a license remain unselected. Hosted CI is not yet claimed green.
+
+## Publication result — 2026-11-01
+
+The full project and existing Git history are uploaded on private main. Repository metadata
+confirmed private ownership; remote/local head matched12ec28fe91f3791579dc616a17d31c24c6e21ddb.
+Initial [hosted CI](https://github.com/BharathM-20/Ajji-Dadi/actions/runs/41282820261) completed
+successfully, so the earlier hosted-CI caveat is superseded for that commit and runner only.
+Source commitbe32339 contains the approved readiness fix; CI commit12ec28f was uploaded by
+the existing authorized GitHub app because the Git credential lacks workflow scope. No token
+permissions were changed. Working tree was synchronized and clean. No real provider/model
+calls were made. Public visibility and project license still require owner direction.

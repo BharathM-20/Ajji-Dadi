@@ -112,7 +112,7 @@ make smoke
 `make check` runs lint and offline tests, including real loopback-only Gradio launches with
 mocked providers. Tests do not contact speech/model services. Launch tests need permission
 to bind localhost; a restrictive sandbox can block them. GitHub Actions configuration runs
-the same commands without provider secrets; its first hosted run remains to be verified.
+the same commands without provider secrets. The [initial hosted CI run](https://github.com/BharathM-20/Ajji-Dadi/actions/runs/41282820261) passed.
 
 Default fixture evaluation (no real provider calls):
 

@@ -1,5 +1,19 @@
 # Progress
 
+## Private GitHub publication completed — 2026-11-01
+Repository https://github.com/BharathM-20/Ajji-Dadi is private, owner/privacy confirmed via
+GitHub metadata. Full existing project history, reviewed fixes, README/progress/docs/tests/
+evidence and CI uploaded to main. Remote main12ec28fe91f3791579dc616a17d31c24c6e21ddb matched
+local HEAD after sync; working tree clean. No credentials/model artifacts published.
+Source/readiness commitbe32339; CI commit12ec28f. Initial Git credential lacked workflow scope,
+so the already-authorized GitHub app uploaded the same reviewed workflow separately, without
+permission expansion. Original unpublished reviewed commit remains on a local backup branch.
+Initial hosted CI completed SUCCESS:
+https://github.com/BharathM-20/Ajji-Dadi/actions/runs/41282820261 . Linux hosted bootstrap/checks
+are now evidenced for that commit; full transitive lock, other machines and real providers remain
+unverified. This final publication note changes docs only. Keep private until user explicitly
+requests public visibility. Current work branch t2-gnani-speech retained; main tracks origin/main.
+
 ## GitHub publication authorized — 2026-11-01
 User approved committing the reviewed changes and private GitHub publication. Requested display
 name Ajji/Dadi maps to valid repository name Ajji-Dadi under BharathM-20; keep private until
