@@ -1,0 +1,41 @@
+name: Offline application checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHON_BIN: python
+      DADI_MODE: mock
+      GNANI_REAL_ASR: '0'
+      GNANI_REAL_TTS: '0'
+      GRADIO_ANALYTICS_ENABLED: 'False'
+      HF_HUB_OFFLINE: '1'
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # Frozen regression tests inspect earlier baseline commits.
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version-file: .python-version
+          cache: pip
+      - name: Bootstrap dependencies from PyPI
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install --disable-pip-version-check -r requirements.txt
+      - name: Validate offline setup
+        run: make setup
+      - name: Lint and offline tests
+        run: make check
+      - name: Mock adapter smoke
+        run: make smoke
