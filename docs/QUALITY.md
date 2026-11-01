@@ -153,3 +153,11 @@ actual browser scene/keyboard/details/reveal/anchor checks. Fresh desktop eviden
 stale pre-fix screenshot. All nonbuilder functions/core hashes/handlers/outputs remain frozen.
 Node absent prevents node --check; browser execution verifies this local presentation instead.
 No grade for actual speech/models, native language, prevention impact or aesthetic acceptance.
+
+## F-REPO-READINESS — confirmed fix/prototype repository ACCEPT, commit pending
+Independent source audit found P2 Kannada spoken OTP bypass plus evaluator false PASS. Shared
+native-word detector and preserved OTP-colon behavior now regression-covered. README, setup,
+mode/fallback descriptions and CI packaging reviewed. Final337full/54focused/6smoke passed.
+All sixscores2/2 in confirmed-fix/prototype repository scope. No further high-confidence source
+blockers. Hosted CI, fresh dependency reproducibility, real services/native quality/audio and
+semantic safety unverified. All changes await user approval; no commit or GitHub push performed.

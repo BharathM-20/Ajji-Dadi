@@ -4,7 +4,6 @@ import argparse
 import copy
 import json
 import os
-import re
 import sys
 from pathlib import Path
 
@@ -25,7 +24,7 @@ def evaluate(lines):
             sarvam_brain.respond(item["text"], state, item["language"])
             reply = state["hist"][-1]["content"]
             _, reasons = sarvam_prompt.guard_reply(reply, item["language"])
-            otp_like = bool(re.search(r"(?:otp|ओटीपी|ಪಿನ್|ಪಾಸ್ವರ್ಡ್).{0,8}[:=\d]", reply, re.I))
+            otp_like = sarvam_prompt.possible_sensitive_code(reply)
             recall = item.get("expect_name")
             memory = not recall or recall.casefold() in reply.casefold()
             repeated = prior_tactic is not None and prior_tactic == state["last_tactic"]

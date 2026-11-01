@@ -311,3 +311,13 @@ Node missing: node --check could not run; actual browser parsed/executed present
 Failure layers implementation (CSS/contrast/visual) and task wording (mode-neutral/intentcopy),
 fixed with browser/source tests. Independent final review ACCEPT, all six2/2 presentation scope.
 Own preview cleanup and viewport reset complete; user servers untouched. No real impact claim.
+
+## F-REPO-READINESS — 2026-11-01 (D019), awaiting commit approval
+Setup offline succeeded, baseline327passed17.45s. Spoken-code reproduction4failed/2passed;
+shared guard/eval fix corrects Kannada and Hindi punctuation coverage. First focused58passed/
+1sandbox bind denial2.56s. Final verifier with localhost allowed exited0: L1clean,
+337passed17.19s, focused54passed5.72s; mocksmoke6passed0.08s. No skips or real service/model calls.
+Old OTP-colon coverage retained with3regressions. Prompt/otherfunctions frozen; architecture,
+UI/provider/local/training source unchanged. Markdown links and workflow YAML checked locally;
+hosted CI not run. Secret-pattern/history metadata audit reports no matches, not certification.
+Fresh review ACCEPT2/2 each in prototype-repo scope. No stage/commit/push until user approval.

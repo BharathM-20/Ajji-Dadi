@@ -1,5 +1,53 @@
 # Progress
 
+## GitHub publication authorized — 2026-11-01
+User approved committing the reviewed changes and private GitHub publication. Requested display
+name Ajji/Dadi maps to valid repository name Ajji-Dadi under BharathM-20; keep private until
+explicitly asked to change visibility. Private repository created and owner/privacy verified:
+https://github.com/BharathM-20/Ajji-Dadi . Existing git history and all necessary tracked source,
+tests, README/docs/evidence will be pushed to main; no credential files or model artifacts.
+This authorization supersedes the earlier awaiting-approval snapshot below. Local verified
+results remain337full/54focused/6smoke; no provider calls. Hosted CI result is not yet claimed.
+
+## F-REPO-READINESS final review — prepared, NOT committed or pushed
+User requested important-file audit/GitHub preparation for BharathM-20 and approval before
+commit. No remote/repository created, no staging/commit/push, no license chosen. Current working
+changes are the concrete approval candidate; see docs/GITHUB_READINESS.md for full findings.
+Expanded README with fresh online bootstrap vs offline setup, mock/real Sarvam commands,
+fixture limitations, language/config notes, project map and docs. Add CONTRIBUTING, offline
+GitHub Actions workflow (Python version file/full history/read-only permissions/no secrets),
+provider env ignore patterns and audit report. Old sources/docs/evidence remain included.
+Independent review confirmed Kannada spoken-code guard/eval bypass and Hindi punctuation edge;
+new shared detector preserves native combining marks and old OTP-colon coverage.10additive
+regressions cover fix and unrelated prompt function freeze. No persona/architecture/provider/
+UI/training/experimental changes. No real provider/model/device or key-file access.
+Offline setup succeeded. Baseline327passed17.45s. Repro4failed/2passed before fix. Intermediate
+focused58passed/1sandboxlocalhost launch denial; final verifier allowed loopback binding, never
+provider traffic. Final F-REPO-READINESS verifier exited0: L1clean, make check337passed17.19s,
+focused54passed5.72s; finalmocksmoke6passed0.08s. Only verifier wrote passing/evidence. No skips.
+README/contributor relative links resolve; workflow YAML parses; hosted execution not run.
+Git baseline126trackedfiles1775698bytes,257historical text blobs; heuristic scan found no
+credential/private-key/token pattern, protected credential filename, large blob or tracked
+virtualenv/model/cache. It is not a secret-free guarantee; historical local paths/metadata remain.
+Final fresh source review ACCEPT, sixscores2/2 for confirmed-fix/prototype repository scope.
+Unverified: hosted Linux CI, fresh-machine transitive setup, full dependency lock, license/public
+history approval, real Sarvam/Gnani auth/latency/credits/language/audio/semantic safety and impact.
+T2 remains blocked, prior feature evidence unchanged. No production-quality claim. Await user
+approval to commit; confirm repository name and public/private before any GitHub creation/push.
+
+## F-REPO-READINESS audit contract — verified; awaiting user commit approval
+User requests important-file audit, corrected README/project packaging and GitHub readiness for
+BharathM-20. No Git remote exists. Do not commit, stage a publish, create GitHub repo or push
+without explicit approval. Prepare one reviewable working-tree change set first.
+Scope: fresh source/docs/script review, tracked/history credential-pattern/size inventory,
+README/setup/config/contributing/CI handoff and confirmed Kannada spoken-code guard/eval fix.
+No real provider/model/device calls or key-file reads. Experimental/training untouched.
+Keep all prior features/evidence and architecture; no new app flows. Baseline327tests passed17.45s. Secret scan reports paths/counts only, skips credential filenames entirely;
+heuristic findings are not a guarantee. Existing126tracked files total1775698bytes;257historical
+text blobs scanned, no token/private-key pattern match, credential filename or large blob found.
+No license selected without user decision. Cloud CI and clean-machine transitive setup need
+actual GitHub evidence; local check is not a claim that remote Actions passed.
+
 ## F-DEMO-SHOWCASE final handoff — presentation only, passing
 Built a judge-facing product story around all three unchanged Gradio call paths: original
 shield/Dadi identity, illustrated oversized hero, coral/ink/lime/cream palette, three-scene

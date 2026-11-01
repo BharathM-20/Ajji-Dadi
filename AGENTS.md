@@ -5,9 +5,10 @@
   Why: protect credits and isolate vendor changes. Delete only if adapter boundary is replaced.
 - Never print, log or commit keys; keep `.env.example` empty of real values.
   Why: private credentials. Keep permanently.
-- This session implements F-DEMO-SHOWCASE: an interactive presentation around the existing app.
-  Why: user authorizes richer branding/motion/storytelling while preserving core architecture.
-  Keep brain/speech/personas/gates/reset intact. No provider/model calls or credential-file reads.
+- This session prepares F-REPO-READINESS: audit, a confirmed guard fix, docs and offline CI.
+  Why: user approved the reviewed commit and private BharathM-20/Ajji-Dadi publication.
+  Keep the repository private; public visibility still requires a new explicit instruction.
+  No provider/model calls or credential-file reads; preserve architecture and prior work.
 - Preserve `reference/`, `docs/CODEX_BRIEF.md` and `docs/GNANI_NOTES.md` during initialization.
   Why: user-owned inputs. Change notes later only with verified integration evidence.
 

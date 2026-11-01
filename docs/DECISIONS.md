@@ -451,3 +451,30 @@ shapes, simulation banner and dependencies remain characterized. Old fixture fil
 Add F-DEMO-SHOWCASE only; prior specs/statuses/evidence unchanged. User apps never stopped.
 Node executable absent, so node --check could not run; actual browser parses/executes JS and
 interaction checks verify it. No package installation to work around that environment limit.
+
+## D019 — Pre-GitHub readiness audit and confirmed spoken-code correction (2026-11-01)
+User requests review/preparation and approval BEFORE any commit/push. No remote exists; do
+not create/push a repository or choose its visibility/license without that final approval.
+Keep current architecture and prior evidence; prepare one reviewable working-tree change set.
+Read important runtime/provider/prompt/session/script/test/docs files and independently review
+production code. Scan tracked/historical text blobs with token/private-key heuristics, reporting
+only paths/counts and never reading credential filenames. No matches in257text blobs;126tracked
+files about1.8MB, no credential file/weights/cache/large blob. Not proof of absence of secrets.
+Confirmed P2: Kannada spoken number codes pass guard/eval; three Hindi number words ending
+with punctuation also evade the original trailing-space pattern. Reproduce with4fail/2pass,
+then share possible_sensitive_code between guard/eval using separator tokenization preserving
+native combining marks, three consecutive English/Hindi/Kannada digit words, existing digit/
+credential patterns and OTP labels. This is conservative heuristic coverage, not native quality
+or universal semantic safety. Prompt wording/persona/version and all other functions unchanged.
+Historical showcase hash allowance recognizes only this guard module; a new pre-change fixture
+freezes all unrelated functions, existing fixture digest remains unchanged. No broad guard reset.
+README now explains fresh online bootstrap versus deliberately offline make setup, full Git
+history required by regressions, mock/real modes, language/limits, honest eval failure, project
+map and docs. Add CONTRIBUTING and hosted CI config using official checkout/setup-python v7
+examples (https://github.com/actions/checkout, https://github.com/actions/setup-python), Python
+version file, fetch-depth0, read-only token/no persisted credentials, no provider secrets.
+Local tests cannot prove the new Linux-hosted workflow or fresh transitive installs passed;
+no full dependency lock or license invented. Preserve owner decision and document these limits.
+Extend ignore rules for provider env filenames. Do not install/load experimental training or
+change its source/data. Readiness report distinguishes repository/demo readiness from actual
+service/language/device/latency/impact acceptance. Prior T2 real-service status remains blocked.

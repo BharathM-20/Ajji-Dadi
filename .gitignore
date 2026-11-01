@@ -15,3 +15,11 @@ clips/*
 # Local optional training outputs; never commit model weights or large checkpoints.
 training/artifacts/
 .training-venv/
+
+# Provider environment files must never be versioned.
+.gnani_env
+.gnani_env.*
+.sarvam_env
+.sarvam_env.*
+# Local generated WAV files outside the conventional audio directories.
+dadi-tts-*.wav

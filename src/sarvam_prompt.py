@@ -38,7 +38,8 @@ BANNED = re.compile(
 SECRET = re.compile(
     r"\d|(?:\b(?:one|two|three|four|five|six|seven|eight|nine|zero)\b[ ,]*){3,}|"
     r"(?:(?:एक|दो|तीन|चार|पाँच|छह|सात|आठ|नौ|शून्य)[ ,]+){3,}|"
-    r"(?:my|मेरा|ನನ್ನ).{0,18}(?:password|pin|account number|पासवर्ड|पिन|ಖಾತೆ ಸಂಖ್ಯೆ)",
+    r"(?:my|मेरा|ನನ್ನ).{0,18}(?:password|pin|otp|account number|पासवर्ड|पिन|"
+    r"ओटीपी|ओ टी पी|ಖಾತೆ ಸಂಖ್ಯೆ|ಒಟಿಪಿ|ಓಟಿಪಿ)",
     re.I,
 )
 AGREEMENT = re.compile(
@@ -47,6 +48,26 @@ AGREEMENT = re.compile(
     r"ಹಣ ಕಳುಹಿಸುತ್ತೇನೆ|ಇನ್ಸ್ಟಾಲ್ ಮಾಡುತ್ತೇನೆ",
     re.I,
 )
+
+
+# Preserve combining marks by tokenizing on separators, not Unicode \w word boundaries.
+NUMBER_WORDS = frozenset(
+    "zero one two three four five six seven eight nine "
+    "शून्य जीरो एक दो तीन चार पाँच पांच छह सात आठ नौ "
+    "ಸೊನ್ನೆ ಶೂನ್ಯ ಒಂದು ಎರಡು ಮೂರು ನಾಲ್ಕು ಐದು ಆರು ಏಳು ಎಂಟು ಒಂಬತ್ತು".split()
+)
+
+
+def possible_sensitive_code(text):
+    # Keep the evaluator's original assignment-label check while sharing all detection.
+    if SECRET.search(text) or re.search(r"(?:otp|ओटीपी|ಒಟಿಪಿ|ಓಟಿಪಿ|ಪಿನ್|ಪಾಸ್ವರ್ಡ್).{0,8}[:=\d]", text, re.I):
+        return True
+    run = 0
+    for word in re.findall(r"[^\s,.;:!?।…<>\-]+", text.casefold()):
+        run = run + 1 if word in NUMBER_WORDS else 0
+        if run >= 3:
+            return True
+    return False
 
 
 def build_messages(state, text, language, tactic, corrective=None):
@@ -141,7 +162,7 @@ def guard_reply(text, language, previous=""):
     reasons = []
     if not letters or not script_ok:
         reasons.append("wrong script or empty reply")
-    if SECRET.search(spoken):
+    if possible_sensitive_code(spoken):
         reasons.append("possible sensitive code")
     if BANNED.search(spoken) or AGREEMENT.search(spoken):
         reasons.append("banned phrase or unsafe agreement")
