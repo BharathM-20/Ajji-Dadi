@@ -478,3 +478,546 @@ no full dependency lock or license invented. Preserve owner decision and documen
 Extend ignore rules for provider env filenames. Do not install/load experimental training or
 change its source/data. Readiness report distinguishes repository/demo readiness from actual
 service/language/device/latency/impact acceptance. Prior T2 real-service status remains blocked.
+
+## D020 — Bounded incoming-call website replay before real telephony (2026-11-01)
+User prefers real phone calls but explicitly delegates smaller web-demo option given time and
+weekly token constraints. No telephony account/number/webhook contracts supplied; use opt-in
+DADI_INCOMING=1, preserve old default/microphone/local paths and provider/brain/persona code.
+No key files, real endpoints, models, victim calls or private audio inspected/generated here.
+New incoming_call pure orchestration supports four supplied caller-only WAVs or explicit Sarvam
+text fixture;5languages×2scenario types. Text draft scripts and fixture labels are not real
+recordings/classifier output. No unverified public recording is bundled or treated as licensed.
+Existing speech_session handles recorded turns unchanged. Text fixtures run only in explicit
+Sarvam mock mode, bypassing speech with a prominent no-ASR/no-audio disclosure. Never call
+text preview transcription. Native Kannada scripts require review. Fixed callers cannot adapt.
+One real Sarvam classification after two screening turns uses only the actual screening
+transcript, no expected-label input. Strict JSON/enum/reason parsing; failure becomes uncertain
+manual review, not a fabricated scam score. No extra HTTP fields or provider endpoints. Human
+Pick up/Decline/Dadi gate remains mandatory; actual detection quality is unverified.
+Native Audio.stop events advance recorded playback. Session/playback token plus phase/path
+checks reject stale/duplicate events; ignored events use gr.skip to preserve currently playing
+audio. Explicit Continue handles blocked autoplay/retry. End/reset serialize with processing;
+they do not cancel an in-flight provider request. Existing10s pause and state-copy failure
+rollback preserved; no automatic retries. The second-turn total includes classification too.
+Current turn cursor is consumed only after success. No replayed clip is automatically retried.
+New app builder/callbacks isolated; only configured_ui gains a narrow first-branch dispatch.
+Historical source guards normalize ONLY that exact incoming flag branch using contract_helpers;
+new incoming baseline freezes all old app functions and all pre-existing other source hashes.
+Conftest clears DADI_INCOMING; historical guard removes ONLY that one exact extra isolation
+line. Old handler/output contracts unchanged; no broad baseline digest rewrite. Feature spec
+additive, status through verifier only. User requested review before commits previously; leave
+this feature uncommitted/unpushed pending review. Actual telephony remains separate future work.
+
+## D021 — Separate Sarvam style examples from real call history (2026-11-01)
+User supplied real smoke output: HTTP200,105b,bearer,1.199552166s,no fixture/fallback;
+v1 response invented earlier bank/police claims and confronted caller. Context-layer defect:
+prompt seeded a concrete contradiction and independent examples were conversation messages.
+Version v2 removes that contradiction, requires evidence for earlier claims, asks gentle practical
+delays, softens camera example and places independent style examples inside the system message.
+Only actual Dadi history remains role-labelled history. Preserve screening context separately,
+all safety guards/correction limits, language mapping, persona facts, providers, state and UI.
+Existing test formerly asserted six example chat turns; change it because that structure can encourage
+fictional history contamination. Historical readiness/incoming freeze exempts only authorized
+prompt changes; new v1 AST snapshot freezes every other prompt-module function including guards.
+No real calls here, no key files, SDK, dependencies, training or local-model changes. Existing
+F-SARVAM-BRAIN verifier records offline evidence only. User must rerun same smoke and review v2;
+unit tests cannot establish naturalness, grounding or multilingual speech quality. No commit/push
+until user approves. Earlier uncommitted incoming demo kept intact, not selected for UI changes.
+
+## D022 — Safe Sarvam HTTP200 response diagnostics (2026-11-01)
+User v2 smoke failed at150tokens2.235224167s and explicit300tokens3.047121541s, both200.
+Do not infer timeout, token exhaustion or response shape from the old catch-all error.
+Add adapter-only decoder with specific missing-message/empty-content/nonJSON failures and
+allowlisted diagnostic shape/counts: max_tokens, choice_count, content_kind/chars, finish_reason
+(known values or other), nonnegative integer usage counts if present, reasoning_content length
+if present. Never return reasoning as Dadi speech or print raw bodies/headers/unknown values.
+Existing smoke already prints diagnostics, so no new HTTP or script needed. No changes to
+request/model/token defaults/prompt/guard/retry/fallback/state/UI/provider contracts.
+Record reasoning_content count only as structural observation, not acceptance of any new
+request parameter; SARVAM_REASONING_EFFORT still fails config and no field is sent.
+Incoming and showcase freezes permit only this authorized adapter change; snapshot of full remaining module
+AST freezes every other function/class/constant/import, and original hash anchors old fixture.
+Tests cover empty/null/nonstring/malformed structures, token-limit indication and secret-free
+diagnostics using MockTransport only. No agent real calls or key files. User runs one diagnostic
+smoke after checks; response cause still unknown. Prior uncommitted work preserved.
+
+## D023 — User-approved explicit Sarvam reasoning-off trial (2026-11-01)
+User diagnostic150tokens reached length with null content after2.611339667s,785inputtokens;
+300token run also failed earlier. Official Sarvam model/V1 reference (links in SARVAM_NOTES)
+document reasoning_effort:null to disable reasoning; default reasoning can consume output cap.
+User explicitly said yes to revising previous omission restriction. Implement ONLY env
+SARVAM_REASONING_EFFORT=none -> JSONnull. Unset remains omitted; every other value fails
+before HTTP. Diagnostic reasoning_mode distinguishes disabled_requested/provider_default,
+not a claim of provider compliance. No token/model/prompt/timeout/HTTP retry/default change.
+Existing fails-closed test now rejects unsupported modes rather than every set value; add
+exact-null/one-request test. Full adapter AST freeze permits _sarvam_config additionally;
+new exemption hash derived from original HEAD source anchored by unchanged original SHA,
+not from edited code. All other adapter definitions/imports/constants remain frozen.
+No new dependencies, SDK, key files, paid calls, UI/local/training/guard/persona changes,
+commit or push. Real acceptance and voice quality pending user's single smoke.
+
+## D024 — Connected-turn memory/tactic prompt follow-up (2026-11-01)
+User supplied real reasoning-off v2 success: HTTP2001.132245542s,24outputtokens,finishstop,
+polite Hindi. Then3connected real turns1.08/0.75/0.79s,zero guards/retries: believable first
+mishearing; second failed Ravi recall/ignored glasses; third safe but generic OTP confusion.
+Prompt v3 asks recall of established facts before delaying and visible use of selected tactic.
+Persona facts/safety guards/provider schema/reasoning opt-in/local brain unchanged. No guarantee
+of recall or tactic compliance from prompt text alone; user repeats identical scenarios.
+Add scripts/probe_sarvam.py: default preview has no calls; --real permits3connected Hindi
+turns using existing orchestration, at most6chatrequests from existing bounded correction,
+first error stops, >15s stops subsequent turns (not cancellation of in-flight HTTP). No speech
+or screening UI tested; direct DADI state is explicitly a brain-only trial, not human-gate bypass
+in the app. Keep existing HTTP timeout and no transport retry. CLI prints actual replies/timing/
+tactics and requires manual review; exit0 is not dialogue quality. No dependencies or key files.
+Fake-brain tests verify no-call default, state continuity and early stopping on error/slow turn.
+Existing fixture canned pool repeated on initial command trials; those runs are not real quality
+evidence and no fake fixture pass asserted. No agent paid calls, commit/push or UI edits.
+
+## D025 — Structured Sarvam caller facts and stage conflict correction (2026-11-01)
+User real v3 screenshot: three HTTP200 turns0.91/1.79/0.93s,zero guards/fallbacks; tactics
+visible but Ravi forgotten twice; glasses used to read spoken name. Trace shows remember()
+extracts Ravi, retains claims and old memory_line already sends it. Root context conflict:
+shared early stage explicitly says ask who he is, despite known identity. No memory loss
+claim; do not change regex/local brain/shared strategy to fix this specific prompt conflict.
+Sarvam v4 replaces that stage clause only in its request, gives selected glasses tactic a
+physically coherent writing-notes/phone-button explanation, makes bounded structured JSON
+caller_name/authority/pretext/demand plus existing bounded statements explicit in final user
+context. Single known name should be recalled before delay; conflicting names ask clarification.
+Caller facts are unverified dialogue, never system instructions. Remove memory_line from
+Sarvam system; keep remembered statements in untrusted user JSON and actual history separate.
+No canned Ravi response, forced answer rewrite, semantic recall guarantee or extra model call.
+Preserve persona facts/guards/provider/default/reasoning opt-in/human gate/reset/local/training.
+Tests capture actual second MockTransport request to prove Ravi/history reach it, stage has no
+ask-who conflict and glasses target note-taking; additional tests cover windowed history,
+screening-only caller context, conflicting/unknown names, JSON escaping/bounds and raw injection
+text absent from system. Existing context test changes because Ravi now belongs in user data
+rather than system instructions. No freeze fixtures or other functions changed.
+Only offline checks; actual recall/naturalness/Kannada still need user trials. No commit/push.
+
+## D026 — Feminine self-reference and credential disclosure promises (2026-11-01)
+User v4 screenshot:1.00/0.87/0.87s,zero guards,Ravi recalled; remaining masculine बात करता हूँ
+and मैं अभी ओटीपी दे दूँ. No actual code leaked; guard did accept disclosure intent. User
+approved fix. V5 prompt explicitly uses Hindi feminine self-reference and forbids promising
+credential disclosure even as a question. Extend only existing BANNED/AGREEMENT regex constants:
+bounded explicit मैं+masculine forms, Hindi OTP/spacedOTP/PIN/password disclosure offers and
+English first-person give/share/send/tell offers. Existing guard functions and one correction
+limit unchanged; no output substitution or extra provider work outside approved correction.
+These are conservative phrase heuristics, not complete semantic safety or multilingual coverage.
+Kannada promise/gender quality still requires native review; no new unreviewed Kannada patterns.
+Repro10failed/7passed before change;17focused cases then passed, including benign OTP questions,
+feminine forms and explicit Hindi/English refusals. Add MockTransport correction success and
+two-rejection rollback tests to show no unbounded retries or unsafe committed turn.
+No provider/key/default/UI/local/training/persona-fact changes, paid calls, commit or push.
+Real v5 naturalness/grammar and full voice remain user-run and untested.
+
+## D027 — Kannada-only speaker/listener and Ajji-style prompt (2026-11-01)
+User says Hindi voice worked; Kannada Dadi reply sounded like otp gothilla inondu sari ninage
+helu. No exact transcript/audio supplied, so generation vs pronunciation is not conclusively
+isolated. User authorizes more natural Kannada. V6 branches only Kannada/Kanglish: explicit
+ನಾನು/I,ನನಗೆ/to me,ನೀನು/you,ನಿನಗೆ/to you; use ನನಗೆ for Ajji's own confusion, concise everyday
+spoken Kannada, ಮಗು address, informal forms and Kannada-script loanwords for Kanglish.
+Three draft independent style examples demonstrate asking OTP meaning/repetition, phone button/
+glasses delay and passbook mix-up. These are NOT native-reviewed; user listening review pending.
+Keep examples in system style block, never fake history; selected tactic still controls reply.
+Do not globally replace ನಿನಗೆ or fabricate a canned response. Existing guard and HTTP are
+unchanged; new examples must satisfy script/length/safety heuristics only, not quality scores.
+Snapshot v5 non-Kannada messages before editing; regression compares Hindi/Hinglish/English
+requests exactly after version normalization. Their prompt wording preserved. Kannada branch
+removes Hindi-specific grammar/example text and uses ಮಗು rather than transliterated beta.
+MockTransport tests verify both routes receive native examples/pronoun rules and unchanged
+provider schema. No routing/voice/provider/guard/persona-fact/local/training changes, key files
+or paid calls. No commit/push. Real naturalness/pronunciation remains user-run/unverified.
+
+## D028 — Kannada-only strict format correction after real guard rejection (2026-11-01)
+User real logs: two screening Gnani turns4.198/4.723s; ASR5048.989s(no model/TTS); later
+ASR1.500s,Sarvam1.030/0.718s,rejection wrongscript/nonspokenmarkup then too-many-sentences,
+total3.253s. No raw model replies supplied, so exact offending text remains unknown. Guard
+correctly fails closed and call state preserved. Do not loosen script, length, markup or retry
+checks. V7 Kannada/Kanglish style examples use one sentence; instructions spell loanwords in
+Kannada and forbid markup/translation labels. After rejection, existing one correction now
+explicitly asks ONE short Kannada-only sentence/no tags/brackets/Latin, keeping facts/tactic.
+No other-language prompt/correction changes beyond version, no output truncation or fallback.
+MockTransport representative malformed-script/markup and three-sentence replies demonstrate
+existing guard rejects then correction succeeds; they are not recovered actual model outputs.
+ASR504 is separate upstream failure. No HTTP/retry/timeout/voice changes or agent paid calls.
+9s ASR reaches AGENTS stop-review range; pause real trials pending user decision.
+No key files/local/training/UI changes, commit or push; live v7 quality/ASR recovery untested.
+
+## D029 — Compact Sarvam speech call summary (2026-11-01)
+User requests replacing verbose caller-list/stall/source diagnostics with Dadi time and legit/scam
+result. Add F-CALL-SUMMARY; prior feature definitions unchanged, append-only spec digest update.
+Sarvam speech_end dispatches to call_summary.finish; all old non-Sarvam handler code stays.
+Duration is server wall-clock elapsed since human Dadi handoff, frozen at first End, includes
+pauses. Before handoff0seconds. Label simulation handling time, not validated scammer time saved.
+No model can supply/override duration. Assessment uses caller-only transcript, bounded last24
+utterances of600chars, one JSON recommendation with legitimate/scam/uncertain and short reason.
+Ordinary delivery OTP requests not automatically scams; insufficient context uncertain. Never
+use existing unclassified suspicious placeholder as a real verdict. No percentages/accuracy claim.
+Only adapters.think does HTTP, with current Sarvam config/reasoning opt-in. End report is one
+allowed once-per-call report/classifier operation; no extra per-turn work, HTTP retry or guard
+correction. Cache final report including failures, so repeatEnd cannot spend again or inflate time.
+Explicit fixture/empty/unavailable remains uncertain; no classifier paid call for fixture/empty.
+Report reason bounded and Markdown-escaped. Human gate/reset and all brain/speech/persona
+functions unchanged. New call creates fresh state/cache naturally. Existing source freezes
+normalize only exact first speech_end dispatch via helper; old fixture hashes kept.
+Existing Sarvam fixture/launch report assertions change because user explicitly removed verbose
+metrics; now check compact time/assessment/fixture disclosure through actual Gradio event.
+Tests MockTransport success/labels/failure/no-retry/cache/zero-time/reset/context-only/escaping/
+ignored model-supplied time. No real provider/key files. User must verify real classification
+quality and report latency. No commit/push until approval.
+
+## D030 — Kannada acronym routing and repeated slow-request correction (2026-11-01)
+User supplies5turn Kannada transcript: same ನಿಧಾನವಾಗಿ ಹೇಳು ending with distinct tactics,
+SMS meaning asked after explanation, spaced ಒ ಟಿ ಪಿ. Confirmed local matcher recognizes
+ಒಟಿಪಿ but not spaced variants; do not alter shared local brain. Sarvam Kannada/Kanglish
+respond normalizes only a temporary routing string (ಒ/ಓspacedOTP,LatinOTP), prefers unused
+phone/glasses/battery/grandson/pen/notebook delays for OTP, then existing fallback. Original
+ASR text remains exactly in log/history/memory and prompt. No STT contract/voice changes.
+Generate rejects a slow-explanation phrase reoccurring among last3Dadi replies through the
+existing maxone correction, not another call loop. This detects a specific repeated phrase
+family, not arbitrary semantic repetition. V8 Kannada-only examples avoid universal slow-repeat
+closings; prompt tracks explanations already supplied and asks physical delay without secret
+message contents. Non-Kannada prompt text remains frozen after version normalization.
+Full remaining sarvam_brain AST freezes remember/report/imports; old incoming/showcase hashes
+anchor original module and permit only generate/respond changes. Shared guard functions and
+all local brain code unchanged. Tests cover10acronym/language combinations, raw text fidelity,
+unused physical tactic and corrected reworded slow request. No quality guarantee from mocks.
+User additionally supplies missing-recording logs: ASR504 at5.960315792s and5.558380250s,
+brain/TTS0. These are STT service failures, not mistranscribed successful text. No fabricated
+transcript or automatic paid retry; conversation preserved. Actual STT provider recovery/
+accuracy needs real evidence. No agent paid calls/key files or commit/push.
+
+## D031 — Kannada corrective draft context and persistent OTP demand (2026-11-01)
+User v8 logs: rejection1repeated slow-explanation request; corrective response repeated prior
+spoken reply; brain2.141s. Exact rejected text not supplied. User also reports grocery-ledger
+detour while asking OTP. Previous one-retry instruction named reasons but did not show rejected
+unspoken draft. Kannada-only corrective data now includes reasons, bounded rejected draft and
+last spoken reply, explicitly untrusted/not-to-copy; JSON stays in final user context, never
+committed as Dadi history. Non-Kannada corrective strings unchanged. No extra retry/call loop.
+OTP demand persists across short followups, initialized from bounded earlier caller memory
+(including screening), switches on explicit new payment/app demand. Routing transcript remains
+original. OTP tactics limited to phone/glasses/battery/grandson/hearing/signal/tea/door; no
+notebook/ledger/passbook fallback even after exhaustion. At exhaustion cycle tracked tactics
+and retain repeat metrics; no invented unlimited novelty. Prompt v9 explicitly says active
+OTP request and disallows fetching books for it. Genuine payment still uses existing bankbook.
+Tests verify rejected draft not in history, context inheritance/switching, exhausted OTP
+tactic set and request intent. Existing raw-transcript/local/non-Kannada/guard/source freezes
+remain. No provider/ASR/TTS/UI/training/default changes or agent paid calls/key files.
+Real naturalness, repair success, semantic no-repeat and ASR504 recovery still unverified.
+No commit/push.
+
+D031 verification follow-up: old mock-only Kannada fixture had3responses, with phone(index4)
+and glasses(index1) both mapping1; new correct routing exposed repeated fixture failure, not
+a real model result. Expand ONLY Kannada canned pool by3, preserve raw fixture index until
+modulo selected pool length. Hindi/English responses frozen with pre-change snapshots. Real
+request/client/config unchanged. Remaining-adapter AST freeze additionally exempts fixture
+function, with new digest derived from original HEAD and unchanged original SHA anchor.
+Full verifier rerun; independent fixture/source recheck ACCEPT. No provider readiness claim.
+
+## D032 — Local speech inspection and bounded exact-byte STT recovery (2026-11-01)
+User asks stepwise investigation/all reasonable local improvements before vendor attribution.
+Read authoritative GNANI_NOTES. No demonstrated baseline request mismatch: multipart audio_file,
+automatic boundary, mapped code,transcribe,model omitted,60s timeout,serialized request. Concrete
+local issues: UI always clears mic after failure; no exact-clip retry; sanitized504 detail hidden;
+old smoke hardcodesHindi and always callsTTS; adapter duration alone lacks frame metadata.
+One feature F-STT-RECOVERY adds pure stdlib audio_inspection(PCM frame integrity,metadata,SHA,
+optional RMS/peak/full-scale/zero/digital-silence measurements), no resampling or new dependencies.
+Adapter logs safe request route/model/audio metadata only; general non-PCM/otherformat paths
+remain existing behavior. Documented explicit model=prisma-v3.0 optional arg for user diagnostic
+only; default omitted,invalid models fail beforeHTTP. No new endpoint/auto-detect/code-switch.
+Speech UI adds inspect-only checkbox(defaultFalse,preserves normal path) to retain/play/download
+original WAV without any provider call. One explicit retained-clip transcription/retry checks
+hash,language,phase,turn,pause and once-used flag. It disables429retry for that manual attempt;
+never automatic504retry. Duplicate stop/click/stale/reset/end prevents extra calls. Initial
+normal429policy remains as previously documented. Successful ASR continues normal brain/TTS.
+Only UI opts into retention; direct/replay users keep original behavior. Metadata/reference
+cleared onnewrecord/success/End/reset; underlying file remains in Gradio's existing temp cache.
+Mic nowdisabledDECIDE/ENDED/paused andresetreenables. SanitizedSpeechUnavailable detail appended
+to friendly error; language-validation logs no longer imply network failure. No guard/gate/persona
+or brain behavior changes. All speech callbacks share existing queue; adapters lock unchanged.
+New probe_stt.py defaults offline, validates/inspects originalWAV and plans route/model; --real
+permits1STT attempt; --compare explicitly2sequential language attempts with same private WAV
+snapshot, no brain/TTS/retries; ≥8s stops remaining work. No agent real calls or key files.
+Actual audio not available yet: native capture/metadata/live504recovery and Kannada accuracy
+remain untested. Only generated audio/MockTransport and loopback Gradio evidence accepted.
+Historical tests updated only for explicit recovery additions: optional checkbox input,one
+serializedretryevent(speech7versus6),micupdates andnewASRdiagnostics. Oldfixtures retained;
+exactAST UI normalizers preserve original handlers, new pre-change snapshots freeze all other
+functions. Remaining-adapter import/function exemptions anchored to originalHEAD hash; no broad
+network/credential/test-skip relaxation. Initial featuretests15pass2CLImergefail fixed; obsolete
+six-event assertions and directdispatch3input assertions updated for authorized new controls.
+No commit/push until user approval. See STT_RECOVERY.md for user-only next steps.
+
+## D033 — User-tested Kannada STT model in the existing website (2026-11-01)
+User supplies same originalWAV1662d3...4.679977s44.1kmono16bit: omitted-modelkn-IN504
+6.165710333s; explicitprisma-v3.0kn-IN2001.374515875s, Kannada+Latinbank transcript.
+Recorded sanitized evidence JSON, not a full T2 acceptance or general accuracy claim.
+User asks working website: add F-KANNADA-STT-V3, prior definitions unchanged. Mapping table
+adds stt_model for Kannada/Kanglish only; speech_route removes internal key and adds model
+only for STT. Hindi/Hinglish/English continue omission; Timbre config unchanged. No new
+endpoint/format/code-switch/resampling or brain/prompt changes. Existing mock/recovery/gates/
+reset/real flags preserved. Raw mixed-script caller text stays unchanged; native output gate stays.
+Diagnostic local model=omitted removes field explicitly for controlled old-baseline comparisons;
+never send fabricated vendor IDomitted. Probe help/docs updated; explicit model freezes comparison
+setting across languages. No automatic fallback/retry. Underlying explicitv3Kn user result
+does not verify kn-IN,en-IN code-switch or full real speech pipeline.
+Old frozen adapterAST digest derived from originalHEAD with exactly2approved model table keys
+and exempted speech_route; all other constants/functions remain frozen. Legacy tests that
+expected absent Kannada model updated because that is the requested change. Tests assert
+stage-specific model, no TTS leakage, old baseline control, identical audio, unchanged other
+languages and real loopback Hindi End/reset→Kannada screen/handoff→brain/audio with mocked
+HTTP and preserved bankನಿಂದ caller text. No agent real calls,key files,public hosting,commit/push.
+
+D033 final safeguards/docs: explicitly omitted model is rejected beforeHTTP if the operator
+selected experimental kn-IN,en-IN, which requiresv3; add negative control. No literal omitted
+ever sent. Updated GNANI_NOTES only with user-supplied verified evidence, as authorized by
+AGENTS verified-integration exception and prior language-mapping instructions. Refresh ONLY
+that note's input manifest hash; reference/brief hashes remain unchanged, protection retained.
+README's stale reasoning-unverified advice would break real startup; replace with user-verified
+none flag in real launch command. No code requirement, endpoint or provider capability invented.
+
+
+## D034 — Owner briefing before human decision (2026-11-04)
+User asks reason first, name/organisation second and spoken recap before choosing. Main speech UI opts into this flow; existing local brain and incoming replay remain unchanged. Use bounded exact caller excerpts labelled unverified rather than another model extraction: avoids invented identity/reason and another paid call. First answer is reason; second is stated identity/organisation (not independent identity verification). Existing say() synthesizes the recap instead of the canned second close. Explicit heard/read acknowledgement unlocks choices, accommodating autoplay failures. Brain history excludes all briefing/screener lines. Existing snapshot tests normalize only these authorized UI changes, with a new before-feature snapshot preserving everything else. No provider calls/key reads/commits.
+
+D034 test updates: historical speech UI first-line assertions now expect the name/organisation question after the reason; real Gradio dispatch/CLI probes explicitly acknowledge the owner briefing before handoff. Presentation handler snapshots omit only the exact new acknowledgement event; existing six outputs and shared speech-call queue preserved. Retry helper accepts the same opt-in; default/incoming calls retain their previous screening.
+
+
+## D035 — Invite-only local prototype accounts (2026-11-04)
+User requests mock database/login supporting500 users. Use existing Gradio5.49.1 built-in auth gate, SQLite WAL with short connections/parameterized SQL, salted scrypt and bounded async login workers (stdlib only); no new dependencies. DADI_LOGIN=1 enables gate; old launch remains available without flag. Local CLI provisions real invite accounts via getpass, plus500 disabled synthetic rows (no shared working default password). This demonstrates record capacity, not500simultaneous voice calls; Gnani remains serialized. No self-signup, email verification/recovery, per-user credit quota, persistent conversation histories, public hosting or production auth claim. Current users are prototype invitations; inspect auth endpoint behavior against installed pinned code and official Gradio docs.
+
+D035 harness change: existing process-escape heuristic treated every attribute starting exec as a process escape, including SQLite execute/executemany/executescript. Permit only these three local SQL methods in accounts module; network/process imports and os.execv remain rejected, with negative tests. Historical main launch snapshot strips only explicit **login_options() after asserting exact AST; existing positional/keyword launch settings unchanged.
+
+D035 fresh review found Gradio session hashes alone do not bind state to authenticated username. Add opt-in app middleware matching the pinned Gradio cookie/token contract, bind queue and heartbeat/session-stream hashes to account, reject cross-account reuse, disable unused direct-call/export/stream/cancel routes. Cancellation endpoint can manipulate an iterator by event id, so do not leave it as an alternate cross-session path. Internal startup-events stays available for Gradio startup; unauthenticated account/API work stays denied. Tests intentionally reuse another user's session id. This is local prototype state isolation; opaque shared Gradio audio URLs are not a production per-user media ACL. CLI parse errors never echo arbitrary password arguments. Schema version1 rejects newer unsupported databases.
+
+D035 follow-up: user account creation returned an ambiguous generic error. CLI now reports fixed-string validation reasons separately from database access and interrupted input, validates length before confirmation, and preserves existing accounts. No passwords or raw database exceptions are printed. No user credential/database contents read for diagnosis. Regression cases cover short password, mismatch and duplicate without disclosure.
+
+
+## D036 — Intent-grounded caller briefing
+User authorizes replacing literal excerpts with Sarvam summary of name and intent only. Main speech greeting-only recordings do not consume one of the two answers; speak an explicit reason question, then ask name. One JSON extraction/summarization via adapters.think after both actual answers, evidence quotes validated against caller-only text. Missing/failing fields remain unknown, no invented identity or transcript fallback; all original caller statements retained. No per-turn extra model calls after screening. Cache summary work across TTS rollback for same source hash; no automatic HTTP retries. Mock fixture bypasses real summary and is explicit, never quality evidence. Existing default/incoming/local brain remain unchanged. Real native quality and model accuracy need user review.
+
+
+## D037 — Context before stock delays
+User reports vague, apparently scripted replies. Existing prompt forces selected tactic and includes a late stage hint about nearly agreeing to pay, conflicting with safety. Sarvam-only prompt now prioritizes latest caller meaning/remembered facts, adapts or omits a poor-fit suggested delay, and invites one gentle situational domestic misunderstanding rather than rote props. No new model calls, runtime selection rewrite, persona facts or safety/retry weakening. Used-stalls remains selected strategy metadata, not proof of realized humour/tactic quality. Native quality/semantic relevance need live human review. Preserve old non-Kannada snapshot after normalizing only exact authorized D037 additions and version; old guards/functions stay frozen.
+
+D037 review correction: Kannada system/corrective/OTP instructions previously required a chosen physical delay despite optional-tactic directive. Explicit system-level precedence now makes latest-request relevance override all stage/tactic/corrective suggestions; safety/native/length limits remain mandatory. Independent recheck ACCEPT. Briefing preparation model time is now included in brain/llm timing so the model-backed summary is not misleadingly shown as zero brain time. No paid calls.
+
+
+## D038 — Sarvam conversation variant
+User requests105b-conversations. Official https://www.sarvam.ai/token-factory/models/sarvam-105b-chat documents exactID sarvam-105b-conversations, v1 route and reasoning_effort=None example; https://docs.sarvam.ai/api-reference/beta-apis confirms v1 serves it. Make it default, retain original105b/30b overrides and existing user-verified bearer transport. Keep context-first v10, safety and speech settings; no v2 migration or paid calls. Same configuration also affects JSON briefing/report; real account access, JSON/voice quality and latency unverified. Test default expectation updated for authorized model change.
+
+D038 verification: historical STT-recovery function freeze excludes the now explicitly authorized _sarvam_config change; all other unrelated functions still frozen. Current Sarvam tests check exact default model, endpoint, auth and payload plus all model overrides. Interim533passed/1historical-freeze failure corrected, not hidden.
+
+## D039 — Ground Sarvam dialogue in ASR meaning (2026-11-04)
+Review of the supplied Kamala Devi prompt pack: rolling history and remembered facts are useful and already present (up to eight recent exchanges plus bounded caller memory). Its fixed persona facts and variation engine do not drop into this project safely: the app has a separate Savitri Devi persona, Kannada quality is unreviewed, forced mishearing/non-answer would break conversational continuity, and cycling chai/phone/hearing/glasses is the reported failure. Existing Sarvam prompt explicitly says slightly hard of hearing, misunderstand one practical detail, be slow/confused, and suggests repeat/restart; examples over-index on phone and unrelated props. Change only Sarvam's prompt: treat Hindi/Kannada transcripts as utterances to interpret, address the current request with supplied history, ask a narrow clarification only if the transcript is genuinely unclear, and make hearing/props/delay optional and context-triggered. Keep current fictional facts, safety/native-script/length/guard limits, tactics metadata, one-call/retry behavior, and adapter/model settings. Verify construction and propagation with fake transport; actual relevance/naturalness remains user-reviewed. No real calls or keys.
+
+D039 implementation detail: version the Sarvam prompt as v11. Keep the existing eight-exchange history and bounded caller memory; remove the hard-of-hearing persona requirement, forced misunderstanding, forced slow/repeat request, and mandatory physical prop/delay from the Sarvam instructions. Make every selected tactic an optional suggestion, including Kannada OTP corrections. Replace prompt examples that lead with unrelated phone/glasses/book excuses with context-answering examples. Preserve all API/model parameters, call counts, runtime tactic choice/metadata, and safety/output guards. The old v5 Hindi/Hinglish/English fixture remains as historical evidence; the prior snapshot-comparison test is replaced by explicit prompt/context invariants because those languages are intentionally in scope. Offline tests are not evidence of live model performance.
+
+## D040 — Show and verify the speech website brain route (2026-11-04)
+The speech callback already performs validated microphone WAV → `adapters.asr()` → `sarvam_brain.respond(transcript, state, language)` when `DADI_MODE=sarvam` → `adapters.say()` sequentially. With default `DADI_MODE=mock`, the Sarvam prompt is intentionally inactive. Make that startup selection visible in the speech call status (Sarvam + exact prompt version, Local Ollama, or MOCK) so a user can tell which route handles the transcript. Extend the loopback Gradio probe to assert an ASR transcript and prior screening/history reach prompt v11 and the response returns through TTS; fake brain and mocked Gnani HTTP only. No new real calls, API/key reads, gate/reset changes, or changes to default MOCK. Correct the stale speech-run note to the current Sarvam model default. No commit/push without approval.
+
+D040 verification: the launched loopback Gradio probe uses a generated silent WAV, mocked STT/TTS HTTP, and fake `think()`. It records the actual Sarvam request messages and asserts prompt v11, the exact ASR transcript, and the prior screening/history arrive on the DADI turn; then it checks the path completes through TTS. UI component/status tests check the active route label. Final `.venv/bin/python scripts/verify_feature.py F-TRANSCRIPT-WEBFLOW`: L1 clean,543 passed; focused45 passed; `make smoke`6 passed. Earlier harness-only failures were repaired and this final run passed. Live quality/device/provider remains untested.
+
+## D041 — Keep Sarvam on the caller's actual topic (2026-11-04)
+User reports that the long v11 prompt still leads to unrelated household props and asks for a simple scam-baiting-grandmother guideline. Version the prompt v12. Keep the existing Savitri identity, language/script handling, caller facts/history, length and safety rules. Remove the invented domestic-prop inventory, injected example conversations, and per-turn stage/tactic/recent-excuse text from real model requests. Give Sarvam one short instruction: understand the latest caller words using the actual conversation, stay on topic, do not invent a story/object/mishearing/delay, and ask briefly only when needed. Keep the fixture selector only in explicit Sarvam fixture mode so offline scripted responses remain deterministic; it is absent from real provider requests. No model/API settings, call flow/count, tactic selection/report metadata, speech routing, local brain or UI behavior changed. Mock verification establishes prompt contents and plumbing, not live naturalness or scam-baiting quality.
+
+## D042 — Select v11 or v12 for a live prompt comparison (2026-11-04)
+User wants to test v11 again while keeping v12 intact. Keep v12 as the default; `SARVAM_PROMPT_VERSION=11` selects the prior v11-style guidance, and `12` selects v12. The UI route and timing logs report the selected version; unsupported values fail clearly. The former v11 implementation was not saved as a standalone snapshot, so this is a reconstruction of its recorded behavior/guidance, not a byte-for-byte restoration. The selector is independent of `DADI_SARVAM_MOCK`; real comparison requires `DADI_MODE=sarvam` and `DADI_SARVAM_MOCK=0`. No model/API parameters, call count, safety guards, or default fixture behavior change. Verify both prompt payloads, route label, and invalid configuration offline; live comparison uses user-run real calls and credits.
+
+## D043 — Preserve Kannada conversation context and avoid recent repeated lines (2026-11-04)
+User reports Kannada replies repeat and lose earlier context. Keep the existing eight recent exchanges verbatim and add a compact, untrusted recap of up to 32 older messages (240 characters each); caller statements and the current utterance remain explicitly untrusted. Check candidate reply sentences against the last three Dadi replies and use the existing single corrective attempt when one repeats. Do not add normal-turn LLM calls, change speech/model routing, ASR, TTS, safety checks, persona, version selection or the one-correction ceiling. Offline tests cover old-context propagation and Kannada duplicate-sentence correction; live Kannada quality remains unverified.
+
+## D044 — Kannada-only faster TTS and restrained expression cues (2026-11-04)
+User says Hindi pace is good and asks for Kannada slightly faster plus contextual sighs/pauses and a scared high pitch when warranted. Set Kannada default Timbre speed to1.0; keep Hindi and other default languages at0.92. Preserve `GNANI_TTS_SPEED` as an explicit global override and allow a more targeted `GNANI_TTS_KANNADA_SPEED`; the global value wins when both are set. Keep existing speed bounds and audio configuration. Prompt may use at most one documented `<sigh>` or `<pauses>` cue only when caller words support it; guard and script validation recognize these exact tags but reject unsupported markup. Do not invent a pitch tag/parameter: current Gnani notes document no pitch control. Tags are passed through by Timbre v3.0 as already documented; real synthesis, speed perception and whether tags affect voice remain unverified until user-run audio review. No real API calls or key access.
+
+## D045 — Ground long and pause-separated utterances as one caller turn (2026-11-04)
+User reports long sentences with pauses can end in two output-guard rejections. No corresponding `[brain guard] reasons=` lines were supplied, so the exact failed guard cannot be attributed. Prompt v12 and reconstructed v11 now explicitly treat a pause-separated transcript as one turn, combine its clauses to identify the request/details, and answer briefly. Keep the full current transcript up to4000 characters and exclude the current utterance's truncated copy from remembered caller statements, reducing duplicate prompt weight. Correction asks the model to reread the full caller turn. Do not relax script, content-safety, sentence-count, length or two-attempt limits; no provider parameters or extra model calls. Offline prompt test covers a >1600-character transcript and clause/context retention. This improves instructions and input retention, not verified long-audio transcription or live model comprehension. No API calls or key reads.
+
+## D046 — English-specific context and dialogue guidance (2026-11-04)
+User says “All does not work”; interpreted as English based on the comparison with Hindi and Kannada. English requests previously shared the same broad prompt and inherited a Hindi/Hinglish feminine-grammar instruction. Keep the same Sarvam v12 provider, output/safety guards, token/temperature settings, call count and UI. For English only, remove irrelevant Hindi-specific grammar and ask for natural everyday Indian English, full-turn interpretation, concise answer to the central intent, one focused question only if needed, and no transcript echo or unrelated props. Keep English-only prompt assertions and a mocked request/response test; no exact canned line. This narrows style and relevance but cannot guarantee deterministic wording from a generative model. Actual English speech/transcription and live response remain unverified. No vendor calls or key reads.
+
+## D047 — Handle repeated greetings and expose safe guard causes (2026-11-04)
+User reports repeated “hello” can fail and English ASR reports transcription failure. Treat up to four repetitions of supported greetings (including Kannada/Hindi scripts and Dadi address) as a greeting in owner screening, so it triggers the reason question instead of being misclassified as a substantive answer. Add one concise v12 instruction for a greeting-only Dadi turn to greet and ask the caller's reason. After the existing single corrective attempt, report the internal allowlisted output-guard reasons in the UI; distinguish empty output from a wrong script and name the expected script. Never include rejected model text. Preserve rollback, safety/output guards, prompt version, number of calls, and ASR request contract. English already routes to en-IN and omits an STT model; mocked HTTP verifies this only. No live ASR/brain calls or key reads. Do not switch English to prisma-v3.0 without a user-run same-file comparison.
+
+## D048 — Log sanitized provider failures by stage (2026-11-04)
+User-supplied real logs showed HTTP 403 ASR errors and Sarvam script-guard failures reduced in terminal output to “recording or service unavailable.” Keep stage/transaction behavior unchanged, but log the safe ERROR/WHY/FIX from `SpeechUnavailable` and `ModelUnavailable` directly; for local validation errors, use stage-specific fixed reasons. These adapter messages are sanitized and contain no response body, audio transcript or credentials. Mock tests assert Gnani HTTP 403 and Kannada script-guard causes are visible, empty output differs from wrong script, and rejected model text remains hidden. No provider call or key access.
+
+## D049 — Contextual grandmother hesitation (2026-11-05)
+User asks Dadi to stall naturally in Hindi and Kannada without fixed props or repeating stock excuses. Adjust v12 guidance to allow uncertainty and difficulty understanding or navigating the caller's actual request, while maintaining context, varying replies and avoiding invented unrelated details. Keep safety guards, model, speech routing and frontend unchanged. Update prompt assertions that previously prohibited any reason to delay. Real conversation quality remains unverified.
+
+## D050 — Pin v12 and introduce contextual humour v13 (2026-11-05)
+Preserve v12 as the default/explicit baseline and save its exact generated messages across all five languages in tests/fixtures/sarvam_v12_pinned.json. SARVAM_PROMPT_VERSION=13 selects a short new humour instruction: warm literal-minded wit about the caller's actual request, gentle stubbornness and believable difficulty with that task, one brief spoken sentence, continuity without stock props or repeated punchlines. Keep shared safety, script, history, provider model, correction budget and UI layout. Do not promise live humour quality from fake model outputs. In the existing status area, add plain guidance to sanitized technical errors: a too-many-sentences rejection describes Dadi's OUTPUT, never falsely claims the caller spoke too many sentences; suggest one short caller sentence as recovery guidance. Keep legitimate multi-clause input supported. Provider access/credit/rate/timeout errors have their own actions. No paid calls, key files or frontend layout changes. No commit/push without approval.
+
+## D051 — Kannada v13 grounding and pause consistency (2026-11-05)
+Replace v13 Kannada/Kanglish style guidance only: remove proactive acronym pronunciation examples, allow a natural comma or one documented <pauses> cue, avoid introducing verification/code topics before the caller, distinguish caller facts from assistant guesses, use proportionate emotion rather than repeated fear, and continue from answers rather than paraphrasing the same question. Explicitly render borrowed words/names in Kannada script to reduce copying Latin brands from ASR. Do not transliterate generated replies or weaken script/safety/repetition guards. V12 exact-message snapshots and v13 Hindi/Hinglish/English snapshots preserve those behaviors. Mock tests verify prompt context and pause acceptance, not live grammar or synthesis. No frontend, API parameters, brain call budget, local brain or training changes.
+
+## D052 — Robust report formatting and assessment diagnostics (2026-11-05)
+User reports cached Assessment unavailable on Kannada and the generic failure line. That log cannot establish whether provider/content/JSON/schema failed. Keep one assessment call per call and cached failures; no paid retries. Explicitly instruct multilingual caller understanding with a compact English JSON verdict/reason. Accept a complete JSON object enclosed in a single optional Markdown code fence, still rejecting arbitrary prose, incomplete JSON and invalid schema. Add safe failure categories and allowlisted status/finish/token metadata; never log model content, caller transcript, headers or keys. Frontend, dialogue prompts, API contract and word-safety guards untouched. Mock tests include Kannada caller text, plain/fenced JSON, invalid schema/prose/truncation and caching.
+
+## D053 — Stop re-asking an answered OTP reason (2026-11-05)
+User reports repeated why-do-you-need-OTP questions despite explanation. Shared v13 guidance now makes questions optional, explicitly retains the caller's stated reason without endorsing it, avoids paraphrased re-asking, and permits brief contextual observations/hesitation as complete replies. Replace keep-them-explaining language with keep-conversation-moving. Preserve v12 snapshots, safety, history, native script rules, call budget and frontend. Prior non-Kannada v13 snapshots now compare unchanged language/safety prefixes and dialogue context, since shared v13 style is intentionally changed for every language. No added semantic rejection loop or canned reply.
+
+## D054 — Distill supplied humour examples with context-limited references (2026-11-05)
+Locally inspect all3,600CSVrows: each language has1,200rows,150distinct caller messages,240distinct replies across30domains. Repeated single-turn roasts, hang-ups, Latin-script replies and ungrounded stories make bulk prompt injection/training inappropriate for current dialogue constraints. Record source hashes/counts/guard compatibility in docs/HUMOUR_DATA_REVIEW.md. Extend v13 with literalism, gentle reversal, grounded analogy and evolving callbacks; add one adapted native-language illustration only for an unambiguous latest-turn match in four domain groups. Suppress already-seen themes and corrections. No corpus runtime dependency, canned output, extra model call, model weights, API settings, speech/frontend/localbrain/training changes. V12 remains pinned. Tests cover native-script safety of drafts, matching/no-match/ambiguity, prior-history suppression, correction exclusion and multi-turn orchestration with fake replies. No humour-quality claim from mocks; native review and real listening remain required.
+## D055 — Opt-in AJJI cloned TTS (2026-11-05)
+The user supplied a successful voice embedding and a playable test WAV. Keep the adapter and Gradio audio path; select Gnani voice cloning with GNANI_TTS_PROVIDER=ajji while retaining Timbre as the default until live listening succeeds. Load data/ajji_embedding.json from the ignored backend data directory and pass its complete data.voice_clone_embedding object to vachana-vc-v1. Use documented 44.1 kHz mono 16-bit PCM WAV and validate that rate separately from Timbre's 48 kHz output. No embedding or key in browser/logs/Git. No automatic fallback on AJJI failure. Cross-language identity and pronunciation remain unverified.
+The older AST freeze checks were expanded only for modified TTS functions and the preserved-code digest was refreshed. The AJJI mocked HTTP test checks the complete request and playable saved WAV.
+## D056 — Plain call UI wording and visible decision controls (2026-11-05)
+Remove the model vendor and prompt version from public labels, fixture banners, case metrics and incoming replay suggestions. Keep technical ERROR/WHY/FIX in terminal logs; the UI displays the first friendly sentence, without HTTP codes. Rename the navigation item to “How Dadi works”. Place the three human choices immediately below the caller briefing acknowledgement so the user sees them where they just clicked. Preserve the human gate, model selection and output guards. Gnani's published voice clone request schema documents no speed parameter for vachana-vc-v1; do not send an invented field or change playback pitch. Voice pacing remains a live listening limitation. Old presentation freezes were narrowed only for the changed rendering functions; UI probe now asserts no HTTP 504 disclosure.
+## D057 — Slight AJJI pacing reduction after synthesis (2026-11-05)
+The user requests slower AJJI speech with exactly the same generated words. Gnani's published vachana-vc-v1 request schema does not document a speed field, and no local ffmpeg binary is available. Stretch only the validated AJJI mono PCM WAV by 0.90x using a local waveform-similarity overlap-add routine; leave Sarvam prompts/text and the Gnani request payload untouched. Keep sample rate 44.1 kHz and avoid pitch shifting. Numpy 2.5.4 is already installed through Gradio and is declared directly for reproducibility. Offline tone/duration and mocked request/file tests establish format and rough pitch preservation; user listening decides voice naturalness. If artifacts are heard, revert this postprocessing rather than weakening the voice contract.
+## D058 — Multilingual call guide and plain recovery copy (2026-11-05)
+Add a frontend-only guide immediately before the speech call desk, with Hindi, English and Kannada versions of the same role-play steps. Keep the exact button labels visible in each language so users can find controls. The saved recording button retries caller transcription, not Dadi's response; explain the one-use credit cost. Rename the hero and navigation call-to-action links to neutral call-lab wording. Public provider failures display concise advice to speak loudly and clearly in one short sentence and use the saved clip when available; technical diagnostics remain in terminal logs. Do not edit speech, brain, persona, voice or call-state modules. Static website copy contains no model vendor name.
+
+## D059 — Explicit fictional caller challenge and dark presentation (2026-11-05)
+User requests a direct microphone role-play where the visitor acts as a scam caller, contextual
+humorous examples, removal of the project logo treatment, and dark styling. Dadi has no real
+credentials to disclose: never solicit or persist real OTPs, passwords, card/bank data or personal
+details. Keep the permanent SIMULATION banner, human decision gate and fictional labels. Update
+only static presentation/navigation copy and visual CSS; no handler, state, network, or adapter
+behavior changes. The supplied HEIC screenshots were readable for dimensions but could not be
+decoded here, so visual comparison is pending. Baseline/final make check was blocked by four
+sandbox-denied loopback tests; targeted presentation tests passed 18, mock smoke passed six.
+No commit/push.
+
+## D060 — Audio examples, theme switch and Telugu route (2026-11-05)
+Add the two user-provided language recordings as local Hindi/Kannada audio samples; identity and
+authenticity are not verified, so never call them real-scammer recordings. Add an in-page theme
+toggle and a Telugu speech route using the already-documented te-IN code. Telugu prompt guidance
+is isolated to Telugu; existing language prompts remain unchanged. Telugu transcription, TTS,
+script acceptance and native conversational quality remain unverified. Preserve the permanent
+SIMULATION disclosure and the role-play-only boundary. No real API calls or keys.
+
+## D061 — Finish presentation without changing call handlers (2026-11-05)
+Use warm neutral surfaces and restrained gold accents, DADI navigation, consistent audio cards,
+visible keyboard focus and responsive spacing. Bind theme control after HTML mounts and scope
+light styles to the Gradio container. Fix prior Telugu-only mock/guard omissions and refresh only
+related frozen evidence; retain original five-language snapshots. Full localhost suite626passed;
+no real provider requests. Actual microphone/audio quality remains user-run evidence.
+
+## D062 — Compact prerecorded test controls (2026-11-05)
+Keep Gradio audio serving/playback and scope visual hiding only to #voice-samples .sample-player.
+Retain accessible language labels and playback-speed controls; leave live speech players intact.
+No custom audio handlers or backend changes. Full626tests and browser control transitions passed.
+
+## D063 — Complete Telugu Bamma speech flow (2026-11-05)
+Use broadly understandable colloquial Telugu, sparing బాబూ address and context-bound gentle wit,
+with no fixed props, forced dialect, repeated code questions or unexplained fear. This changes
+Telugu only. Add missing local screening allowlist, native name/intent recap, greeting detection
+and Telugu help panel; te-IN routes remain adapter-owned. Existing five-language prompt snapshots
+are preserved; Telugu-only snapshot and dictionary hash freezes updated intentionally. A mocked
+end-to-end flow tests screening, recap, human gate and contextual reply; routing tests cover te-IN
+HTTP fields and actual Gradio callback dispatch. Verifier631full/163focused passed. Real language
+quality requires native-speaker and listening review; no training or live-service claim.
+
+## D064 — Telugu STT explicit Prisma model trial (2026-11-05)
+User-provided Telugu UI logs showed two STT requests with `te-IN`, omitted model, and HTTP 504;
+the brain and TTS stages did not run. Kannada previously recovered on the same endpoint with
+the documented `prisma-v3.0` model. Apply that model to Telugu's STT route only; keep `te-IN`,
+TTS, brain, UI and call state unchanged. This is a targeted candidate, not evidence that live
+Telugu STT now works. Offline mocked routing tests pass; wait for one user-run retained-recording
+result before claiming success or changing further routing. No real API call or key read.
+
+## D065 — Keep one language per speech call and surface its report near samples (2026-11-05)
+Place a concise reminder directly below the language selector: keep the selected language for
+the entire call; start a new call before switching. Move the existing generated case-file panel
+to directly below the prerecorded tests so it is easy to find. The repository contains no
+separate reference-call report files, so do not invent or label fabricated examples as reports;
+the panel remains the live report generated from the user's role-play. No call handlers or
+speech behavior changed.
+
+## D066 — Downloadable call score and technical sample reference (2026-11-05)
+At End call, export a transcript-free TXT file with the simulation duration, language, caller-only
+rule score out of 10, counted evidence categories, and any model assessment. Fixed points: sensitive
+code request +3, payment demand +3, remote-access instruction +3, authority claim +2,
+threat/urgency +2, secrecy pressure +2; authority paired with a sensitive demand +2; authority,
+threat and another dangerous demand +1; delivery/order OTP without other pressure scores 1; cap at
+10. Bands are 0–3 low signal, 4–6 review, 7–10 likely scam. This is an uncalibrated heuristic,
+not probability or proof. At 7+, suggest independent verification and optional manual Truecaller
+reporting only; never submit automatically. Reference the prerecorded Hindi/Kannada files using
+verified container, duration and sample-rate metadata only; without verified transcripts, provide
+no sample scam scores or quality claims. Keep the extra Telugu humor instruction isolated to v13;
+the pinned v12 prompt remains unchanged. Offline mock tests only; no API/key access.
+
+## D067 — Explicit foreground colors for light and dark showcase themes (2026-11-05)
+User screenshot showed the outlined hero phrase and dark quote card becoming unreadable in light
+mode. Give the outlined phrase a solid theme-specific fill, explicitly pair the quote sticker
+with readable foreground/background colors, and set readable text colors for captions, notes,
+guidance and report surfaces in both palettes. Keep the existing light/dark toggle and all app
+behavior unchanged. CSS assertions cover the explicit theme rules; no browser screenshot
+automation was available for this run.
+
+## D068 — Keep the call lab open and show prerecorded clips in each main mode (2026-11-05)
+Remove the explanatory paragraph directly under “Now, put Dadi on the line.” Keep detailed
+role-play instructions in their own guide. Do not pass the optional account gate to the normal
+CLI launch, so `DADI_LOGIN=1` cannot unexpectedly put the public demo behind a sign-in screen.
+Render the supplied Hindi and Kannada prerecorded clips in text/mock, local, and speech call-lab
+modes, with the existing reference report. Do not change handlers, call state, or providers.
+Historical AST guard tests normalize only the shared sample-section insertion and expected main
+entrypoint change; focused Gradio config tests assert labels and placement in every main mode.
+
+
+## D069 — Keep Telugu v13 humour colloquial and caller-grounded (2026-11-05)
+For the Telugu v13 branch only, prefer natural spoken Telugu with light, broadly understandable
+colloquial phrasing. Use a witty observation only when it follows from the caller's latest detail;
+do not force a joke, generic confusion, or an invented family/household aside. Treat family facts
+as memory for continuity, not catchphrases: mention son/grandson only when the caller raises them
+or the current task makes them relevant. Keep the v12 snapshot and Hindi/Kannada/English-specific
+rules unchanged. Verify prompt contents and Telugu flow with fake brain/offline tests; native
+speaker and real Sarvam delivery remain unverified. No extra request or provider call is added.
+
+
+## D070 — Place the generated report below the speech call workspace (2026-11-06)
+In speech mode, place the case-file report and its TXT download immediately after the call-testing
+workspace so users can read the result where the interaction ends. Keep report generation, reset,
+component identities, event wiring and all call behavior unchanged. MOCK/text and local modes already
+place their report below their testing controls and need no layout change. Verify component order
+and report callbacks with existing Gradio configuration tests.
+
+
+## D071 — Re-sync preserved input hash to current authorized notes (2026-11-06)
+The full suite exposed a stale SHA-256 entry for the already-modified `docs/GNANI_NOTES.md`.
+Review confirmed the file contains existing, documented speech-routing evidence and Telugu route
+notes from earlier user-authorized work. Leave the notes untouched and update only their entry in
+`tests/fixtures/input_hashes.json` to the current digest, restoring the preservation check without
+reverting or rewriting the user-owned notes.
+
+
+## D072 — Center the prerecorded-player control icon (2026-11-06)
+The screenshot showed the play glyph visually off-center in its yellow circular button. Scope the fix
+to the prerecorded sample players: use a 44-pixel circular button, center its contents with grid
+layout, and size the SVG glyph explicitly. Leave live call audio controls and all player behavior
+unchanged. Verify the CSS contract and Gradio component configuration offline.
+
+
+## D073 — Reduce Telugu v13 filler and generic confusion (2026-11-06)
+For Telugu v13 only, explicitly avoid sentence-final “కదా” as a habitual filler and avoid generic
+“నాకు అర్థం కావడం లేదు” or pretend-hearing problems when the transcript is clear. Continue from the
+caller’s latest point with one relevant, varied response; use light humor only when it fits that
+point. For OTP/code pressure, respond to the stated request or reason without repeatedly asking why.
+Do not offer Dadi’s own code or promise a code exchange. This is prompt guidance, not model
+fine-tuning; v12 and other languages stay unchanged. Fake-brain Telugu/prompt tests and the offline
+suite verify the contract, while live Telugu delivery and native-speaker quality remain untested.
+
+
+## D074 — Add a Hugging Face Gradio Space entry point (2026-11-06)
+Keep `python -m src.app` loopback-only for local use; provide a separate root `app.py` for Spaces
+that binds to `0.0.0.0:7860`. Set Space metadata in the root README and serialize the public UI
+queue to one active event with a bounded pending queue. Allow the AJJI response JSON to be supplied
+through the server-only `GNANI_AJJI_EMBEDDING_JSON` environment variable so the private embedding
+need not enter Git. Provider keys and embedding must be Space Secrets. This does not add login or
+per-user billing/rate caps; a public demo can spend shared provider credits. Local startup is
+verified with mock transports only. User chose a Protected Space (public app/private code), public
+visitor access and inclusion of both supplied audio clips. Do not silently downgrade to public
+source if Protected visibility is unavailable. Space creation/push still needs the account's Space
+URL and explicit pre-commit/push approval.
+
+
+## D075 — Deploy the public app on ZeroGPU (2026-11-06)
+The user changed the earlier visibility choice, selected a public Space and explicitly approved
+uploading the working app. Deploy `kushagra123423/dadi-vs-digital-arrest` with the two user-provided
+audio samples. ZeroGPU startup requires Python 3.12 and a no-op `@spaces.GPU` decorated function;
+the app continues to serialize UI events and uses hosted speech/brain APIs. Public visitors share
+provider credits. Do not upload keys or AJJI embedding as files. Live speech remains unavailable
+until the owner adds `SARVAM_API_KEY`, `GNANI_API_KEY`, and `GNANI_AJJI_EMBEDDING_JSON` as private
+Space Secrets. Verify `/config`; do not claim real speech is verified before a real user-run call.

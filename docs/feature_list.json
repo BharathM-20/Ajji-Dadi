@@ -483,6 +483,234 @@
             "stderr": ""
           }
         ]
+      },
+      {
+        "at_utc": "2026-11-01T10:17:07.339434+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 375 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 29%]\n...................................                                      [ 39%]\ntests/test_harness.py ........                                           [ 41%]\ntests/test_incoming_call.py ................................             [ 49%]\ntests/test_local_brain.py .............................................. [ 62%]\n.                                                                        [ 62%]\ntests/test_repo_readiness.py ...........                                 [ 65%]\ntests/test_sarvam.py .................................................   [ 78%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py ......................                      [ 86%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 375 passed in 17.90s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_sarvam.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 66%]\n.....................................                                    [100%]\n109 passed in 10.79s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T10:21:34.489874+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 385 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 29%]\n...................................                                      [ 38%]\ntests/test_harness.py ........                                           [ 40%]\ntests/test_incoming_call.py ................................             [ 48%]\ntests/test_local_brain.py .............................................. [ 60%]\n.                                                                        [ 60%]\ntests/test_repo_readiness.py ...........                                 [ 63%]\ntests/test_sarvam.py ................................................... [ 76%]\n........                                                                 [ 78%]\ntests/test_showcase.py ........                                          [ 81%]\ntests/test_speech_routing.py ......................                      [ 86%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 385 passed in 17.91s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_sarvam.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 60%]\n...............................................                          [100%]\n119 passed in 11.69s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T11:05:31.835068+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 389 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 28%]\n...................................                                      [ 37%]\ntests/test_harness.py ........                                           [ 39%]\ntests/test_incoming_call.py ................................             [ 48%]\ntests/test_local_brain.py .............................................. [ 59%]\n.                                                                        [ 60%]\ntests/test_repo_readiness.py ...........                                 [ 62%]\ntests/test_sarvam.py ................................................... [ 76%]\n............                                                             [ 79%]\ntests/test_showcase.py ........                                          [ 81%]\ntests/test_speech_routing.py ......................                      [ 86%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 389 passed in 18.12s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_sarvam.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 58%]\n...................................................                      [100%]\n123 passed in 10.41s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T11:11:39.551436+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 393 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 28%]\n...................................                                      [ 37%]\ntests/test_harness.py ........                                           [ 39%]\ntests/test_incoming_call.py ................................             [ 47%]\ntests/test_local_brain.py .............................................. [ 59%]\n.                                                                        [ 59%]\ntests/test_repo_readiness.py ...........                                 [ 62%]\ntests/test_sarvam.py ................................................... [ 75%]\n................                                                         [ 79%]\ntests/test_showcase.py ........                                          [ 81%]\ntests/test_speech_routing.py ......................                      [ 87%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 393 passed in 17.59s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_sarvam.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 56%]\n.......................................................                  [100%]\n127 passed in 10.65s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T11:16:50.405243+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 398 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 15%]\ntests/test_frontend_polish.py ....                                       [ 16%]\ntests/test_gnani_speech.py ............................................. [ 28%]\n...................................                                      [ 36%]\ntests/test_harness.py ........                                           [ 38%]\ntests/test_incoming_call.py ................................             [ 46%]\ntests/test_local_brain.py .............................................. [ 58%]\n.                                                                        [ 58%]\ntests/test_repo_readiness.py ...........                                 [ 61%]\ntests/test_sarvam.py ................................................... [ 74%]\n.....................                                                    [ 79%]\ntests/test_showcase.py ........                                          [ 81%]\ntests/test_speech_routing.py ......................                      [ 87%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 398 passed in 17.49s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_sarvam.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 54%]\n............................................................             [100%]\n132 passed in 10.51s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T11:17:40.964215+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 399 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 15%]\ntests/test_frontend_polish.py ....                                       [ 16%]\ntests/test_gnani_speech.py ............................................. [ 28%]\n...................................                                      [ 36%]\ntests/test_harness.py ........                                           [ 38%]\ntests/test_incoming_call.py ................................             [ 46%]\ntests/test_local_brain.py .............................................. [ 58%]\n.                                                                        [ 58%]\ntests/test_repo_readiness.py ...........                                 [ 61%]\ntests/test_sarvam.py ................................................... [ 74%]\n......................                                                   [ 79%]\ntests/test_showcase.py ........                                          [ 81%]\ntests/test_speech_routing.py ......................                      [ 87%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 399 passed in 17.44s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_sarvam.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 54%]\n.............................................................            [100%]\n133 passed in 10.61s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T11:24:30.713491+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 419 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_dialogue_quality.py ......................                    [  7%]\ntests/test_flow.py ..............................                        [ 15%]\ntests/test_frontend_polish.py ....                                       [ 15%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 35%]\ntests/test_harness.py ........                                           [ 36%]\ntests/test_incoming_call.py ................................             [ 44%]\ntests/test_local_brain.py .............................................. [ 55%]\n.                                                                        [ 55%]\ntests/test_repo_readiness.py ...........                                 [ 58%]\ntests/test_sarvam.py ................................................... [ 70%]\n..........................................                               [ 80%]\ntests/test_showcase.py ........                                          [ 82%]\ntests/test_speech_routing.py ......................                      [ 87%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 419 passed in 17.56s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_sarvam.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 47%]\n........................................................................ [ 94%]\n.........                                                                [100%]\n153 passed in 11.14s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T11:46:44.996251+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 426 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_dialogue_quality.py ......................                    [  7%]\ntests/test_flow.py ..............................                        [ 14%]\ntests/test_frontend_polish.py ....                                       [ 15%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 34%]\ntests/test_harness.py ........                                           [ 36%]\ntests/test_incoming_call.py ................................             [ 43%]\ntests/test_local_brain.py .............................................. [ 54%]\n.                                                                        [ 54%]\ntests/test_repo_readiness.py ...........                                 [ 57%]\ntests/test_sarvam.py ................................................... [ 69%]\n.................................................                        [ 80%]\ntests/test_showcase.py ........                                          [ 82%]\ntests/test_speech_routing.py ......................                      [ 88%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 426 passed in 18.15s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_sarvam.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 45%]\n........................................................................ [ 90%]\n................                                                         [100%]\n160 passed in 10.85s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T11:59:56.767203+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 433 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_dialogue_quality.py ......................                    [  7%]\ntests/test_flow.py ..............................                        [ 14%]\ntests/test_frontend_polish.py ....                                       [ 15%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n...................................                                      [ 33%]\ntests/test_harness.py ........                                           [ 35%]\ntests/test_incoming_call.py ................................             [ 43%]\ntests/test_local_brain.py .............................................. [ 53%]\n.                                                                        [ 54%]\ntests/test_repo_readiness.py ...........                                 [ 56%]\ntests/test_sarvam.py ................................................... [ 68%]\n........................................................                 [ 81%]\ntests/test_showcase.py ........                                          [ 83%]\ntests/test_speech_routing.py ......................                      [ 88%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 433 passed in 24.67s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_sarvam.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 43%]\n........................................................................ [ 86%]\n.......................                                                  [100%]\n167 passed in 22.33s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T12:32:13.446916+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 457 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_call_summary.py ..........                                    [  4%]\ntests/test_dialogue_quality.py ......................                    [  9%]\ntests/test_flow.py ..............................                        [ 15%]\ntests/test_frontend_polish.py ....                                       [ 16%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 34%]\ntests/test_harness.py ........                                           [ 36%]\ntests/test_incoming_call.py ................................             [ 43%]\ntests/test_local_brain.py .............................................. [ 53%]\n.                                                                        [ 53%]\ntests/test_repo_readiness.py ...........                                 [ 55%]\ntests/test_sarvam.py ................................................... [ 66%]\n......................................................................   [ 82%]\ntests/test_showcase.py ........                                          [ 84%]\ntests/test_speech_routing.py ......................                      [ 88%]\ntests/test_speech_session.py ......................................      [ 97%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 457 passed in 25.88s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_sarvam.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 39%]\n........................................................................ [ 79%]\n.....................................                                    [100%]\n181 passed in 15.80s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T12:34:11.088240+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 459 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_call_summary.py ..........                                    [  4%]\ntests/test_dialogue_quality.py ......................                    [  9%]\ntests/test_flow.py ..............................                        [ 15%]\ntests/test_frontend_polish.py ....                                       [ 16%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 34%]\ntests/test_harness.py ........                                           [ 35%]\ntests/test_incoming_call.py ................................             [ 42%]\ntests/test_local_brain.py .............................................. [ 52%]\n.                                                                        [ 53%]\ntests/test_repo_readiness.py ...........                                 [ 55%]\ntests/test_sarvam.py ................................................... [ 66%]\n........................................................................ [ 82%]\n                                                                         [ 82%]\ntests/test_showcase.py ........                                          [ 84%]\ntests/test_speech_routing.py ......................                      [ 88%]\ntests/test_speech_session.py ......................................      [ 97%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 459 passed in 24.48s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_sarvam.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 39%]\n........................................................................ [ 78%]\n.......................................                                  [100%]\n183 passed in 14.25s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T12:47:21.834105+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 465 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_call_summary.py ..........                                    [  4%]\ntests/test_dialogue_quality.py ......................                    [  9%]\ntests/test_flow.py ..............................                        [ 15%]\ntests/test_frontend_polish.py ....                                       [ 16%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 33%]\ntests/test_harness.py ........                                           [ 35%]\ntests/test_incoming_call.py ................................             [ 42%]\ntests/test_local_brain.py .............................................. [ 52%]\n.                                                                        [ 52%]\ntests/test_repo_readiness.py ...........                                 [ 54%]\ntests/test_sarvam.py ................................................... [ 65%]\n........................................................................ [ 81%]\n......                                                                   [ 82%]\ntests/test_showcase.py ........                                          [ 84%]\ntests/test_speech_routing.py ......................                      [ 89%]\ntests/test_speech_session.py ......................................      [ 97%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 465 passed in 18.60s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_sarvam.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 38%]\n........................................................................ [ 76%]\n.............................................                            [100%]\n189 passed in 10.86s\n",
+            "stderr": ""
+          }
+        ]
       }
     ],
     "notes": "Only mocked HTTP/fake provider evidence. No reasoning parameter until verified. Existing local/default/persona/frontend behavior retained."
@@ -590,5 +818,1012 @@
       }
     ],
     "notes": "Prepare only; do not commit or push without approval. No real services or quality claims. Existing architecture and experimental/training files preserved."
+  },
+  {
+    "id": "F-INCOMING-DEMO",
+    "priority": 3,
+    "title": "Incoming-call scenario replay with human screening gate",
+    "user_visible_behavior": "Opt-in website simulates an incoming call, replays supplied caller WAVs through existing speech pipeline, offers scam/legitimate multilingual scenarios and human choices. Key-free text fixtures are labelled; no real phone interception claim.",
+    "dependencies": [
+      "F-SARVAM-BRAIN",
+      "F-DEMO-SHOWCASE",
+      "F-REPO-READINESS"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_incoming_call.py",
+    "evidence": [
+      {
+        "at_utc": "2026-11-01T07:31:56.913196+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 358 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  3%]\ntests/test_dialogue_quality.py ......................                    [  9%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 31%]\n...................................                                      [ 41%]\ntests/test_harness.py ........                                           [ 43%]\ntests/test_incoming_call.py .....................                        [ 49%]\ntests/test_local_brain.py .............................................. [ 62%]\n.                                                                        [ 62%]\ntests/test_repo_readiness.py ..........                                  [ 65%]\ntests/test_sarvam.py ............................................        [ 77%]\ntests/test_showcase.py ........                                          [ 79%]\ntests/test_speech_routing.py ......................                      [ 85%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 358 passed in 21.51s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_incoming_call.py",
+            "exit_code": 0,
+            "stdout": ".....................                                                    [100%]\n21 passed in 1.98s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T07:34:43.812539+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 358 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  3%]\ntests/test_dialogue_quality.py ......................                    [  9%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 31%]\n...................................                                      [ 41%]\ntests/test_harness.py ........                                           [ 43%]\ntests/test_incoming_call.py .....................                        [ 49%]\ntests/test_local_brain.py .............................................. [ 62%]\n.                                                                        [ 62%]\ntests/test_repo_readiness.py ..........                                  [ 65%]\ntests/test_sarvam.py ............................................        [ 77%]\ntests/test_showcase.py ........                                          [ 79%]\ntests/test_speech_routing.py ......................                      [ 85%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 358 passed in 18.88s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_incoming_call.py",
+            "exit_code": 0,
+            "stdout": ".....................                                                    [100%]\n21 passed in 1.87s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T07:36:48.705964+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 360 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  3%]\ntests/test_dialogue_quality.py ......................                    [  9%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 31%]\n...................................                                      [ 40%]\ntests/test_harness.py ........                                           [ 43%]\ntests/test_incoming_call.py .......................                      [ 49%]\ntests/test_local_brain.py .............................................. [ 62%]\n.                                                                        [ 62%]\ntests/test_repo_readiness.py ..........                                  [ 65%]\ntests/test_sarvam.py ............................................        [ 77%]\ntests/test_showcase.py ........                                          [ 79%]\ntests/test_speech_routing.py ......................                      [ 85%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 360 passed in 19.91s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_incoming_call.py",
+            "exit_code": 0,
+            "stdout": ".......................                                                  [100%]\n23 passed in 2.86s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T07:40:12.615031+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 367 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 30%]\n...................................                                      [ 40%]\ntests/test_harness.py ........                                           [ 42%]\ntests/test_incoming_call.py ..............................               [ 50%]\ntests/test_local_brain.py .............................................. [ 62%]\n.                                                                        [ 63%]\ntests/test_repo_readiness.py ..........                                  [ 65%]\ntests/test_sarvam.py ............................................        [ 77%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py ......................                      [ 86%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 367 passed in 43.02s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_incoming_call.py",
+            "exit_code": 0,
+            "stdout": "..............................                                           [100%]\n30 passed in 16.89s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T07:42:50.238319+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 368 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 30%]\n...................................                                      [ 39%]\ntests/test_harness.py ........                                           [ 42%]\ntests/test_incoming_call.py ...............................              [ 50%]\ntests/test_local_brain.py .............................................. [ 63%]\n.                                                                        [ 63%]\ntests/test_repo_readiness.py ..........                                  [ 66%]\ntests/test_sarvam.py ............................................        [ 77%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py ......................                      [ 86%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 368 passed in 21.42s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_incoming_call.py",
+            "exit_code": 0,
+            "stdout": "...............................                                          [100%]\n31 passed in 3.72s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T07:44:26.769515+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 369 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 30%]\n...................................                                      [ 39%]\ntests/test_harness.py ........                                           [ 42%]\ntests/test_incoming_call.py ................................             [ 50%]\ntests/test_local_brain.py .............................................. [ 63%]\n.                                                                        [ 63%]\ntests/test_repo_readiness.py ..........                                  [ 66%]\ntests/test_sarvam.py ............................................        [ 78%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py ......................                      [ 86%]\ntests/test_speech_session.py ......................................      [ 96%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 369 passed in 18.03s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_incoming_call.py",
+            "exit_code": 0,
+            "stdout": "................................                                         [100%]\n32 passed in 1.60s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ],
+    "notes": "No bundled real recordings or verified speech quality. No live telephony. Existing app paths/core unchanged. Leave uncommitted for review."
+  },
+  {
+    "id": "F-CALL-SUMMARY",
+    "priority": 3,
+    "title": "Compact speech call assessment and measured demo time",
+    "user_visible_behavior": "Sarvam speech End call shows measured Dadi handling time and one cached transcript-based scam/legitimate/uncertain assessment with a short reason; no claimed real scammer time saved.",
+    "dependencies": [
+      "F-SARVAM-BRAIN"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_call_summary.py tests/test_sarvam.py",
+    "evidence": [
+      {
+        "at_utc": "2026-11-01T12:21:30.286751+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 443 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_call_summary.py ..........                                    [  4%]\ntests/test_dialogue_quality.py ......................                    [  9%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 27%]\n...................................                                      [ 35%]\ntests/test_harness.py ........                                           [ 37%]\ntests/test_incoming_call.py ................................             [ 44%]\ntests/test_local_brain.py .............................................. [ 54%]\n.                                                                        [ 55%]\ntests/test_repo_readiness.py ...........                                 [ 57%]\ntests/test_sarvam.py ................................................... [ 69%]\n........................................................                 [ 81%]\ntests/test_showcase.py ........                                          [ 83%]\ntests/test_speech_routing.py ......................                      [ 88%]\ntests/test_speech_session.py ......................................      [ 97%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 443 passed in 17.88s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_call_summary.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 61%]\n.............................................                            [100%]\n117 passed in 5.73s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T19:33:14.230853+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 590 items\n\ntests/test_accounts.py ...........                                       [  1%]\ntests/test_adapters.py ......                                            [  2%]\ntests/test_architecture.py .....                                         [  3%]\ntests/test_call_summary.py ................                              [  6%]\ntests/test_context_dialogue.py ..........                                [  8%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n......................................                                   [ 31%]\ntests/test_harness.py ........                                           [ 33%]\ntests/test_humour_v13.py ................                                [ 35%]\ntests/test_incoming_call.py ................................             [ 41%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 49%]\ntests/test_repo_readiness.py ...........                                 [ 51%]\ntests/test_sarvam.py ................................................... [ 59%]\n........................................................................ [ 71%]\n.................                                                        [ 74%]\ntests/test_screen_brief.py ............................                  [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py ........................                    [ 84%]\ntests/test_speech_session.py ........................................    [ 91%]\ntests/test_stt_recovery.py ........................                      [ 95%]\ntests/test_transcript_grounding.py ............                          [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 590 passed in 41.66s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_call_summary.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 46%]\n........................................................................ [ 92%]\n............                                                             [100%]\n156 passed in 6.95s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ],
+    "notes": "Mocked HTTP only; no real classifier accuracy claim. Human gate/default/local paths retained. No commit without user approval."
+  },
+  {
+    "id": "F-STT-RECOVERY",
+    "priority": 3,
+    "title": "Inspect and manually retry exact speech recordings",
+    "user_visible_behavior": "Speech UI retains failed STT PCM WAV with safe metadata and one explicit identical-byte retry, precise errors and isolated user-run STT diagnostics; no automatic paid retries or unverified vendor settings.",
+    "dependencies": [
+      "F-SARVAM-BRAIN",
+      "F-CALL-SUMMARY"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_stt_recovery.py tests/test_speech_session.py tests/test_speech_routing.py",
+    "evidence": [
+      {
+        "at_utc": "2026-11-01T14:34:45.867909+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 484 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_call_summary.py ..........                                    [  4%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 15%]\ntests/test_frontend_polish.py ....                                       [ 15%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 50%]\n.                                                                        [ 50%]\ntests/test_repo_readiness.py ...........                                 [ 52%]\ntests/test_sarvam.py ................................................... [ 63%]\n........................................................................ [ 78%]\n......                                                                   [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py ......................                      [ 85%]\ntests/test_speech_session.py ......................................      [ 93%]\ntests/test_stt_recovery.py ...................                           [ 97%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 484 passed in 18.59s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_stt_recovery.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 91%]\n.......                                                                  [100%]\n79 passed in 6.87s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T14:41:48.860462+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 485 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_call_summary.py ..........                                    [  4%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 15%]\ntests/test_frontend_polish.py ....                                       [ 15%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 50%]\n.                                                                        [ 50%]\ntests/test_repo_readiness.py ...........                                 [ 52%]\ntests/test_sarvam.py ................................................... [ 63%]\n........................................................................ [ 77%]\n......                                                                   [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py ......................                      [ 85%]\ntests/test_speech_session.py ......................................      [ 93%]\ntests/test_stt_recovery.py ....................                          [ 97%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 485 passed in 20.33s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_stt_recovery.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 90%]\n........                                                                 [100%]\n80 passed in 7.67s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T14:46:47.488760+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 486 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_call_summary.py ..........                                    [  4%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 15%]\ntests/test_frontend_polish.py ....                                       [ 15%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 33%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 50%]\n.                                                                        [ 50%]\ntests/test_repo_readiness.py ...........                                 [ 52%]\ntests/test_sarvam.py ................................................... [ 62%]\n........................................................................ [ 77%]\n......                                                                   [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py ......................                      [ 85%]\ntests/test_speech_session.py ......................................      [ 93%]\ntests/test_stt_recovery.py .....................                         [ 97%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 486 passed in 19.44s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_stt_recovery.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 88%]\n.........                                                                [100%]\n81 passed in 7.18s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T14:47:45.836818+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 487 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_call_summary.py ..........                                    [  4%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 14%]\ntests/test_frontend_polish.py ....                                       [ 15%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 33%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 49%]\n.                                                                        [ 50%]\ntests/test_repo_readiness.py ...........                                 [ 52%]\ntests/test_sarvam.py ................................................... [ 62%]\n........................................................................ [ 77%]\n......                                                                   [ 78%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py ......................                      [ 85%]\ntests/test_speech_session.py ......................................      [ 92%]\ntests/test_stt_recovery.py ......................                        [ 97%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 487 passed in 19.93s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_stt_recovery.py tests/test_speech_session.py tests/test_speech_routing.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 87%]\n..........                                                               [100%]\n82 passed in 8.41s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ],
+    "notes": "Offline/mocked and loopback UI evidence only. Real STT accuracy and504 recovery require user-run tests; no agent provider calls or key files. Ask before commit."
+  },
+  {
+    "id": "F-KANNADA-STT-V3",
+    "priority": 3,
+    "title": "User-tested Kannada STT model in the speech website",
+    "user_visible_behavior": "Kannada and Kanglish speech use explicit prisma-v3.0 with kn-IN by default, preserving other languages, native-script replies, audio, recovery and human gate.",
+    "dependencies": [
+      "F-STT-RECOVERY"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_speech_routing.py tests/test_stt_recovery.py tests/test_speech_session.py",
+    "evidence": [
+      {
+        "at_utc": "2026-11-01T15:11:08.197422+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 489 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_call_summary.py ..........                                    [  4%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 14%]\ntests/test_frontend_polish.py ....                                       [ 15%]\ntests/test_gnani_speech.py ............................................. [ 24%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 33%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 49%]\n.                                                                        [ 49%]\ntests/test_repo_readiness.py ...........                                 [ 52%]\ntests/test_sarvam.py ................................................... [ 62%]\n........................................................................ [ 77%]\n......                                                                   [ 78%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 84%]\ntests/test_speech_session.py ......................................      [ 92%]\ntests/test_stt_recovery.py .......................                       [ 97%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 489 passed in 21.26s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_speech_routing.py tests/test_stt_recovery.py tests/test_speech_session.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 85%]\n............                                                             [100%]\n84 passed in 8.04s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-01T15:20:06.834780+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 490 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_call_summary.py ..........                                    [  4%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 14%]\ntests/test_frontend_polish.py ....                                       [ 15%]\ntests/test_gnani_speech.py ............................................. [ 24%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 33%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 49%]\n.                                                                        [ 49%]\ntests/test_repo_readiness.py ...........                                 [ 52%]\ntests/test_sarvam.py ................................................... [ 62%]\n........................................................................ [ 77%]\n......                                                                   [ 78%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 84%]\ntests/test_speech_session.py ......................................      [ 92%]\ntests/test_stt_recovery.py ........................                      [ 97%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 490 passed in 19.31s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_speech_routing.py tests/test_stt_recovery.py tests/test_speech_session.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 84%]\n.............                                                            [100%]\n85 passed in 7.52s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ],
+    "notes": "User has one successful same-WAV v3 Kannada STT result; full real website/Kanglish quality remain unverified. Mocked verification only; no public hosting or commit without approval."
+  },
+  {
+    "id": "F-SCREEN-BRIEF",
+    "priority": 3,
+    "title": "Spoken owner briefing before human decision",
+    "user_visible_behavior": "Two speech answers are recapped as unverified identity/organisation and reason; spoken and displayed before explicit acknowledgement enables human choices.",
+    "dependencies": [
+      "F-KANNADA-STT-V3"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_screen_brief.py tests/test_speech_session.py",
+    "notes": "Main speech UI only; exact caller excerpts, no additional LLM calls, no real calls; native voice quality user-run.",
+    "evidence": [
+      {
+        "at_utc": "2026-11-04T11:19:28.113250+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 497 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_call_summary.py ..........                                    [  4%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 14%]\ntests/test_frontend_polish.py ....                                       [ 15%]\ntests/test_gnani_speech.py ............................................. [ 24%]\n...................................                                      [ 31%]\ntests/test_harness.py ........                                           [ 33%]\ntests/test_incoming_call.py ................................             [ 39%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 49%]\ntests/test_repo_readiness.py ...........                                 [ 51%]\ntests/test_sarvam.py ................................................... [ 61%]\n........................................................................ [ 76%]\n......                                                                   [ 77%]\ntests/test_screen_brief.py .......                                       [ 78%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 84%]\ntests/test_speech_session.py ......................................      [ 92%]\ntests/test_stt_recovery.py ........................                      [ 97%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 497 passed in 20.40s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_screen_brief.py tests/test_speech_session.py",
+            "exit_code": 0,
+            "stdout": ".............................................                            [100%]\n45 passed in 7.21s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T11:20:36.656110+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 498 items\n\ntests/test_adapters.py ......                                            [  1%]\ntests/test_architecture.py .....                                         [  2%]\ntests/test_call_summary.py ..........                                    [  4%]\ntests/test_dialogue_quality.py ......................                    [  8%]\ntests/test_flow.py ..............................                        [ 14%]\ntests/test_frontend_polish.py ....                                       [ 15%]\ntests/test_gnani_speech.py ............................................. [ 24%]\n...................................                                      [ 31%]\ntests/test_harness.py ........                                           [ 33%]\ntests/test_incoming_call.py ................................             [ 39%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 51%]\ntests/test_sarvam.py ................................................... [ 61%]\n........................................................................ [ 75%]\n......                                                                   [ 77%]\ntests/test_screen_brief.py ........                                      [ 78%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 84%]\ntests/test_speech_session.py ......................................      [ 92%]\ntests/test_stt_recovery.py ........................                      [ 97%]\ntests/test_ui_launch.py ........                                         [ 98%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 498 passed in 19.89s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_screen_brief.py tests/test_speech_session.py",
+            "exit_code": 0,
+            "stdout": "..............................................                           [100%]\n46 passed in 7.57s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F-DEMO-LOGIN",
+    "priority": 3,
+    "title": "Private prototype login and 500-account SQLite store",
+    "user_visible_behavior": "Opt-in password login protects the existing app, with persistent invited accounts and500 disabled demo records; no shared default login.",
+    "dependencies": [
+      "F-SCREEN-BRIEF"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_accounts.py",
+    "notes": "Code/offline capacity and loopback auth only; no production or500concurrent service readiness, no provider calls or commit without approval.",
+    "evidence": [
+      {
+        "at_utc": "2026-11-04T11:24:57.812226+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 506 items\n\ntests/test_accounts.py ........                                          [  1%]\ntests/test_adapters.py ......                                            [  2%]\ntests/test_architecture.py .....                                         [  3%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_dialogue_quality.py ......................                    [ 10%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 16%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 49%]\n.                                                                        [ 49%]\ntests/test_repo_readiness.py ...........                                 [ 51%]\ntests/test_sarvam.py ................................................... [ 62%]\n........................................................................ [ 76%]\n......                                                                   [ 77%]\ntests/test_screen_brief.py ........                                      [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 85%]\ntests/test_speech_session.py ......................................      [ 92%]\ntests/test_stt_recovery.py ........................                      [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 506 passed in 27.24s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_accounts.py",
+            "exit_code": 0,
+            "stdout": "........                                                                 [100%]\n8 passed in 9.11s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T11:28:06.887324+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 506 items\n\ntests/test_accounts.py ........                                          [  1%]\ntests/test_adapters.py ......                                            [  2%]\ntests/test_architecture.py .....                                         [  3%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_dialogue_quality.py ......................                    [ 10%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 16%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 49%]\n.                                                                        [ 49%]\ntests/test_repo_readiness.py ...........                                 [ 51%]\ntests/test_sarvam.py ................................................... [ 62%]\n........................................................................ [ 76%]\n......                                                                   [ 77%]\ntests/test_screen_brief.py ........                                      [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 85%]\ntests/test_speech_session.py ......................................      [ 92%]\ntests/test_stt_recovery.py ........................                      [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 506 passed in 27.25s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_accounts.py",
+            "exit_code": 0,
+            "stdout": "........                                                                 [100%]\n8 passed in 9.43s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T11:33:44.899337+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 509 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  6%]\ntests/test_dialogue_quality.py ......................                    [ 10%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 33%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 49%]\n.                                                                        [ 50%]\ntests/test_repo_readiness.py ...........                                 [ 52%]\ntests/test_sarvam.py ................................................... [ 62%]\n........................................................................ [ 76%]\n......                                                                   [ 77%]\ntests/test_screen_brief.py ........                                      [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 85%]\ntests/test_speech_session.py ......................................      [ 92%]\ntests/test_stt_recovery.py ........................                      [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 509 passed in 28.04s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_accounts.py",
+            "exit_code": 0,
+            "stdout": "...........                                                              [100%]\n11 passed in 9.41s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F-INTENT-BRIEF",
+    "priority": 3,
+    "title": "Intent question and concise model caller briefing",
+    "user_visible_behavior": "Greeting does not count as a reason; ask intent then identity, summarize caller name and intent using one bounded Sarvam JSON call before human decision; unknown details remain unknown.",
+    "dependencies": [
+      "F-SCREEN-BRIEF"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_screen_brief.py tests/test_speech_session.py",
+    "notes": "Main speech UI only; mocked HTTP and loopback. No real calls, credential reads, commits without approval.",
+    "evidence": [
+      {
+        "at_utc": "2026-11-04T12:41:31.420928+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 511 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  6%]\ntests/test_dialogue_quality.py ......................                    [ 10%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 49%]\n.                                                                        [ 49%]\ntests/test_repo_readiness.py ...........                                 [ 52%]\ntests/test_sarvam.py ................................................... [ 62%]\n........................................................................ [ 76%]\n......                                                                   [ 77%]\ntests/test_screen_brief.py ..........                                    [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 85%]\ntests/test_speech_session.py ......................................      [ 92%]\ntests/test_stt_recovery.py ........................                      [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 511 passed in 27.66s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_screen_brief.py tests/test_speech_session.py",
+            "exit_code": 0,
+            "stdout": ".................................................                        [100%]\n49 passed in 7.42s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T12:42:50.924671+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 516 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  6%]\ntests/test_dialogue_quality.py ......................                    [ 10%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 49%]\n.                                                                        [ 49%]\ntests/test_repo_readiness.py ...........                                 [ 51%]\ntests/test_sarvam.py ................................................... [ 61%]\n........................................................................ [ 75%]\n......                                                                   [ 76%]\ntests/test_screen_brief.py ...............                               [ 79%]\ntests/test_showcase.py ........                                          [ 81%]\ntests/test_speech_routing.py .......................                     [ 85%]\ntests/test_speech_session.py ......................................      [ 92%]\ntests/test_stt_recovery.py ........................                      [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 516 passed in 27.41s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_screen_brief.py tests/test_speech_session.py",
+            "exit_code": 0,
+            "stdout": ".....................................................                    [100%]\n53 passed in 7.26s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T12:44:11.132437+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 521 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  6%]\ntests/test_dialogue_quality.py ......................                    [ 10%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 16%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 33%]\ntests/test_incoming_call.py ................................             [ 39%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 51%]\ntests/test_sarvam.py ................................................... [ 60%]\n........................................................................ [ 74%]\n......                                                                   [ 75%]\ntests/test_screen_brief.py ....................                          [ 79%]\ntests/test_showcase.py ........                                          [ 81%]\ntests/test_speech_routing.py .......................                     [ 85%]\ntests/test_speech_session.py ......................................      [ 92%]\ntests/test_stt_recovery.py ........................                      [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 521 passed in 27.81s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_screen_brief.py tests/test_speech_session.py",
+            "exit_code": 0,
+            "stdout": "..........................................................               [100%]\n58 passed in 7.33s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T12:45:31.887109+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 521 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  6%]\ntests/test_dialogue_quality.py ......................                    [ 10%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 16%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 33%]\ntests/test_incoming_call.py ................................             [ 39%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 51%]\ntests/test_sarvam.py ................................................... [ 60%]\n........................................................................ [ 74%]\n......                                                                   [ 75%]\ntests/test_screen_brief.py ....................                          [ 79%]\ntests/test_showcase.py ........                                          [ 81%]\ntests/test_speech_routing.py .......................                     [ 85%]\ntests/test_speech_session.py ......................................      [ 92%]\ntests/test_stt_recovery.py ........................                      [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 521 passed in 28.05s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_screen_brief.py tests/test_speech_session.py",
+            "exit_code": 0,
+            "stdout": "..........................................................               [100%]\n58 passed in 7.93s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F-CONTEXT-DIALOGUE",
+    "priority": 3,
+    "title": "Context-first gentle humour for Sarvam Dadi",
+    "user_visible_behavior": "Sarvam reply prompt prioritizes the latest caller request and remembered facts, uses optional relevant delays and gentle situational humour without a forced topic shift.",
+    "dependencies": [
+      "F-INTENT-BRIEF"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_context_dialogue.py tests/test_sarvam.py",
+    "notes": "Prompt-only; guards/call limits/persona facts/localbrain unchanged. Mocked evidence does not establish humour or live dialogue quality.",
+    "evidence": [
+      {
+        "at_utc": "2026-11-04T12:47:31.626385+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 531 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  6%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 12%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 33%]\ntests/test_harness.py ........                                           [ 35%]\ntests/test_incoming_call.py ................................             [ 41%]\ntests/test_local_brain.py .............................................. [ 49%]\n.                                                                        [ 49%]\ntests/test_repo_readiness.py ...........                                 [ 51%]\ntests/test_sarvam.py ................................................... [ 61%]\n........................................................................ [ 75%]\n......                                                                   [ 76%]\ntests/test_screen_brief.py ....................                          [ 80%]\ntests/test_showcase.py ........                                          [ 81%]\ntests/test_speech_routing.py .......................                     [ 85%]\ntests/test_speech_session.py ......................................      [ 93%]\ntests/test_stt_recovery.py ........................                      [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 531 passed in 28.95s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 51%]\n...................................................................      [100%]\n139 passed in 5.84s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T12:49:02.560042+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 531 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  6%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 12%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 33%]\ntests/test_harness.py ........                                           [ 35%]\ntests/test_incoming_call.py ................................             [ 41%]\ntests/test_local_brain.py .............................................. [ 49%]\n.                                                                        [ 49%]\ntests/test_repo_readiness.py ...........                                 [ 51%]\ntests/test_sarvam.py ................................................... [ 61%]\n........................................................................ [ 75%]\n......                                                                   [ 76%]\ntests/test_screen_brief.py ....................                          [ 80%]\ntests/test_showcase.py ........                                          [ 81%]\ntests/test_speech_routing.py .......................                     [ 85%]\ntests/test_speech_session.py ......................................      [ 93%]\ntests/test_stt_recovery.py ........................                      [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 531 passed in 28.28s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 51%]\n...................................................................      [100%]\n139 passed in 5.91s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T12:50:08.243643+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 531 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  6%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 12%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 33%]\ntests/test_harness.py ........                                           [ 35%]\ntests/test_incoming_call.py ................................             [ 41%]\ntests/test_local_brain.py .............................................. [ 49%]\n.                                                                        [ 49%]\ntests/test_repo_readiness.py ...........                                 [ 51%]\ntests/test_sarvam.py ................................................... [ 61%]\n........................................................................ [ 75%]\n......                                                                   [ 76%]\ntests/test_screen_brief.py ....................                          [ 80%]\ntests/test_showcase.py ........                                          [ 81%]\ntests/test_speech_routing.py .......................                     [ 85%]\ntests/test_speech_session.py ......................................      [ 93%]\ntests/test_stt_recovery.py ........................                      [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 531 passed in 29.96s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 51%]\n...................................................................      [100%]\n139 passed in 6.20s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F-SARVAM-CONVERSATIONS",
+    "priority": 3,
+    "title": "Documented Sarvam conversational model default",
+    "user_visible_behavior": "Sarvam defaults to sarvam-105b-conversations on existing v1 route, with explicit flagship/30b overrides and existing context-first dialogue/safety rules.",
+    "dependencies": [
+      "F-CONTEXT-DIALOGUE"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_sarvam.py tests/test_context_dialogue.py",
+    "notes": "Official model ID/route verified; real account access, JSON summary support, voice quality and latency require user-run evidence. No paid agent calls or commit without approval.",
+    "evidence": [
+      {
+        "at_utc": "2026-11-04T13:17:59.344147+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 534 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 33%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 49%]\n.                                                                        [ 49%]\ntests/test_repo_readiness.py ...........                                 [ 51%]\ntests/test_sarvam.py ................................................... [ 61%]\n........................................................................ [ 74%]\n.........                                                                [ 76%]\ntests/test_screen_brief.py ....................                          [ 80%]\ntests/test_showcase.py ........                                          [ 81%]\ntests/test_speech_routing.py .......................                     [ 85%]\ntests/test_speech_session.py ......................................      [ 93%]\ntests/test_stt_recovery.py ........................                      [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 534 passed in 58.62s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_sarvam.py tests/test_context_dialogue.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 50%]\n......................................................................   [100%]\n142 passed in 14.49s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F-TRANSCRIPT-GROUNDING",
+    "priority": 3,
+    "title": "Contextual replies to Hindi and Kannada transcripts",
+    "user_visible_behavior": "Sarvam treats each ASR transcript as the caller's actual utterance, answers its meaning using recent conversation, and avoids forced hearing, phone, tea, or repeat-request detours.",
+    "dependencies": [
+      "F-SARVAM-CONVERSATIONS"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+    "notes": "Sarvam-only prompt and corrective-instruction wording; runtime tactic selection/metadata remains unchanged. No API/model settings, extra calls, speech routing, or weakened guards. Mock tests prove prompt construction/context plumbing only, not live dialogue quality.",
+    "evidence": [
+      {
+        "at_utc": "2026-11-04T14:24:06.929765+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 542 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 50%]\ntests/test_sarvam.py ................................................... [ 60%]\n........................................................................ [ 73%]\n...........                                                              [ 75%]\ntests/test_screen_brief.py ....................                          [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 85%]\ntests/test_speech_session.py ......................................      [ 92%]\ntests/test_stt_recovery.py ........................                      [ 96%]\ntests/test_transcript_grounding.py ......                                [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 542 passed in 31.07s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 48%]\n........................................................................ [ 96%]\n......                                                                   [100%]\n150 passed in 7.27s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T15:25:36.182574+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 543 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 50%]\ntests/test_sarvam.py ................................................... [ 60%]\n........................................................................ [ 73%]\n...........                                                              [ 75%]\ntests/test_screen_brief.py ....................                          [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 84%]\ntests/test_speech_session.py ......................................      [ 91%]\ntests/test_stt_recovery.py ........................                      [ 96%]\ntests/test_transcript_grounding.py .......                               [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 543 passed in 33.05s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 47%]\n........................................................................ [ 95%]\n.......                                                                  [100%]\n151 passed in 7.31s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T15:29:02.190593+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 543 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 50%]\ntests/test_sarvam.py ................................................... [ 60%]\n........................................................................ [ 73%]\n...........                                                              [ 75%]\ntests/test_screen_brief.py ....................                          [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 84%]\ntests/test_speech_session.py ......................................      [ 91%]\ntests/test_stt_recovery.py ........................                      [ 96%]\ntests/test_transcript_grounding.py .......                               [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n======================== 543 passed in 67.31s (0:01:07) ========================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 47%]\n........................................................................ [ 95%]\n.......                                                                  [100%]\n151 passed in 24.62s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T15:51:23.594046+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 545 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 50%]\ntests/test_sarvam.py ................................................... [ 60%]\n........................................................................ [ 73%]\n...........                                                              [ 75%]\ntests/test_screen_brief.py ....................                          [ 78%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 84%]\ntests/test_speech_session.py ......................................      [ 91%]\ntests/test_stt_recovery.py ........................                      [ 95%]\ntests/test_transcript_grounding.py .........                             [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 545 passed in 29.57s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 47%]\n........................................................................ [ 94%]\n.........                                                                [100%]\n153 passed in 5.98s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T16:08:26.389697+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 547 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 39%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 50%]\ntests/test_sarvam.py ................................................... [ 59%]\n........................................................................ [ 72%]\n............                                                             [ 75%]\ntests/test_screen_brief.py ....................                          [ 78%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 84%]\ntests/test_speech_session.py ......................................      [ 91%]\ntests/test_stt_recovery.py ........................                      [ 95%]\ntests/test_transcript_grounding.py ..........                            [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 547 passed in 33.10s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 46%]\n........................................................................ [ 92%]\n...........                                                              [100%]\n155 passed in 6.75s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T16:09:46.042894+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 547 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 39%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 50%]\ntests/test_sarvam.py ................................................... [ 59%]\n........................................................................ [ 72%]\n............                                                             [ 75%]\ntests/test_screen_brief.py ....................                          [ 78%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 84%]\ntests/test_speech_session.py ......................................      [ 91%]\ntests/test_stt_recovery.py ........................                      [ 95%]\ntests/test_transcript_grounding.py ..........                            [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 547 passed in 33.68s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 46%]\n........................................................................ [ 92%]\n...........                                                              [100%]\n155 passed in 6.53s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T16:45:56.114715+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 553 items\n\ntests/test_accounts.py ...........                                       [  1%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  3%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n......................................                                   [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 39%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 50%]\ntests/test_sarvam.py ................................................... [ 59%]\n........................................................................ [ 72%]\n.............                                                            [ 75%]\ntests/test_screen_brief.py ....................                          [ 78%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 84%]\ntests/test_speech_session.py .......................................     [ 91%]\ntests/test_stt_recovery.py ........................                      [ 95%]\ntests/test_transcript_grounding.py ...........                           [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n======================== 553 passed in 76.58s (0:01:16) ========================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 45%]\n........................................................................ [ 91%]\n.............                                                            [100%]\n157 passed in 17.53s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T16:57:05.748010+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 555 items\n\ntests/test_accounts.py ...........                                       [  1%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  3%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n......................................                                   [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 39%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 50%]\ntests/test_sarvam.py ................................................... [ 59%]\n........................................................................ [ 72%]\n..............                                                           [ 74%]\ntests/test_screen_brief.py ....................                          [ 78%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 84%]\ntests/test_speech_session.py .......................................     [ 91%]\ntests/test_stt_recovery.py ........................                      [ 95%]\ntests/test_transcript_grounding.py ............                          [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 555 passed in 37.63s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 45%]\n........................................................................ [ 90%]\n...............                                                          [100%]\n159 passed in 8.46s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T19:09:20.198867+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 579 items\n\ntests/test_accounts.py ...........                                       [  1%]\ntests/test_adapters.py ......                                            [  2%]\ntests/test_architecture.py .....                                         [  3%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 16%]\ntests/test_gnani_speech.py ............................................. [ 24%]\n......................................                                   [ 31%]\ntests/test_harness.py ........                                           [ 32%]\ntests/test_humour_v13.py ...........                                     [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 50%]\ntests/test_sarvam.py ................................................... [ 58%]\n........................................................................ [ 71%]\n.................                                                        [ 74%]\ntests/test_screen_brief.py ............................                  [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py ........................                    [ 84%]\ntests/test_speech_session.py ........................................    [ 91%]\ntests/test_stt_recovery.py ........................                      [ 95%]\ntests/test_transcript_grounding.py ............                          [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 579 passed in 34.47s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 44%]\n........................................................................ [ 88%]\n..................                                                       [100%]\n162 passed in 7.25s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T19:18:04.227837+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 584 items\n\ntests/test_accounts.py ...........                                       [  1%]\ntests/test_adapters.py ......                                            [  2%]\ntests/test_architecture.py .....                                         [  3%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 10%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 16%]\ntests/test_gnani_speech.py ............................................. [ 24%]\n......................................                                   [ 30%]\ntests/test_harness.py ........                                           [ 32%]\ntests/test_humour_v13.py ................                                [ 35%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 50%]\ntests/test_sarvam.py ................................................... [ 59%]\n........................................................................ [ 71%]\n.................                                                        [ 74%]\ntests/test_screen_brief.py ............................                  [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py ........................                    [ 84%]\ntests/test_speech_session.py ........................................    [ 91%]\ntests/test_stt_recovery.py ........................                      [ 95%]\ntests/test_transcript_grounding.py ............                          [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 584 passed in 31.49s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 44%]\n........................................................................ [ 88%]\n..................                                                       [100%]\n162 passed in 6.47s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T20:16:24.429591+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 593 items\n\ntests/test_accounts.py ...........                                       [  1%]\ntests/test_adapters.py ......                                            [  2%]\ntests/test_architecture.py .....                                         [  3%]\ntests/test_call_summary.py ................                              [  6%]\ntests/test_context_dialogue.py ..........                                [  8%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n......................................                                   [ 31%]\ntests/test_harness.py ........                                           [ 32%]\ntests/test_humour_v13.py ...................                             [ 36%]\ntests/test_incoming_call.py ................................             [ 41%]\ntests/test_local_brain.py .............................................. [ 49%]\n.                                                                        [ 49%]\ntests/test_repo_readiness.py ...........                                 [ 51%]\ntests/test_sarvam.py ................................................... [ 59%]\n........................................................................ [ 72%]\n.................                                                        [ 74%]\ntests/test_screen_brief.py ............................                  [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py ........................                    [ 84%]\ntests/test_speech_session.py ........................................    [ 91%]\ntests/test_stt_recovery.py ........................                      [ 95%]\ntests/test_transcript_grounding.py ............                          [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 593 passed in 30.96s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 44%]\n........................................................................ [ 88%]\n..................                                                       [100%]\n162 passed in 6.16s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T20:31:33.341600+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 615 items\n\ntests/test_accounts.py ...........                                       [  1%]\ntests/test_adapters.py ......                                            [  2%]\ntests/test_architecture.py .....                                         [  3%]\ntests/test_call_summary.py ................                              [  6%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 16%]\ntests/test_gnani_speech.py ............................................. [ 24%]\n......................................                                   [ 30%]\ntests/test_harness.py ........                                           [ 31%]\ntests/test_humour_patterns.py ......................                     [ 35%]\ntests/test_humour_v13.py ...................                             [ 38%]\ntests/test_incoming_call.py ................................             [ 43%]\ntests/test_local_brain.py .............................................. [ 51%]\n.                                                                        [ 51%]\ntests/test_repo_readiness.py ...........                                 [ 53%]\ntests/test_sarvam.py ................................................... [ 61%]\n........................................................................ [ 73%]\n.................                                                        [ 75%]\ntests/test_screen_brief.py ............................                  [ 80%]\ntests/test_showcase.py ........                                          [ 81%]\ntests/test_speech_routing.py ........................                    [ 85%]\ntests/test_speech_session.py ........................................    [ 92%]\ntests/test_stt_recovery.py ........................                      [ 95%]\ntests/test_transcript_grounding.py ............                          [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 615 passed in 31.00s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 44%]\n........................................................................ [ 88%]\n..................                                                       [100%]\n162 passed in 6.20s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T20:32:30.080829+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 617 items\n\ntests/test_accounts.py ...........                                       [  1%]\ntests/test_adapters.py ......                                            [  2%]\ntests/test_architecture.py .....                                         [  3%]\ntests/test_call_summary.py ................                              [  6%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 16%]\ntests/test_gnani_speech.py ............................................. [ 24%]\n......................................                                   [ 30%]\ntests/test_harness.py ........                                           [ 31%]\ntests/test_humour_patterns.py ........................                   [ 35%]\ntests/test_humour_v13.py ...................                             [ 38%]\ntests/test_incoming_call.py ................................             [ 43%]\ntests/test_local_brain.py .............................................. [ 51%]\n.                                                                        [ 51%]\ntests/test_repo_readiness.py ...........                                 [ 53%]\ntests/test_sarvam.py ................................................... [ 61%]\n........................................................................ [ 73%]\n.................                                                        [ 75%]\ntests/test_screen_brief.py ............................                  [ 80%]\ntests/test_showcase.py ........                                          [ 81%]\ntests/test_speech_routing.py ........................                    [ 85%]\ntests/test_speech_session.py ........................................    [ 92%]\ntests/test_stt_recovery.py ........................                      [ 95%]\ntests/test_transcript_grounding.py ............                          [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 617 passed in 30.07s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 44%]\n........................................................................ [ 88%]\n..................                                                       [100%]\n162 passed in 6.25s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-05T14:05:50.361564+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 631 items\n\ntests/test_accounts.py ...........                                       [  1%]\ntests/test_adapters.py ......                                            [  2%]\ntests/test_ajji_voice.py .....                                           [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_audio_pacing.py .                                             [  4%]\ntests/test_call_summary.py ................                              [  6%]\ntests/test_context_dialogue.py ..........                                [  8%]\ntests/test_dialogue_quality.py ......................                    [ 12%]\ntests/test_flow.py ..............................                        [ 16%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 24%]\n......................................                                   [ 30%]\ntests/test_harness.py ........                                           [ 31%]\ntests/test_humour_patterns.py ........................                   [ 35%]\ntests/test_humour_v13.py ....................                            [ 38%]\ntests/test_incoming_call.py ................................             [ 43%]\ntests/test_local_brain.py .............................................. [ 51%]\n...                                                                      [ 51%]\ntests/test_repo_readiness.py ...........                                 [ 53%]\ntests/test_sarvam.py ................................................... [ 61%]\n........................................................................ [ 72%]\n..................                                                       [ 75%]\ntests/test_screen_brief.py ............................                  [ 80%]\ntests/test_showcase.py .........                                         [ 81%]\ntests/test_speech_routing.py ..........................                  [ 85%]\ntests/test_speech_session.py ........................................    [ 92%]\ntests/test_stt_recovery.py ........................                      [ 95%]\ntests/test_telugu_flow.py .                                              [ 96%]\ntests/test_transcript_grounding.py ............                          [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 631 passed in 30.60s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_context_dialogue.py tests/test_sarvam.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 44%]\n........................................................................ [ 88%]\n...................                                                      [100%]\n163 passed in 6.13s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F-TRANSCRIPT-WEBFLOW",
+    "priority": 3,
+    "title": "Use the contextual Sarvam prompt in the speech website",
+    "user_visible_behavior": "The speech call panel identifies when Sarvam prompt v11 is selected; the real Gradio microphone callback passes the ASR transcript and recent dialogue into that prompt before synthesis.",
+    "dependencies": [
+      "F-TRANSCRIPT-GROUNDING"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_speech_session.py",
+    "notes": "Actual Gradio loopback path with mocked Gnani HTTP and fake Sarvam brain only. No real API/device call. Preserve default MOCK, call flow, language selection, human gate and reset.",
+    "evidence": [
+      {
+        "at_utc": "2026-11-04T15:03:57.748703+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 543 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 50%]\ntests/test_sarvam.py ................................................... [ 60%]\n........................................................................ [ 73%]\n...........                                                              [ 75%]\ntests/test_screen_brief.py ....................                          [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 84%]\ntests/test_speech_session.py ......................................      [ 91%]\ntests/test_stt_recovery.py ........................                      [ 96%]\ntests/test_transcript_grounding.py .......                               [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 543 passed in 34.27s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_speech_session.py",
+            "exit_code": 0,
+            "stdout": ".............................................                            [100%]\n45 passed in 10.58s\n",
+            "stderr": ""
+          }
+        ]
+      },
+      {
+        "at_utc": "2026-11-04T15:06:03.418065+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 543 items\n\ntests/test_accounts.py ...........                                       [  2%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  4%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 18%]\ntests/test_gnani_speech.py ............................................. [ 26%]\n...................................                                      [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 50%]\ntests/test_sarvam.py ................................................... [ 60%]\n........................................................................ [ 73%]\n...........                                                              [ 75%]\ntests/test_screen_brief.py ....................                          [ 79%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 84%]\ntests/test_speech_session.py ......................................      [ 91%]\ntests/test_stt_recovery.py ........................                      [ 96%]\ntests/test_transcript_grounding.py .......                               [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 543 passed in 51.95s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_transcript_grounding.py tests/test_speech_session.py",
+            "exit_code": 0,
+            "stdout": ".............................................                            [100%]\n45 passed in 9.08s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F-KANNADA-EXPRESSIVE-TTS",
+    "priority": 3,
+    "title": "Slightly faster Kannada speech with context-aware vocal cues",
+    "user_visible_behavior": "Kannada TTS is slightly faster than Hindi; Sarvam may add a documented sigh or pause when the caller's words genuinely warrant it.",
+    "dependencies": [
+      "F-TRANSCRIPT-GROUNDING"
+    ],
+    "status": "passing",
+    "verification": ".venv/bin/python -m pytest -q tests/test_gnani_speech.py tests/test_sarvam.py tests/test_speech_session.py tests/test_transcript_grounding.py",
+    "notes": "Kannada default TTS speed 1.0; Hindi and other languages stay at 0.92. GNANI_TTS_SPEED remains a global explicit override and GNANI_TTS_KANNADA_SPEED is a Kannada-only override. Permit only <sigh> or <pauses>, max one per reply, through the existing Timbre v3.0 adapter. High-pitch control/tag is undocumented and must not be invented. No real API calls; live speed, emotion-tag synthesis and voice quality remain user-tested.",
+    "evidence": [
+      {
+        "at_utc": "2026-11-04T16:26:49.591144+00:00",
+        "base_commit": "3a4d0fe5f4392f0d35dd3a10edbf92744702982f",
+        "working_tree": "verification includes uncommitted changes",
+        "runs": [
+          {
+            "command": "make check",
+            "exit_code": 0,
+            "stdout": "bash scripts/check.sh\n[check] start\n[check] running L1 static\nAll checks passed!\n[check] running L2 offline tests\n============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.7.0\nrootdir: /Users/bharathmuthyala/dadi\nconfigfile: pyproject.toml\ntestpaths: tests\ncollected 552 items\n\ntests/test_accounts.py ...........                                       [  1%]\ntests/test_adapters.py ......                                            [  3%]\ntests/test_architecture.py .....                                         [  3%]\ntests/test_call_summary.py ..........                                    [  5%]\ntests/test_context_dialogue.py ..........                                [  7%]\ntests/test_dialogue_quality.py ......................                    [ 11%]\ntests/test_flow.py ..............................                        [ 17%]\ntests/test_frontend_polish.py ....                                       [ 17%]\ntests/test_gnani_speech.py ............................................. [ 25%]\n......................................                                   [ 32%]\ntests/test_harness.py ........                                           [ 34%]\ntests/test_incoming_call.py ................................             [ 40%]\ntests/test_local_brain.py .............................................. [ 48%]\n.                                                                        [ 48%]\ntests/test_repo_readiness.py ...........                                 [ 50%]\ntests/test_sarvam.py ................................................... [ 59%]\n........................................................................ [ 72%]\n.............                                                            [ 75%]\ntests/test_screen_brief.py ....................                          [ 78%]\ntests/test_showcase.py ........                                          [ 80%]\ntests/test_speech_routing.py .......................                     [ 84%]\ntests/test_speech_session.py .......................................     [ 91%]\ntests/test_stt_recovery.py ........................                      [ 95%]\ntests/test_transcript_grounding.py ..........                            [ 97%]\ntests/test_ui_launch.py ........                                         [ 99%]\ntests/test_ui_theme.py .....                                             [100%]\n\n============================= 552 passed in 30.95s =============================\n[check] ready\n",
+            "stderr": ""
+          },
+          {
+            "command": ".venv/bin/python -m pytest -q tests/test_gnani_speech.py tests/test_sarvam.py tests/test_speech_session.py tests/test_transcript_grounding.py",
+            "exit_code": 0,
+            "stdout": "........................................................................ [ 26%]\n........................................................................ [ 53%]\n........................................................................ [ 80%]\n....................................................                     [100%]\n268 passed in 13.42s\n",
+            "stderr": ""
+          }
+        ]
+      }
+    ]
   }
 ]

@@ -321,3 +321,216 @@ Old OTP-colon coverage retained with3regressions. Prompt/otherfunctions frozen; 
 UI/provider/local/training source unchanged. Markdown links and workflow YAML checked locally;
 hosted CI not run. Secret-pattern/history metadata audit reports no matches, not certification.
 Fresh review ACCEPT2/2 each in prototype-repo scope. No stage/commit/push until user approval.
+
+## F-INCOMING-DEMO — 2026-11-01 (D020), uncommitted for review
+Setup offline succeeded; baseline337passed17.66s, smoke6passed0.08s. New targeted20passed1.85s.
+Review caught duplicate-stop audio clearing; browser caught empty-yield chained-generator
+clearing all outputs on Pick up. Both fixed, matching-token and7no-op regressions added.
+Intermediate full359passed/1testfixturefail18.21s: empty report intentionally lacks heading;
+fix test with conversation rather than change empty-report behavior. Final verifier exited0:
+L1clean,369passed18.03s,32featurepassed1.60s, smoke6passed0.12s. No skips. Safe failure labels,
+guard diagnostic retention and disabled-TTS source labels covered by regressions.
+Actual own python -m src.app on8982 fixture UI exercised Start/screen/human gate/Dadi/report,
+legitimate fixture gate and finalfixedPickUp→ENDED; screenshots under docs/evidence/incoming-*.jpg.
+Text preview only: no actual speech/device/provider calls or private audio read. Audio tests use
+silent generated WAVs with MockTransport, not speech/detection-quality evidence. ExistingCLI
+regressions and all frozen core/function contracts passed. Final read-only review ACCEPT.
+Own preview stopped; user apps untouched. No commit/push until review approval. T2unchanged.
+
+## Sarvam prompt v2 — 2026-11-01 (D021)
+User-run scripts/smoke_sarvam.py: status200,1.1995521660137456s,sarvam-105b,bearer,
+fixture=false,fallback_local=false,error=null,prompt sarvam-dadi-v1. Actual reply:
+सीबीआई? अरे बेटा ये आपने पहले पुलिस और अब सीबीआई बताया? पहले तो कहा वो बैंक था। दोस्ती का नाटक मत करो, सीधे-सीधे बताओ असल में तुम हैं कौन?
+Connectivity verified; quality rejected: invented history/confrontation. Likely context-layer
+contributors: explicit bank/police contradiction example and style examples as live history.
+Baseline offline setup succeeded; restricted check366passed/3localhostPermissionError7.22s;
+loopback-enabled baseline369passed18.14s; mocksmoke6passed0.09s. Focused91passed/1launch
+deselected2.26s was interim only. Intermediate final verifier failed L1long lines4then1; fixed.
+Final scripts/verify_feature.py F-SARVAM-BRAIN exited0: L1clean,375passed17.90s,
+targeted109passed10.79s, including existing real Gradio fixture launch/event paths. Final
+make smoke6passed0.09s. All model/provider tests mocked; no real key or credential-file access.
+Real v2 smoke, naturalness, Kannada review and full spoken pipeline remain UNTESTED.
+No commit/push; prior incoming demo files preserved.
+
+## Sarvam HTTP200 diagnostics — 2026-11-01 (D022)
+User v2 smoke failed150tokens2.2352241670014337s and300tokens3.0471215409925207s,
+HTTP200/no reply. No response shape evidence yet; cause remains unknown. Add safe adapter
+structure/count diagnostics without changing request or returning reasoning as speech.
+Focused58passed/1launch deselected2.12s (interim only); L1passed. Full intermediate384passed/
+1historicalshowcasehash failure18.43s; narrow original-hash-anchored allowance plus AST
+freeze of all unrelated adapter definitions corrects that old presentation-only constraint.
+Final existing Sarvam verifier exited0: L1clean, make check385passed17.91s, feature119passed
+11.69s including Gradio fixture launch, mocksmoke6passed0.13s, no skips. All HTTP mocked.
+No new paid calls, secret-file reads, provider schema/default/prompt changes or commit/push.
+Next: user diagnostic smoke at150tokens; no real readiness or quality acceptance yet.
+
+## Sarvam reasoning-off opt-in — 2026-11-01 (D023)
+User diagnostic: HTTP2002.6113396669970825s,prompt785/completion150/total935tokens,
+finishlength/contentnull/reasoning_chars0. Cap exhausted; internal reasoning remains inference
+consistent with official docs, not exposed trace. User approves explicit reasoning_effort:null.
+MockTransport verifies none->JSONnull, one request,150token default, unset omission, unsupported
+values rejected beforeHTTP. No retries/provider calls/key files. Full unrelated module AST kept.
+Focused62passed/1launch deselected3.94s interim. Final F-SARVAM-BRAIN verifier exited0:
+L1clean,make check389passed18.12s,targeted123passed10.41s, mocksmoke6passed0.10s, no skips.
+Real reasoning-off acceptance/persona/latency still require user's smoke. No commit/push.
+
+## Sarvam v3 follow-up and reusable probe — 2026-11-01 (D024)
+User real reasoning-off smokeHTTP2001.1322455419867765s,24outputtokens,finishstop,v2 usable
+polite Hindi. User3turn Hindi:1.08/0.75/0.79s,zero guards/retries, missed Ravi recall and
+glasses tactic. These are text-only results, not full speech/device readiness. Prompt v3 adds
+known-fact recall before delay and explicit selected-tactic compliance. Agent real calls:none.
+Initial inline offline fixture attempts repeated canned replies; no quality pass claimed.
+New CLI default preview no calls; --real opt-in3turns(max6requests), stoperror/>15s; fake-brain
+4tests passed1.79s. Interim lint2longlines fixed. Final F-SARVAM-BRAIN verifier exited0:
+L1clean,393passed17.59s,targeted127passed10.65s, mocksmoke6passed0.09s, no skips.
+Manual default preview executed successfully without model/provider access.
+Await user real v3 trial for quality; no commit/push.
+
+## Sarvam caller-context correction — 2026-11-01 (D025)
+User v3 screenshot: three real HTTP200 turns0.91/1.79/0.93s,zero guards/fallbacks. Recall
+failed and glasses mismatch persisted. Offline trace confirms Ravi present; early-stage ask-who
+instruction conflicted. V4 makes remembered claims explicit user JSON, keeps earlier statements
+bounded/untrusted and removes caller memory from system; Sarvam-only stage/glasses overrides.
+Baseline setup succeeded,393passed25.53s,smoke6passed0.09s. Focused71passed/1launch deselected
+2.13s interim. Interim398/132 source superseded after preserving earlier statements and adding
+injection regression. Final F-SARVAM-BRAIN verifier exited0: L1clean,399passed17.44s,
+feature133passed10.61s, mocksmoke6passed0.09s, no skips. All HTTP mocked. Actual second-request
+payload tests prove name/history/context flow, not model compliance; no live v4 quality claim.
+No provider/key-file/local/training/UI changes or commit/push. Await same user three-turn trial.
+
+## Sarvam v5 gender/promise guard — 2026-11-01 (D026)
+User v4 screenshot1.00/0.87/0.87s,zero guardrejections,Ravi recall succeeds; masculine
+self-reference and implied OTP disclosure still accepted, no actual code leak. User approves
+fix. Repro10failed/7passed1.99s before update; focused17passed1.70s after update. V5 prompt
+and existing regex constants change only; guard functions/retry limits/providers unchanged.
+Additional MockTransport tests verify one correction then safe commit, or two unsafe replies
+and unchanged speech history/turn. Final F-SARVAM-BRAIN verifier exited0: L1clean,
+419passed17.56s, feature153passed11.14s, mocksmoke6passed0.09s, no skips.
+No actual model/service calls/key files/commit/push. Phrase heuristics are not universal
+semantic safety; live v5 behavior and full spoken path remain untested.
+
+## Kannada/Kanglish prompt v6 — 2026-11-01 (D027)
+User says Hindi voice worked; Kannada Ajji sounded like ninage helu after OTP request. No
+exact generated text/audio captured, so text vs TTS issue not conclusively established.
+Kannada-only pronoun/style/address rules and3draft native-script examples added. Non-Kannada
+v5 request snapshots remain exact after version normalization; valid ನಿನಗೆ not rewritten.
+Offline setup succeeded; baseline419passed18.51s,smoke6passed0.11s. Focused7passed1.76s.
+Interim2longline lint issues fixed. Final F-SARVAM-BRAIN verifier exited0: L1clean,
+426passed18.15s, feature160passed10.85s, mocksmoke6passed0.12s, no skips.
+MockTransport capture verifies both Kannada routes receive examples/rules; guard checks only
+native script/length/known safety patterns. Not native-language quality, TTS pronunciation or
+STT accuracy evidence. No agent provider calls/key files/commit/push; await user listening.
+
+## Kannada v7 format correction — 2026-11-01 (D028)
+User real v6 logs: ASR2001.842/TTS2002.354,total4.198s; ASR2002.068/TTS2002.653,total4.723s;
+ASR5048.989,total8.991s,no brain/TTS; later ASR2001.500 then Sarvam2001.030/0.718s,
+wrongscript/markup then too-many-sentences,brain1.752,total3.253s,no TTS/state commit.
+No raw rejected replies supplied. V7 Kannada-only one-sentence style and explicit correction;
+representative MockTransport format errors test rejection then bounded repair, not actual
+recovered replies. Final F-SARVAM-BRAIN verifier exited0:L1clean,433passed24.67s,
+feature167passed22.33s, mocksmoke6passed0.29s,no skips. Safety/HTTP/retry/provider unchanged.
+No agent real calls/key files or commit/push. ASR9s reaches stop-review threshold; real trials
+paused pending user decision. Live v7 naturalness/format and provider recovery remain untested.
+
+## F-CALL-SUMMARY — 2026-11-01 (D029)
+Offline setup succeeded; baseline433passed18.39s,smoke6passed0.10s. Report unit9passed1.74s.
+Intermediate full441passed/1oldGradiofixture assertion failure17.85s: removed verbose metrics
+per user request; update real launched report-path expectations, keep fixture disclosure.
+Add model-time override/markup-escape regression. Final verifier exited0: L1clean,
+443passed17.88s,targeted117passed5.73s, mocksmoke6passed0.12s,no skips. Actual user-visible
+Gradio report/end/reset path exercised key-free fixture; not real service readiness.
+Fresh independent review ACCEPT,10reporttests1.76s. Scores2each correctness/verification/
+scope/reliability/maintainability;handoff1pending final docs evidence, now recorded by parent.
+No paid calls/key files/commit/push. Real classification quality/latency still unverified.
+
+## Kannada repetition and missing-turn diagnosis — 2026-11-01 (D030)
+User transcript5Dadi replies repeatedly asks ನಿಧಾನವಾಗಿ ಹೇಳು; spaced ಒ ಟಿ ಪಿ missed original
+tactic matcher. User terminal evidence ASR5045.960315791977337s(total5.961770249996334) and
+ASR5045.55838025000412s(total5.559161999990465),bothattempts1,brain/TTS0. No successful
+transcription for those turns; no evidence that prompted wording can fix upstream504.
+Routing normalized only temporary Kannada/Kanglish text; raw transcript preserved. Repeated
+slow-request family checked against last3Dadi replies via existing single correction. V8
+examples/continuity reduce generic closings; language quality still requires actual review.
+Setupoffline succeeded;baseline443passed21.20s,smoke6passed0.11s. Focused14passed2.68s.
+Interim verifier457passed25.88s/181passed15.80s superseded after independent review P2:
+prefix matched first-person ಹೇಳುತ್ತೇನೆ/ವಿವರಿಸುತ್ತೇನೆ; delimiters+negative controls fix it.
+Final F-SARVAM-BRAIN verifier exited0:L1clean,459passed24.48s,183passed14.25s,
+mocksmoke6passed0.16s,no skips. Fresh independent recheckACCEPT,16passed2.53s.
+Scores2each correctness/verification/scope/reliability/maintainability,handoff1pending parent
+final record(now recorded). No agent real calls/key files,commit or push. Native dialogue
+quality,broad paraphrase coverage,real STT recovery and accepted-word accuracy remain untested.
+
+## Kannada v9 rejected drafts/OTP continuity — 2026-11-01 (D031)
+User v8 log: rejection1repeated slow request, rejection2repeated prior reply,brain2.141s;
+user reports book detour during OTP. V9 supplies unspoken rejected draft + last spoken as
+corrective user JSON, persists active OTP through followups, removes all book OTP tactics.
+No safety/retry limit changes. Initial offline baseline459passed19.24s,smoke6passed0.11s;
+5focusedpassed1.80s. Interim2lintlonglines fixed. Intermediate463passed/1mockKanglishfixture
+collision19.24s:3replypool maps phone4/glasses1both1. Expand Kannada pool only, preserve
+Hindi/English snapshot mappings; no real HTTP/config change. Final existing verifier exited0:
+L1clean,465passed18.60s,feature189passed10.86s,mocksmoke6passed0.10s,no skips.
+Independent code review ACCEPT22focusedpassed2.76s; fixture review ACCEPT2mapping/source
+passed1.63s and32incomingpassed1.82s. Scores2each correctness/verification/scope/reliability/
+maintainability,handoff1pending parent final record,now supplied. Mock replies are not language
+quality evidence. No paid calls/key files/commit/push. Real v9 repair/ASR recovery untested.
+
+## Hindi end → Kannada reset diagnosis — 2026-11-01
+Existing routing suite22passed2.24s. Direct ephemeral mock probe: Hindi screen sendshi-IN;
+End setsENDED; Kannada on ended state sends no ASR; speech_reset clears language; fresh
+Kannada sendskn-IN and returns generated silent mockWAV. All HTTPMockTransport,fixture
+Sarvam,synthetic0.1sWAV,no real keys/files/provider calls. No code/status change.
+Actual user reset sequence/error not yet confirmed; real Kannada service/accuracy unverified.
+
+## F-STT-RECOVERY — 2026-11-01 (D032)
+Investigation finds lost mic onfailure/generic hiddenHTTPdetail/unsuitableHindi+TTSsmoke.
+Request fields/60s timeout already documented;504 received earlier is not client60s timeout.
+Offline setup succeeded;baseline465passed19.57s,smoke6passed0.11s. New signal/metadata/frame
+checks, exact payload retry/duplicate/stale/reset/pause/model tests, CLI default-offline and
+max2sameWAV/no429retry/noBrainTTS/8sstop, optionalcaptureonly verifies zero providers.
+Interim15passed2CLImergemergefail fixed;188passed2old6-event assertions fixed; full481passed/
+2old6-event failures20.73s; later483passed2old direct3-inputAPIassertions19.18s updated to
+explicitFalse checkbox. Lintlongline errors corrected. These were not waived/skipped.
+Intermediate484/79,485/80,486/81 evidence superseded after new no-callcapture and reviewfix.
+Review P2duplicateinspect resetmanual_used fixed by preserving samehash/language/phase budget;
+identical relocated-file path refresh regression adds no rearm. Final verifier exited0:L1clean,
+487passed19.93s,feature82passed8.41s,mocksmoke6passed0.10s,no skips. Actual loopback pinned
+Gradio upload/playback-output/human gate/rollback/report/reset plus504retain/manualretry and
+inspectonlyzeroHTTP→explicittranscription paths exercised. Physicalcapture/playback untested.
+Standalone probe_stt.py on generated48kmono16bit0.1sWAV printed offline metadata/kn-IN/omitted
+model andzeroAPIcalls; synthetic demonstration only. No actual user recordings/keys read.
+Fresh final review ACCEPT;code/mock correctness,verification,scope,reliability,maintainability,
+handoff2each after parent evidence. Independent19tests1.69s,then21tests2.14s prior to final
+relocation regression; final path-only recheck ACCEPT without new claimed test run.
+No real provider/model/audio-device calls,credential files,commit/push. Actual metadata/real
+504recovery/recognition accuracy/model availability remain unverified. User no-callcapture next.
+
+## F-KANNADA-STT-V3 website integration — 2026-11-01 (D033)
+User-supplied same-WAV1662d3...4.679977s44.1kmono16bit: omitted-modelkn-IN5046.165710333s;
+explicitprisma-v3.0kn-IN2001.374515875s,transcript ನಾನು ರಮೇಶ್, ನಾನು bankನಿಂದ ಮಾತನಾಡುತ್ತಿದ್ದೇನೆ.
+Sanitized evidence JSON saved; one component only, not full T2 or general accuracy acceptance.
+Baseline487passed18.99s,smoke6passed0.11s; firstintegration489/84passed. Added diagnostic
+omission/candidate preflight guard;1lintlongline corrected. Verified-note update required its
+protected-input hash refresh; interim489passed/1hashfailure19.89s, preserved reference/brief.
+Final F-KANNADA-STT-V3 verifier exited0:L1clean,490passed19.31s,targeted85passed7.52s,
+mocksmoke6passed0.11s,no skips. Actual loopback UI HindiEnd/reset→Kannada screen/handoff/
+Dadi/audio with fakebrain/MockTransport assertsmodel3STT,unchangedTimbre,rawmixed input.
+Fresh independent review ACCEPT,46routing/recoverypassed2.33s. Scores2correctness/verification/
+scope/reliability/maintainability,handoff1pending parent final record,now supplied.
+No agent paid calls,key files,publichosting,commit/push. Full real voice and broader Kannada/
+Kanglish word quality/pronunciation/service stability still need user evidence.
+
+
+2026-11-04 D034 F-SCREEN-BRIEF: setup offline success, initial restricted check487pass/3 localhost bind failures (environment); permitted check490passed19.51s. Feature verifier exit0:497passed20.40s L1clean;45focusedpassed7.21s. make smoke6passed. Actual localhost Gradio upload→two screens→brief acknowledgement→human handoff→Dadi→report/reset, fake providers only. Live briefing voice quality/latency untested. No provider or credential-file reads, commit/push.
+
+2026-11-04 D034 fresh review ACCEPT: whitespace controls initially merged words, fixed and covered. Independent8brief tests1.44s. Exact final D034 verifier498passed19.89s/46focused7.57s.
+2026-11-04 D035 final verifier exit0:506passed27.25s L1clean;8focusedaccountspassed9.43s;make smoke6passed0.10s. Actual pinned localhost login/logout/wrong-password/config and queue denial/private DB blocking/two users and intentional cross-session-hash attacks checked with no providers. Earlier506passed27.24s/8passed9.11s superseded after session-binding review. Intermediate startup401 from middleware fixed by allowing only Gradio startup-events; localhost retest1passed7.28s. Seed command created500disabled mock users; git check-ignore confirms DB/WAL/SHM ignored. No active shared account, keys, real calls, commit or push. Storage500records is not500concurrent load evidence.
+
+D035 independent final review ACCEPT,7non-loopback tests3.85s; actual accounts_ui_probe exited0 with intentional cross-account hash reuse403. Six local-prototype rubric scores2each with final evidence. No real calls or personal credentials used.
+
+Account setup diagnostics follow-up: F-DEMO-LOGIN verifier509passed28.04s/11focused9.41s,L1clean;make smoke6passed0.08s. Short/mismatched/duplicate passwords covered without disclosure; all localhost auth probes pass. No actual user credentials inspected.
+
+D036 (2026-11-04) final verifier:521passed28.05s L1clean;58focused7.93s;smoke6passed0.10s. Actual localhost event path successfully passes fake structured summary through TTS, acknowledgement and human handoff/reset. Independent20focused1.50s ACCEPT after bounded intro forms/evidence script ambiguity fixes. No live semantic/voice quality evidence. Baseline509passed28.46s. D037 initial focused138passed2.45s, one actual CLI launch test intentionally excluded from this preliminary run only; full verifier runs all tests unskipped.
+
+D037 final exact-source verifier exit0 after timing correction:531passed29.96s L1clean;139focused6.20s;make smoke6passed0.11s, no skipped tests. Includes all actual loopback application/auth/speech paths. Prior531passed28.28/1395.91 superseded by final timing-only correction. Independent prompt review ACCEPT after system-level precedence fix,10tests0.09s. All provider responses mocked; no live humour/relevance/voice quality or authentication claim. No keys, provider calls, commit/push.
+
+D038 final verifier exit0:L1clean,534passed58.62s;142focused14.49s;make smoke6passed0.25s. Independent review ACCEPT4tests4.49s. Mocked default/explicit model payloads, unchanged endpoint/auth, all loopback UI checks. Initial533passed/1historical STT configfreeze failure40.77s corrected for authorized _sarvam_config change. No real account/model/voice/JSON-summary quality evidence, keys, commit or push.

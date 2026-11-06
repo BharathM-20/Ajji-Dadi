@@ -13,12 +13,24 @@ For real speech later, after the user privately sets SARVAM_API_KEY and GNANI_AP
 process environment (this app never reads key files):
 
 ```sh
-DADI_MODE=sarvam DADI_SPEECH=1 DADI_SARVAM_MOCK=0 SARVAM_FALLBACK_LOCAL=0 GNANI_REAL_ASR=1 GNANI_REAL_TTS=1 .venv/bin/python -m src.app
+unset GNANI_TTS_LANGUAGE GNANI_STT_KANGLISH_CODE
+DADI_INCOMING=0 DADI_MODE=sarvam DADI_SPEECH=1 \
+DADI_SARVAM_MOCK=0 SARVAM_FALLBACK_LOCAL=0 \
+SARVAM_MODEL=sarvam-105b-conversations \
+SARVAM_REASONING_EFFORT=none SARVAM_MAX_TOKENS=150 \
+GNANI_REAL_ASR=1 GNANI_REAL_TTS=1 \
+.venv/bin/python -m src.app
 ```
 
-Unset SARVAM_REASONING_EFFORT: the field name is unverified until the real smoke run, so even
-an empty set value is a configuration error. No reasoning field is sent. SARVAM_MODEL defaults
-sarvam-105b; AUTH_HEADER bearer (alternative api-subscription-key), TEMPERATURE0.5,
+Prompt v12 is the default. To compare the reconstructed v11-style prompt, add
+`SARVAM_PROMPT_VERSION=11` to the launch environment. The route label and brain timing log
+show the selected version. Remove that setting (or set it to12) to use v12 again. This selector
+does not enable fixture mode; keep `DADI_SARVAM_MOCK=0` for real Sarvam requests. The original
+v11 source was not saved separately, so this is based on the recorded D039 prompt behavior.
+
+Use SARVAM_REASONING_EFFORT=none for the user-verified reasoning-off request. Unset omits
+the field; other values fail configuration. See SARVAM_NOTES for actual user evidence. SARVAM_MODEL defaults
+sarvam-105b-conversations; AUTH_HEADER bearer (alternative api-subscription-key), TEMPERATURE0.5,
 MAX_TOKENS150, TIMEOUT20seconds (all settings prefixed SARVAM_). Actual auth/latency unverified.
 No transport retries. A rejected output may get one corrective request; failed turns roll back.
 A missing Sarvam key shows "Sarvam key not set" and FIX in the UI when a brain reply is needed.
@@ -131,3 +143,58 @@ The agent does not run real smoke/eval. Eval defaults to canned TEST FIXTURE; --
 explicit paid-call opt-in. A failed name-recall fixture check is reported honestly. See PROMPTS.md.
 Real latency/quality, auth style, reasoning field name, Kannada/Kanglish quality, Kannada style
 examples and Kalpana Kannada pronunciation remain unverified. Native-speaker review required.
+
+# Compact speech call summary (D029)
+In Sarvam speech mode, End call + report now shows Dadi handling time (simulation), a
+Likely scam / Appears legitimate / Uncertain assessment and a short reason. Duration is
+measured on the server from the human Dadi handoff until the first End, includes pauses,
+and is not verified scammer time wasted. It is zero before Dadi handoff. One additional
+Sarvam report/classification request is made on End if caller speech exists, never on each
+turn. Repeated End uses cached results, including failures; New call resets cache.
+Assessment failure or insufficient information remains Uncertain. TEST FIXTURE never claims
+a real classification and makes no paid assessment request. Other app modes retain old reports.
+Restart the existing app to load this change; run a short role-play and End to check it.
+Real report accuracy and latency remain unverified; guards/gates/speech routing are unchanged.
+
+# Local recording inspection and manual recovery (D032)
+Check **Inspect recording only — no API calls** before recording to inspect/play/download
+a PCM WAV without ASR/brain/TTS. Leave unchecked for the existing speech path.
+**Transcribe retained recording once (uses credits)** is one explicit first attempt or manual
+retry; successful STT continues normal brain/TTS, so it can spend those credits too.
+HTTP status/audio metadata remain visible; changed/stale/language-mismatched clips,duplicate
+clicks and latency pauses do not send more requests. End/reset clears retained reference.
+Mic disabled during human gate/End/pause; New call restores it. See STT_RECOVERY.md.
+
+# Kannada STT model default (D033)
+Kannada/Kanglish now request model=prisma-v3.0 with kn-IN by default, based on the user's
+successful unchanged-WAV trial. Hindi/Hinglish/English keep previous model omission. No
+resampling or TTS changes. Restart and open newly printed URL; real testing requires
+DADI_SARVAM_MOCK=0, GNANI_REAL_ASR=1, GNANI_REAL_TTS=1 and Inspect recording only UNCHECKED.
+Keep SARVAM_REASONING_EFFORT=none. New call before changing language. Two screening clips,
+Let Dadi handle it, then short caller clip. Stop if failure or >10s; real full Kannada voice
+quality/latency still requires user evidence. No public deployment or API-key files.
+
+## Owner briefing before handoff (D034)
+In the main speech UI, first record the reason for calling, then state your name and
+organisation when asked. The second reply reads back bounded excerpts of those answers,
+labelled unverified. No additional model call extracts or guesses an identity. If the caller
+omits an organisation, it remains absent; this is a recap of claims, not verification.
+Listen to the reply (press Play if autoplay is blocked), or read the same briefing in status,
+then press **I heard / read the caller briefing — show choices**. Only then can you pick up,
+decline or let Dadi handle it. New call clears the briefing. Speech/TTS failures preserve the
+previous screening state. Incoming replay and text-only paths retain their old behavior.
+Real pronunciation/playback and briefing latency require a user-run test.
+
+## D036 supersedes the excerpt recap
+A greeting-only recording now receives an explicit intent question and does not count as an
+answer. Give the reason, then name; a recognized identity-first answer asks for reason instead.
+After two actual answers, the main Sarvam speech path makes one bounded JSON summary request
+for name and intent only. Evidence quotes must occur in caller speech; names also match their
+quote. This is a source-presence check, not proof of semantic entailment or identity.
+The spoken recap paraphrases intent and never falls back to reading the entire transcript.
+Missing, malformed or unavailable fields are spoken as unclear; raw answers remain in the
+transcript for human review. A failed TTS does not advance screening; same-source summary is
+cached across retry to avoid spending another model call. Greeting/intro recognition is bounded,
+not general language understanding. Fixture/no-Sarvam paths show unknown fields and retain
+fixture labelling. Real summary quality, native pronunciation and latency need user-run evidence.
+The existing heard/read acknowledgement still enables the human choices; no automatic handoff.

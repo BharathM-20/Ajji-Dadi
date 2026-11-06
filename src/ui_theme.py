@@ -14,30 +14,30 @@ FONT = (
 )
 MONO = ("ui-monospace", "SFMono-Regular", "Consolas", "monospace")
 
-# Passed to Gradio Base.set() by app.py; matching dark values keep the page light by default.
+# Passed to Gradio Base.set() by app.py; dark defaults match the project call lab.
 THEME_SETTINGS = {
-    "body_background_fill": "#faf7ef",
-    "body_text_color": "#17182f",
-    "body_text_color_subdued": "#657273",
-    "background_fill_primary": "#ffffff",
-    "background_fill_secondary": "#f1eee7",
-    "block_background_fill": "#ffffff",
-    "block_border_color": "#dedfd7",
-    "block_label_text_color": "#536566",
-    "block_title_text_color": "#17182f",
-    "input_background_fill": "#ffffff",
-    "input_border_color": "#d4d9d2",
-    "input_placeholder_color": "#707a76",
-    "button_primary_background_fill": "#17182f",
-    "button_primary_background_fill_hover": "#294447",
-    "button_primary_text_color": "#ffffff",
-    "button_secondary_background_fill": "#ffffff",
-    "button_secondary_background_fill_hover": "#f1eee7",
-    "button_secondary_text_color": "#17182f",
-    "border_color_primary": "#dedfd7",
-    "border_color_accent": "#c4d0c6",
-    "color_accent_soft": "#e8eee4",
-    "link_text_color": "#285b50",
+    "body_background_fill": "#10141b",
+    "body_text_color": "#f1f0e9",
+    "body_text_color_subdued": "#abb3bd",
+    "background_fill_primary": "#1a2029",
+    "background_fill_secondary": "#222a35",
+    "block_background_fill": "#1a2029",
+    "block_border_color": "#37414e",
+    "block_label_text_color": "#c1c9cc",
+    "block_title_text_color": "#f1f0e9",
+    "input_background_fill": "#151b23",
+    "input_border_color": "#414b57",
+    "input_placeholder_color": "#9da7b0",
+    "button_primary_background_fill": "#d8bd83",
+    "button_primary_background_fill_hover": "#e8d19c",
+    "button_primary_text_color": "#151922",
+    "button_secondary_background_fill": "#242c36",
+    "button_secondary_background_fill_hover": "#303a46",
+    "button_secondary_text_color": "#f1f0e9",
+    "border_color_primary": "#37414e",
+    "border_color_accent": "#536158",
+    "color_accent_soft": "#30372f",
+    "link_text_color": "#ddc890",
     "block_radius": "22px",
     "button_large_radius": "999px",
     "button_small_radius": "999px",
@@ -80,10 +80,9 @@ for _token, _value in list(THEME_SETTINGS.items()):
     }:
         THEME_SETTINGS[_token + "_dark"] = _value
 
-NAV = """<div class="masthead"><div class="wordmark"><span class="brand-mark">d.</span>
-<span>dadi<span class="brand-dot">.</span><small>VS DIGITAL ARREST</small></span></div>
-<div class="nav-note"><span class="nav-line"></span>A little patience goes a long way.</div>
-<span class="workspace-tag">THE SIMULATION WORKSPACE</span></div>"""
+NAV = """<div class="masthead"><div class="wordmark">THE CALL LAB</div>
+<div class="nav-note"><span class="nav-line"></span>You play the caller. Dadi takes her time.</div>
+<span class="workspace-tag">FICTIONAL ROLE-PLAY</span></div>"""
 HERO = """<div class="hero-intro"><div class="hero-heading"><div>
 <span class="eyebrow">THE CONVERSATION, UNFOLDED</span>
 <h2>Every word.<br><em>In context.</em></h2></div></div>
@@ -149,21 +148,21 @@ def status_markup(status):
 
 CSS = """
 /* Original local presentation. System fonts, no network assets or behavioral scripts. */
-:root { color-scheme: light; }
-body { background: #faf7ef !important; }
+:root { color-scheme: dark; }
+body { background: #10141b !important; }
 .gradio-container {
   max-width: 1380px !important; width: 100% !important; margin: 0 auto !important;
   padding: clamp(14px, 1.55vw, 20px) clamp(16px, 3.3vw, 42px)
-    clamp(24px, 2.4vw, 30px) !important; background: #faf7ef;
-  color: #17182f; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --body-text-color: #17182f; --body-text-color-subdued: #657273;
-  --block-background-fill: #fffdf8; --background-fill-primary: #fffdf8;
-  --background-fill-secondary: #f1eee7; --block-border-color: #d9dfd8;
-  --input-background-fill: #fffdf8; --input-border-color: #cdd7ce;
-  --button-primary-background-fill: #17182f; --button-primary-text-color: #fffdf8;
-  --button-secondary-background-fill: #f4f1e9; --button-secondary-text-color: #17182f;
-  --block-label-text-color: #526664; --block-title-text-color: #17182f;
-  --border-color-primary: #d9dfd8; --color-accent: #9b5c22;
+    clamp(24px, 2.4vw, 30px) !important; background: #10141b;
+  color: #f1f0e9; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --body-text-color: #f1f0e9; --body-text-color-subdued: #abb3bd;
+  --block-background-fill: #1a2029; --background-fill-primary: #1a2029;
+  --background-fill-secondary: #222a35; --block-border-color: #37414e;
+  --input-background-fill: #151b23; --input-border-color: #414b57;
+  --button-primary-background-fill: #d8bd83; --button-primary-text-color: #151922;
+  --button-secondary-background-fill: #242c36; --button-secondary-text-color: #f1f0e9;
+  --block-label-text-color: #c1c9cc; --block-title-text-color: #f1f0e9;
+  --border-color-primary: #37414e; --color-accent: #d8bd83;
   --block-radius: 16px; --button-large-radius: 12px; --button-small-radius: 10px;
 }
 .gradio-container > main { padding: 0 !important; max-width: none; }
@@ -174,17 +173,17 @@ border-box; }
 #app-nav .html-container, #hero-copy .html-container, #phone-heading .html-container,
 #case-heading .html-container, #workspace-footer .html-container { padding: 0 !important; }
 .masthead { display: flex; align-items: center; justify-content: space-between; gap: 24px;
-  border-bottom: 1px solid #d8ded5; padding: 2px 0 16px; }
-.wordmark { display: flex; align-items: center; gap: 11px; color: #17182f;
-  font-size: 29px; font-weight: 700; letter-spacing: -.07em; line-height: 1; }
+  border-bottom: 1px solid #37414e; padding: 2px 0 16px; }
+.wordmark { display: flex; align-items: center; gap: 11px; color: #f1f0e9;
+  font-size: 16px; font-weight: 750; letter-spacing: .12em; line-height: 1; }
 .wordmark small { display: block; font-size: 8px; letter-spacing: .19em; margin-top: 8px; }
 .brand-mark { width: 42px; height: 46px; display: grid; place-items: center;
   border-radius: 16px 16px 5px 16px; background: #17182f; color: #f4d9a8;
   font-family: Georgia, serif; font-size: 38px; font-weight: 400; padding-bottom: 7px; }
 .brand-dot { color: #a76634; }
-.nav-note { display: flex; align-items: center; gap: 12px; font-size: 12px; color: #657273; }
-.nav-line { width: 30px; height: 1px; background: #a6b4a5; }
-.workspace-tag { border: 1px solid #cdd7ce; border-radius: 999px; color: #4f6561;
+.nav-note { display: flex; align-items: center; gap: 12px; font-size: 12px; color: #abb3bd; }
+.nav-line { width: 30px; height: 1px; background: #637061; }
+.workspace-tag { border: 1px solid #414b57; border-radius: 999px; color: #d6d2c5;
   font-size: 9px; font-weight: 650; letter-spacing: .08em; padding: 9px 12px; white-space: nowrap; }
 #simulation-banner { background: transparent; border: 0; margin: 0; }
 #simulation-banner h1 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(30px,

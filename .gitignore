@@ -23,3 +23,10 @@ training/artifacts/
 .sarvam_env.*
 # Local generated WAV files outside the conventional audio directories.
 dadi-tts-*.wav
+
+# Private prototype users, password verifiers, and SQLite WAL/SHM files.
+data/
+ajji_embedding.json
+ajji_test_request.json
+ajji_test.wav
+DADI.wav

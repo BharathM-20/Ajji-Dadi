@@ -1,0 +1,16 @@
+PRERECORDED AUDIO — TECHNICAL REFERENCE
+
+Hindi sample
+- File: dadi-hindi.m4a
+- Duration: 1 minute 13.044 seconds
+- Audio: mono AAC, 48,000 Hz
+
+Kannada sample
+- File: dadi-kannada.m4a
+- Duration: 48.980 seconds
+- Audio: mono AAC, 48,000 Hz
+
+These are technical file details only. No transcript, language-accuracy review, scam score,
+or caller-identity verification is available for these recordings. They are longer than the
+30-second limit for one microphone turn, so they are not submitted as call turns. Listen to
+them as prerecorded examples; do not treat this note as an evaluation of Dadi's performance.

@@ -1,3 +1,15 @@
+---
+title: Dadi vs Digital Arrest
+emoji: 📞
+colorFrom: yellow
+colorTo: red
+sdk: gradio
+sdk_version: 5.49.1
+python_version: 3.12
+app_file: app.py
+fullWidth: true
+---
+
 # Dadi vs Digital Arrest
 
 Repository: [BharathM-20/Ajji-Dadi](https://github.com/BharathM-20/Ajji-Dadi) (private).
@@ -85,14 +97,21 @@ keys into source, chat, screenshots or issues. The app does not load `.env` or o
 Then explicitly enable real services:
 
 ```sh
-DADI_MODE=sarvam DADI_SPEECH=1 DADI_SARVAM_MOCK=0 SARVAM_FALLBACK_LOCAL=0 GNANI_REAL_ASR=1 GNANI_REAL_TTS=1 .venv/bin/python -m src.app
+unset GNANI_TTS_LANGUAGE GNANI_STT_KANGLISH_CODE
+DADI_INCOMING=0 DADI_MODE=sarvam DADI_SPEECH=1 \
+DADI_SARVAM_MOCK=0 SARVAM_FALLBACK_LOCAL=0 \
+SARVAM_MODEL=sarvam-105b-conversations \
+SARVAM_REASONING_EFFORT=none SARVAM_MAX_TOKENS=150 \
+GNANI_REAL_ASR=1 GNANI_REAL_TTS=1 \
+.venv/bin/python -m src.app
 ```
 
 This mode makes paid/provider calls. Follow [SPEECH_UI.md](docs/SPEECH_UI.md) for full launch,
 click-path and evidence instructions. Provider contracts/configuration are in
 [SARVAM_NOTES.md](docs/SARVAM_NOTES.md) and [GNANI_NOTES.md](docs/GNANI_NOTES.md).
 
-- Leave `SARVAM_REASONING_EFFORT` **unset**: its request field is unverified and setting it fails.
+- Set `SARVAM_REASONING_EFFORT=none`: the user-tested setting sends explicit JSON null.
+  Unset omits the field; other values fail configuration.
 - Leave `GNANI_TTS_LANGUAGE` unset to follow the UI; an explicitly set value overrides TTS only.
 - Hindi/Hinglish use `hi-IN` and Devanagari replies; Kannada/Kanglish use `kn-IN` and Kannada
   replies; English uses `en-IN`. These are routes, not verified quality claims.
@@ -155,3 +174,55 @@ explain the current state. See [CONTRIBUTING.md](CONTRIBUTING.md) before changin
 
 Maintainer: [BharathM-20](https://github.com/BharathM-20). No project license has been selected
 in this checkout; a license decision is pending owner approval.
+
+## Incoming-call replay (opt-in)
+
+A separate website demo can screen prerecorded caller-only WAV clips rather than ask a judge
+to record each turn. It also has a clearly labelled key-free **text** fixture, with scam and
+legitimate cases in the five supported language choices. It is not telephone interception.
+See [INCOMING_CALL_DEMO.md](docs/INCOMING_CALL_DEMO.md) for the launch command, four-clip format,
+autoplay/manual controls, classification source and limits. Real multilingual recordings are
+not bundled; native review and actual end-to-end service trials are still required.
+
+Speech diagnosis and recovery: [STT_RECOVERY](docs/STT_RECOVERY.md) explains no-call microphone
+inspection, original-byte playback/download, one explicit manual retry and bounded STT-only
+comparisons. Real504recovery and Kannada recognition quality still require user evidence.
+
+Kannada/Kanglish STT now requests explicit `prisma-v3.0`; other language model defaults are
+unchanged. One unchanged-WAV user test succeeded; full real website and broader quality still
+need review. Keep **Inspect recording only** unchecked for a real conversation.
+
+### Invited prototype login
+
+See [docs/ACCOUNTS.md](docs/ACCOUNTS.md) for the500-record local mock database and private
+account provisioning. Run `.venv/bin/python scripts/manage_users.py --add bharath`, enter a
+password at the hidden prompts, then add `DADI_LOGIN=1` to the existing app launch command.
+The default launch stays available without login. Login does not enforce API-credit quotas.
+After two speech answers, listen to/read the caller briefing and confirm it to reveal the
+human decision buttons. The first recording is the reason; the second is name/organisation.
+
+
+The main speech UI now asks for intent after a greeting, which does not count as an answer.
+A short Sarvam-generated briefing states only caller name and intent, with unknown fields
+explicit. It no longer reads back full caller answers. Prompt sarvam-dadi-v10 prioritizes the
+latest request and gentle situational humour over a stock delay. Restart the app and choose
+New call to test the changes. These prompt changes have offline evidence; live naturalness
+and humour still require user review. See docs/SPEECH_UI.md and docs/SARVAM_NOTES.md.
+
+Sarvam now defaults to `sarvam-105b-conversations`. Before the existing real launch command,
+run `export SARVAM_MODEL=sarvam-105b-conversations` in the terminal holding your keys to
+replace a stale model override. Restart the site and choose New call. The context-first v10
+prompt stays active. Model availability, live naturalness and JSON-summary quality still need
+your test. To compare the previously tested model, use `SARVAM_MODEL=sarvam-105b` instead.
+### AJJI cloned voice (local opt-in)
+
+The private clone response belongs at `data/ajji_embedding.json` (already ignored by Git).
+Start the existing speech app with `GNANI_REAL_TTS=1 GNANI_TTS_PROVIDER=ajji` and a
+`GNANI_API_KEY` exported in that same terminal. AJJI uses `vachana-vc-v1` and returns
+44.1 kHz mono WAV files to the existing Gradio player. Keep `GNANI_TTS_PROVIDER=timbre`
+for the earlier Kalpana voice. The normal TTS model, voice, language and speed settings
+do not apply to the clone request. This does not change speech recognition or the brain.
+Marathi is available for a separate TTS probe, but the call UI does not yet offer Marathi.
+Cross-language pronunciation and voice likeness require user listening.
+AJJI WAV playback is stretched locally to about 90% pace after synthesis; the reply
+text and Gnani request remain unchanged. Listen for any artifacts before a public demo.

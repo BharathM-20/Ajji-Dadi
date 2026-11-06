@@ -41,7 +41,14 @@ def audio_path(tmp_path):
 
 @pytest.fixture
 def real(monkeypatch, tmp_path):
-    for name in ("GNANI_TTS_MODEL", "GNANI_TTS_VOICE", "GNANI_TTS_LANGUAGE", "GNANI_TTS_SPEED"):
+    for name in (
+        "GNANI_TTS_MODEL",
+        "GNANI_TTS_VOICE",
+        "GNANI_TTS_LANGUAGE",
+        "GNANI_TTS_SPEED",
+        "GNANI_TTS_KANNADA_SPEED",
+        "GNANI_TTS_PROVIDER",
+    ):
         monkeypatch.delenv(name, raising=False)
     monkeypatch.setenv("GNANI_API_KEY", KEY)
     monkeypatch.setenv("GNANI_REAL_ASR", "1")
@@ -452,6 +459,44 @@ def test_tts_speed_boundaries_are_inclusive(real, monkeypatch, speed):
 
     real(handle)
     assert Path(adapters.say("हाँ बेटा", "hi-IN")).exists()
+
+
+def test_kannada_default_is_faster_and_hindi_default_is_unchanged(real):
+    payloads = []
+
+    def handle(request):
+        payloads.append(json.loads(request.content))
+        return success(request)
+
+    real(handle)
+    adapters.say("ಮಗು, <sigh> ಹೇಳಿ", "Kannada")
+    adapters.say("बेटा, बताइए", "Hindi")
+    assert [payload["speed"] for payload in payloads] == [1.0, 0.92]
+
+
+def test_kannada_speed_override_is_specific_and_global_override_still_wins(real, monkeypatch):
+    payloads = []
+    monkeypatch.setenv("GNANI_TTS_KANNADA_SPEED", "1.08")
+
+    def handle(request):
+        payloads.append(json.loads(request.content))
+        return success(request)
+
+    real(handle)
+    adapters.say("ಮಗು, ಹೇಳಿ", "kn-IN")
+    adapters.say("बेटा, बताइए", "hi-IN")
+    assert [payload["speed"] for payload in payloads] == [1.08, 0.92]
+
+    monkeypatch.setenv("GNANI_TTS_SPEED", "0.95")
+    adapters.say("ಮಗು, ಹೇಳಿ", "kn-IN")
+    assert payloads[-1]["speed"] == 0.95
+
+
+def test_invalid_kannada_speed_names_specific_setting_and_sends_no_http(real, monkeypatch):
+    monkeypatch.setenv("GNANI_TTS_KANNADA_SPEED", "1.16")
+    real(lambda request: pytest.fail("invalid Kannada speed must not send HTTP"))
+    with pytest.raises(adapters.SpeechUnavailable, match="GNANI_TTS_KANNADA_SPEED"):
+        adapters.say("ಮಗು, ಹೇಳಿ", "kn-IN")
 
 
 @pytest.mark.parametrize("model,voice", [("timbre-v3.0", "Kalpana"), ("timbre-v2.5", "Nalini")])

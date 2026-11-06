@@ -87,7 +87,9 @@ def architecture_errors(source, module):
                 "create_connection",
                 "create_server",
                 "create_datagram_endpoint",
-            } or node.attr.startswith(("spawn", "exec")):
+            } or (node.attr.startswith(("spawn", "exec")) and not (
+                module == "accounts" and node.attr in {"execute", "executemany", "executescript"}
+            )):
                 errors.append(
                     error(
                         node.attr,
@@ -129,6 +131,8 @@ def test_guard_detects_boundary_regressions():
         ("adapters", "from src.session import new_session"),
         ("dadi", "import gnani_vachana"),
         ("strategy", "import socket"),
+        ("accounts", "import httpx"),
+        ("accounts", "import os; os.execv('x', [])"),
         ("report", "key = 'GNANI_API_KEY'"),
         ("session", "url = 'https://api.gnani.ai/test'"),
     ]

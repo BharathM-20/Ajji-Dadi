@@ -49,7 +49,22 @@ def test_guard_fix_preserves_prompt_and_other_existing_functions():
         if isinstance(n, ast.FunctionDef)
     }
     for name, expected in baseline["guard_module_functions"].items():
-        if name != "guard_reply":
+        # D021 changes build_messages only; v1 guard functions stay frozen below.
+        if name not in {"guard_reply", "build_messages"}:
+            assert current[name] == expected, name
+
+
+def test_prompt_tuning_preserves_all_output_guards():
+    root = Path(__file__).resolve().parents[1]
+    baseline = json.loads((root / "tests/fixtures/sarvam_prompt_v1_functions.json").read_text())
+    current = {
+        n.name: ast.dump(n)
+        for n in ast.parse((root / "src/sarvam_prompt.py").read_text()).body
+        if isinstance(n, ast.FunctionDef)
+    }
+    assert current.keys() == baseline.keys() | {"prompt_version"}
+    for name, expected in baseline.items():
+        if name not in {"build_messages", "guard_reply"}:
             assert current[name] == expected, name
 
 

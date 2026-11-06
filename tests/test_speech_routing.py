@@ -11,7 +11,7 @@ import pytest
 from gradio.state_holder import SessionState
 from test_gnani_speech import wav_bytes
 
-from src import adapters, app, local_brain, speech_session
+from src import adapters, app, local_brain, screen_brief, speech_session
 
 ROOT = Path(__file__).resolve().parents[1]
 CASES = [
@@ -20,6 +20,7 @@ CASES = [
     ("Kannada", "kn-IN", "Kannada", "ಮಗು, ಸ್ವಲ್ಪ ನಿಧಾನವಾಗಿ ಹೇಳು."),
     ("Kanglish", "kn-IN", "Kannada", "ಮಗು, ಸ್ವಲ್ಪ ನಿಧಾನವಾಗಿ ಹೇಳು."),
     ("English", "en-IN", "English", "Dear, please speak slowly."),
+    ("Telugu", "te-IN", "Telugu", "బాబూ, ఏ బ్యాంకు నుంచి మాట్లాడుతున్నావు?"),
 ]
 
 
@@ -30,6 +31,7 @@ def route_rig(monkeypatch, tmp_path):
         "GNANI_TTS_VOICE",
         "GNANI_TTS_LANGUAGE",
         "GNANI_TTS_SPEED",
+        "GNANI_TTS_KANNADA_SPEED",
         "GNANI_STT_KANGLISH_CODE",
     ):
         monkeypatch.delenv(name, raising=False)
@@ -76,7 +78,10 @@ def test_exact_language_requests_and_native_brain_prompt(
     assert result["language"] == brain
     assert [stage for stage, _ in calls] == ["asr", "brain", "say"]
     assert f'name="language_code"\r\n\r\n{code}'.encode() in calls[0][1]
-    assert b'name="model"' not in calls[0][1]
+    if language in {"Kannada", "Kanglish", "Telugu"}:
+        assert b'name="model"\r\n\r\nprisma-v3.0' in calls[0][1]
+    else:
+        assert b'name="model"' not in calls[0][1]
     assert b'name="format"\r\n\r\ntranscribe' in calls[0][1]
     assert calls[2][1]["language"] == code
     assert calls[2][1]["text"] == reply
@@ -92,18 +97,18 @@ def test_gradio_dropdown_propagates_through_screening(route_rig, language, code,
     dropdown = next(c for c in config["components"] if c["props"].get("elem_id") == "call-language")
     assert dropdown["props"]["choices"] == [(v, v) for v in adapters.SPEECH_LANGUAGES]
     event = next(f for f in demo.fns.values() if f.api_name == "speech_turn")
-    assert event.inputs[-1]._id == dropdown["id"]
+    assert event.inputs[2]._id == dropdown["id"]
     state = SessionState(demo)
     state_id = next(c["id"] for c in config["components"] if c["type"] == "state")
     state[state_id] = local_brain.new_state()
     demo.upload_file_set.add(str(path))
     data = {"path": str(path), "meta": {"_type": "gradio.FileData"}}
-    result = asyncio.run(demo.process_api(event, [data, None, language], state=state))
+    result = asyncio.run(demo.process_api(event, [data, None, language, False], state=state))
     assert result["data"][1]["path"].endswith(".wav")
     assert state[state_id]["speech_language"] == language and state[state_id]["screen_n"] == 1
     assert [s for s, _ in calls] == ["asr", "say"]
     assert code.encode() in calls[0][1] and calls[1][1]["language"] == code
-    assert calls[1][1]["text"] == speech_session.SCREEN[brain][0]
+    assert calls[1][1]["text"] == screen_brief.PROMPTS[brain]
 
 
 @pytest.mark.parametrize("operation", ["asr", "say"])
@@ -129,7 +134,7 @@ def test_explicit_overrides_are_stage_specific_and_candidate_unverified(route_ri
     assert calls[1][1]["language"] == "en-IN"
     calls.clear()
     adapters.asr(path, "Kannada")
-    assert b'name="model"' not in calls[0][1]  # Candidate only affects Kanglish.
+    assert b'name="model"\r\n\r\nprisma-v3.0' in calls[0][1]  # Kannada uses verified default.
     monkeypatch.setenv("GNANI_TTS_LANGUAGE", "")
     adapters.asr(path, "Kanglish")  # TTS setting cannot break independently enabled ASR.
     with pytest.raises(adapters.SpeechUnavailable, match="empty TTS language"):
@@ -139,6 +144,25 @@ def test_explicit_overrides_are_stage_specific_and_candidate_unverified(route_ri
     adapters.say("ಮಗು", "Kanglish")  # ASR setting cannot break independently enabled TTS.
     with pytest.raises(adapters.SpeechUnavailable, match="invalid Kanglish STT code"):
         adapters.asr(path, "Kanglish")
+
+
+def test_english_asr_uses_en_in_and_preserves_mocked_transcript(route_rig, monkeypatch):
+    path, calls = route_rig
+
+    def transport(request):
+        calls.append(("asr", request.content))
+        return httpx.Response(200, json={"transcript": "Hello, hello."})
+
+    monkeypatch.setattr(
+        adapters,
+        "_speech_client",
+        lambda: httpx.Client(transport=httpx.MockTransport(transport), trust_env=False),
+    )
+
+    assert adapters.asr(path, "English") == "Hello, hello."
+    assert len(calls) == 1
+    assert b'name="language_code"\r\n\r\nen-IN' in calls[0][1]
+    assert b'name="model"' not in calls[0][1]
 
 
 @pytest.mark.parametrize(
@@ -177,6 +201,14 @@ def test_language_lock_and_reset_prevent_midcall_mismatch(route_rig):
     assert audio and result["speech_language"] == "English"
 
 
+def test_stt_model_is_stage_specific_and_other_languages_unchanged():
+    for language in ("Kannada", "Kanglish", "Telugu"):
+        assert adapters.speech_route(language, "asr")["model"] == "prisma-v3.0"
+        assert "model" not in adapters.speech_route(language, "say")
+    for language in ("Hindi", "Hinglish", "English"):
+        assert "model" not in adapters.speech_route(language, "asr")
+
+
 def test_unrelated_functions_and_persona_unchanged():
     baseline = json.loads((ROOT / "tests/fixtures/speech_routing_baseline.json").read_text())
     allowed = {
@@ -185,9 +217,13 @@ def test_unrelated_functions_and_persona_unchanged():
             "say",
             "_real_asr",
             "_real_say",
+            "_normalize_tts_wav",
             "_tts_config",
             "think",
             "configure_from_env",
+            "_speech_timing",
+            "_speech_http_error",
+            "speech_route",
         },
         "speech_session": {"respond"},
         "local_brain": set(),

@@ -1,0 +1,8 @@
+{
+  "original_sha256": "9cedebb63b9d0340c6c39a0c01b437a7d03aafc0aa0a389112621c5ea333efc7",
+  "unchanged_ast_sha256": "3547c44819061b3f69100f610063a62db6906d5b2fc9d65b5fa732036443c1f9",
+  "reasoning_exemption_ast_sha256": "8cdd006ff2f5d156bf785f13ff990083df8528e16e4de4ff01389c536f02b17a",
+  "fixture_exemption_ast_sha256": "32452e02331fed94b15c42990f201fe9041d2e28a1a7a4551c7fdbb23025ff27",
+  "stt_recovery_exemption_ast_sha256": "9a7fdb15d9f64560a4f045d561145f69e42c5b0f82b0125024b011e72804153d",
+  "kannada_v3_exemption_ast_sha256": "0eda746df3ebc866274804c9e48b6384ccb9cf7a8e76c172985bbc7c2a71a5cb"
+}

@@ -2,6 +2,7 @@
 
 import contextlib
 import contextvars
+import functools
 import json
 import math
 import os
@@ -15,6 +16,8 @@ from pathlib import Path
 
 import httpx
 
+from . import audio_inspection, audio_pacing
+
 MOCK = True
 
 
@@ -22,9 +25,12 @@ MOCK = True
 SPEECH_LANGUAGES = {
     "Hindi": {"stt": "hi-IN", "tts": "hi-IN", "brain": "Hindi"},
     "Hinglish": {"stt": "hi-IN", "tts": "hi-IN", "brain": "Hindi"},
-    "Kannada": {"stt": "kn-IN", "tts": "kn-IN", "brain": "Kannada"},
-    "Kanglish": {"stt": "kn-IN", "tts": "kn-IN", "brain": "Kannada"},
+    "Kannada": {"stt": "kn-IN", "tts": "kn-IN", "brain": "Kannada", "stt_model": "prisma-v3.0"},
+    "Kanglish": {"stt": "kn-IN", "tts": "kn-IN", "brain": "Kannada", "stt_model": "prisma-v3.0"},
     "English": {"stt": "en-IN", "tts": "en-IN", "brain": "English"},
+    # Telugu's omit-model route returned repeated user-observed 504s; try the
+    # documented explicit Prisma v3.0 route, as Kannada does after its 504.
+    "Telugu": {"stt": "te-IN", "tts": "te-IN", "brain": "Telugu", "stt_model": "prisma-v3.0"},
 }
 
 
@@ -34,6 +40,7 @@ def speech_language(language):
         "hi-IN": "Hindi",
         "kn-IN": "Kannada",
         "en-IN": "English",
+        "te-IN": "Telugu",
         "hi-en": "Hinglish",
         "en-hi-IN-latn": "Hinglish",
     }
@@ -41,7 +48,7 @@ def speech_language(language):
     if language not in SPEECH_LANGUAGES:
         raise SpeechUnavailable(
             "ERROR: unsupported speech language. WHY: no explicit speech route exists. "
-            "FIX: choose Hindi, Hinglish, Kannada, Kanglish or English."
+            "FIX: choose Hindi, Hinglish, Kannada, Kanglish, English or Telugu."
         )
     return language
 
@@ -49,6 +56,9 @@ def speech_language(language):
 def speech_route(language, stage=None):
     language = speech_language(language)
     route = dict(SPEECH_LANGUAGES[language])
+    model = route.pop("stt_model", None)
+    if stage != "say" and model:
+        route["model"] = model
     if stage != "say" and language == "Kanglish" and "GNANI_STT_KANGLISH_CODE" in os.environ:
         route["stt"] = os.environ["GNANI_STT_KANGLISH_CODE"].strip()
         if route["stt"] not in {"kn-IN", "kn-IN,en-IN"}:
@@ -69,10 +79,27 @@ def speech_route(language, stage=None):
     return route
 
 
-def asr(path: str, code: str, *, retry_429: bool = True) -> str:
+def asr(path: str, code: str, *, retry_429: bool = True, model=None) -> str:
+    if model not in {None, "omitted", "prisma-v3.0"}:
+        raise SpeechUnavailable(
+            "ERROR: unsupported explicit STT model. "
+            "WHY: only the documented alternative is allowed. "
+            "FIX: use route default, omitted, or prisma-v3.0 for an explicit diagnostic trial."
+        )
     if _speech_enabled("GNANI_REAL_ASR"):
         with _speech_timing("asr") as event:
-            return _real_asr(path, event, retry_429, speech_route(code, "asr"))
+            route = speech_route(code, "asr")
+            if model == "omitted":
+                if route["stt"] == "kn-IN,en-IN":
+                    raise SpeechUnavailable(
+                        "ERROR: cannot omit the model for the experimental code-switch route. "
+                        "WHY: that candidate requires prisma-v3.0. "
+                        "FIX: use kn-IN for baseline tests."
+                    )
+                route.pop("model", None)  # Local diagnostic control, never a vendor model value.
+            elif model is not None:
+                route["model"] = model
+            return _real_asr(path, event, retry_429, route)
     if code != "mock":
         speech_language(code)
     return "Hello, this is a mock caller."
@@ -367,6 +394,10 @@ def _speech_timing(stage):
             f"ok={event['ok']} attempts={event['attempts']} "
             f"seconds={event['latency_seconds']:.3f}"
         )
+        if stage == "asr" and "language_code" in event:
+            print("[speech request] " + json.dumps({
+                key: event[key] for key in ("language_code", "request_model", "audio")
+            }, sort_keys=True))
 
 
 def _speech_key():
@@ -411,6 +442,9 @@ def _speech_http_error(status, message=None):
         402: ("service reported a payment or credit problem", "check the account credit status"),
         403: ("API scope denied", "check the account's speech API access"),
         429: ("rate or active-request limit reached", "wait and stop other account requests"),
+        502: ("speech gateway failed", "inspect recording/request diagnostics before retrying"),
+        503: ("speech service unavailable", "pause calls and inspect diagnostics before retrying"),
+        504: ("speech gateway timed out", "inspect diagnostics; do not repeatedly re-record"),
     }.get(status, ("service rejected the request", "check GNANI_NOTES and service availability"))
     if message:
         reason += f" ({message})"
@@ -503,6 +537,7 @@ def _audio_duration(path):
 
 
 def _real_asr(path, event, retry_429, route):
+    event.update(language_code=route["stt"], request_model=route.get("model", "omitted"), audio={})
     key = _speech_key()
     try:
         path = Path(path).resolve()
@@ -518,6 +553,12 @@ def _real_asr(path, event, retry_429, route):
                 "WHY: Prisma accepts at most30 seconds per request. "
                 "FIX: trim or re-record a valid clip of30 seconds or less."
             )
+        if path.suffix.lower() == ".wav":
+            try:
+                event["audio"] = audio_inspection.inspect_wav(path)
+            except (OSError, ValueError):
+                # Preserve legacy non-PCM handling; the microphone/diagnostic CLI require PCM.
+                event["audio"] = {"pcm_inspection": "unavailable"}
         with path.open("rb") as audio:
 
             def send(client):
@@ -545,7 +586,7 @@ def _real_asr(path, event, retry_429, route):
         ) from None
 
 
-def _normalize_tts_wav(body):
+def _normalize_tts_wav(body, sample_rate=48000):
     """Validate PCM chunks and replace streaming RIFF/data sizes with actual sizes."""
     if len(body) < 12 or body[:4] != b"RIFF" or body[8:12] != b"WAVE":
         raise ValueError("not a RIFF WAVE")
@@ -571,8 +612,8 @@ def _normalize_tts_wav(body):
                 int.from_bytes(audio[start + a : start + b], "little")
                 for a, b in ((0, 2), (2, 4), (4, 8), (8, 12), (12, 14), (14, 16))
             ]
-            if fields != [1, 1, 48000, 96000, 2, 16]:
-                raise ValueError("expected mono 48kHz 16-bit PCM")
+            if fields != [1, 1, sample_rate, sample_rate * 2, 2, 16]:
+                raise ValueError("expected mono 16-bit PCM at configured rate")
             found_fmt = True
         elif kind == b"data":
             if not found_fmt or data is not None or size < 2 or size % 2:
@@ -592,14 +633,20 @@ def _normalize_tts_wav(body):
 def _tts_config(text, language):
     model = os.environ.get("GNANI_TTS_MODEL", "timbre-v3.0").strip()
     voice = os.environ.get("GNANI_TTS_VOICE", "Kalpana").strip()
+    is_kannada = language in {"Kannada", "kn-IN"}
+    speed_env = "GNANI_TTS_SPEED"
+    default_speed = "0.92"
+    if is_kannada and "GNANI_TTS_SPEED" not in os.environ:
+        speed_env = "GNANI_TTS_KANNADA_SPEED"
+        default_speed = "1.0"
     try:
-        speed = float(os.environ.get("GNANI_TTS_SPEED", "0.92"))
+        speed = float(os.environ.get(speed_env, default_speed))
     except ValueError:
         speed = float("nan")
     if not math.isfinite(speed) or not 0.85 <= speed <= 1.15:
         raise SpeechUnavailable(
             "ERROR: invalid TTS speed. WHY: speed must be finite and within0.85–1.15. "
-            "FIX: set GNANI_TTS_SPEED to a number in that range, such as0.92."
+            f"FIX: set {speed_env} to a number in that range, such as0.92."
         )
     if not model or not voice or not language:
         raise SpeechUnavailable(
@@ -621,22 +668,57 @@ def _tts_config(text, language):
     }
 
 
+@functools.lru_cache(maxsize=1)
+def _ajji_embedding():
+    path = Path(__file__).resolve().parents[1] / "data" / "ajji_embedding.json"
+    try:
+        secret_json = os.environ.get("GNANI_AJJI_EMBEDDING_JSON")
+        response = json.loads(secret_json) if secret_json else json.loads(
+            path.read_text(encoding="utf-8")
+        )
+        value = response["data"]["voice_clone_embedding"]
+        if not (isinstance(value, dict) and isinstance(value.get("embedding"), str)
+                and value["embedding"] and value.get("shape") == [1, 768]
+                and value.get("dtype") == "torch.bfloat16"):
+            raise ValueError("invalid embedding")
+        return value
+    except (OSError, ValueError, KeyError, TypeError):
+        raise SpeechUnavailable(
+            "ERROR: AJJI voice unavailable. WHY: private embedding file is missing or invalid. "
+            "FIX: configure GNANI_AJJI_EMBEDDING_JSON as a private runtime secret or place the "
+            "complete response in data/ajji_embedding.json."
+        ) from None
+
+
 def _real_say(text, event, retry_429, route):
     key = _speech_key()
     if not isinstance(text, str) or not text.strip():
         raise SpeechUnavailable(
             "ERROR: speech text empty. WHY: TTS needs spoken text. FIX: supply a short reply."
         )
+    provider = os.environ.get("GNANI_TTS_PROVIDER", "timbre").strip().lower()
+    if provider not in {"timbre", "ajji"}:
+        raise SpeechUnavailable(
+            "ERROR: invalid TTS provider. WHY: unknown voice route. "
+            "FIX: set GNANI_TTS_PROVIDER to ajji or timbre."
+        )
+    sample_rate = 44100 if provider == "ajji" else 48000
     payload = {
-        **_tts_config(text, route["tts"]),
+        **({"text": " ".join(re.sub(r"<[^<>]*>", " ", text).split()),
+            "model": "vachana-vc-v1", "speaker_embedding": _ajji_embedding()}
+           if provider == "ajji" else _tts_config(text, route["tts"])),
         "audio_config": {
-            "sample_rate": 48000,
+            "sample_rate": sample_rate,
             "num_channels": 1,
             "sample_width": 2,
             "encoding": "linear_pcm",
             "container": "wav",
         },
     }
+    if not payload["text"]:
+        raise SpeechUnavailable(
+            "ERROR: speech text empty. WHY: TTS needs spoken words. FIX: supply a short reply."
+        )
     response = _gnani_post(
         lambda client: client.post(_TTS_URL, headers={"X-API-Key-ID": key}, json=payload),
         event,
@@ -645,7 +727,9 @@ def _real_say(text, event, retry_429, route):
     )
     result = None
     try:
-        content = _normalize_tts_wav(response.content)
+        content = _normalize_tts_wav(response.content, sample_rate)
+        if provider == "ajji":
+            content = audio_pacing.slow_ajji_wav(content)
         with tempfile.NamedTemporaryFile(prefix="dadi-tts-", suffix=".wav", delete=False) as audio:
             result = Path(audio.name).resolve()
             audio.write(content)
@@ -683,12 +767,13 @@ def _sarvam_error(why, fix):
 
 
 def _sarvam_config():
-    if "SARVAM_REASONING_EFFORT" in os.environ:
+    reasoning_off = os.environ.get("SARVAM_REASONING_EFFORT") == "none"
+    if "SARVAM_REASONING_EFFORT" in os.environ and not reasoning_off:
         raise _sarvam_error(
-            "Sarvam reasoning field name is unverified until the real smoke run",
-            "unset SARVAM_REASONING_EFFORT; no reasoning field is sent",
+            "unsupported Sarvam reasoning configuration",
+            "set SARVAM_REASONING_EFFORT=none to send JSON null, or unset it to omit the field",
         )
-    model = os.environ.get("SARVAM_MODEL", "sarvam-105b").strip()
+    model = os.environ.get("SARVAM_MODEL", "sarvam-105b-conversations").strip()
     auth = os.environ.get("SARVAM_AUTH_HEADER", "bearer").strip()
     try:
         temperature = float(os.environ.get("SARVAM_TEMPERATURE", "0.5"))
@@ -707,12 +792,18 @@ def _sarvam_config():
             "invalid Sarvam numeric configuration",
             "set temperature from0 to2, positive integer tokens and timeout",
         ) from None
-    if model not in {"sarvam-105b", "sarvam-30b"} or auth not in {"bearer", "api-subscription-key"}:
+    if model not in {"sarvam-105b", "sarvam-30b", "sarvam-105b-conversations"} or auth not in {
+        "bearer", "api-subscription-key"
+    }:
         raise _sarvam_error(
             "invalid Sarvam model or auth style",
-            "use sarvam-105b/sarvam-30b and bearer/api-subscription-key",
+            "use sarvam-105b-conversations/sarvam-105b/sarvam-30b "
+            "and bearer/api-subscription-key",
         )
-    return dict(model=model, auth=auth, temperature=temperature, max_tokens=tokens, timeout=timeout)
+    return dict(
+        model=model, auth=auth, temperature=temperature, max_tokens=tokens,
+        timeout=timeout, reasoning_off=reasoning_off,
+    )
 
 
 def _sarvam_fixture_response(request):
@@ -721,18 +812,27 @@ def _sarvam_fixture_response(request):
     system = body["messages"][0]["content"]
     final = body["messages"][-1]["content"]
     match = re.search(r"fixture_index=(\d+)", final)
-    index = int(match.group(1)) % 3 if match else 0
+    index = int(match.group(1)) if match else 0
     if "CALL_LANGUAGE=English" in system:
         replies = [
             "Dear, which branch did you say? My glasses are missing.",
             "Dear, please explain that slowly while I find my notebook.",
             "Dear, what colour is that button? This phone is confusing.",
         ]
+    elif "CALL_LANGUAGE=Telugu" in system:
+        replies = [
+            "బాబూ, ఏ బ్యాంకు నుంచి మాట్లాడుతున్నావు?",
+            "ఆ పని ఎందుకు చేయాలో ముందు చెప్పు బాబూ.",
+            "నువ్వు చెప్పిన వివరాలు గుర్తున్నాయి బాబూ, ఇప్పుడు ఏం చేయాలి?",
+        ]
     elif "CALL_LANGUAGE=Kannada" in system or "CALL_LANGUAGE=Kanglish" in system:
         replies = [
             "ಮಗು, ಯಾವ ಶಾಖೆ ಎಂದು ಮತ್ತೆ ಹೇಳು, ನನ್ನ ಕನ್ನಡಕ ಸಿಗುತ್ತಿಲ್ಲ.",
             "ಮಗು, ಸ್ವಲ್ಪ ನಿಧಾನವಾಗಿ ಹೇಳು, ನಾನು ಪುಸ್ತಕ ಹುಡುಕುತ್ತಿದ್ದೇನೆ.",
             "ಮಗು, ಆ ಗುಂಡಿ ಯಾವ ಬಣ್ಣದ್ದು, ನನಗೆ ಸರಿಯಾಗಿ ಕಾಣುತ್ತಿಲ್ಲ.",
+            "ಮಗು, ಚಾರ್ಜರ್ ಹುಡುಕುತ್ತಿದ್ದೇನೆ, ಸ್ವಲ್ಪ ತಾಳು.",
+            "ಮಗು, ಫೋನಿನಲ್ಲಿ ಯಾವ ಗುಂಡಿ ಒತ್ತಬೇಕು ಅಂತ ನೋಡುತ್ತಿದ್ದೇನೆ.",
+            "ಮಗು, ಬಾಗಿಲಲ್ಲಿ ಯಾರೋ ಬಂದಿದ್ದಾರೆ, ಸ್ವಲ್ಪ ತಾಳು.",
         ]
     else:
         replies = [
@@ -740,7 +840,9 @@ def _sarvam_fixture_response(request):
             "बेटा, ज़रा धीरे समझाओ, मैं अपनी पुरानी कॉपी ढूँढ रही हूँ।",
             "बेटा, उस बटन का रंग क्या है, यह फ़ोन समझ नहीं आता।",
         ]
-    return httpx.Response(200, json={"choices": [{"message": {"content": replies[index]}}]})
+    return httpx.Response(
+        200, json={"choices": [{"message": {"content": replies[index % len(replies)]}}]}
+    )
 
 
 def _sarvam_client(timeout, fixture):
@@ -750,6 +852,54 @@ def _sarvam_client(timeout, fixture):
         follow_redirects=False,
         transport=httpx.MockTransport(_sarvam_fixture_response) if fixture else None,
     )
+
+
+def _sarvam_decode(response, event):
+    """Record allowlisted structure/counts only, never raw body or reasoning text."""
+    try:
+        data = response.json()
+    except ValueError:
+        event["response_shape"] = "not_json"
+        raise _sarvam_error(
+            "Sarvam HTTP success contained invalid JSON",
+            "inspect safe smoke diagnostics; do not automatically retry",
+        ) from None
+    event["response_shape"] = "object" if isinstance(data, dict) else "not_object"
+    if not isinstance(data, dict):
+        data = {}
+    usage = data.get("usage")
+    if isinstance(usage, dict):
+        for name in ("prompt_tokens", "completion_tokens", "total_tokens"):
+            value = usage.get(name)
+            if type(value) is int and value >= 0:
+                event[name] = value
+    choices = data.get("choices")
+    event["choice_count"] = len(choices) if isinstance(choices, list) else 0
+    choice = choices[0] if isinstance(choices, list) and choices else None
+    if not isinstance(choice, dict) or not isinstance(choice.get("message"), dict):
+        raise _sarvam_error(
+            "Sarvam HTTP success lacked choices[0].message",
+            "inspect safe smoke diagnostics and confirm the response contract",
+        )
+    finish = choice.get("finish_reason")
+    event["finish_reason"] = (
+        finish if finish in ("stop", "length", "content_filter", None) else "other"
+    )
+    message = choice["message"]
+    content = message.get("content")
+    event["content_kind"] = (
+        "missing" if "content" not in message else
+        "null" if content is None else "string" if isinstance(content, str) else "non_string"
+    )
+    event["content_chars"] = len(content) if isinstance(content, str) else 0
+    reasoning = message.get("reasoning_content")
+    event["reasoning_chars"] = len(reasoning) if isinstance(reasoning, str) else 0
+    if not isinstance(content, str) or not content.strip():
+        raise _sarvam_error(
+            "Sarvam HTTP success contained no usable message.content",
+            "inspect finish_reason/content_kind/token counts; no automatic retry was made",
+        )
+    return content
 
 
 def _sarvam_think(msgs, json_mode, max_tokens):
@@ -763,6 +913,8 @@ def _sarvam_think(msgs, json_mode, max_tokens):
         auth_style=config["auth"],
         fixture=fixture,
         fallback_local=False,
+        max_tokens=config["max_tokens"],
+        reasoning_mode="disabled_requested" if config["reasoning_off"] else "provider_default",
     )
     _SARVAM_RESULT.set(event)
     key = None if fixture else os.environ.get("SARVAM_API_KEY", "").strip()
@@ -784,6 +936,8 @@ def _sarvam_think(msgs, json_mode, max_tokens):
         "temperature": config["temperature"],
         "max_tokens": config["max_tokens"],
     }
+    if config["reasoning_off"]:
+        payload["reasoning_effort"] = None
     started = time.perf_counter()
     try:
         with _SARVAM_LOCK:
@@ -802,9 +956,7 @@ def _sarvam_think(msgs, json_mode, max_tokens):
                         reasons.get(response.status_code, "Sarvam service failed"),
                         "check access/configuration and retry manually; no auto retry",
                     )
-                content = response.json()["choices"][0]["message"]["content"]
-                if not isinstance(content, str) or not content.strip():
-                    raise ValueError
+                content = _sarvam_decode(response, event)
                 return content.replace(key, "[REDACTED]") if key else content
     except (httpx.HTTPError, ValueError, KeyError, IndexError, TypeError, ModelUnavailable) as exc:
         if os.environ.get("SARVAM_FALLBACK_LOCAL") == "1":

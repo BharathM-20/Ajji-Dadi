@@ -1,0 +1,29 @@
+{
+  "source": "user-supplied terminal output",
+  "recorded_on": "2026-11-01",
+  "audio": {
+    "sha256": "1662d3aee22589dd6828388db933f9edf080b421e27ef49b83cb0461c2a3daff",
+    "sample_rate_hz": 44100,
+    "channels": 1,
+    "sample_width_bytes": 2,
+    "duration_seconds": 4.679977,
+    "file_bytes": 412818
+  },
+  "language_code": "kn-IN",
+  "format": "transcribe",
+  "runs": [
+    {
+      "request_model": "omitted",
+      "status": 504,
+      "latency_seconds": 6.165710333036259,
+      "transcript": null
+    },
+    {
+      "request_model": "prisma-v3.0",
+      "status": 200,
+      "latency_seconds": 1.3745158750098199,
+      "transcript": "ನಾನು ರಮೇಶ್, ನಾನು bankನಿಂದ ಮಾತನಾಡುತ್ತಿದ್ದೇನೆ."
+    }
+  ],
+  "limits": "One user-run STT comparison, no independent vendor call by agent, no full voice pipeline or general accuracy/504 recovery acceptance."
+}

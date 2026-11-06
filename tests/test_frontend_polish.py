@@ -6,6 +6,11 @@ import json
 from pathlib import Path
 
 import pytest
+from contract_helpers import (
+    without_brief_ui_additions,
+    without_incoming_dispatch,
+    without_stt_ui_additions,
+)
 
 from src import app, ui_theme
 
@@ -15,14 +20,20 @@ BASE = json.loads((ROOT / "tests/fixtures/frontend_polish_baseline.json").read_t
 
 def test_call_logic_and_handler_contracts_are_unchanged():
     tree = ast.parse((ROOT / "src/app.py").read_text())
-    functions = {n.name: n for n in tree.body if isinstance(n, ast.FunctionDef)}
+    functions = {
+        n.name: (n if n.name in {"speech_turn", "speech_view"}
+                 else without_stt_ui_additions(n) if n.name == "speech_reset"
+                 else without_brief_ui_additions(n))
+        for n in tree.body if isinstance(n, ast.FunctionDef)
+    }
+    functions["configured_ui"] = without_incoming_dispatch(functions["configured_ui"])
     for name, expected in BASE["functions"].items():
-        if name in {"speech_view", "speech_end"}:
+        if name in {"speech_view", "speech_end", "local_view"}:
             # D017 authorizes fixture/source labels and report metrics, not handler changes.
             continue
         if name == "speech_turn":
             # D016 adds exactly one selected-language argument; freeze remaining wrapper.
-            normalized = ast.parse(ast.unparse(functions[name])).body[0]
+            normalized = without_stt_ui_additions(functions[name])
             assert normalized.args.args[-1].arg == "language"
             assert ast.literal_eval(normalized.args.defaults[-1]) == "Hindi"
             normalized.args.args.pop()
@@ -42,6 +53,15 @@ def test_call_logic_and_handler_contracts_are_unchanged():
     for name, expected in BASE["handlers"].items():
         function = ast.parse(ast.unparse(functions[name])).body[0]
         if name == "build_speech_ui":
+            for event in ast.walk(function):
+                if (
+                    isinstance(event, ast.Call)
+                    and isinstance(event.func, ast.Attribute)
+                    and event.func.attr == "click"
+                    and isinstance(event.func.value, ast.Name)
+                    and event.func.value.id in {"end", "reset"}
+                ):
+                    event.args[2].right.elts.pop()
             event = next(
                 n
                 for n in ast.walk(function)
@@ -49,6 +69,8 @@ def test_call_logic_and_handler_contracts_are_unchanged():
                 and isinstance(n.func, ast.Attribute)
                 and n.func.attr == "stop_recording"
             )
+            assert event.args[1].elts[-1].id == "inspect_only"
+            event.args[1].elts.pop()  # F-STT-RECOVERY adds a no-provider capture mode.
             assert event.args[1].elts[-1].id == "language"
             event.args[1].elts.pop()  # D016 only; all six handlers/outputs remain frozen.
         handlers = [
@@ -57,6 +79,10 @@ def test_call_logic_and_handler_contracts_are_unchanged():
             if isinstance(n, ast.Call)
             and isinstance(n.func, ast.Attribute)
             and n.func.attr in {"click", "stop_recording"}
+            and not (
+                isinstance(n.func.value, ast.Name)
+                and n.func.value.id in {"retry_stt", "acknowledge"}
+            )
         ]
         assert handlers == expected, name
         state = [
@@ -118,4 +144,5 @@ def test_all_modes_have_coherent_accessible_presentation_without_new_controls(bu
             # D018 permits isolated presentation links/buttons, verified in test_showcase.
             markup = c["props"].get("value", "").lower()
             assert not any(tag in markup for tag in ("<script", "<button", "<input", "<a "))
-    assert len(demo.config["dependencies"]) == 6
+    # F-STT-RECOVERY adds exactly one explicit retry control in speech mode only.
+    assert len(demo.config["dependencies"]) == (8 if builder is app.build_speech_ui else 6)

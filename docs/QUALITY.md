@@ -161,3 +161,66 @@ mode/fallback descriptions and CI packaging reviewed. Final337full/54focused/6sm
 All sixscores2/2 in confirmed-fix/prototype repository scope. No further high-confidence source
 blockers. Hosted CI, fresh dependency reproducibility, real services/native quality/audio and
 semantic safety unverified. All changes await user approval; no commit or GitHub push performed.
+
+## F-INCOMING-DEMO — code/mock replay ACCEPT; real audio/telephony unverified
+Separate review required preserving Dadi audio on duplicate events. Browser also exposed a
+first-iteration empty generator clearing outputs; fixed by yielding preserved outputs, with
+regressions for terminal phases/recorded start. Error metadata and report/source labels retain
+truthful diagnostics. Final narrow review ACCEPT after369full/32feature/6smoke passes.
+Earlier scoped sixscores2/2; final recheck no further findings. Browser fixture gate/Dadi/report
+and correctedpickup terminal state verified. Text/scenario fixtures clearly not real voices or
+AI detection. Real recorded playback/autoplay, classifiers/providers/latency/native quality and
+actual telephone interception remain unverified. No real recording set bundled. Commit pending.
+
+## Compact speech report review — D029 (2026-11-01)
+Fresh read-only review ACCEPT for code/mock scope: no blockers; measured/frozen timer, cached
+requests/failures, caller-only evidence, uncertainty, escaped text, queue/reset verified.
+Independent10reporttests passed1.76s. Correctness2,verification2,scope2,reliability2,
+maintainability2,handoff1pending parent verifier/docs(at review time). Parent then records
+443full/117feature/6smoke successful evidence in PROGRESS/TEST_LOG. No real classifier accuracy,
+latency or efficacy claim. No commit/push until user approval.
+
+## Kannada repetition review — D030 (2026-11-01)
+Initial independent REVISE:P2slow-request regex also matched Dadi describing her own speech.
+Fix with delimiter/end boundary and2negative controls; independent16tests2.53s,ACCEPT.
+Code/mock scores:correctness2,verification2,scope2,reliability2,maintainability2,handoff1
+pending parent final evidence,now recorded:459full/183feature/6smoke.
+Raw transcripts and local/non-Kannada paths retained. No native-quality,universal semantic
+no-repeat,ASR accuracy or vendor504 recovery guarantee. No commit/push.
+
+## Kannada OTP continuity/correction review — D031 (2026-11-01)
+Fresh code review ACCEPT:bounded2requests,unspoken drafts remain corrective data,raw transcript
+preserved,demand switch/no-book OTP cycle,non-Kannada behavior preserved.22focusedpassed2.76s.
+Mock-only fixture follow-up ACCEPT:original SHA/AST anchors verified,Hindi/English mappings
+unchanged;2mapping/sourcepassed1.63s,32incomingpassed1.82s. Scores2correctness/verification/
+scope/reliability/maintainability,handoff1pending parent evidence(now465full/189feature/6smoke).
+No live language/semantic no-repeat/ASR recovery claim. No commit/push.
+
+## STT inspection/recovery review — D032 (2026-11-01)
+Fresh static audit identified exact-clip loss and hidden safe HTTPdetail. Implementation
+review accepted inspection/hash/pause/state/language/oneattempt guard, serialization, pure
+stdlib metrics and bounded user-only probe. Incremental REVISE:P2duplicateinspect rearmed
+budget; preserve matching token budget, add regression. Final path relocation preserves
+budget and refreshes only verified identical source. Final ACCEPT,all6rubric scores2/2 for
+code/mock scope once final487full/82feature/6smoke evidence recorded.
+No actual Kannada accuracy, physicalcapture/playback, vendor504recovery or alternate-model
+readiness claim. User no-call recording evidence is next. No commit/push.
+
+## Kannada STT website review — D033 (2026-11-01)
+Independent ACCEPT(code/mock):stage-specificv3model,unchangedotherlanguages/TTS,localomission
+control never sent as fabricatedmodelID,exact-bytecomparisoncoverage.46independenttests2.33s.
+Scores2correctness/verification/scope/reliability/maintainability,handoff1pending parentrecord,
+now final490full/85feature/6smoke. User one successfulsameWAV request supports configuration,
+not permanent504recovery or generalaccuracy. No real UI/fullvoice quality or publishing claim.
+
+
+## 2026-11-04 D034/D035 local prototype review
+D034 owner briefing: ACCEPT after whitespace joining fix; independent8tests1.44s, final498full/46focused. Six rubric scores2after final handoff evidence. Transactional TTS, explicit human acknowledgement, reset and Dadi script guard verified; real voice remains untested.
+D035 login/accounts: ACCEPT local invite-only scope; independent7non-loopback tests3.85s and actual localhost probe exit0 including intentional cross-account session reuse403, login/logout and DB blocking. Final506full/8focused,smoke6. Correctness2,verification2,scope2,reliability2,maintainability2,handoff2. Reviewer found Gradio session hashes insufficient for account ownership; new pinned-version middleware and attack regression close it. Public hosting/media ACLs, quota system, recovery and500concurrent users remain unverified. No live providers or real credentials reviewed.
+
+
+## D036/D037 (2026-11-04)
+D036 briefing ACCEPT code/mock:independent20tests1.50s; final verifier521full/58focused. Intro/evidence wording findings fixed; exact source quote checks do not establish semantic entailment.
+D037 context-first dialogue ACCEPT code/mock: independent10tests0.09s after Kannada precedence conflict correction. Final531full29.96s/139focused6.20s,smoke6.11. Correctness2,verification2,scope2,reliability2,maintainability2; handoff1 at review pending final evidence(now recorded). No live-model humour or native quality claim.
+
+D038 ACCEPT code/mock:4independent targeted4.49s;final534full58.62s/142focused14.49s/smoke6.25. All six rubric scores2after final handoff evidence; reviewer handoff was conditional pending this record. Conversational model access/naturalness/latency and JSON briefing/report reliability remain user-unverified.

@@ -197,3 +197,8 @@ Native anchors/details provide navigation/disclosure, IntersectionObserver revea
 reduced-motion/no-JS fallback keeps content visible; cursor/scroll defaults remain intact.
 Showcase explains configured architecture and prototype intent, never connection status or
 measured prevention impact. Original banner/human gate/reset and provider boundaries unchanged.
+
+
+## D034–D035 owner briefing and private prototype login
+Main speech UI opts into `screen_brief`: reason answer first, claimed identity/organisation second. Exact bounded excerpts are synthesized through adapters.say instead of the second canned close; no extra LLM. Briefing commits after TTS succeeds and stays out of Dadi history. Human acknowledgement unlocks choices; defaults/incoming/text paths retain previous flow.
+Optional DADI_LOGIN=1 adds the existing pinned Gradio authentication page with local accounts.py SQLite/scrypt persistence and app-owned session middleware. UI authentication HTTP is served by Gradio; vendor requests still belong exclusively to adapters. Data files are ignored/private and blocked from Gradio downloads. Authenticated session hashes are bound to username; unused alternate API paths denied. Default launch remains unchanged without login flag. No transcripts or audio persist in the account database. 500 disabled synthetic records demonstrate storage only; no production multi-tenant media or concurrent provider capacity claim. See docs/ACCOUNTS.md.

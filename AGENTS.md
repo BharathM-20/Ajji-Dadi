@@ -5,10 +5,9 @@
   Why: protect credits and isolate vendor changes. Delete only if adapter boundary is replaced.
 - Never print, log or commit keys; keep `.env.example` empty of real values.
   Why: private credentials. Keep permanently.
-- This session prepares F-REPO-READINESS: audit, a confirmed guard fix, docs and offline CI.
-  Why: user approved the reviewed commit and private BharathM-20/Ajji-Dadi publication.
-  Keep the repository private; public visibility still requires a new explicit instruction.
-  No provider/model calls or credential-file reads; preserve architecture and prior work.
+- This session prepares F-INCOMING-DEMO: labelled website incoming-call replay, not telephony.
+  Why: user chose the lower-effort web option if live telephony is too much work. Keep existing
+  architecture/gates/reset; no real calls/providers/key-file reads. Ask before commit or push.
 - Preserve `reference/`, `docs/CODEX_BRIEF.md` and `docs/GNANI_NOTES.md` during initialization.
   Why: user-owned inputs. Change notes later only with verified integration evidence.
 

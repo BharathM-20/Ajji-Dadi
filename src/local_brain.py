@@ -11,6 +11,7 @@ LANGUAGES = {
     "Hinglish": "Romanized Hindi mixed naturally with English. Call him beta.",
     "Hindi": "Hindi in Devanagari script. Call him बेटा.",
     "English": "Simple Indian English. Call him dear.",
+    "Telugu": "Everyday Telugu in Telugu script. You are Bamma; address the caller బాబూ sparingly.",
     "Kannada": "Kannada in Kannada script. You are Ajji; call him ಮಗು.",
     "Kanglish": "Romanized Kannada mixed naturally with English. You are Ajji; call him maga.",
 }
@@ -40,6 +41,7 @@ DEMANDS = {
 }
 PREFERRED = {"otp": "phone", "payment": "bankbook", "app": "glasses", "threat": "notebook"}
 FALLBACK = {
+    "Telugu": "బాబూ, ఆ పని గురించి ఇంకొంచెం చెప్పు.",
     "Hinglish": "Beta, zara dheere bolo, main tumhari baat apni purani diary mein likh rahi hoon.",
     "Hindi": "बेटा, ज़रा धीरे बोलो, मैं तुम्हारी बात अपनी पुरानी डायरी में लिख रही हूँ।",
     "English": "Dear, please speak slowly while I write that down in my old diary.",
@@ -55,6 +57,7 @@ ROLE_ATTACK = re.compile(
     re.I,
 )
 DEFLECTION = {
+    "Telugu": "బాబూ, ముందు నువ్వు ఫోన్ చేసిన పని చెప్పు.",
     "Hinglish": "Beta, yeh angrezi mujhe samajh nahi aayi, zara ghar ki boli mein batao.",
     "Hindi": "बेटा, यह अंग्रेज़ी मुझे समझ नहीं आई, ज़रा आसान शब्दों में बताओ।",
     "English": "Dear, those big words confuse me. Could you say that more simply?",

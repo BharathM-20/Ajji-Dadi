@@ -1,20 +1,81 @@
 """Local presentation only: original SVG, scripted story and isolated progressive enhancement."""
 
-LOGO = """<svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 3 56 13v20c0
-14-13 23-24 28C21 56 8 47 8 33V13z" fill="currentColor"/><path d="M19 26c0-10 5-15 13-15s13
-5 13 15v13H19z" fill="#faf7ef"/><path d="M23 28c0-6 3-10 9-10s9 4 9 10v8c0 8-18 8-18 0z"
-fill="#ffb695"/><g stroke="#17182f" stroke-width="2"><circle cx="26" cy="30" r="6"/>
-<circle cx="39" cy="30" r="6"/><path d="M32 30h1m-5 12q4 4 8 0"/></g><circle cx="32" cy="21"
-r="2" fill="#f15f44"/></svg>"""
 NAV = (
     '<nav class="sc-nav" aria-label="Main"><a class="sc-brand" href="#showcase-intro">'
-    + LOGO
+    + 'DADI</a><div class="sc-nav-links">'
     + """
-<span>DADI<span class="sc-brand-sub">VS DIGITAL ARREST</span></span></a><div class="sc-nav-links">
-<a href="#sc-story">The idea</a><a href="#sc-engine">Inside Dadi</a>
-<a href="#live-lab" class="sc-nav-cta">Try the simulation <span aria-hidden="true">↗</span></a>
+<a href="#sc-story">The idea</a><a href="#sc-engine">How Dadi works</a>
+<a href="#live-lab" class="sc-nav-cta">Play the caller <span aria-hidden="true">↗</span></a>
+<button type="button" class="sc-theme-toggle" aria-label="Switch to light theme">☼ Light</button>
 </div></nav>"""
 )
+
+HOW_TO_PLAY = """<section class="sc-play-guide" aria-labelledby="sc-guide-title">
+<div class="sc-guide-head"><span class="sc-label">BEFORE THE CALL</span>
+<h2 id="sc-guide-title">Your role: play the scam caller.</h2>
+<p>Use the microphone to try to fool Dadi into sharing a <b>made-up</b> secret.
+Keep the exchange going with short spoken turns. This is a teammate role-play.</p>
+<div class="sc-role-note"><b>The challenge</b><span>Persuade Dadi to reveal an invented code.
+She has no real credentials to reveal. Never use real OTPs, passwords, banking details or personal
+information.</span>
+</div></div>
+<div class="sc-guide-languages">
+<details open><summary>हिन्दी · Hindi</summary><ol>
+<li>आप कॉल करने वाले का किरदार निभा रहे हैं। दादी से केवल काल्पनिक कोड कहलवाने की कोशिश करें;
+कोई असली ओटीपी, पासवर्ड, बैंक विवरण या निजी जानकारी न बोलें। दादी के पास बताने के लिए कोई असली
+कोड नहीं है।</li>
+<li><b>Record</b> दबाएं, एक छोटी बात साफ़ और ऊंची आवाज़ में बोलें, फिर <b>Stop</b> दबाएं।
+हर रिकॉर्डिंग 30 सेकंड से कम रखें।</li>
+<li>पहले कॉल की वजह बताएं। अगली बारी में अपना नाम और संस्था बताएं।</li>
+<li>कॉलर की छोटी जानकारी सुनें या पढ़ें। फिर <b>I heard / read the caller briefing — show choices</b>
+दबाएं।</li>
+<li>खुद कॉल उठाएं, मना करें, या <b>Let Dadi handle it</b> चुनें। दादी अपने आप कॉल नहीं उठातीं।</li>
+<li>अब बोलकर दादी को मनाने की कोशिश करें कि वह एक नकली कोड बता दें। एक बार में छोटा वाक्य बोलें;
+बातचीत का संदर्भ बनाए रखें। असली कोड कभी न बोलें।</li>
+<li>अगर आवाज़ लिखी न जा सके, दोबारा रिकॉर्ड करने से पहले सुरक्षित रिकॉर्डिंग पर
+<b>Transcribe retained recording once</b> दबाएं। यह एक बार फिर कोशिश करता है और क्रेडिट लगता है।</li>
+</ol></details>
+<details><summary>English</summary><ol>
+<li><b>You are the scam caller in this role-play.</b> Speak into the microphone and try to persuade
+Dadi to reveal a made-up verification code. Keep it playful and use fictional details only.</li>
+<li>Press <b>Record</b>, say one short sentence loudly and clearly, then press <b>Stop</b>.
+Keep each recording under 30 seconds.</li>
+<li>First say why you called. On the next turn, give your name and organisation.</li>
+<li>Listen to or read the caller briefing, then press
+<b>I heard / read the caller briefing — show choices</b>.</li>
+<li>Pick up yourself, decline, or choose <b>Let Dadi handle it</b>. Dadi never takes over
+without your choice.</li>
+<li>Keep trying to fool Dadi, one short spoken sentence at a time. The challenge is to keep her
+engaged and ask for an invented code. Dadi has no real credentials to reveal.</li>
+<li>If transcription fails, use <b>Transcribe retained recording once</b> on the saved clip
+instead of recording it again. This uses credits.</li>
+</ol></details>
+<details><summary>ಕನ್ನಡ · Kannada</summary><ol>
+<li><b>ಈ ಪಾತ್ರದಲ್ಲಿ ನೀವು ವಂಚಕ ಕರೆಗಾರರು.</b> ಮೈಕ್ರೋಫೋನ್‌ನಲ್ಲಿ ಮಾತನಾಡಿ, ದಾದಿಯಿಂದ ಕಾಲ್ಪನಿಕ ಕೋಡ್
+ಹೇಳಿಸಲು ಪ್ರಯತ್ನಿಸಿ. ಸುಳ್ಳು ವಿವರಗಳನ್ನಷ್ಟೇ ಬಳಸಿ; ನಿಜವಾದ ಒಟಿಪಿ, ಪಾಸ್‌ವರ್ಡ್ ಅಥವಾ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ ಬೇಡ.
+ದಾದಿಗೆ ಹೇಳಲು ನಿಜವಾದ ಕೋಡ್ ಇಲ್ಲ.</li>
+<li><b>Record</b> ಒತ್ತಿ, ಒಂದು ಚಿಕ್ಕ ವಾಕ್ಯವನ್ನು ಸ್ಪಷ್ಟವಾಗಿ, ಸ್ವಲ್ಪ ಜೋರಾಗಿ ಹೇಳಿ;
+ನಂತರ <b>Stop</b> ಒತ್ತಿ. ಪ್ರತಿ ರೆಕಾರ್ಡಿಂಗ್ 30 ಸೆಕೆಂಡಿಗಿಂತ ಕಡಿಮೆ ಇರಲಿ.</li>
+<li>ಮೊದಲು ಕರೆ ಮಾಡಿದ ಕಾರಣ ಹೇಳಿ. ಮುಂದಿನ ಬಾರಿ ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ಸಂಸ್ಥೆ ಹೇಳಿ.</li>
+<li>ಕರೆ ಮಾಡಿದವರ ಸಂಕ್ಷಿಪ್ತ ಮಾಹಿತಿ ಕೇಳಿ ಅಥವಾ ಓದಿ. ನಂತರ
+<b>I heard / read the caller briefing — show choices</b> ಒತ್ತಿ.</li>
+<li>ನೀವೇ ಕರೆ ಸ್ವೀಕರಿಸಿ, ನಿರಾಕರಿಸಿ, ಅಥವಾ <b>Let Dadi handle it</b> ಆಯ್ಕೆ ಮಾಡಿ.
+ನಿಮ್ಮ ಆಯ್ಕೆ ಇಲ್ಲದೆ ದಾದಿ ಕರೆ ಸ್ವೀಕರಿಸುವುದಿಲ್ಲ.</li>
+<li>ಈಗ ಚಿಕ್ಕ ವಾಕ್ಯಗಳಲ್ಲಿ ಮಾತನಾಡಿ ದಾದಿಯನ್ನು ಮೋಸಗೊಳಿಸಲು ಪ್ರಯತ್ನಿಸಿ. ಮಾತಿನ ಸಂದರ್ಭವನ್ನು ಮುಂದುವರಿಸಿ;
+ಕಾಲ್ಪನಿಕ ಕೋಡ್ ಮಾತ್ರ ಕೇಳಿ. ನಿಜವಾದ ಮಾಹಿತಿ ಬಳಸಬೇಡಿ.</li>
+<li>ಮಾತು ಲಿಪ್ಯಂತರವಾಗದಿದ್ದರೆ ಮತ್ತೆ ರೆಕಾರ್ಡ್ ಮಾಡುವ ಮೊದಲು ಉಳಿದ ಕ್ಲಿಪ್‌ಗೆ
+<b>Transcribe retained recording once</b> ಒತ್ತಿ. ಇದು ಒಂದು ಮರುಪ್ರಯತ್ನ; ಕ್ರೆಡಿಟ್ ಬಳಸುತ್ತದೆ.</li>
+</ol></details>
+<details><summary>తెలుగు · Telugu</summary><ol>
+<li>ఈ పాత్రలో మీరు కాల్ చేసే వ్యక్తి. కల్పిత వివరాలతో బామ్మను ఒప్పించి ఒక ఊహించిన కోడ్
+చెప్పించడానికి ప్రయత్నించండి. నిజమైన ఓటీపీ, పాస్‌వర్డ్ లేదా బ్యాంకు వివరాలు చెప్పకండి.</li>
+<li><b>Record</b> నొక్కి, ఒక చిన్న వాక్యం స్పష్టంగా మాట్లాడి, <b>Stop</b> నొక్కండి.
+ప్రతి రికార్డింగ్ ముప్పై సెకన్లలోపు ఉండాలి.</li>
+<li>మొదట కాల్ చేసిన కారణం చెప్పండి. తర్వాత మీ పేరు, సంస్థ పేరు చెప్పండి.</li>
+<li>సారాంశం విని లేదా చదివి <b>I heard / read the caller briefing — show choices</b>
+నొక్కండి. తర్వాత <b>Let Dadi handle it</b> ఎంచుకోండి.</li>
+<li>బామ్మతో సందర్భానికి తగ్గట్టు మాట్లాడండి. భాష మార్చాలంటే <b>New call</b> నొక్కండి.</li>
+</ol></details></div></section>"""
 
 INTRO = """<div class="sc-root" data-showcase-root>
 <section class="sc-hero" aria-labelledby="sc-title">
@@ -22,12 +83,14 @@ INTRO = """<div class="sc-root" data-showcase-root>
 A DIFFERENT KIND OF DEFENCE.</div><h1 id="sc-title">Waste<br><span class="sc-italic">their</span>
 time.<br>
 <span class="sc-outline">Keep yours.</span></h1><p>Meet Dadi. A grandmother persona designed to turn
-scam-call pressure into a slower conversation.</p><div class="sc-hero-actions">
-<a class="sc-primary" href="#live-lab">Try Dadi in the call lab <span
+scam-call pressure into a slower conversation. You play the caller and try to fool her by voice;
+she answers in context while you try to draw out a fictional secret.</p>
+<div class="sc-hero-actions">
+<a class="sc-primary" href="#live-lab">Start a role-play call <span
 aria-hidden="true">↗</span></a>
 <a class="sc-text-link" href="#sc-story">See her in action <span
 aria-hidden="true">↓</span></a></div>
-<div class="sc-small-note">A scam-awareness prototype. Teammates role-play every call.</div></div>
+<div class="sc-small-note">Teammates role-play. Dadi has no real credentials to reveal.</div></div>
 <div class="sc-art" data-sc-tilt aria-label="Illustration of Dadi with her old phone">
 <div class="sc-orbit sc-orbit-one"></div><div class="sc-orbit sc-orbit-two"></div>
 <span class="sc-art-caption">UNRUSHED. UNBOTHERED. UNEXPECTED.</span>
@@ -68,40 +131,43 @@ height="7" rx="2"/><rect x="406" y="408" width="11" height="7" rx="2"/></g></g>
 <path d="M358 416q14-34 23-25c10 9-2 38-5 45" fill="#ffba90"/>
 <path d="m102 139 8-23 8 23 23 8-23 8-8 23-8-23-23-8zM377 183l5-16 5 16 16 5-16
 5-5 16-5-16-16-5z" fill="#f7f0de"/></svg>
-<div class="sc-sticker"><span>HER SUPERPOWER?</span><strong>“One minute,<br>beta.”</strong>
+<div class="sc-sticker"><span>HER SUPERPOWER?</span><strong>“Your urgency<br>is noted.”</strong>
 <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4v32M4 20h32M9 9l22 22M9
 31 31 9" stroke="currentColor" stroke-width="3"/></svg></div>
 <div class="sc-caption-card"><span class="sc-dot"></span><div><b>They bring urgency.</b>
-<span>She brings a missing pair of glasses.</span></div><span
+<span>She has follow-up questions. You have a deadline.</span></div><span
 class="sc-caption-arrow">↗</span></div>
 </div></section>
 <div class="sc-ribbon" aria-label="Project principles"><span>MORE PATIENCE</span><i>✳</i>
-<span>LESS PANIC</span><i>✳</i><span>ALWAYS YOUR CHOICE</span><i>✳</i><span>ONE MORE
-MINUTE</span></div>
+<span>LESS PANIC</span><i>✳</i><span>ALWAYS YOUR CHOICE</span><i>✳</i><span>WIT, NOT
+WANDERING</span></div>
 <section class="sc-story" id="sc-story" aria-labelledby="sc-story-title" data-reveal>
 <div class="sc-section-top"><span class="sc-label">01 / THE IDEA</span><span>PRESSURE, MEET
 PATIENCE.</span></div>
 <div class="sc-story-grid"><div><h2 id="sc-story-title">Their script.<br>Her <em>plot
 twist.</em></h2>
-<p>A rushed caller wants a rushed decision. Dadi slows the story down: a question, a lost
-notebook, another explanation. Explore the idea one beat at a time.</p>
-<div class="sc-scene-buttons" role="group" aria-label="Scripted conversation scenes">
-<button type="button" data-sc-scene="0" aria-pressed="true"><span>01</span> The pressure
+<p>You play the caller trying to create urgency and get Dadi to disclose an invented secret.
+She listens to what you actually say and answers in context. The sample exchanges show how her wit
+can stay on topic. Explore three role-play moments.</p>
+<div class="sc-scene-buttons" role="group" aria-label="Sample role-play scenes">
+<button type="button" data-sc-scene="0" aria-pressed="true"><span>01</span> The deadline
 <b>↗</b></button>
-<button type="button" data-sc-scene="1" aria-pressed="false"><span>02</span> The detour
+<button type="button" data-sc-scene="1" aria-pressed="false"><span>02</span> The code
 <b>↗</b></button>
-<button type="button" data-sc-scene="2" aria-pressed="false"><span>03</span> The extra minute
+<button type="button" data-sc-scene="2" aria-pressed="false"><span>03</span> The authority
 <b>↗</b></button>
 </div></div><div class="sc-scene" aria-live="polite" aria-atomic="true">
-<div class="sc-scene-top"><span><span class="sc-dot"></span> SCRIPTED PREVIEW</span>
+<div class="sc-scene-top"><span><span class="sc-dot"></span> SAMPLE ROLE-PLAY · FICTIONAL</span>
 <span data-sc-count>01 / 03</span></div><div class="sc-caller"><span>THE CALLER</span>
-<p data-sc-caller>“Your bank account will be blocked. You must act now.”</p></div>
+<p data-sc-caller>“Your account will be frozen unless you act in five minutes.”</p></div>
 <div class="sc-wave"
 aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-<div class="sc-grandma"><span>DADI</span><p data-sc-reply>“Which branch, beta? Let me find my
-glasses first.”</p></div>
-<div class="sc-scene-bottom"><span data-sc-tactic>TACTIC / ASK THEM TO REPEAT</span>
-<small>Illustrative dialogue. No model, audio or service calls.</small></div></div></div></section>
+<div class="sc-grandma"><span>DADI</span><p data-sc-reply>“Frozen? Then give it a shawl, beta.
+First tell me which bank and why you're rushing me.”</p></div>
+<div class="sc-scene-bottom"><span data-sc-tactic>WITTY · ON TOPIC · STILL HER CHOICE</span>
+<small>Example dialogue, not a real call. Use fictional details only; never share
+real credentials.</small>
+</div></div></div></section>
 <section class="sc-engine" id="sc-engine" data-reveal aria-labelledby="sc-engine-title">
 <div class="sc-section-top"><span class="sc-label">02 / UNDER THE HOOD</span>
 <span>ONE VOICE. THREE PARTS.</span></div><div class="sc-engine-heading"><h2 id="sc-engine-title">
@@ -114,20 +180,19 @@ class="sc-expand">+</span></summary>
 <p>A short recording becomes caller text. Your language choice selects the transcription route.
 The call lab accepts WAV clips up to thirty seconds.</p></details>
 <details><summary><span class="sc-engine-no">02 ✳</span><span class="sc-engine-name">Think</span>
-<b>SARVAM · THE BRAIN</b><span class="sc-expand">+</span></summary><p>The configured brain uses
+<b>CONVERSATION · THE BRAIN</b><span class="sc-expand">+</span></summary>
+<p>The configured brain uses
 context,
 family facts and a fresh assigned tactic. Output guards check the reply before it reaches speech.
 Real language quality still needs review.</p></details>
 <details><summary><span class="sc-engine-no">03 ≋</span><span class="sc-engine-name">Speak</span>
-<b>TIMBRE · TEXT TO SPEECH</b><span class="sc-expand">+</span></summary><p>The reply becomes audio,
+<b>VOICE · TEXT TO SPEECH</b><span class="sc-expand">+</span></summary><p>The reply becomes audio,
 then the caller gets another turn. Real speech services require explicit configuration.
 The key-free test fixture does not synthesize audio.</p></details></div></section>
 <div id="live-lab" class="sc-lab-heading" data-reveal><span class="sc-label">03 / THE CALL
 LAB</span>
 <h2>Now, put Dadi<br><em>on the line.</em> <span aria-hidden="true">↘</span></h2>
-<p>Be the role-play caller. Share two caller messages, make the human choice,
-and see what happens next.
-Your configured mode and any errors are shown in the workspace below.</p></div>
+</div>
 </div>"""
 
 OUTRO = """<div class="sc-root sc-outro" data-showcase-root><section class="sc-impact" data-reveal>
@@ -141,40 +206,61 @@ class="sc-primary">Try another role-play <span aria-hidden="true">↑</span></a>
 <section class="sc-faq" data-reveal><div><span class="sc-label">A FEW GOOD QUESTIONS</span>
 <h2>Before you<br>pick up.</h2></div><div class="sc-faq-list">
 <details><summary>Does this connect to real scammers?<span>+</span></summary><p>No. This is a
-clearly
-labelled scam-awareness simulation with teammates. There is no actual phone
+clearly labelled scam-awareness role-play with teammates. There is no actual phone
 connection.</p></details>
 <details><summary>Can I try it without API keys?<span>+</span></summary><p>Yes, in the configured
-Sarvam test-fixture mode. Its canned replies are labelled. Mock speech has no synthesized audio;
-real Prisma and Timbre calls require explicit opt-in and process keys.</p></details>
-<details><summary>What about Hindi, Kannada and English?<span>+</span></summary><p>The speech UI
+test-fixture mode. Its canned replies are labelled. Mock speech has no synthesized audio;
+real speech calls require explicit opt-in and process keys.</p></details>
+<details><summary>What about Hindi, Kannada, English and Telugu?<span>+</span></summary>
+<p>The speech UI
 routes
-Hindi/Hinglish, Kannada/Kanglish and English explicitly. Native-script replies are checked.
+Hindi/Hinglish, Kannada/Kanglish, English and Telugu explicitly. Telugu is a new trial route.
+Native-script replies are checked.
 Real accuracy, pronunciation and naturalness still require testing and native-speaker
 review.</p></details>
-<details><summary>What does the case file actually measure?<span>+</span></summary><p>In the Sarvam
+<details><summary>What does the case file actually measure?<span>+</span></summary><p>In the
 speech path it shows tracked turns, recorded caller duration, assigned tactics and guard
 rejections. Recorded duration is a simulation proxy, not proven scammer time wasted.</p></details>
-</div></section><footer class="sc-footer"><a href="#showcase-intro"
-class="sc-footer-brand">DADI<span>↗</span></a>
+</div></section><footer class="sc-footer">
 <div><b>A familiar voice. An unexpected defence.</b><p>Inspired by O2’s Daisy. Built as a
-scam-awareness
-simulation.<br>No real callers. No real secrets. Always a human choice.</p></div>
+scam-awareness role-play.<br>No real callers. No real secrets. Always a human choice.</p></div>
 <a href="#showcase-intro" class="sc-back">BACK TO TOP ↑</a></footer></div>"""
 
 JS = r"""() => {
+  const setupTheme = () => {
+  const themeButton = document.querySelector('.sc-theme-toggle');
+  if (themeButton && !themeButton.dataset.bound) {
+    themeButton.dataset.bound = 'true';
+    const applyTheme = (theme) => {
+      document.querySelector(".gradio-container").dataset.theme = theme;
+      themeButton.textContent = theme === 'dark' ? '☼ Light' : '☾ Dark';
+      const nextTheme = theme === 'dark' ? 'light' : 'dark';
+      themeButton.setAttribute('aria-label', `Switch to ${nextTheme} theme`);
+    };
+    applyTheme('dark');
+    themeButton.addEventListener('click', () => {
+      const current = document.querySelector(".gradio-container").dataset.theme;
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+    });
+  }
+  };
   const scenes = [
-    ['Your bank account will be blocked. You must act now.',
-     'Which branch, beta? Let me find my glasses first.', 'ASK THEM TO REPEAT'],
-    ['Open the app. Tap the button on your screen.',
-     'The blue one or the green one? My old phone only has buttons.', 'MAKE THEM EXPLAIN'],
-    ['Please hurry. We cannot wait any longer.',
-     'One minute, beta. My tea is boiling. Tell me your name again?', 'A BELIEVABLE DETOUR']
+    ['Your account will be frozen unless you act in five minutes.',
+     'Frozen? Then give it a shawl, beta. First tell me which bank and why you are rushing me.',
+     'DEFLATE THE DEADLINE'],
+    ['Read me the six-digit code that just arrived so I can secure your account.',
+     'You sent it and want it read back? That is not security, beta; that is your own quiz.',
+     'NOTICE THE CONTRADICTION'],
+    ['I am calling from cyber crime. Do not disconnect or you will be arrested.',
+     'You have reached the arrest part before telling me your name. Let us do introductions first.',
+     'ASK FOR A CLEAR EXPLANATION']
   ];
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const fine = window.matchMedia('(pointer: fine)');
   let revealObserver;
   const init = () => {
+    setupTheme();
     const roots = document.querySelectorAll('[data-showcase-root]');
     roots.forEach(root => {
       if (root.dataset.scBound) return;
@@ -190,7 +276,7 @@ JS = r"""() => {
         scene.querySelector('[data-sc-caller]').textContent = '“' + scenes[index][0] + '”';
         scene.querySelector('[data-sc-reply]').textContent = '“' + scenes[index][1] + '”';
         scene.querySelector('[data-sc-tactic]').textContent = 'TACTIC / ' + scenes[index][2];
-        scene.querySelector('[data-sc-count]').textContent = '0' + (index + 1) + ' / 03';
+      scene.querySelector('[data-sc-count]').textContent = '0' + (index + 1) + ' / 03';
         if (!reduced.matches && scene.animate) scene.animate(
           [{opacity: .4, transform: 'translateY(8px)'}, {opacity: 1, transform: 'translateY(0)'}],
           {duration: 280, easing: 'ease-out'});
@@ -235,6 +321,16 @@ JS = r"""() => {
 
 CSS = """
 /* Scoped presentation: never hide or rewrite the call lab's controls. */
+.sc-play-guide {margin:18px 0 24px;padding:25px;border:1px solid #d8dfca;
+ border-radius:22px;background:#f5f6ed;color:#17182f}
+.sc-guide-head {max-width:700px}.sc-guide-head h2 {font:700 clamp(25px,3vw,38px) Georgia,serif;
+ margin:10px 0}.sc-guide-head p {font-size:13px;color:#5c685b;line-height:1.6}
+.sc-guide-languages {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;
+ margin-top:18px}.sc-guide-languages details {background:#fffdf7;border:1px solid #d8dfca;
+ border-radius:14px;padding:14px;min-width:0}.sc-guide-languages summary {cursor:pointer;
+ font-weight:700}.sc-guide-languages ol {padding-left:20px;margin:14px 0 0}
+.sc-guide-languages li {font-size:12px;line-height:1.6;margin:0 0 10px}
+@media(max-width:900px){.sc-guide-languages{grid-template-columns:1fr}}
 html {scroll-behavior:smooth;scroll-padding-top:28px}
 .gradio-container {max-width:1440px!important;padding-top:0!important}
 #app-nav {padding:0!important;border:0!important}
@@ -477,4 +573,238 @@ translateY(-8px)}}
 
 .sc-story .sc-scene-buttons button[aria-pressed=true] {color:#d7ed9b!important;
  background:#ffffff08;border-left:2px solid #d7ed9b;padding-left:10px}
+
+/* Dark, high-contrast call-lab palette; presentation only. */
+:root {color-scheme:dark}
+body,.gradio-container {background:#10141b!important;color:#f1f0e9!important}
+.gradio-container {--body-text-color:#f1f0e9;--body-text-color-subdued:#abb3bd;
+ --background-fill-primary:#1a2029;--background-fill-secondary:#222a35;
+ --block-background-fill:#1a2029;--block-border-color:#37414e;--border-color-primary:#37414e;
+ --block-label-text-color:#c1c9cc;--block-title-text-color:#f1f0e9;
+ --input-background-fill:#151b23;--input-border-color:#414b57;
+ --button-primary-background-fill:#d8bd83;--button-primary-text-color:#151922;
+ --button-secondary-background-fill:#242c36;--button-secondary-text-color:#f1f0e9}
+.sc-nav,.sc-root {color:#f1f0e9}
+.sc-nav {border-color:#37414e}
+.sc-nav-links .sc-nav-cta {border-color:#d8bd83;color:#f1f0e9}
+.sc-brand {font-size:15px;letter-spacing:.14em;color:#e3cf9e!important}
+.sc-outline {-webkit-text-stroke-color:#e3cf9e}
+.sc-hero-copy>p,.sc-engine-heading p,.sc-lab-heading p,.sc-faq-list p {color:#b5bec5}
+.sc-small-note,.sc-caption-card div>span,.sc-footer div p {color:#adb6bd}
+.sc-art {background:#6b493f}
+.sc-sticker {background:#252c34;color:#f0d39c;border:1px solid #59616a}
+.sc-caption-card,.sc-scene,.sc-engine-grid details,.sc-engine-grid details:nth-child(2),
+.sc-engine-grid details:nth-child(3) {background:#1a2029;color:#f1f0e9;border:1px solid #37414e}
+.sc-ribbon,.sc-engine .sc-section-top,.sc-lab-heading,.sc-footer,.sc-faq-list details {
+ border-color:#37414e}
+.sc-engine-grid p {border-color:#37414e;color:#bac2c7}
+.sc-impact {background:#252d35;border:1px solid #46514e;color:#f1f0e9}
+.sc-impact h2 em {color:#e3cf9e}
+.sc-impact p,.sc-faq-list p {color:#b5bec5}
+.sc-impact-seal {border-color:#e3cf9e;color:#e3cf9e}
+.sc-play-guide {background:#171d26;border-color:#37414e;color:#f1f0e9}
+.sc-guide-head p {color:#b5bec5}
+.sc-role-note {display:flex;gap:12px;align-items:flex-start;margin-top:16px;padding:14px 16px;
+ border:1px solid #665d43;border-left:3px solid #e3cf9e;border-radius:10px;
+ background:#242821;color:#e7e5dc;font-size:12px;line-height:1.65}
+.sc-role-note b {color:#f0d39c;white-space:nowrap}
+.sc-guide-languages details {background:#1d242e;border-color:#37414e;color:#f1f0e9}
+.sc-guide-languages summary {color:#e3cf9e}
+#simulation-banner h1 {color:#f1f0e9!important}
+#simulation-banner p {background:#222a35!important;color:#e9e7df!important;
+ border-color:#46514e!important}
+#simulation-banner strong {color:#f0d39c!important}
+#workspace-note {background:#202832!important;color:#e5e4df!important;
+ border:1px solid #37414e!important}
+#workspace-note p {color:#c0c8cc!important}
+#conversation-column {background:#151b23;border-color:#37414e}
+#live-transcript {background:#1c2a2a!important;border-color:#435957!important}
+#live-transcript .user,#live-transcript .user .message {background:#344844!important;
+ color:#f5f3eb!important}
+#live-transcript .bot,#live-transcript .bot .message {background:#39352d!important;
+ color:#f5f0e5!important}
+#phone-panel,#case-panel {background:#171d26!important;border-color:#37414e!important;
+ color:#f1f0e9!important}
+#phone-heading {border-color:#37414e!important}
+.phone-symbol,.mock-tag,.status-pill {background:#242c33!important;color:#e3cf9e!important;
+ border-color:#485249!important}
+.phone-heading .eyebrow,.case-heading .eyebrow {color:#b8c2b8!important}
+.phone-heading h3,.case-heading h2,#case-file,#case-file p,#case-file li {color:#f1f0e9!important}
+#call-language,#caller-mic,#phone-speaker,#caller-text {background:#1b222c!important;
+ border-color:#414b57!important;color:#f1f0e9!important}
+#call-language *,#caller-mic *,#phone-speaker *,#caller-text * {color:#f1f0e9}
+.verdict-card {background:#202832!important;border-color:#414b57!important}
+.verdict-reason,.signal-label,.ring-number small {color:#d5d9d3!important}
+.verdict-legit {--verdict:#8ed1a6;--verdict-soft:#263d32}
+.verdict-scam {--verdict:#f19c8e;--verdict-soft:#452c2b}
+#pick-up,#decline-call,#dadi-handoff {filter:brightness(.92)}
+#decision-actions button,#end-actions button,#send-message {color:#f1f0e9!important}
+#pick-up {background:#294333!important;border-color:#496d54!important}
+#decline-call {background:#482f2e!important;border-color:#704542!important}
+#dadi-handoff,#send-message,#end-call {background:#d8bd83!important;color:#151922!important;
+ border-color:#d8bd83!important}
+#new-call {background:#242c36!important;color:#f1f0e9!important;border-color:#536158!important}
+#case-file ul {background:#202832!important;border-color:#414b57!important}
+.workspace-footer,footer {color:#adb6bd!important;border-color:#37414e!important}
+.gradio-container input,.gradio-container textarea,.gradio-container select,
+.gradio-container [role=combobox] {background-color:#151b23!important;color:#f1f0e9!important;
+ border-color:#414b57!important}
+.gradio-container button {color:#f1f0e9}
+.gradio-container :is(button,input,select,textarea):focus-visible {outline-color:#e3cf9e!important}
+.sc-root a:focus-visible,.sc-root button:focus-visible,.sc-root summary:focus-visible,
+.sc-nav a:focus-visible {outline-color:#e3cf9e}
+.sc-story .sc-grandma {background:#354139!important;border:1px solid #637365!important}
+.sc-story .sc-grandma,.sc-story .sc-grandma p,.sc-story .sc-grandma>span {
+ color:#f1f0e9!important}
+.sc-theme-toggle {border:1px solid #59616a;border-radius:999px;padding:8px 12px;
+ background:#202832;color:#f1f0e9;cursor:pointer;font-size:12px}
+.gradio-container[data-theme="light"] {background:#f6f3eb!important;color:#191923!important}
+.gradio-container[data-theme="light"] .sc-root
+ {background:#f6f3eb!important;
+ color:#191923!important}
+.gradio-container[data-theme="light"] .sc-play-guide,
+.gradio-container[data-theme="light"] #workspace-note,
+.gradio-container[data-theme="light"] #phone-panel,
+.gradio-container[data-theme="light"] #case-panel,
+.gradio-container[data-theme="light"] #conversation-column,
+.gradio-container[data-theme="light"] .sc-scene,
+.gradio-container[data-theme="light"] .sc-caption-card
+ {background:#fffdf7!important;
+ color:#191923!important;
+ border-color:#d8d6cc!important}
+.gradio-container[data-theme="light"] .sc-theme-toggle
+ {background:#fffdf7;
+ color:#191923;
+ border-color:#cbc7bb}
+"""
+
+
+CSS += """
+/* Quiet surfaces, consistent spacing and readable controls in both palettes. */
+.sc-nav {gap:20px;align-items:center;padding:20px 0}
+.sc-nav-links {align-items:center;flex-wrap:wrap;gap:18px}
+.sc-theme-toggle {min-height:40px;min-width:88px;transition:background .2s,border-color .2s}
+.sc-theme-toggle:focus-visible {outline:3px solid #d8bd83;outline-offset:4px}
+#voice-samples {padding:28px!important;margin:28px 0!important;border-radius:24px!important;
+ background:#171d26!important;border:1px solid #37414e!important}
+#voice-samples h2 {font:400 clamp(24px,3vw,38px)/1.2 Georgia,serif;color:#f1f0e9}
+#voice-samples p {color:#b5bec5;line-height:1.65}
+#voice-samples .block {border-radius:16px!important;background:#202832!important;
+ border-color:#414b57!important}
+#voice-samples audio {width:100%;color-scheme:dark}
+#phone-panel {padding:24px!important}#decision-actions {gap:10px!important}
+#decision-actions button,#end-actions button {min-height:48px!important}
+.gradio-container[data-theme="light"] {color-scheme:light}
+ .gradio-container[data-theme="light"] {background:#f6f3eb!important;color:#24272c!important;
+ --body-background-fill:#f6f3eb;--body-text-color:#24272c;--block-background-fill:#fffdf8;
+ --input-background-fill:#fffdf8;--input-text-color:#24272c;--block-label-text-color:#4d575d}
+.gradio-container[data-theme="light"] :is(.sc-root,.sc-nav,.sc-brand,.sc-root h1,.sc-root h2,
+ .sc-root h3,.sc-root p,.sc-root summary,.sc-root .sc-label) {color:#24272c!important}
+.gradio-container[data-theme="light"] :is(.sc-small-note,.sc-root .sc-section-top,.sc-kicker) {
+ color:#58635f!important}
+.gradio-container[data-theme="light"] :is(.sc-engine-grid details,.sc-guide-languages details,
+ .sc-role-note,.sc-impact,#voice-samples,#voice-samples .block,#live-transcript,
+ #call-language,#caller-mic,#phone-speaker,#caller-text,#case-file ul) {
+ background:#fffdf8!important;border-color:#d6d9cd!important;color:#24272c!important}
+.gradio-container[data-theme="light"] :is(#phone-heading h3,#case-heading h2,#workspace-note p,
+ #case-file p,#case-file li,#voice-samples h2,#voice-samples p,.sc-guide-head p,
+ .phone-heading .eyebrow,.case-heading .eyebrow,#call-language *,#caller-mic *,
+ #phone-speaker *,#caller-text *) {color:#343e3b!important}
+.gradio-container[data-theme="light"] :is(input,textarea,select,[role=combobox]) {
+ background:#fffdf8!important;color:#24272c!important;border-color:#c5ccbf!important}
+.gradio-container[data-theme="light"] .sc-story .sc-grandma,
+.gradio-container[data-theme="light"] .sc-story .sc-grandma p {background:#e9efdc!important;
+ color:#26372b!important}
+.gradio-container[data-theme="light"] .sc-outline {-webkit-text-stroke-color:#5e704d}
+.gradio-container[data-theme="light"] .sc-nav-links a {color:#354c39!important}
+.gradio-container[data-theme="light"] .sc-scene .sc-caller {background:#edf0e8;color:#24272c}
+.gradio-container[data-theme="light"] .sc-scene-buttons button {color:#394f43}
+.gradio-container[data-theme="light"] #simulation-banner p {background:#e9eddf!important;
+ color:#354237!important;border-color:#cbd3bd!important}
+.gradio-container[data-theme="light"] #simulation-banner h1 {color:#24272c!important}
+.gradio-container[data-theme="light"] #voice-samples audio {color-scheme:light}
+@media(max-width:640px){.sc-nav{padding:14px 0}.sc-nav-links{gap:10px}
+ #voice-samples{padding:18px!important}.sc-theme-toggle{min-width:76px}
+ #phone-panel{padding:18px!important}}
+@media(prefers-reduced-motion:reduce){.sc-theme-toggle{transition:none}}
+"""
+
+CSS += """
+/* Compact sample players: keep Gradio playback/speed behavior, hide only sample decoration. */
+#voice-samples {padding:22px!important;margin:16px 0 24px!important;border-radius:18px!important}
+#voice-samples>div {gap:12px!important}
+#voice-samples .prose {background:transparent!important;padding:0!important;border:0!important}
+#voice-samples h2 {font:500 25px/1.3 Georgia,serif;margin:0 0 12px!important}
+#voice-samples .sample-player {min-width:220px;border-radius:12px!important;padding:14px!important}
+#voice-samples .sample-player label {position:static!important;background:transparent!important;
+ border:0!important;padding:0!important;font-size:14px!important;font-weight:650!important}
+#voice-samples .sample-player label svg {display:none}
+#voice-samples .sample-player :is(.waveform-container,.timestamps,.rewind,.skip,.volume,
+ .settings-wrapper) {display:none!important}
+#voice-samples .sample-player .component-wrapper {padding:0!important}
+#voice-samples .sample-player .controls {display:flex!important;
+ justify-content:flex-start!important;
+ gap:14px!important;margin-top:10px!important;overflow:visible!important}
+#voice-samples .sample-player .play-pause-wrapper {order:0;margin:0!important}
+#voice-samples .sample-player .control-wrapper {order:1;margin:0!important}
+#voice-samples .sample-player .play-pause-button {width:44px;height:44px;min-width:44px;
+ border-radius:50%;display:grid;place-items:center;padding:0!important;line-height:0;
+ background:#d8bd83;color:#17211d;fill:#17211d}
+#voice-samples .sample-player .play-pause-button svg {display:block;width:22px;height:22px;
+ margin:0!important}
+#voice-samples .sample-player .playback {min-width:48px;min-height:32px;border-radius:8px;
+ color:inherit;border-color:#6c756d}
+@media(max-width:640px){#voice-samples{padding:18px!important}#voice-samples h2{font-size:22px}}
+"""
+
+CSS += """
+/* Explicit high-contrast text colors for the two selectable palettes. */
+.gradio-container:not([data-theme="light"]) .sc-root .sc-outline {
+ color:#f0d39c!important;-webkit-text-fill-color:#f0d39c!important;-webkit-text-stroke:0!important}
+.gradio-container:not([data-theme="light"]) .sc-root .sc-sticker,
+.gradio-container:not([data-theme="light"]) .sc-root .sc-sticker :is(span,strong,svg) {
+ color:#fff0c7!important}
+.gradio-container:not([data-theme="light"]) .sc-root .sc-caption-card,
+.gradio-container:not([data-theme="light"]) .sc-root .sc-caption-card :is(b,span) {
+ color:#f1f0e9!important}
+.gradio-container:not([data-theme="light"]) .sc-root .sc-caption-card div>span,
+.gradio-container:not([data-theme="light"]) .sc-root .sc-small-note,
+.gradio-container:not([data-theme="light"]) .sc-root .sc-hero-copy>p,
+.gradio-container:not([data-theme="light"]) .sc-root .sc-art-caption {
+ color:#d5ded7!important}
+.gradio-container:not([data-theme="light"]) .sc-root .sc-role-note {color:#f1f0e9!important}
+.gradio-container:not([data-theme="light"]) .sc-root .sc-role-note b,
+.gradio-container:not([data-theme="light"]) .sc-root .sc-guide-languages summary {
+ color:#f0d39c!important}
+.gradio-container:not([data-theme="light"]) .sc-root .sc-impact-seal,
+.gradio-container:not([data-theme="light"]) .sc-root .sc-impact-seal span {color:#f0d39c!important}
+
+.gradio-container[data-theme="light"] {--body-text-color:#24272c;--body-text-color-subdued:#4c5851;
+ --block-label-text-color:#34443a;--block-title-text-color:#24272c;--input-text-color:#24272c;
+ --link-text-color:#354f3c}
+.gradio-container[data-theme="light"] .sc-root .sc-outline {
+ color:#455b3c!important;-webkit-text-fill-color:#455b3c!important;-webkit-text-stroke:0!important}
+.gradio-container[data-theme="light"] .sc-root :is(.sc-hero-copy>p,.sc-small-note,
+ .sc-caption-card,.sc-caption-card b,.sc-art-caption,.sc-ribbon,.sc-engine-grid details,
+ .sc-engine-grid details p,.sc-lab-heading,.sc-impact,.sc-impact p,.sc-faq,.sc-faq-list,
+ .sc-footer,.sc-footer div p,.sc-play-guide,.sc-guide-head,.sc-guide-head p,
+ .sc-guide-languages details,.sc-guide-languages li,#workspace-note,#workspace-note p,
+ #case-panel,#case-file,#case-file p,#case-file li) {color:#303a34!important}
+.gradio-container[data-theme="light"] .sc-root :is(.sc-kicker,.sc-small-note,
+ .sc-caption-card div>span,.sc-engine-heading p,.sc-lab-heading p,.sc-faq-list p,
+ .sc-impact p,.sc-footer div p,.sc-guide-head p,.sc-guide-languages li) {
+ color:#4c5851!important}
+.gradio-container[data-theme="light"] .sc-root .sc-sticker {
+ background:#fffdf8!important;color:#26352d!important;border-color:#c7cec2!important}
+.gradio-container[data-theme="light"] .sc-root .sc-sticker :is(span,strong,svg) {
+ color:#26352d!important}
+.gradio-container[data-theme="light"] .sc-root .sc-caption-card {
+ background:#fffdf8!important;border-color:#d4d8ce!important}
+.gradio-container[data-theme="light"] .sc-root .sc-art-caption {color:#34231d!important}
+.gradio-container[data-theme="light"] .sc-root :is(.sc-impact h2 em,.sc-impact-seal,
+ .sc-impact-seal span,.sc-guide-languages summary) {color:#4b603c!important}
+.gradio-container[data-theme="light"] .sc-root .sc-role-note {color:#303a34!important}
+.gradio-container[data-theme="light"] .sc-root .sc-role-note b {color:#5b4824!important}
+.gradio-container[data-theme="light"] .sc-root .sc-text-link,
+.gradio-container[data-theme="light"] .sc-nav-links a {color:#354f3c!important}
 """

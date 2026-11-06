@@ -77,15 +77,33 @@ Speech language routing — user-authorized mapping, 2026-10-31 (D016)
 UI Hindi: STT hi-IN, TTS hi-IN, brain Devanagari Hindi.
 UI Hinglish (Hindi + English words): STT hi-IN, TTS hi-IN, brain Devanagari Hindi;
 user reports Prisma returns Devanagari for Hinglish speech. No Roman-script Hindi TTS.
-UI Kannada: STT kn-IN, TTS kn-IN, brain Kannada script.
-UI Kanglish (Kannada + English words): STT kn-IN by default, TTS kn-IN, brain Kannada script.
+UI Kannada: STT kn-IN with explicit model=prisma-v3.0 (D033), TTS kn-IN, brain Kannada script.
+UI Kanglish (Kannada + English words): STT kn-IN with explicit model=prisma-v3.0 by default (D033), TTS kn-IN, brain Kannada script.
 UI English: STT en-IN, TTS en-IN, brain English.
 File STT has no auto-detect; selection decides. Unknown routes fail, never default to Hindi.
 GNANI_TTS_LANGUAGE overrides only when explicitly set (including old hi-en/auto vendor values;
 these are overrides, not defaults). Unset it to follow the UI; an empty value fails.
 GNANI_STT_KANGLISH_CODE=kn-IN,en-IN opts into an UNVERIFIED candidate with model=prisma-v3.0.
 It keeps format=transcribe. Do not claim code-switch support/accuracy from mocked HTTP tests.
-Unset that variable (or use kn-IN) for default Kanglish; default STT omits model as before.
+Unset that variable (or use kn-IN) for default Kanglish kn-IN with explicit prisma-v3.0.
+Hindi/Hinglish/English continue to omit the STT model unless explicitly overridden in diagnostics.
 Existing GNANI_TTS_MODEL/VOICE/SPEED remain explicit overrides; audio_config is unchanged.
 Untested: real Kannada and Kanglish STT accuracy, Kannada TTS pronunciation with Kalpana on
 Timbre v3.0, Kanglish code-switch value, Kannada text quality (native speaker review required).
+
+Verified user-run evidence — 2026-11-01 (D033; not agent provider calls)
+Same complete4.679977s44.1kHzmono16bitWAV(SHA1662d3aee225...) withkn-IN/transcribe:
+omitted-model request504after6.165710333s; explicitprisma-v3.0 request200after1.374515875s.
+Returned: ನಾನು ರಮೇಶ್, ನಾನು bankನಿಂದ ಮಾತನಾಡುತ್ತಿದ್ದೇನೆ.
+Source: docs/evidence/kannada-stt-v3-user.json, supplied terminal output. Internal model value
+not inferred for omitted request. Evidence supports explicit v3 request for that clip, not
+general accuracy, Kanglish code-switch quality or permanent504recovery. Full real UI pipeline
+remains user-verified. Raw mixed-script transcript preserved; brain output stays Kannada script.
+Current website defaults now use explicitv3 for Kannada/Kanglish only, no resampling or
+endpoint/format/voice changes. TTS remains timbre-v3.0/Kalpana/kn-IN independently.
+Diagnostic local --model omitted removes the model field; literal omitted is never transmitted.
+
+Telugu frontend route completion (2026-11-05, D063): UI Telugu sends te-IN to STT and TTS,
+with Telugu-script brain/screening/owner briefing. Verified offline with mocked HTTP and Gradio
+callback dispatch only; real Prisma accuracy, voice availability/pronunciation (including AJJI),
+latency and colloquial dialogue quality remain UNVERIFIED. No automatic language fallback.

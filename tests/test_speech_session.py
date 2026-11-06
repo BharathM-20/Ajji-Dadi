@@ -17,6 +17,11 @@ CALLER = "आपके खाते की जाँच करनी है, अ
 REPLY = "बेटा, मेरी पुरानी किताब नहीं मिल रही, ज़रा धीरे बोलो।"
 
 
+def test_speech_script_gate_ignores_only_supported_expression_cues():
+    assert speech_session.valid_script("ಮಗು, <sigh> ನನಗೆ ಅರ್ಥವಾಯಿತು.", "Kannada")
+    assert not speech_session.valid_script("ಮಗು, <high-pitch> ನನಗೆ ಅರ್ಥವಾಯಿತು.", "Kannada")
+
+
 def wav_data(seconds=0.1):
     result = io.BytesIO()
     with wave.open(result, "wb") as audio:
@@ -130,6 +135,24 @@ def test_service_failure_rolls_back_whole_call(rig, stage, failure, capsys):
     output = capsys.readouterr().out
     assert "ERROR:" in output and "WHY:" in output and "FIX:" in output
     assert "test-only" not in output
+    if stage == "asr" and failure == 403:
+        assert "HTTP 403" in output and "API scope denied" in output
+
+
+def test_brain_failure_log_keeps_guard_reason_but_not_rejected_text(rig, monkeypatch, capsys):
+    path, _, _, _ = rig
+    monkeypatch.setenv("DADI_MODE", "sarvam")
+    monkeypatch.setattr(adapters, "asr", lambda *a, **k: CALLER)
+    monkeypatch.setattr(adapters, "think", lambda *a, **k: "private rejected draft")
+    state = dadi_state()
+
+    result, audio = speech_session.respond(path, state, "Kannada")
+
+    output = capsys.readouterr().out
+    assert audio is None and result["turn"] == 0
+    assert "wrong script (expected Kannada script)" in output
+    assert "private rejected draft" not in output
+    assert "recording or service unavailable" not in output
 
 
 @pytest.mark.parametrize("kind", ["long", "empty", "truncated", "not_wav"])
@@ -211,24 +234,29 @@ def test_human_gate_and_reset_and_banner_with_real_gradio_dispatch(rig):
         demo.upload_file_set.add(str(bad))
         failed = await demo.process_api(
             fns["speech_turn"],
-            [{"path": str(bad), "meta": {"_type": "gradio.FileData"}}, None, "Hindi"],
+            [{"path": str(bad), "meta": {"_type": "gradio.FileData"}}, None, "Hindi", False],
             state=state,
         )
         assert failed["data"][1] is None and "PCM WAV" in failed["data"][3]
         assert state[state_id]["screen_n"] == 0 and calls == []
         for _ in range(2):
-            result = await demo.process_api(fns["speech_turn"], [data, None, "Hindi"], state=state)
+            result = await demo.process_api(
+                fns["speech_turn"], [data, None, "Hindi", False], state=state
+            )
             assert result["data"][1]["path"].endswith(".wav")
         assert state[state_id]["mode"] == "DECIDE" and calls == ["asr", "say"] * 2
-        await demo.process_api(fns["speech_turn"], [data, None, "Hindi"], state=state)
+        await demo.process_api(fns["speech_turn"], [data, None, "Hindi", False], state=state)
         assert calls == ["asr", "say"] * 2
+        await demo.process_api(fns["speech_ack_summary"], [None], state=state)
         await demo.process_api(fns["speech_dadi"], [None], state=state)
-        result = await demo.process_api(fns["speech_turn"], [data, None, "Hindi"], state=state)
+        result = await demo.process_api(
+            fns["speech_turn"], [data, None, "Hindi", False], state=state
+        )
         assert calls[-3:] == ["asr", "brain", "say"]
         assert "Speech turn total:" in result["data"][3]
         assert state[state_id]["turn"] == 1
         reset = await demo.process_api(fns["speech_reset"], [], state=state)
-        assert reset["data"][0] == [] and reset["data"][-1] == ""
+        assert reset["data"][0] == [] and reset["data"][-2:] == ["", None]
         assert state[state_id]["mode"] == "SCREEN" and state[state_id]["hist"] == []
 
     asyncio.run(dispatch())

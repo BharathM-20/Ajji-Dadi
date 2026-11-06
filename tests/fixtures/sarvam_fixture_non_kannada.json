@@ -1,0 +1,132 @@
+[
+  {
+    "language": "Hindi",
+    "index": 0,
+    "response": {
+      "choices": [
+        {
+          "message": {
+            "content": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "language": "Hindi",
+    "index": 1,
+    "response": {
+      "choices": [
+        {
+          "message": {
+            "content": "बेटा, ज़रा धीरे समझाओ, मैं अपनी पुरानी कॉपी ढूँढ रही हूँ।"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "language": "Hindi",
+    "index": 2,
+    "response": {
+      "choices": [
+        {
+          "message": {
+            "content": "बेटा, उस बटन का रंग क्या है, यह फ़ोन समझ नहीं आता।"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "language": "Hindi",
+    "index": 4,
+    "response": {
+      "choices": [
+        {
+          "message": {
+            "content": "बेटा, ज़रा धीरे समझाओ, मैं अपनी पुरानी कॉपी ढूँढ रही हूँ।"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "language": "Hindi",
+    "index": 9,
+    "response": {
+      "choices": [
+        {
+          "message": {
+            "content": "बेटा, कौन सी शाखा बताई थी, मेरा चश्मा नहीं मिल रहा।"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "language": "English",
+    "index": 0,
+    "response": {
+      "choices": [
+        {
+          "message": {
+            "content": "Dear, which branch did you say? My glasses are missing."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "language": "English",
+    "index": 1,
+    "response": {
+      "choices": [
+        {
+          "message": {
+            "content": "Dear, please explain that slowly while I find my notebook."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "language": "English",
+    "index": 2,
+    "response": {
+      "choices": [
+        {
+          "message": {
+            "content": "Dear, what colour is that button? This phone is confusing."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "language": "English",
+    "index": 4,
+    "response": {
+      "choices": [
+        {
+          "message": {
+            "content": "Dear, please explain that slowly while I find my notebook."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "language": "English",
+    "index": 9,
+    "response": {
+      "choices": [
+        {
+          "message": {
+            "content": "Dear, which branch did you say? My glasses are missing."
+          }
+        }
+      ]
+    }
+  }
+]

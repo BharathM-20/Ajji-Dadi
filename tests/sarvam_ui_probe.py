@@ -103,14 +103,16 @@ def main():
                 decision = call("speech_turn", handle_file(audio), "English")
                 assert "human review" in decision[2]
                 assert call("speech_turn", handle_file(audio), "English") == decision
+                call("speech_ack_summary")
                 call("speech_dadi")
                 reply = call("speech_turn", handle_file(audio), "English")
                 assert "TEST FIXTURE" in reply[2] and "Dear" in str(reply[0])
                 report = call("speech_report")
-                assert "TEST FIXTURE" in report[-1] and "Distinct tactics" in report[-1]
-                assert "Dadi turns: 1" in report[-1]
+                assert "TEST FIXTURE" in report[-2] and "Call assessment" in report[-2]
+                assert "Dadi handling time" in report[-2] and "Uncertain" in report[-2]
+                assert report[-1]
                 reset = call("speech_reset")
-                assert reset[-1] == "" and "SCREEN" in str(reset)
+                assert reset[-2] == "" and reset[-1] is None and "SCREEN" in str(reset)
                 print(
                     "PASS: Sarvam TEST FIXTURE actual CLI, English speech upload/screen/"
                     "human gate/Dadi/report/reset; no model or speech provider calls."
