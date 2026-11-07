@@ -3,7 +3,7 @@
 This project is a practice call. One person plays a suspicious caller; Dadi answers, and a person
 decides what happens next.
 
-# We use Gnani for speech input/output . Evon wasn’t practically available to run during our build, so we used Sarvam for response generation.
+## We use Gnani for speech input/output . Evon wasn’t practically available to run during our build, so we used Sarvam for response generation.
 
 [Try the live app](https://huggingface.co/spaces/kushagra123423/dadi-vs-digital-arrest) ·
 [Play the Dadi vs Scammer game](https://huggingface.co/spaces/kushagra123423/dadi-scammer-showdown)
