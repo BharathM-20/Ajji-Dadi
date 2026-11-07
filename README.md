@@ -1,14 +1,4 @@
----
-title: Dadi vs Digital Arrest
-emoji: 📞
-sdk: gradio
-sdk_version: 5.49.1
-python_version: 3.12
-app_file: app.py
-fullWidth: true
----
-
-# Dadi vs Digital Arrest
+# Dadi 
 
 This project is a practice call. One person plays a suspicious caller; Dadi answers, and a person
 decides what happens next.
