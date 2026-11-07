@@ -19,8 +19,8 @@ password, bank detail, or private recording.
 ## What’s under the hood
 
 - Gnani Prisma turns the selected-language recording into text.
-- Sarvam generates Dadi’s reply.
-- The Gnani speech adapter can use Timbre or the AJJI cloned voice for playback.
+- the Sarvam generates Dadi’s reply.
+- The Gnani speech adapter uses Timbre.
 - Python and Gradio run the steps in order and keep the call decision with the person using the app.
 
 The app has language routes for Hindi, Hinglish, Kannada, Kanglish, English, and Telugu. Having a
@@ -40,7 +40,7 @@ SARVAM_FALLBACK_LOCAL=0 GNANI_REAL_ASR=0 GNANI_REAL_TTS=0 \
 
 This version uses fixture replies. It won’t transcribe microphone audio or generate live speech.
 
-For live speech, set `SARVAM_API_KEY` and `GNANI_API_KEY` in your terminal environment. AJJI playback
+For live speech, set `GNANI_API_KEY` in your terminal environment. AJJI playback
 also needs its private voice embedding configured on the server. Keep keys and embeddings out of Git,
 browser code, screenshots, and chat. Live calls to the speech and chat services can use credits.
 
@@ -51,8 +51,6 @@ make check
 make smoke
 ```
 
-These run lint, offline tests, and mock adapters. They don’t tell us how well Dadi handles real calls
-or how natural every language sounds.
 
 ## Project map
 
