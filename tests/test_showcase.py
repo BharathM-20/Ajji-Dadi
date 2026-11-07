@@ -69,6 +69,7 @@ class PresentationHTML(HTMLParser):
         super().__init__()
         self.ids = []
         self.links = []
+        self.anchors = []
         self.buttons = []
 
     def handle_starttag(self, tag, attrs):
@@ -79,7 +80,8 @@ class PresentationHTML(HTMLParser):
             self.ids.append(attrs["id"])
         if tag == "a":
             self.links.append(attrs["href"])
-            assert attrs["href"].startswith("#")
+            self.anchors.append(attrs)
+            assert attrs["href"].startswith("#") or attrs["href"] == showcase.GAME_SPACE_URL
         if tag == "button":
             self.buttons.append(attrs)
             assert attrs["type"] == "button"
@@ -96,7 +98,16 @@ def test_showcase_is_local_accessible_and_truthful():
     scene_buttons = [b for b in parser.buttons if "data-sc-scene" in b]
     assert len(scene_buttons) == 3
     assert [b["aria-pressed"] for b in scene_buttons] == ["true", "false", "false"]
-    assert all(v[1:] in parser.ids + ["showcase-intro", "live-lab"] for v in parser.links)
+    assert all(
+        v[1:] in parser.ids + ["showcase-intro", "live-lab"]
+        for v in parser.links
+        if v.startswith("#")
+    )
+    assert "Play the game" in showcase.NAV
+    game_link = next(a for a in parser.anchors if a["href"] == showcase.GAME_SPACE_URL)
+    assert game_link["target"] == "_blank"
+    assert {"noopener", "noreferrer"} <= set(game_link["rel"].split())
+    assert "sc-nav-game" in game_link["class"]
     assert "SAMPLE ROLE-PLAY · FICTIONAL" in showcase.INTRO
 
 

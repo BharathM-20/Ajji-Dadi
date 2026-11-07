@@ -1,10 +1,14 @@
 """Local presentation only: original SVG, scripted story and isolated progressive enhancement."""
 
+GAME_SPACE_URL = "https://huggingface.co/spaces/kushagra123423/dadi-scammer-showdown"
+
 NAV = (
     '<nav class="sc-nav" aria-label="Main"><a class="sc-brand" href="#showcase-intro">'
     + 'DADI</a><div class="sc-nav-links">'
-    + """
-<a href="#sc-story">The idea</a><a href="#sc-engine">How Dadi works</a>
+    + f"""
+<a href="#sc-story">The idea</a><a class="sc-nav-game" href="{GAME_SPACE_URL}"
+target="_blank" rel="noopener noreferrer">Play the game <span aria-hidden="true">↗</span></a>
+<a href="#sc-engine">How Dadi works</a>
 <a href="#live-lab" class="sc-nav-cta">Play the caller <span aria-hidden="true">↗</span></a>
 <button type="button" class="sc-theme-toggle" aria-label="Switch to light theme">☼ Light</button>
 </div></nav>"""
@@ -346,6 +350,10 @@ html {scroll-behavior:smooth;scroll-padding-top:28px}
 .sc-nav-links a {padding:10px 0}.sc-nav-links .sc-nav-cta {padding:13px 19px;border:1px solid
 #17182f;
  border-radius:100px}.sc-nav-cta span {margin-left:15px}
+.sc-nav-links .sc-nav-game {display:inline-flex;align-items:center;gap:8px;padding:9px 14px;
+ border:1px solid #b99b5b;border-radius:100px;background:#fffdf7;color:#354c39;
+ transition:background .2s,border-color .2s,color .2s}
+.sc-nav-links .sc-nav-game:hover {background:#f0e6c9;border-color:#92783e}
 #simulation-banner {margin:0!important;padding:12px 0!important;background:transparent!important;
  border:0!important;border-radius:0!important;box-shadow:none!important;min-height:0!important}
 #simulation-banner h1
@@ -515,7 +523,9 @@ translateY(-8px)}}
 }
 @media(max-width:680px) {
  .sc-nav {padding:18px 0}.sc-brand {font-size:25px}.sc-brand svg {width:40px;height:40px}
- .sc-brand-sub {font-size:6px;letter-spacing:1px}.sc-nav-links>a:not(.sc-nav-cta){display:none}
+ .sc-brand-sub {font-size:6px;letter-spacing:1px}
+ .sc-nav-links>a:not(.sc-nav-cta):not(.sc-nav-game){display:none}
+ .sc-nav-links .sc-nav-game {font-size:10px;padding:8px 10px}
  .sc-nav-links .sc-nav-cta {font-size:10px;padding:11px 12px}.sc-nav-cta span {margin-left:5px}
  #simulation-banner {padding:10px 0!important}#simulation-banner h1 {font-size:8px!important}
  #simulation-banner p {font-size:9px!important}.sc-hero {grid-template-columns:1fr;padding:25px 0
@@ -587,6 +597,8 @@ body,.gradio-container {background:#10141b!important;color:#f1f0e9!important}
 .sc-nav,.sc-root {color:#f1f0e9}
 .sc-nav {border-color:#37414e}
 .sc-nav-links .sc-nav-cta {border-color:#d8bd83;color:#f1f0e9}
+.sc-nav-links .sc-nav-game {background:#202832;border-color:#d8bd83;color:#f1f0e9}
+.sc-nav-links .sc-nav-game:hover {background:#303a43;border-color:#f0d39c;color:#fffdf7}
 .sc-brand {font-size:15px;letter-spacing:.14em;color:#e3cf9e!important}
 .sc-outline {-webkit-text-stroke-color:#e3cf9e}
 .sc-hero-copy>p,.sc-engine-heading p,.sc-lab-heading p,.sc-faq-list p {color:#b5bec5}
